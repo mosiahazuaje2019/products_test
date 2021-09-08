@@ -13,7 +13,7 @@ class Product extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class Product extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'            => ['required'],
+            'size'            => ['required'],
+            'observation'     => ['required'],
+            'count_inventory' => ['required|count_inventory|numeric'],
+            'date_boarding'   => ['required'],
+            'brand_id'        => ['required']
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'            => 'Debe ingresar un nombre al producto',
+            'size.required'            => 'Seleccione una talla',
+            'observation.required'     => 'Escriba una observación',
+            'count_inventory.required' => 'Indique cantidad en inventario',
+            'count_inventory.numeric'  => 'La cantidad debe ser un valor númerico entero',
+            'date_boarding.required'   => 'Seleccione fecha de embarque',
+            'brand_id.required'        => 'Debe asociar a una marca'
+        ] ;
     }
 }

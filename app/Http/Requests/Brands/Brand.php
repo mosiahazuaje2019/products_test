@@ -13,7 +13,7 @@ class Brand extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class Brand extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => ['required'],
+            'reference' => ['required|unique:brands']
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'      => 'Es necesario un nombre para la marca',
+            'reference.required' => 'Debe indicar una referencia',
+            'reference.unique'   => 'La referencia que intenta registrar ya se encuentra asociada a otra marca'
+        ] ;
     }
 }

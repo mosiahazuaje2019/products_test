@@ -15,12 +15,13 @@ class Product extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'size' => $this->size,
-            'observation' => $this->observation,
+            'id'              => $this->id,
+            'name'            => $this->name,
+            'size'            => $this->size,
+            'observation'     => $this->observation,
             'count_inventory' => $this->count_inventory,
-            'date_boarding' => $this->date_boarding,
+            'date_boarding'   => $this->date_boarding,
+            'brand_id'        => Brand::make($this->brands)
         ];
     }
 }

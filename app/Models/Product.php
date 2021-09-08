@@ -14,10 +14,10 @@ class Product extends Model
         'observation',
         'count_inventory',
         'date_boarding',
-        'product_id'
+        'brand_id'
     ];
 
     public function brands() {
-        return $this->belongsTo(Brand::class, 'product_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 }
