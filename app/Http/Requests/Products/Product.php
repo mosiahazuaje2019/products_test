@@ -27,7 +27,7 @@ class Product extends FormRequest
             'name'            => ['required'],
             'size'            => ['required'],
             'observation'     => ['required'],
-            'count_inventory' => ['required|count_inventory|numeric'],
+            'count_inventory' => 'required|numeric',
             'date_boarding'   => ['required'],
             'brand_id'        => ['required']
         ];

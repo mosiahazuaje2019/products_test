@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\ProductController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
+
+Route::group(['auth', 'verified'], function () {
+    Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
+    Route::inertia('/brandpage', 'BrandPage')->name('brandpage');
+});
+
+Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
+    Route::apiResource('brands', BrandController::class);
+    Route::apiResource('products', ProductController::class);
+});
+
+require __DIR__.'/auth.php';
