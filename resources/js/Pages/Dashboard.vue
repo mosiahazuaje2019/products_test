@@ -12,20 +12,22 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <PrimeButton class="p-mb-8" @click="createProduct">Nuevo</PrimeButton>
-                        <DataTable :filters="filter" :value="products" dataKeu="id" responsiveLayaout="scroll" :paginator="true" :rows="20">
+                        <PrimeButton @click="createProduct" class="add-btn">Nuevo</PrimeButton>
+                        <DataTable :filters="filter" :value="products" dataKey="id" responsiveLayaout="scroll" :paginator="true" :rows="20">
                             <Column field="name" header="Nombre"></Column>
                             <Column field="size" header="Talla"></Column>
                             <Column field="observation" header="Observación"></Column>
                             <Column field="count_inventory" header="Cantidad"></Column>
                             <Column field="date_boarding" header="Fecha de embarque"></Column>
                             <Column field="brand_id.name" header="Marca"></Column>
-                            <template #paginatorLeft>
-                                <PrimeButton type="button" icon="pi pi-refresh" class="p-button-text" />
-                            </template>
-                            <template #paginatorRight>
-                                <PrimeButton type="button" icon="pi pi-cloud" class="p-button-text" />
-                            </template>
+                            <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
+                                    headerStyle="width: 14rem; text-align: center">
+                                <template #body="slotProps">
+                                        <PrimeButton label="Editar" class="edit_btn" @click="editProduct(slotProps.data.id)" />
+
+                                        <PrimeButton label="Eliminar" class="-right-2.5 del-btn" @click="destroyProduct(slotProps.data.id)" />
+                                </template>
+                            </Column>
                         </DataTable>
                     </div>
                 </div>
@@ -41,8 +43,9 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
-import axios from 'axios';
 import ProductForm from "@/Components/Products/ProductForm";
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 export default {
     data () {
@@ -59,8 +62,8 @@ export default {
         Head,
     },
     methods: {
-        getProducts() {
-            axios.get('api/products').then((res) => {
+        async getProducts() {
+            await axios.get('api/products').then((res) => {
                 this.products = res.data
             })
         },
@@ -72,14 +75,47 @@ export default {
             this.editId = id
             this.display = true
         },
+        async destroyProduct(id) {
+            Swal.fire( {
+                title: 'Seguro de eliminar el producto?',
+                showDenyButton: true,
+                confirmButtonText: `Borrar`,
+                denyButtonText: `No borrar`,
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    axios.delete(`/api/products/${id}`).then(() => {
+                        return this.emitter.emit('products_reload')
+                    }).catch(() => {
+                        Swal.fire('No se logro eliminar', '', 'error')
+                    })
+                } else if (result.isDenied) {
+                    Swal.fire('No se a borrado...', '', 'info')
+                }
+            })
+        }
     },
     mounted() {
         this.getProducts()
         this.emitter.on('products_reload', () => {
             this.getProducts()
             this.display = false
-            this.$toast.add({severity:'success', summary: 'Default Message'});
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Operación realizada con éxito!`, life:3000,
+            })
         })
     }
 }
 </script>
+<style scoped>
+.del-btn{
+    background-color: firebrick;
+    border-bottom-width: 0px;
+}
+.edit_btn{
+    background-color: green;
+}
+.add-btn{
+    margin-bottom: 20px;
+}
+</style>

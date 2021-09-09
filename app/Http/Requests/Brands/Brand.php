@@ -25,7 +25,7 @@ class Brand extends FormRequest
     {
         return [
             'name'      => ['required'],
-            'reference' => ['required|unique:brands']
+            'reference' => 'required|unique:brands'
         ];
     }
 

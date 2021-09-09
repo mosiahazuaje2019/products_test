@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import PrimeVue from 'primevue/config';
 import mitt from "mitt";
+import VueSweetalert2 from "vue-sweetalert2";
 
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
@@ -47,6 +48,7 @@ createInertiaApp({
             .use(plugin)
             .use(PrimeVue)
             .use(ToastService)
+            .use(VueSweetalert2)
             .mixin({ methods: { route } })
 
         vueApp.config.globalProperties.emitter = emitter;
