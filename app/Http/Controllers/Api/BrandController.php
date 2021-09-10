@@ -11,6 +11,7 @@ use App\Http\Requests\Brands\Brand as BrandRequest;
 
 class BrandController extends Controller
 {
+    //propiedades
     protected $brand;
 
     public function __construct(Brand $brand) {
