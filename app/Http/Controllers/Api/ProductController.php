@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Product as ProductResource;
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Products\Product as ProductRequest;
 
@@ -40,6 +41,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request): JsonResponse
     {
+        $request->merge(['date_boarding' => Carbon::parse($request->date_boarding)->toDateString()]);
         $product = $this->product->create($request->all());
         return response()->json(new ProductResource($product), 201);
     }
