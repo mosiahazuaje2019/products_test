@@ -14,6 +14,7 @@ class ProductController extends Controller
     protected $product;
 
     public function __construct(Product $product) {
+        $this->middleware('auth:api', ['except' => ['login']]);
         $this->product = $product;
     }
 
