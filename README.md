@@ -17,6 +17,7 @@ Siga las siguientes instrucciones luego de descargar el proyecto:
 - Tambien se hizo uso de los Requests para configurar las validaciones, esto va vinculado a los Api Controller que se diseñaron estos controles retornan respuestas en formato json.
 - En cuanto a los modelos se definieron las relaciones pertinentes como es el caso de los modelos brands->products siendo una relacion de uno a muchos.
 - Se hace uso del middleware auth para asegurar el inicio de sesion y proteger las rutas, tambien se podria utilizar JWT sin embargo para este caso solo se utilizo auth.
+- Para el campo de referencia se utilizo un hash para crear un string alfanumerico.
  
 ## Frontend
 
