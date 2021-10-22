@@ -21,8 +21,14 @@
         <div class="block mt-4">
             <label class="flex items-center">
                 <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                <span class="ml-2 text-sm text-gray-600">Recordar</span>
             </label>
+        </div>
+
+        <div class="block mt-4">
+            <Link :href="route('register')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                Registrarse
+            </Link>
         </div>
 
         <div class="flex items-center justify-end mt-4">

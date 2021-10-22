@@ -39,6 +39,8 @@ class BrandController extends Controller
      */
     public function store(BrandRequest $request): JsonResponse
     {
+
+        $request->merge(['reference' => hash("sha256", date('Y-m-d H:m:i'))]);
         $brand = $this->brand->create($request->all());
 
         return response()->json(new BrandResource($brand), 201);

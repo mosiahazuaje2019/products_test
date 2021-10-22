@@ -11,11 +11,6 @@
                         <small class="text-red-500">{{ error_name }}</small>
                     </div>
                     <div class="p-field">
-                        <label>Referencia</label>
-                        <InputText v-model="form.reference" class="w-100" />
-                        <small class="text-red-500">{{ error_reference }}</small>
-                    </div>
-                    <div class="p-field">
                         <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submit" />
                     </div>
                 </div>
