@@ -12,4 +12,11 @@ class Brand extends Model
         'name',
         'reference'
     ];
+    /**
+     * @var mixed
+     */
+
+    public function products(){
+       return $this->hasMany(Product::class);
+    }
 }
