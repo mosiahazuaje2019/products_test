@@ -21,6 +21,9 @@
                                 <BreezeNavLink :href="route('brandpage')" :active="route().current('brandpage')">
                                     Marcas
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('patientpage')" :active="route().current('patientpage')">
+                                    Pacientes
+                                </BreezeNavLink>
                             </div>
                         </div>
 
