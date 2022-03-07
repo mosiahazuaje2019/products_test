@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PatientController;
+use App\Http\Controllers\Api\PatientLmController;
+use App\Http\Controllers\Api\CityController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -37,6 +39,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('products', ProductController::class);
     Route::apiResource('patients', PatientController::class);
+    Route::apiResource('patient_lm', PatientLmController::class);
+    Route::apiResource('cities', CityController::class);
 });
 
 require __DIR__.'/auth.php';

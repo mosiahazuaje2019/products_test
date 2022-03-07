@@ -12,7 +12,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <PrimeButton @click="createProduct" class="add-btn">Nuevo</PrimeButton>
+                        <PrimeButton @click="createProduct" class="add-btn" icon="pi pi-plus" title="nuevo" />
                         <DataTable :filters="filter" :value="products" dataKey="id" responsiveLayaout="scroll" :paginator="true" :rows="20">
                             <Column field="name" header="Nombre"></Column>
                             <Column field="size" header="Talla"></Column>
@@ -23,9 +23,8 @@
                             <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
                                     headerStyle="width: 14rem; text-align: center">
                                 <template #body="slotProps">
-                                        <PrimeButton label="Editar" class="edit_btn" @click="editProduct(slotProps.data.id)" />
-
-                                        <PrimeButton label="Eliminar" class="-right-2.5 del-btn" @click="destroyProduct(slotProps.data.id)" />
+                                        <PrimeButton class="edit_btn" @click="editProduct(slotProps.data.id)" icon="pi pi-pencil" title="editar" />
+                                        <PrimeButton class="-right-2.5 del-btn" @click="destroyProduct(slotProps.data.id)" icon="pi pi-trash" title="borrar" />
                                 </template>
                             </Column>
                         </DataTable>
@@ -113,9 +112,10 @@ export default {
     border-bottom-width: 0px;
 }
 .edit_btn{
-    background-color: green;
+    background-color: blue;
 }
 .add-btn{
     margin-bottom: 20px;
+    border-radius: 50%;
 }
 </style>

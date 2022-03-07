@@ -25,9 +25,12 @@ class PatientController extends Controller
      */
     public function index(): JsonResponse
     {
+        //return response()->json(Patient::orderBy('id','desc')->with('lms')->get());
         return response()->json(
             new PatientCollection(
-                $this->patient->orderBy('id', 'asc')->get()
+                $this->patient->orderBy(
+                    'first_name', 'asc')
+                    ->get()
             )
         );
     }
@@ -38,11 +41,10 @@ class PatientController extends Controller
      * @param ProductRequest $request
      * @return JsonResponse
      */
-    public function store(ProductRequest $request): JsonResponse
+    public function store(PatientRequest $request): JsonResponse
     {
-        $request->merge(['date_boarding' => Carbon::parse($request->date_boarding)->toDateString()]);
-        $product = $this->product->create($request->all());
-        return response()->json(new ProductResource($product), 201);
+        $patient = $this->patient->create($request->all());
+        return response()->json(new PatientResource($patient), 201);
     }
 
     /**
@@ -51,10 +53,10 @@ class PatientController extends Controller
      * @param Product $product
      * @return JsonResponse
      */
-    public function show(Product $product): JsonResponse
+    public function show(Patient $patient): JsonResponse
     {
         return response()->json(
-            new ProductResource($product)
+            new PatientResource($patient)
         );
     }
 

@@ -12,6 +12,7 @@ import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 
 //import libraries
+import AutoComplete from 'primevue/autocomplete';
 import DataTable from "primevue/datatable";
 import InputText from "primevue/inputtext";
 import InputNumber from "primevue/inputnumber";
@@ -25,7 +26,7 @@ import Button from "primevue/button";
 import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Asispharma';
 const emitter = mitt();
 
 createInertiaApp({
@@ -34,6 +35,7 @@ createInertiaApp({
     setup({ el, app, props, plugin }) {
         const vueApp = createApp({ render: () => h(app, props) });
         vueApp
+            .component('AutoComplete', AutoComplete)
             .component('DataTable', DataTable)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
@@ -52,8 +54,10 @@ createInertiaApp({
             .mixin({ methods: { route } })
 
         vueApp.config.globalProperties.emitter = emitter;
+        vueApp.config.globalProperties.$route = route
 
         vueApp.mount(el)
+
 
         return vueApp
     },
