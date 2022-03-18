@@ -55,8 +55,8 @@
                     v-model:visible="display">
                 <PatientForm :editId="editId" />
             </Dialog>
-            <Dialog :header="'Crear Lm'" :style="{width: '50vw'}"
-                    v-model:visible="displayLm">
+            <Dialog :header="'Crear Formulación'" :style="{width: '50vw'}"
+                    v-model:visible="displayLm" :maximizable="true">
                 <LmsCreatePages :createLm="createLm" />
             </Dialog>
         </div>
@@ -140,6 +140,15 @@ export default {
         this.emitter.on('patients_reload', () => {
             this.getPatients()
             this.display = false
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Operación realizada con éxito!`, life:3000,
+            })
+        })
+
+        this.emitter.on('patientLm_reload', () => {
+            this.getPatients()
+            //this.displayLm = false
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
                 detail: `Operación realizada con éxito!`, life:3000,

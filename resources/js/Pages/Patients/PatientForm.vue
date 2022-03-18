@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <label>Ciudad</label>
-                        <Dropdown v-model="form.city_id" :options="cities" optionLabel="city" optionValue="id" placeholder="Selecione ciudad" />
+                        <Dropdown v-model="form.city_id" :options="cities" optionLabel="city" optionValue="id" placeholder="Selecione ciudad" :filter="true" />
                     </div>
                     <div class="p-field">
                         <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submit" />
@@ -145,7 +145,7 @@ export default {
         }
     },
     mounted() {
-        this.getCities()
+        this.getCities();
         if (this.$props.editId) {
             this.getEditData()
         }

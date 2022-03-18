@@ -10,6 +10,7 @@ import VueSweetalert2 from "vue-sweetalert2";
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
+import 'primeflex/primeflex.css'
 
 //import libraries
 import AutoComplete from 'primevue/autocomplete';
@@ -25,6 +26,8 @@ import Textarea from "primevue/textarea";
 import Button from "primevue/button";
 import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
+import RadioButton from 'primevue/radiobutton';
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Asispharma';
 const emitter = mitt();
@@ -47,6 +50,7 @@ createInertiaApp({
             .component('PrimeButton', Button)
             .component('Dropdown', Dropdown)
             .component('Calendar', Calendar)
+            .component('RadioButton', RadioButton)
             .use(plugin)
             .use(PrimeVue)
             .use(ToastService)

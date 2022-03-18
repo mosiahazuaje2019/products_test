@@ -9,6 +9,8 @@ use App\Http\Resources\PatientLm as PatientLmResource;
 use App\Http\Resources\PatientLmCollection;
 use App\Models\PatientLm;
 use Illuminate\Http\Response;
+use App\Http\Requests\Patients\PatientLmRequest;
+use Carbon\Carbon;
 
 class PatientLmController extends Controller
 {
@@ -38,9 +40,14 @@ class PatientLmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(PatientLmRequest $request)
     {
-        //
+        $request->merge(['date_ini' => Carbon::parse($request->date_ini)->toDateString()]);
+        $request->merge(['date_end' => Carbon::parse($request->date_end)->toDateString()]);
+        $request->merge(['doctor_id' =>  $request->doctor_id['id']]);
+
+        $patient_lm = $this->patient_lm->create($request->all());
+        return response()->json(new PatientLmResource($patient_lm), 201);
     }
 
     /**

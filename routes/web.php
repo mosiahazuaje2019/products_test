@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\PatientLmController;
 use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\PatientAddressController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,6 +21,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return Inertia::render('Auth/Login', [
@@ -41,6 +44,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('patients', PatientController::class);
     Route::apiResource('patient_lm', PatientLmController::class);
     Route::apiResource('cities', CityController::class);
+    Route::apiResource('doctors', DoctorController::class);
+    Route::apiResource('address', PatientAddressController::class);
+
+    Route::get('address_patient/{id}', [PatientAddressController::class, 'getAddress']);
 });
 
 require __DIR__.'/auth.php';
