@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\PatientLmController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\PatientAddressController;
+use App\Http\Controllers\Api\PatientLmDetailController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -46,8 +48,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('cities', CityController::class);
     Route::apiResource('doctors', DoctorController::class);
     Route::apiResource('address', PatientAddressController::class);
+    Route::apiResource('patient_lm_details', PatientLmDetailController::class);
 
     Route::get('address_patient/{id}', [PatientAddressController::class, 'getAddress']);
+    Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
 });
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,5 @@
 <template>
 
-
     <div class="card">
         <div class="formgrid grid">
             <div class="field col">
@@ -8,38 +7,38 @@
                 <InputText v-model="patient.full_name" class="inputfield w-full" disabled="true" />
             </div>
             <div class="field col">
-                <label>Código autorización - LM</label>
-                <InputText v-model="form.lm_id" class="inputfield w-full" />
-            </div>
-        </div>
-
-        <div class="formgrid grid">
-            <div class="field col">
                 <label>Fecha de generación</label>
                 <Calendar id="icon" v-model="form.date_ini" :showIcon="true" class="w-full" dateFormat="dd/mm/yy" />
             </div>
-            <div class="field col">
-                <label>Fecha de entrega</label>
-                <Calendar id="icon" v-model="form.date_end" :showIcon="true" class="w-full"  dateFormat="dd/mm/yy" />
-            </div>
+        </div>
+        <div class="field col">
+            <label>Diagnóstico</label>
+            <InputText v-model="form.diagnostic"  class="inputfield w-full"/>
         </div>
 
         <div class="formgrid grid" v-if="addressCount > 0">
             <label>Seleccione una direccion</label>
-            <div class="field-radiobutton w-full" v-for="address in addreses">
+            <div class="field-radiobutton w-full" v-for="address in addreses"  v-bind:key="address.id">
                 <RadioButton v-model="form.address" value="address.address" />
                 <label for="city1">{{address.address}}</label>
             </div>
         </div>
 
-        <div class="field">
-            <label>Seleccione un médico</label>
-            <AutoComplete v-model="form.doctor_id" :suggestions="filteredDoctor" @complete="searchDoctor($event)" field="complete_name" class="w-full" inputClass="w-full" />
-        </div>
+        <MedicinesAdd v-if="display === true" :order_id="order_id" />
 
-        <div class="field">
-            <label>Diagnóstico</label>
-            <TextArea v-model="form.diagnostic" rows="5" cols="30" :autoResize="true" />
+        <div class="formgrid grid">
+            <div class="field col">
+                <label>Código autorización - LM | EC</label>
+                <InputText v-model="form.lm_id" class="inputfield w-full" />
+            </div>
+            <div class="field col">
+                <label>Autorizado por:</label>
+                <InputText v-model="form.lm_id" class="inputfield w-full" />
+            </div>
+        </div>
+        <div class="field col">
+            <label>Observaciones</label>
+            <InputText v-model="form.lm_id" class="inputfield w-full" />
         </div>
 
         <div class="field">
@@ -53,10 +52,12 @@
 
 <script>
 
+import MedicinesAdd from "@/Pages/Medicines/MedicinesAdd";
+
 export default {
     name: "LmsCreatePages",
     components: {
-
+        MedicinesAdd
     },
     data () {
         return {
@@ -66,6 +67,8 @@ export default {
             addressCount: 0,
             selectedDoctor: null,
             filterdDoctor: null,
+            order_id: null,
+            display: false,
             form:{
                 lm_id: null,
                 date_ini: null,
@@ -76,6 +79,7 @@ export default {
                 patient_id: null
             },
             error_lm_id: null,
+            saveLm: false,
         }
     },
     props: {
@@ -99,6 +103,10 @@ export default {
             if(!this.$props.editId) {
                 try {
                     const res = await axios.post('api/patient_lm', this.form)
+                    this.saveLm = true
+                    this.order_id = res.data.id;
+                    this.display = true;
+
                     return this.emitter.emit('patientLm_reload')
                 }
                 catch (e) {
@@ -114,7 +122,6 @@ export default {
             }
             try {
                 const res = await axios.put(`/api/patient_lm${this.$props.editId}`, this.form)
-                this.cleanForm()
                 return this.emitter.emit('patientLm_reload')
             }
             catch (e) {
@@ -142,8 +149,15 @@ export default {
     },
     mounted() {
         this.patient = this.$props.createLm;
-        this.getDoctors();
+        //this.getDoctors();
         this.getAddress(this.patient.id);
+
+        this.emitter.on('patient_lm_detail_reload', () => {
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Operación realizada con éxito!`, life:3000,
+            })
+        })
 
     }
 }

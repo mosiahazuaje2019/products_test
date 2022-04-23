@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Patients;
+namespace App\Http\Requests\PatientLmDetails;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PatientLmRequest extends FormRequest
+class PatientLmDetail extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class PatientLmRequest extends FormRequest
     public function rules()
     {
         return [
-            'diagnostic' => ['required']
+            'product_id' => ['required']
         ];
     }
 }

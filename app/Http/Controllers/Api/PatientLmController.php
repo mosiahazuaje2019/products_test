@@ -44,7 +44,6 @@ class PatientLmController extends Controller
     {
         $request->merge(['date_ini' => Carbon::parse($request->date_ini)->toDateString()]);
         $request->merge(['date_end' => Carbon::parse($request->date_end)->toDateString()]);
-        $request->merge(['doctor_id' =>  $request->doctor_id['id']]);
 
         $patient_lm = $this->patient_lm->create($request->all());
         return response()->json(new PatientLmResource($patient_lm), 201);

@@ -6,6 +6,10 @@
             <template #content>
                 <div class="p-fluid">
                     <div class="p-field">
+                        <label>Ciudad</label>
+                        <Dropdown v-model="form.city_id" :options="cities" optionLabel="city" optionValue="id" placeholder="Selecione ciudad" :filter="true" />
+                    </div>
+                    <div class="p-field">
                         <label>Nombre</label>
                         <InputText v-model="form.first_name" class="w-100" />
                         <small class="text-red-500">{{ error_first_name }}</small>
@@ -29,19 +33,15 @@
                         <InputText v-model="form.phone" class="w-100" />
                     </div>
                     <div>
-                        <label>Email</label>
+                        <label>Diagnostico</label>
                         <InputText v-model="form.email" class="w-100" />
                     </div>
                     <div>
                         <label>Direccion</label>
                         <TextArea v-model="form.address" rows="5" cols="30" :autoResize="true" />
                     </div>
-                    <div>
-                        <label>Ciudad</label>
-                        <Dropdown v-model="form.city_id" :options="cities" optionLabel="city" optionValue="id" placeholder="Selecione ciudad" :filter="true" />
-                    </div>
                     <div class="p-field">
-                        <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submit" />
+                        <PrimeButton icon="pi pi-save" label="Siguiente" class="sm:-bottom-1.5" @click="submit" />
                     </div>
                 </div>
             </template>

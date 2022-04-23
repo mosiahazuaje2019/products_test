@@ -11,11 +11,9 @@ class PatientLm extends Model
 
     protected $fillable=[
         'patient_id',
-        'lm_id',
         'date_ini',
         'date_end',
         'diagnostic',
-        'doctor_id'
     ];
 
     public function patients(){
