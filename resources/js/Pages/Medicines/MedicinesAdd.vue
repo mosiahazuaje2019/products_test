@@ -47,7 +47,7 @@
             return {
                 medicines: [],
                 details: [],
-                filter: '',
+                filter: [],
                 form: {
                     product_id: null,
                     order_id: null,
@@ -88,14 +88,12 @@
             async getDetailLms(id) {
                 await axios.get(`api/showlmdetail/${id}`).then((res) => {
                     this.details = res.data;
-                    console.log(this.details)
                 })
             }
         },
         mounted(){
             this.getMedicines();
             this.form.order_id = this.$props.order_id;
-            console.log(this.form.order_id)
         }
 
     }

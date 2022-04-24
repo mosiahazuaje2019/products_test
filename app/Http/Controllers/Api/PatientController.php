@@ -6,9 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Patient as PatientResource;
 use App\Http\Resources\PatientCollection;
 use App\Models\Patient;
-use Carbon\Carbon;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Patients\Patient as PatientRequest;
+use App\Exports\PatientExport;
+
+/* Extern Libraries */
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\JsonResponse;
+
 
 class PatientController extends Controller
 {
@@ -83,5 +88,9 @@ class PatientController extends Controller
     {
         $product->delete();
         return response()->json(null, 204);
+    }
+
+    public function export(){
+        return Excel::download(new PatientExport, 'patients.xlsx');
     }
 }

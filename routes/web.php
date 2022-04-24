@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
 
     Route::get('address_patient/{id}', [PatientAddressController::class, 'getAddress']);
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
+    Route::get('export_patients', [PatientController::class, 'export']);
+    Route::get('export_orders', [PatientLmController::class, 'export']);
 });
 
 require __DIR__.'/auth.php';

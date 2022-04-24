@@ -10,7 +10,10 @@ use App\Http\Resources\PatientLmCollection;
 use App\Models\PatientLm;
 use Illuminate\Http\Response;
 use App\Http\Requests\Patients\PatientLmRequest;
+
+use App\Exports\OrderExport;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PatientLmController extends Controller
 {
@@ -81,5 +84,9 @@ class PatientLmController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export() {
+        return Excel::download(new OrderExport, 'orders.xlsx');
     }
 }

@@ -20,4 +20,8 @@ class PatientLmDetail extends Model
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
+
+    public function order() {
+        return $this->belongsTo(PatientLm::class, 'order_id', 'id');
+    }
 }
