@@ -12,8 +12,9 @@ class OrderExport implements FromView
 
     public function view(): View
     {
+        //dd(PatientLmDetail::with(['product', 'order', 'patient'])->get()->groupBy('order.id')->toArray());
         return view('patients.orders', [
-            'orders' => PatientLmDetail::with(['product', 'order'])->get()
+            'orders' => PatientLmDetail::with(['product', 'order', 'patient'])->get()->groupBy('order.id')
         ]);
     }
 }

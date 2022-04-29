@@ -12,6 +12,7 @@ class PatientLmDetail extends Model
     protected $fillable = [
         "product_id",
         "order_id",
+        "patient_id",
         "prescription"
     ];
 
@@ -23,5 +24,9 @@ class PatientLmDetail extends Model
 
     public function order() {
         return $this->belongsTo(PatientLm::class, 'order_id', 'id');
+    }
+
+    public function patient() {
+        return $this->belongsTo(Patient::class, 'patient_id', 'id');
     }
 }

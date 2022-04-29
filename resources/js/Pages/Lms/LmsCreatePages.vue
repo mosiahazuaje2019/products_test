@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <MedicinesAdd v-if="display === true" :order_id="order_id" />
+        <MedicinesAdd v-if="display === true" :order_id="order_id" :patient_id="form.patient_id" />
 
         <div class="formgrid grid">
             <div class="field col">

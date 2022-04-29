@@ -26,7 +26,7 @@
 
         <div>
             <DataTable :filters="filter" :value="details" dataKey="id" responsiveLayout="scroll" :paginate="true" :rows="20">
-                <Column field="products.full_name" header="Nombre"></Column>
+                <Column field="products.full_name" header="Medicamento"></Column>
                 <Column field="prescription" header="Cantidad"></Column>
                 <Column field="products.price" header="Precio"></Column>
                 <Column header="Total">
@@ -51,12 +51,14 @@
                 form: {
                     product_id: null,
                     order_id: null,
+                    patient_id: null,
                     prescription: null,
                 }
             }
         },
         props: {
             order_id: Number,
+            patient_id: Number
         },
         methods: {
             cleanFormMed () {
@@ -94,6 +96,8 @@
         mounted(){
             this.getMedicines();
             this.form.order_id = this.$props.order_id;
+            this.form.patient_id = this.$props.patient_id;
+            console.log(this.form.patient_id);
         }
 
     }

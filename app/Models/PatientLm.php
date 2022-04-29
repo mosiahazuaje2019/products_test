@@ -16,7 +16,11 @@ class PatientLm extends Model
         'diagnostic',
     ];
 
-    public function patients(){
+    public function patient(){
         return $this->belongsTo(Patient::class,'patient_id','id');
+    }
+
+    public function orders(){
+        return $this->hasMany(PatientLmDetail::class,  'order_id', 'id');
     }
 }
