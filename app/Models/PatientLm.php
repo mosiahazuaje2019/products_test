@@ -14,6 +14,8 @@ class PatientLm extends Model
         'date_ini',
         'date_end',
         'diagnostic',
+        'lm_code',
+        'authorized_by'
     ];
 
     public function patient(){
