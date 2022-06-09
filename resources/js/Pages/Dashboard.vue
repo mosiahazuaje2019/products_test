@@ -15,11 +15,6 @@
                         <PrimeButton @click="createProduct" class="add-btn" icon="pi pi-plus" title="nuevo" />
                         <DataTable :filters="filter" :value="products" dataKey="id" responsiveLayaout="scroll" :paginator="true" :rows="20">
                             <Column field="name" header="Nombre"></Column>
-                            <Column field="size" header="Talla"></Column>
-                            <Column field="observation" header="Observación"></Column>
-                            <Column field="count_inventory" header="Cantidad"></Column>
-                            <Column field="date_boarding" header="Fecha de embarque"></Column>
-                            <Column field="brand_id.name" header="Marca"></Column>
                             <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
                                     headerStyle="width: 14rem; text-align: center">
                                 <template #body="slotProps">

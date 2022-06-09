@@ -14,9 +14,6 @@ class Patient extends Model
         'last_name',
         'personal_id',
         'age',
-        'phone',
-        'address',
-        'email',
         'city_id'
     ];
 

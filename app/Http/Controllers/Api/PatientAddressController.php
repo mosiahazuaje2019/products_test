@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Resources\PatientAddress as PatientAddressResource;
 use App\Http\Resources\PatientAddressCollection;
+use App\Http\Requests\PatientAddress\PatientAddressAdd as PatientAddressRequest;
 use App\Models\PatientAdress;
 
 class PatientAddressController extends Controller
@@ -33,12 +33,13 @@ class PatientAddressController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  PatientAddressRequest  $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(PatientAddressRequest $request)
     {
-        //
+        $patient = $this->patient->create($request->all());
+        return response()->json(new PatientAddressResource($patient), 200);
     }
 
     /**
@@ -75,8 +76,11 @@ class PatientAddressController extends Controller
         //
     }
 
-    public function getAddress($id){
-        $patient = PatientAdress::where('patient_id',$id)->get();
+    public function getAddress($id, $category){
+        $patient = PatientAdress::where('patient_id',$id)
+                                 ->where('category', $category)
+                                 ->get();
         return response()->json($patient);
     }
+
 }

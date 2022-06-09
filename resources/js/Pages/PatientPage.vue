@@ -5,6 +5,7 @@
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Pacientes
+                <PrimeButton label="Nuevo" icon="pi pi-plus" iconPos="right" class="float-right add-button" @click="createPatient" />
             </h2>
         </template>
 
@@ -12,8 +13,6 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-
-                        <PrimeButton class="add-btn" @click="createPatient">Nuevo</PrimeButton>
                         <DataTable v-model:filters="filters1" :value="patients" dataKey="id"
                          :paginator="true"
                          :rows="5"
@@ -33,11 +32,11 @@
                             <Column field="first_name" header="Nombre" />
                             <Column field="last_name" header="Apellido" />
                             <Column field="personal_id" header="Cedula" />
-                            <Column field="lms" header="LM" >
+<!--                             <Column field="lms" header="LM" >
                                 <template #body="slotProps">
                                     <div>{{slotProps.data.lms.map(lms => lms.lm_id).join(', ')}}</div>
                                 </template>
-                            </Column>
+                            </Column> -->
                             <Column bodyStyle="justify-center" header="Acción"
                                     headerStyle="width: 14rem; justify-center">
                                 <template #body="slotProps">
@@ -56,8 +55,8 @@
                 <PatientForm :editId="editId" />
             </Dialog>
             <Dialog :header="'Crear Formulación'" :style="{width: '50vw'}"
-                    v-model:visible="displayLm" :maximizable="true">
-                <LmsCreatePages :createLm="createLm" />
+                    v-model:visible="displayLm" :maximizable="true" >
+                <OrderCreatePage :createLm="createLm" />
             </Dialog>
         </div>
     </BreezeAuthenticatedLayout>
@@ -70,7 +69,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import {FilterMatchMode,FilterOperator} from 'primevue/api';
 import PatientForm from "@/Pages/Patients/PatientForm";
-import LmsCreatePages from "@/Pages/Lms/LmsCreatePages";
+import OrderCreatePage from "@/Pages/Lms/OrderCreatePage";
 import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
@@ -80,7 +79,7 @@ export default {
         Head,
         PatientForm,
         Link,
-        LmsCreatePages
+        OrderCreatePage
     },
     data () {
         return {
@@ -137,9 +136,13 @@ export default {
     mounted() {
         this.getPatients()
 
-        this.emitter.on('patients_reload', () => {
+        this.emitter.on('patients_reload', (evt) => {
+            console.log(evt.id);
+            this.editPatient(evt.id);
+            this.createLm = evt,
             this.getPatients()
             this.display = false
+            this.displayLm = true
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
                 detail: `Operación realizada con éxito!`, life:3000,
@@ -148,10 +151,24 @@ export default {
 
         this.emitter.on('patientLm_reload', () => {
             this.getPatients()
-            //this.displayLm = false
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
-                detail: `Operación realizada con éxito!`, life:3000,
+                detail: `Primera fase de la orden creada`, life:3000,
+            })
+        })
+
+        this.emitter.on('order_reload', () => {
+            this.getPatients()
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Orden completada se a cargado LM exitosamente!`, life:3000,
+            })
+        })
+
+        this.emitter.on('price_update_reload', () => {
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `El precio se actualizo exitosamente!`, life:3000,
             })
         })
     }
@@ -172,7 +189,7 @@ export default {
     background-color: blueviolet;
     margin-left: 2px;
 }
-.add-btn{
-    margin-bottom: 20px;
+.add-button{
+    background-color: blueviolet;
 }
 </style>

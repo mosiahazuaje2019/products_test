@@ -27,6 +27,7 @@ import Button from "primevue/button";
 import Dropdown from "primevue/dropdown";
 import Calendar from "primevue/calendar";
 import RadioButton from 'primevue/radiobutton';
+import InputMask from 'primevue/inputmask';
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Asispharma';
@@ -51,6 +52,7 @@ createInertiaApp({
             .component('Dropdown', Dropdown)
             .component('Calendar', Calendar)
             .component('RadioButton', RadioButton)
+            .component('InputMask', InputMask)
             .use(plugin)
             .use(PrimeVue)
             .use(ToastService)

@@ -10,10 +10,12 @@ use App\Http\Resources\PatientLmCollection;
 use App\Models\PatientLm;
 use Illuminate\Http\Response;
 use App\Http\Requests\Patients\PatientLmRequest;
+use App\Http\Requests\Patients\PatientLmUpdate;
 
 use App\Exports\OrderExport;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
 
 class PatientLmController extends Controller
 {
@@ -70,9 +72,27 @@ class PatientLmController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientLmUpdate $request, PatientLm $patient_lm)
     {
-        //
+        $patient_lm->update($request->all());
+        return response()->json(new PatientLmResource($patient_lm));
+    }
+
+    /**
+     * Update order the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function update_order(PatientLmUpdate $request, $id)
+    {
+        $patient_lm = PatientLm::where('id', $id)->update([
+            'lm_code' => $request->lm_code,
+            'authorized_by' => $request->authorized_by,
+            'observation'   => $request->observation
+        ]);
+        return response()->json("Se a guardado satisfactoriamente!");
     }
 
     /**
@@ -88,5 +108,18 @@ class PatientLmController extends Controller
 
     public function export() {
         return Excel::download(new OrderExport, 'orders.xlsx');
+    }
+
+    //Metodo para encontrar ordenes de pacientes o pacientes
+    public function findOrders($id) {
+        $find_orders = DB::table('patient_lms')
+                        ->join('patients', 'patient_lms.patient_id','=','patients.id')
+                        ->select('*')
+                        ->where('patient_lms.lm_code',$id)
+                        ->orWhere('patients.personal_id',$id)
+                        ->orWhere('patients.first_name','like',$id.'%')
+                        ->orWhere('patients.last_name','like',$id.'%')
+                        ->get();
+        return response()->json($find_orders);
     }
 }

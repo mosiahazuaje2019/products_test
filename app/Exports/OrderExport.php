@@ -11,14 +11,8 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use \Maatwebsite\Excel\Sheet;
 
-Sheet::macro('styleCells', function (Sheet $sheet, string $cellRange, array $style) {
-    $sheet->getDelegate()->getStyle($cellRange)->applyFromArray($style);
-    $sheet->row(1, ['Col 1', 'Col 2', 'Col 3']); // etc etc
-    $sheet->row(1, function($row) { $row->setBackground('#CCCCCC'); });
-});
 
-
-class OrderExport implements  FromView, ShouldAutoSize, WithStyles
+class OrderExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder implements  FromView, ShouldAutoSize, WithStyles, WithCustomValueBinder
 {
 
     public function styles(Worksheet $sheet)

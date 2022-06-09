@@ -1,17 +1,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <style>
-            table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            }
-        </style>
+
     </head>
 <body>
     <h1></h1>
 
-    <table style="width:100%">
+    <table>
         <thead>
             <tr>
                 <th colspan="7">Relacion de pacientes Seguros Bolivar S.A</th>
@@ -48,8 +43,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td><strong>Valor total formula: {{ array_reduce(
+                    <td><strong>Valor total formula:</strong></td>
+                    <td><strong> {{ array_reduce(
                         $order->toArray(),
                         function ($sum, $patient) {
                             return (float) ($sum += (float) $patient['product']['price']);
@@ -63,14 +58,12 @@
             @endforeach
         </tbody>
         <tfoot>
-            <th>
-                pie
-            </th>
+            <th></th>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td>
+            <td><strong>Valor total factura:</strong></td>
+            <td><strong>
                 {{ $orders->map(function($order) {
                     return array_reduce(
                         $order->toArray(),
@@ -82,6 +75,7 @@
                 })->reduce(function($a, $b){
                     return $a+$b;
                 }) }}
+                </strong>
             </td>
 
         </tfoot>

@@ -16,13 +16,13 @@
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Productos
-                                </BreezeNavLink>
-                                <BreezeNavLink :href="route('brandpage')" :active="route().current('brandpage')">
-                                    Marcas
+                                    Medicamentos
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('patientpage')" :active="route().current('patientpage')">
                                     Pacientes
+                                </BreezeNavLink>
+                                <BreezeNavLink :href="route('orderpage')" :active="route().current('orderpage')">
+                                    Ordenes
                                 </BreezeNavLink>
                             </div>
                         </div>

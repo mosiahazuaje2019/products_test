@@ -11,25 +11,15 @@
                         <small class="text-red-500">{{ error_name }}</small>
                     </div>
                     <div class="p-field">
-                        <label>Talla</label>
-                        <Dropdown v-model="form.size" :options="sizes" optionLabel="name" optionValue="code"
-                                  placeholder="Seleccione talla" class="w-100" />
-                        <small class="text-red-500">{{ error_size }}</small>
+                        <label>Presentacion</label>
+                        <Dropdown v-model="form.presentation" :options="presentations" optionLabel="name" optionValue="code"
+                        placeholder="Seleccione una presentacion" class="w-100" />
+                        <small class="text-red-500">{{ error_presentation }}</small>
                     </div>
                     <div class="p-field">
-                        <label>Observación</label>
-                        <TextArea v-model="form.observation" rows="5" cols="30" :autoResize="true" />
-                        <small class="text-red-500">{{ error_observation }}</small>
-                    </div>
-                    <div class="p-field">
-                        <label>Cantidad en inventario</label>
-                        <InputNumber v-model="form.count_inventory" placeholder="Ingrese una cantidad" :minFractionDigits="0" />
-                        <small class="text-red-500">{{ error_count_inventory }}</small>
-                    </div>
-                    <div class="p-field">
-                        <label>Fecha de embarque</label>
-                        <Calendar v-model="form.date_boarding" />
-                        <small class="text-red-500">{{ error_date_boarding }}</small>
+                        <label>Precio</label>
+                        <InputNumber v-model="form.price" placeholder="Ingrese un precio" :minFractionDigits="0" />
+                        <small class="text-red-500">{{ error_price }}</small>
                     </div>
                     <div class="p-field">
                         <label>Marca</label>
@@ -55,23 +45,22 @@ export default {
         return {
             form: {
                 name: null,
-                size: null,
+                price: null,
+                presentation: null,
                 observation: null,
-                count_inventory: null,
-                date_boarding: null,
                 brand_id: null
             },
-            sizes: [
-                { name:'Small', code: 'S'},
-                { name:'Medium', code: 'M'},
-                { name:'Large', code: 'L'}
+            presentations: [
+                { name:'CJAX14', code: 'CJAX14'},
+                { name:'FCOX120 ML', code: 'FCOX120 ML'},
+                { name:'FCOX30', code: 'FCOX30'},
+                { name:'CJAX28', code: 'CJAX28'},
+                { name:'120 DOSIS', code: '120 DOSIS'}
             ],
             brands: [],
             error_name: null,
-            error_size: null,
-            error_observation: null,
-            error_count_inventory: null,
-            error_date_boarding: null,
+            error_presentation: null,
+            error_price: null,
             error_brand_id: null,
         }
     },
@@ -100,10 +89,6 @@ export default {
                             case 422:
                                 let err = e.response.data.errors
                                 this.error_name = err.name ? err.name[0] : null
-                                this.error_size = err.size ? err.size[0] : null
-                                this.error_observation = err.observation ? err.observation[0] : null
-                                this.error_count_inventory = err.count_inventory ? err.count_inventory[0] : null
-                                this.error_date_boarding = err.date_boarding ? err.date_boarding[0] : null
                                 this.error_brand_id = err.brand_id ? err.brand_id[0] : null
                         }
                     }
@@ -121,10 +106,8 @@ export default {
                         case 422:
                             let err = e.response.data.errors
                             this.error_name = err.name ? err.name[0] : null
-                            this.error_size = err.size ? err.size[0] : null
-                            this.error_observation = err.observation ? err.observation[0] : null
-                            this.error_count_inventory = err.count_inventory ? err.count_inventory[0] : null
-                            this.error_date_boarding = err.date_boarding ? err.date_boarding[0] : null
+                            this.error_presentation = err.presentacion ? err.presentacion[0] : null
+                            this.error_price = err.price ? err.price[0] : null
                             this.error_brand_id = err.brand_id ? err.brand_id[0] : null
                     }
                 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\PatientAddressController;
 use App\Http\Controllers\Api\PatientLmDetailController;
+use App\Http\Controllers\Api\PatientDiagnosticController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -34,13 +35,18 @@ Route::get('/', function () {
     ]);
 });
 
+//Components Routes
 Route::group(['auth', 'verified'], function () {
     Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
     Route::inertia('/brandpage', 'BrandPage')->name('brandpage');
     Route::inertia('/patientpage', 'PatientPage')->name('patientpage');
+    Route::inertia('/orderpage', 'Orders/OrderPage')->name('orderpage');
 });
 
+//Api Rest Routes
 Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
+
+    //Only for allmethods with apiResource
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('products', ProductController::class);
     Route::apiResource('patients', PatientController::class);
@@ -49,11 +55,21 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('doctors', DoctorController::class);
     Route::apiResource('address', PatientAddressController::class);
     Route::apiResource('patient_lm_details', PatientLmDetailController::class);
+    Route::apiResource('patient_diagnostics', PatientDiagnosticController::class);
 
-    Route::get('address_patient/{id}', [PatientAddressController::class, 'getAddress']);
+    //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
     Route::get('export_patients', [PatientController::class, 'export']);
     Route::get('export_orders', [PatientLmController::class, 'export']);
+    Route::get('findOrders/{id}', [PatientLmController::class, 'findOrders']);
+    Route::get('address_patient/{id}/{category}', [PatientAddressController::class, 'getAddress']);
+    Route::get('diagnostic_patient/{id}', [PatientDiagnosticController::class, 'getDiagnostics']);
+
+    //Only for method update&patch
+    Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);
+    Route::patch('update_diagnostic/{id}', [PatientDiagnosticController::class, 'update_diagnostic']);
+    Route::patch('update_price/{id}', [ProductController::class, 'update_price']);
+
 });
 
 require __DIR__.'/auth.php';

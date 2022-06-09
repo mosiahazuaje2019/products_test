@@ -8,7 +8,9 @@ use App\Http\Resources\ProductCollection;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
+
 use App\Http\Requests\Products\Product as ProductRequest;
+use App\Http\Requests\Products\ProductUpdate as ProductUpdateRequest;
 
 class ProductController extends Controller
 {
@@ -81,5 +83,10 @@ class ProductController extends Controller
     {
         $product->delete();
         return response()->json(null, 204);
+    }
+
+    public function update_price(ProductUpdateRequest $request, $id){
+        Product::where('id', $id)->update(['price' => $request->price]);
+        return response()->json("Se actualizo correctamente");
     }
 }
