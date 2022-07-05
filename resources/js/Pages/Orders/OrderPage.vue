@@ -19,7 +19,7 @@
                         <div class="p-field">
                             <PrimeButton icon="pi pi-search" label="Buscar" class="sm:-bottom-1.5" @click="search" />
                         </div>
-                        <DataTable :filters="filter" :value="orders" dataKey="id" responsiveLayout="scroll" :paginate="true" :rows="20">
+                        <DataTable :filters="filter" :value="orders" dataKey="id" responsiveLayout="scroll" :paginate="true" :rows="20" class="mt-5">
                             <Column field="first_name" header="Nombre"></Column>
                             <Column field="last_name" header="Apellido"></Column>
                             <Column field="personal_id" header="Identificación"></Column>
@@ -28,6 +28,7 @@
                                     headerStyle="width: 14rem; justify-center">
                                 <template #body="slotProps">
                                     <PrimeButton @click="newLm(slotProps.data)" icon="pi pi-tags" class="btn_lms" title="Cargar Lm" />
+                                    <PrimeButton @click="editOrder(slotProps.data.id)" icon="pi pi-pencil" class="btn_lms" title="Editar orden" />
                                 </template>
                             </Column>
                         </DataTable>
@@ -56,7 +57,8 @@ export default {
             },
             orders: [],
             createLm: null,
-            displayLm: false
+            displayLm: false,
+            filter: null
         }
     },
     methods:{
@@ -67,9 +69,13 @@ export default {
             })
         },
         async newLm(data){
-            this.createLm = data.id,
+            this.createLm = data.lm_code,
             this.displayLm = true
         },
+        async editOrder(id){
+            console.log(id)
+            const res = await axios.get(`/api/`)
+        }
     }
 }
 </script>

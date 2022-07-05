@@ -24,6 +24,12 @@
                                 <BreezeNavLink :href="route('orderpage')" :active="route().current('orderpage')">
                                     Ordenes
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('reportspage')" :active="route().current('reportspage')">
+                                    Por facturar
+                                </BreezeNavLink>
+                                <BreezeNavLink :href="route('reportspage')">
+                                    Facturados
+                                </BreezeNavLink>
                             </div>
                         </div>
 

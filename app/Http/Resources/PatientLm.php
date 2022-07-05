@@ -19,8 +19,8 @@ class PatientLm extends JsonResource
         return [
             'id'         => $this->id,
             'patient_id' => $this->patient_id,
-            'lm_id'      => $this->lm_id,
-            //'patients'   => Patient::collection($this->patients)
+            'lm_code'    => $this->lm_code,
+            //'patient'    => new Patient($this->patient)
         ];
     }
 }

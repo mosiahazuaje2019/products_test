@@ -53,7 +53,7 @@ export default {
             presentations: [
                 { name:'CJAX14', code: 'CJAX14'},
                 { name:'FCOX120 ML', code: 'FCOX120 ML'},
-                { name:'FCOX30', code: 'FCOX30'},
+                { name:'CJAX30', code: 'CJAX30'},
                 { name:'CJAX28', code: 'CJAX28'},
                 { name:'120 DOSIS', code: '120 DOSIS'}
             ],

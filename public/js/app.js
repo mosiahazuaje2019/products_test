@@ -19762,28 +19762,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       form: {
         name: null,
-        size: null,
+        price: null,
+        presentation: null,
         observation: null,
-        count_inventory: null,
-        date_boarding: null,
         brand_id: null
       },
-      sizes: [{
-        name: 'Small',
-        code: 'S'
+      presentations: [{
+        name: 'CJAX14',
+        code: 'CJAX14'
       }, {
-        name: 'Medium',
-        code: 'M'
+        name: 'FCOX120 ML',
+        code: 'FCOX120 ML'
       }, {
-        name: 'Large',
-        code: 'L'
+        name: 'FCOX30',
+        code: 'FCOX30'
+      }, {
+        name: 'CJAX28',
+        code: 'CJAX28'
+      }, {
+        name: '120 DOSIS',
+        code: '120 DOSIS'
       }],
       brands: [],
       error_name: null,
-      error_size: null,
-      error_observation: null,
-      error_count_inventory: null,
-      error_date_boarding: null,
+      error_presentation: null,
+      error_price: null,
       error_brand_id: null
     };
   },
@@ -19854,10 +19857,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     case 422:
                       err = _context2.t0.response.data.errors;
                       _this3.error_name = err.name ? err.name[0] : null;
-                      _this3.error_size = err.size ? err.size[0] : null;
-                      _this3.error_observation = err.observation ? err.observation[0] : null;
-                      _this3.error_count_inventory = err.count_inventory ? err.count_inventory[0] : null;
-                      _this3.error_date_boarding = err.date_boarding ? err.date_boarding[0] : null;
                       _this3.error_brand_id = err.brand_id ? err.brand_id[0] : null;
                   }
                 }
@@ -19885,10 +19884,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     case 422:
                       _err = _context2.t1.response.data.errors;
                       _this3.error_name = _err.name ? _err.name[0] : null;
-                      _this3.error_size = _err.size ? _err.size[0] : null;
-                      _this3.error_observation = _err.observation ? _err.observation[0] : null;
-                      _this3.error_count_inventory = _err.count_inventory ? _err.count_inventory[0] : null;
-                      _this3.error_date_boarding = _err.date_boarding ? _err.date_boarding[0] : null;
+                      _this3.error_presentation = _err.presentacion ? _err.presentacion[0] : null;
+                      _this3.error_price = _err.price ? _err.price[0] : null;
                       _this3.error_brand_id = _err.brand_id ? _err.brand_id[0] : null;
                   }
                 }
@@ -20716,10 +20713,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20727,19 +20724,679 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Pages_Medicines_MedicinesAdd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Medicines/MedicinesAdd */ "./resources/js/Pages/Medicines/MedicinesAdd.vue");
+/* harmony import */ var _Patients_CreatePhone_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Patients/CreatePhone.vue */ "./resources/js/Pages/Patients/CreatePhone.vue");
+/* harmony import */ var _Patients_CreateAddress_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Patients/CreateAddress.vue */ "./resources/js/Pages/Patients/CreateAddress.vue");
+/* harmony import */ var _Patients_CreateDiagnostic_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Patients/CreateDiagnostic.vue */ "./resources/js/Pages/Patients/CreateDiagnostic.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "LmsCreatePages",
-  components: {},
+  name: "OrderCreatePage",
+  components: {
+    MedicinesAdd: _Pages_Medicines_MedicinesAdd__WEBPACK_IMPORTED_MODULE_1__["default"],
+    CreatePhone: _Patients_CreatePhone_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CreateAddress: _Patients_CreateAddress_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    CreateDiagnostic: _Patients_CreateDiagnostic_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
   data: function data() {
     return {
-      patient: []
+      patient: [],
+      doctors: null,
+      addreses: [],
+      diagnostics: [],
+      addressCount: 0,
+      selectedDoctor: null,
+      filterdDoctor: null,
+      order_id: null,
+      display: false,
+      form: {
+        lm_id: null,
+        date_ini: null,
+        date_end: null,
+        diagnostic_id: null,
+        doctor_id: null,
+        patient_id: null,
+        authorized_by: null,
+        observartion: null,
+        address_id: null,
+        phone_id: null
+      },
+      error_lm_id: null,
+      saveLm: false,
+      activeButton: true,
+      displayLms: false,
+      phones: [],
+      displayCreatePhone: false,
+      displayCreateAddress: false,
+      displayCreateDiagnostic: false,
+      diagnostic_idold: null
     };
   },
   props: {
-    createLm: Object
+    createLm: Object,
+    editId: Number
+  },
+  methods: {
+    getDoctors: function getDoctors() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get('api/doctors').then(function (res) {
+                  _this.doctors = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    getAddress: function getAddress(id, category) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get("api/address_patient/".concat(id, "/").concat(category)).then(function (res) {
+                  _this2.addreses = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    getPhones: function getPhones(id, category) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get("api/address_patient/".concat(id, "/").concat(category)).then(function (res) {
+                  _this3.phones = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    getDiagnostics: function getDiagnostics(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios.get("api/diagnostic_patient/".concat(id)).then(function (res) {
+                  _this4.diagnostics = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    submit: function submit() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var res, err, _res, _err;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _this5.form.patient_id = _this5.$props.createLm.id;
+
+                if (_this5.$props.editId) {
+                  _context5.next = 18;
+                  break;
+                }
+
+                _context5.prev = 2;
+                _context5.next = 5;
+                return axios.post('api/patient_lm', _this5.form);
+
+              case 5:
+                res = _context5.sent;
+                _this5.saveLm = true;
+                _this5.order_id = res.data.id;
+                _this5.display = true;
+                _this5.activeButton = false;
+                _this5.displayLms = true;
+                return _context5.abrupt("return", _this5.emitter.emit('patientLm_reload'));
+
+              case 14:
+                _context5.prev = 14;
+                _context5.t0 = _context5["catch"](2);
+
+                if (_context5.t0.response) {
+                  switch (_context5.t0.response.status) {
+                    case 422:
+                      err = _context5.t0.response.data.errors;
+                      _this5.error_lm_id = err.lm_id ? err.lm_id[0] : null;
+                  }
+                }
+
+                return _context5.abrupt("return", null);
+
+              case 18:
+                _context5.prev = 18;
+                _context5.next = 21;
+                return axios.put("/api/patient_lm/".concat(_this5.$props.editId), _this5.form);
+
+              case 21:
+                _res = _context5.sent;
+                return _context5.abrupt("return", _this5.emitter.emit('patientLm_reload'));
+
+              case 25:
+                _context5.prev = 25;
+                _context5.t1 = _context5["catch"](18);
+
+                if (_context5.t1.response) {
+                  switch (_context5.t1.response.status) {
+                    case 422:
+                      _err = _context5.t1.response.data.errors;
+                      _this5.error_lm_id = _err.lm_id ? _err.lm_id[0] : null;
+                  }
+                }
+
+              case 28:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[2, 14], [18, 25]]);
+      }))();
+    },
+    submitLm: function submitLm(order_id) {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var res, err;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return axios.patch("/api/update_order/".concat(order_id), {
+                  lm_code: _this6.form.lm_id,
+                  authorized_by: _this6.form.authorized_by,
+                  observation: _this6.form.observation
+                });
+
+              case 3:
+                res = _context6.sent;
+                return _context6.abrupt("return", _this6.emitter.emit('order_reload'));
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+
+                if (_context6.t0.response) {
+                  switch (_context6.t0.response.status) {
+                    case 422:
+                      err = _context6.t0.response.data.errors;
+                      _this6.error_lm_id = err.lm_code ? err.lm_code[0] : null;
+                  }
+                }
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 7]]);
+      }))();
+    },
+    setDiagnostic: function setDiagnostic() {
+      var _this7 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _this7.diagnostic_idold = _this7.form.diagnostic_id;
+
+              case 1:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    editDiagnostic: function editDiagnostic(e) {
+      var _this8 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                if (!(_this8.form.diagnostic_id != null)) {
+                  _context8.next = 6;
+                  break;
+                }
+
+                _context8.next = 3;
+                return axios.patch("api/update_diagnostic/".concat(_this8.diagnostic_idold), {
+                  description: e.target.value
+                }).then;
+
+              case 3:
+                res = _context8.sent;
+
+                _this8.getDiagnostics(_this8.patient.id);
+
+                _this8.form.diagnostic_id = _this8.diagnostic_idold;
+
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }))();
+    },
+    searchDoctor: function searchDoctor(event) {
+      var _this9 = this;
+
+      setTimeout(function () {
+        if (!event.query.trim().length) {
+          _this9.filteredDoctor = _toConsumableArray(_this9.doctors);
+        } else {
+          _this9.filteredDoctor = _this9.doctors.filter(function (doctor) {
+            return "".concat(doctor.complete_name).toLowerCase().startsWith(event.query.toLowerCase());
+          });
+        }
+      }, 250);
+    },
+    viewCreatePhone: function viewCreatePhone() {
+      this.displayCreatePhone = true;
+    },
+    viewCreateAddress: function viewCreateAddress() {
+      this.displayCreateAddress = true;
+    },
+    viewCreateDiagnostic: function viewCreateDiagnostic() {
+      this.displayCreateDiagnostic = true;
+    }
   },
   mounted: function mounted() {
+    var _this10 = this;
+
     this.patient = this.$props.createLm;
+    this.getAddress(this.patient.id, 'address');
+    this.getPhones(this.patient.id, 'phone');
+    this.getDiagnostics(this.patient.id);
+    this.emitter.on('patient_lm_detail_reload', function () {
+      _this10.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Medicamento cargado a la orden",
+        life: 3000
+      });
+    });
+    this.emitter.on('createphone_reload', function () {
+      _this10.displayCreatePhone = false;
+
+      _this10.getPhones(_this10.patient.id, 'phone');
+
+      _this10.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Tel\xE9fono creado",
+        life: 3000
+      });
+    });
+    this.emitter.on('createaddress_reload', function () {
+      _this10.displayCreateAddress = false;
+
+      _this10.getAddress(_this10.patient.id, 'address');
+
+      _this10.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Direcci\xF3n creada",
+        life: 3000
+      });
+    });
+    this.emitter.on('creatediagnostic_reload', function () {
+      _this10.displayCreateDiagnostic = false;
+
+      _this10.getDiagnostics(_this10.patient.id);
+
+      _this10.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Diagn\xF3stico",
+        life: 3000
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Components_Products_ProductForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Products/ProductForm */ "./resources/js/Components/Products/ProductForm.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "MedicineAdd",
+  components: {
+    ProductForm: _Components_Products_ProductForm__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      editingRows: [],
+      medicines: [],
+      details: [],
+      filter: [],
+      formprod: {
+        product_id: null,
+        order_id: null,
+        patient_id: null,
+        prescription: null
+      },
+      displayCreateProduct: false,
+      editId: null
+    };
+  },
+  props: {
+    order_id: Number,
+    patient_id: Number
+  },
+  methods: {
+    onRowEditSave: function onRowEditSave(event) {
+      var price = event.data.products.price;
+      var res = axios.patch("api/update_price/".concat(event.data.products.id), {
+        price: event.data.products.price
+      }).then;
+      return this.emitter.emit('price_update_reload');
+    },
+    cleanFormMed: function cleanFormMed() {
+      var _this = this;
+
+      console.log(Object.keys(this.formprod));
+      Object.keys(this.formprod).map(function (val, index) {
+        return _this.formprod[index] = '';
+      });
+    },
+    getMedicines: function getMedicines() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get('api/products').then(function (res) {
+                  _this2.medicines = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    add: function add() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res, err;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios.post('api/patient_lm_details', _this3.formprod);
+
+              case 3:
+                res = _context2.sent;
+
+                _this3.cleanFormMed();
+
+                _this3.getDetailLms(_this3.formprod.order_id);
+
+                return _context2.abrupt("return", _this3.emitter.emit('patient_lm_detail_reload'));
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+                if (_context2.t0.response) {
+                  switch (_context2.t0.response.status) {
+                    case 422:
+                      err = _context2.t0.response.data.errors;
+                    //this.error_lm_id = err.lm_id ? err.lm_id[0] : null
+                  }
+                }
+
+                return _context2.abrupt("return", null);
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    getDetailLms: function getDetailLms(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get("api/showlmdetail/".concat(id)).then(function (res) {
+                  _this4.details = res.data;
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    formatCurrency: function formatCurrency(value) {
+      return value.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+      });
+    },
+    viewCreateProduct: function viewCreateProduct() {
+      this.displayCreateProduct = true;
+    }
+  },
+  mounted: function mounted() {
+    var _this5 = this;
+
+    this.getMedicines();
+    this.formprod.order_id = this.$props.order_id;
+    this.formprod.patient_id = this.$props.patient_id;
+    this.emitter.on('products_reload', function () {
+      _this5.getMedicines();
+
+      _this5.displayCreateProduct = false;
+
+      _this5.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Medicamento creado con exito!",
+        life: 3000
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated.vue */ "./resources/js/Layouts/Authenticated.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "OrderPage",
+  components: {
+    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Head
+  },
+  data: function data() {
+    return {
+      form: {
+        search: null
+      },
+      orders: [],
+      createLm: null,
+      displayLm: false
+    };
+  },
+  methods: {
+    search: function search() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default().get("/api/findOrders/".concat(_this.form.search)).then(function (res) {
+                  console.log(res.data);
+                  _this.orders = res.data;
+                });
+
+              case 2:
+                res = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    newLm: function newLm(data) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.createLm = data.id, _this2.displayLm = true;
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
   }
 });
 
@@ -20766,7 +21423,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var primevue_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primevue/api */ "./node_modules/primevue/api/api.esm.js");
 /* harmony import */ var _Pages_Patients_PatientForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Pages/Patients/PatientForm */ "./resources/js/Pages/Patients/PatientForm.vue");
-/* harmony import */ var _Pages_Lms_LmsCreatePages__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Pages/Lms/LmsCreatePages */ "./resources/js/Pages/Lms/LmsCreatePages.vue");
+/* harmony import */ var _Pages_Lms_OrderCreatePage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Pages/Lms/OrderCreatePage */ "./resources/js/Pages/Lms/OrderCreatePage.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -20788,7 +21445,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Head,
     PatientForm: _Pages_Patients_PatientForm__WEBPACK_IMPORTED_MODULE_6__["default"],
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Link,
-    LmsCreatePages: _Pages_Lms_LmsCreatePages__WEBPACK_IMPORTED_MODULE_7__["default"]
+    OrderCreatePage: _Pages_Lms_OrderCreatePage__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   data: function data() {
     return {
@@ -20921,10 +21578,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this4 = this;
 
     this.getPatients();
-    this.emitter.on('patients_reload', function () {
-      _this4.getPatients();
+    this.emitter.on('patients_reload', function (evt) {
+      console.log(evt.id);
 
+      _this4.editPatient(evt.id);
+
+      _this4.createLm = evt, _this4.getPatients();
       _this4.display = false;
+      _this4.displayLm = true;
 
       _this4.$toast.add({
         severity: 'success',
@@ -20933,6 +21594,293 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         life: 3000
       });
     });
+    this.emitter.on('patientLm_reload', function () {
+      _this4.getPatients();
+
+      _this4.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Primera fase de la orden creada",
+        life: 3000
+      });
+    });
+    this.emitter.on('order_reload', function () {
+      _this4.getPatients();
+
+      _this4.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "Orden completada se a cargado LM exitosamente!",
+        life: 3000
+      });
+    });
+    this.emitter.on('price_update_reload', function () {
+      _this4.$toast.add({
+        severity: 'success',
+        summary: 'SUCCESS!',
+        detail: "El precio se actualizo exitosamente!",
+        life: 3000
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CreateAddress",
+  components: {},
+  data: function data() {
+    return {
+      id: null,
+      form: {
+        name: null,
+        category: null,
+        patient_id: null
+      },
+      error_name: null
+    };
+  },
+  props: {
+    patient_id: Number
+  },
+  methods: {
+    add: function add() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res, err;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post('/api/address', _this.form);
+
+              case 3:
+                res = _context.sent;
+                return _context.abrupt("return", _this.emitter.emit('createaddress_reload'));
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+                if (_context.t0.response) {
+                  switch (_context.t0.response.status) {
+                    case 422:
+                      err = _context.t0.response.data.errors;
+                      _this.error_name = err.name ? err.name[0] : null;
+                  }
+                }
+
+                return _context.abrupt("return", null);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.id = this.$props.patient_id;
+    this.form.patient_id = this.id;
+    this.form.category = 'address';
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CreateDiagnostic",
+  components: {},
+  data: function data() {
+    return {
+      id: null,
+      form: {
+        description: null,
+        patient_id: null
+      },
+      error_description: null
+    };
+  },
+  props: {
+    patient_id: Number
+  },
+  methods: {
+    add: function add() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res, err;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post('/api/patient_diagnostics', _this.form);
+
+              case 3:
+                res = _context.sent;
+                return _context.abrupt("return", _this.emitter.emit('creatediagnostic_reload'));
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+                if (_context.t0.response) {
+                  switch (_context.t0.response.status) {
+                    case 422:
+                      err = _context.t0.response.data.errors;
+                      _this.error_description = err.description ? err.description[0] : null;
+                  }
+                }
+
+                return _context.abrupt("return", null);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.id = this.$props.patient_id;
+    this.form.patient_id = this.id;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CreatePhone",
+  components: {},
+  data: function data() {
+    return {
+      id: null,
+      form: {
+        name: null,
+        category: null,
+        patient_id: null
+      },
+      error_name: null
+    };
+  },
+  props: {
+    patient_id: Number
+  },
+  methods: {
+    add: function add() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res, err;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post('/api/address', _this.form);
+
+              case 3:
+                res = _context.sent;
+                return _context.abrupt("return", _this.emitter.emit('createphone_reload'));
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+                if (_context.t0.response) {
+                  switch (_context.t0.response.status) {
+                    case 422:
+                      err = _context.t0.response.data.errors;
+                      _this.error_name = err.name ? err.name[0] : null;
+                  }
+                }
+
+                return _context.abrupt("return", null);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.id = this.$props.patient_id;
+    this.form.patient_id = this.id;
+    this.form.category = 'phone';
   }
 });
 
@@ -20969,9 +21917,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         last_name: null,
         personal_id: null,
         age: null,
-        phone: null,
-        address: null,
-        email: null,
         city_id: null
       },
       cities: [],
@@ -20979,7 +21924,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       error_last_name: null,
       error_personal_id: null,
       error_age: null,
-      error_phone: null,
       error_city_id: null
     };
   },
@@ -21039,7 +21983,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this3.cleanForm();
 
-                return _context2.abrupt("return", _this3.emitter.emit('patients_reload'));
+                return _context2.abrupt("return", _this3.emitter.emit('patients_reload', res.data));
 
               case 9:
                 _context2.prev = 9;
@@ -21049,12 +21993,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   switch (_context2.t0.response.status) {
                     case 422:
                       err = _context2.t0.response.data.errors;
-                      _this3.error_name = err.name ? err.name[0] : null;
-                      _this3.error_size = err.size ? err.size[0] : null;
-                      _this3.error_observation = err.observation ? err.observation[0] : null;
-                      _this3.error_count_inventory = err.count_inventory ? err.count_inventory[0] : null;
-                      _this3.error_date_boarding = err.date_boarding ? err.date_boarding[0] : null;
-                      _this3.error_brand_id = err.brand_id ? err.brand_id[0] : null;
+                      _this3.error_first_name = err.first_name ? err.first_name[0] : null;
+                      _this3.error_last_name = err.last_name ? err.last_name[0] : null;
+                      _this3.error_personal_id = err.personal_id ? err.personal_id[0] : null;
+                      _this3.error_city_id = err.city_id ? err.city_id[0] : null;
+                      _this3.error_age = err.age ? err.age[0] : null;
                   }
                 }
 
@@ -21142,6 +22085,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated.vue */ "./resources/js/Layouts/Authenticated.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "ReportPage",
+  components: {
+    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Head
+  },
+  data: function data() {
+    return {
+      form: {
+        dates: null
+      }
+    };
+  },
+  methods: {
+    searchEvents: function searchEvents() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var selectedDate, iniDate, endDate, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                selectedDate = _this.form.dates;
+                iniDate = new Date(selectedDate[0]).toLocaleDateString('en-CA');
+                endDate = new Date(selectedDate[1]).toLocaleDateString('en-CA');
+                _context.next = 5;
+                return axios.get("/api/getOrdersLm/".concat(iniDate, "/").concat(endDate)).then(function (res) {
+                  console.log(res.data);
+                });
+
+              case 5:
+                res = _context.sent;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=script&lang=js":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=script&lang=js ***!
@@ -21183,20 +22196,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  viewBox: "0 0 316 316",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M305.8 81.125C305.77 80.995 305.69 80.885 305.65 80.755C305.56 80.525 305.49 80.285 305.37 80.075C305.29 79.935 305.17 79.815 305.07 79.685C304.94 79.515 304.83 79.325 304.68 79.175C304.55 79.045 304.39 78.955 304.25 78.845C304.09 78.715 303.95 78.575 303.77 78.475L251.32 48.275C249.97 47.495 248.31 47.495 246.96 48.275L194.51 78.475C194.33 78.575 194.19 78.725 194.03 78.845C193.89 78.955 193.73 79.045 193.6 79.175C193.45 79.325 193.34 79.515 193.21 79.685C193.11 79.815 192.99 79.935 192.91 80.075C192.79 80.285 192.71 80.525 192.63 80.755C192.58 80.875 192.51 80.995 192.48 81.125C192.38 81.495 192.33 81.875 192.33 82.265V139.625L148.62 164.795V52.575C148.62 52.185 148.57 51.805 148.47 51.435C148.44 51.305 148.36 51.195 148.32 51.065C148.23 50.835 148.16 50.595 148.04 50.385C147.96 50.245 147.84 50.125 147.74 49.995C147.61 49.825 147.5 49.635 147.35 49.485C147.22 49.355 147.06 49.265 146.92 49.155C146.76 49.025 146.62 48.885 146.44 48.785L93.99 18.585C92.64 17.805 90.98 17.805 89.63 18.585L37.18 48.785C37 48.885 36.86 49.035 36.7 49.155C36.56 49.265 36.4 49.355 36.27 49.485C36.12 49.635 36.01 49.825 35.88 49.995C35.78 50.125 35.66 50.245 35.58 50.385C35.46 50.595 35.38 50.835 35.3 51.065C35.25 51.185 35.18 51.305 35.15 51.435C35.05 51.805 35 52.185 35 52.575V232.235C35 233.795 35.84 235.245 37.19 236.025L142.1 296.425C142.33 296.555 142.58 296.635 142.82 296.725C142.93 296.765 143.04 296.835 143.16 296.865C143.53 296.965 143.9 297.015 144.28 297.015C144.66 297.015 145.03 296.965 145.4 296.865C145.5 296.835 145.59 296.775 145.69 296.745C145.95 296.655 146.21 296.565 146.45 296.435L251.36 236.035C252.72 235.255 253.55 233.815 253.55 232.245V174.885L303.81 145.945C305.17 145.165 306 143.725 306 142.155V82.265C305.95 81.875 305.89 81.495 305.8 81.125ZM144.2 227.205L100.57 202.515L146.39 176.135L196.66 147.195L240.33 172.335L208.29 190.625L144.2 227.205ZM244.75 114.995V164.795L226.39 154.225L201.03 139.625V89.825L219.39 100.395L244.75 114.995ZM249.12 57.105L292.81 82.265L249.12 107.425L205.43 82.265L249.12 57.105ZM114.49 184.425L96.13 194.995V85.305L121.49 70.705L139.85 60.135V169.815L114.49 184.425ZM91.76 27.425L135.45 52.585L91.76 77.745L48.07 52.585L91.76 27.425ZM43.67 60.135L62.03 70.705L87.39 85.305V202.545V202.555V202.565C87.39 202.735 87.44 202.895 87.46 203.055C87.49 203.265 87.49 203.485 87.55 203.695V203.705C87.6 203.875 87.69 204.035 87.76 204.195C87.84 204.375 87.89 204.575 87.99 204.745C87.99 204.745 87.99 204.755 88 204.755C88.09 204.905 88.22 205.035 88.33 205.175C88.45 205.335 88.55 205.495 88.69 205.635L88.7 205.645C88.82 205.765 88.98 205.855 89.12 205.965C89.28 206.085 89.42 206.225 89.59 206.325C89.6 206.325 89.6 206.325 89.61 206.335C89.62 206.335 89.62 206.345 89.63 206.345L139.87 234.775V285.065L43.67 229.705V60.135ZM244.75 229.705L148.58 285.075V234.775L219.8 194.115L244.75 179.875V229.705ZM297.2 139.625L253.49 164.795V114.995L278.85 100.395L297.21 89.825V139.625H297.2Z"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_1 = ["src"];
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    src: '../../storage/img/logo.png'
+  }, null, 8
+  /* PROPS */
+  , _hoisted_1);
 }
 
 /***/ }),
@@ -21541,7 +22547,7 @@ var _hoisted_5 = {
   "class": "p-field"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Talla", -1
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Presentacion", -1
 /* HOISTED */
 );
 
@@ -21552,7 +22558,7 @@ var _hoisted_8 = {
   "class": "p-field"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Observación", -1
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Precio", -1
 /* HOISTED */
 );
 
@@ -21563,7 +22569,7 @@ var _hoisted_11 = {
   "class": "p-field"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Cantidad en inventario", -1
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Marca", -1
 /* HOISTED */
 );
 
@@ -21573,38 +22579,12 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   "class": "p-field"
 };
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Fecha de embarque", -1
-/* HOISTED */
-);
-
-var _hoisted_16 = {
-  "class": "text-red-500"
-};
-var _hoisted_17 = {
-  "class": "p-field"
-};
-
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Marca", -1
-/* HOISTED */
-);
-
-var _hoisted_19 = {
-  "class": "text-red-500"
-};
-var _hoisted_20 = {
-  "class": "p-field"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
 
   var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
 
-  var _component_TextArea = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TextArea");
-
   var _component_InputNumber = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputNumber");
-
-  var _component_Calendar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Calendar");
 
   var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
 
@@ -21629,54 +22609,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_name), 1
       /* TEXT */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
-        modelValue: $data.form.size,
+        modelValue: $data.form.presentation,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.size = $event;
+          return $data.form.presentation = $event;
         }),
-        options: $data.sizes,
+        options: $data.presentations,
         optionLabel: "name",
         optionValue: "code",
-        placeholder: "Seleccione talla",
+        placeholder: "Seleccione una presentacion",
         "class": "w-100"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_size), 1
+      , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_presentation), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextArea, {
-        modelValue: $data.form.observation,
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputNumber, {
+        modelValue: $data.form.price,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.form.observation = $event;
+          return $data.form.price = $event;
         }),
-        rows: "5",
-        cols: "30",
-        autoResize: true
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_observation), 1
-      /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputNumber, {
-        modelValue: $data.form.count_inventory,
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.count_inventory = $event;
-        }),
-        placeholder: "Ingrese una cantidad",
+        placeholder: "Ingrese un precio",
         minFractionDigits: 0
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_count_inventory), 1
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_price), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calendar, {
-        modelValue: $data.form.date_boarding,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.date_boarding = $event;
-        })
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_date_boarding), 1
-      /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
         modelValue: $data.form.brand_id,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $data.form.brand_id = $event;
         }),
         options: $data.brands,
@@ -21686,9 +22645,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "w-100"
       }, null, 8
       /* PROPS */
-      , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_brand_id), 1
+      , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_brand_id), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
         icon: "pi pi-save",
         label: "Guardar",
         "class": "sm:-bottom-1.5",
@@ -21813,27 +22772,29 @@ var _hoisted_7 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Productos ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Medicamentos ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Marcas ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pacientes ");
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pacientes ");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ordenes ");
 
-var _hoisted_11 = {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Informes ");
+
+var _hoisted_12 = {
   "class": "hidden sm:flex sm:items-center sm:ml-6"
 };
-var _hoisted_12 = {
+var _hoisted_13 = {
   "class": "ml-3 relative"
 };
-var _hoisted_13 = {
+var _hoisted_14 = {
   "class": "inline-flex rounded-md"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   type: "button",
   "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "ml-2 -mr-0.5 h-4 w-4",
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 20 20",
@@ -21846,46 +22807,46 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_17 = {
+var _hoisted_18 = {
   "class": "-mr-2 flex items-center sm:hidden"
 };
-var _hoisted_18 = {
+var _hoisted_19 = {
   "class": "h-6 w-6",
   stroke: "currentColor",
   fill: "none",
   viewBox: "0 0 24 24"
 };
-var _hoisted_19 = {
+var _hoisted_20 = {
   "class": "pt-2 pb-3 space-y-1"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
-var _hoisted_21 = {
+var _hoisted_22 = {
   "class": "pt-4 pb-1 border-t border-gray-200"
 };
-var _hoisted_22 = {
+var _hoisted_23 = {
   "class": "px-4"
 };
-var _hoisted_23 = {
+var _hoisted_24 = {
   "class": "font-medium text-base text-gray-800"
 };
-var _hoisted_24 = {
+var _hoisted_25 = {
   "class": "font-medium text-sm text-gray-500"
 };
-var _hoisted_25 = {
+var _hoisted_26 = {
   "class": "mt-3 space-y-1"
 };
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log Out ");
 
-var _hoisted_27 = {
+var _hoisted_28 = {
   key: 0,
   "class": "bg-white shadow"
 };
-var _hoisted_28 = {
+var _hoisted_29 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21929,8 +22890,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeNavLink, {
-    href: _ctx.route('brandpage'),
-    active: _ctx.route().current('brandpage')
+    href: _ctx.route('patientpage'),
+    active: _ctx.route().current('patientpage')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_9];
@@ -21941,8 +22902,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeNavLink, {
-    href: _ctx.route('patientpage'),
-    active: _ctx.route().current('patientpage')
+    href: _ctx.route('orderpage'),
+    active: _ctx.route().current('orderpage')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_10];
@@ -21952,14 +22913,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Settings Dropdown "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeDropdown, {
+  , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeNavLink, {
+    href: _ctx.route('reportspage'),
+    active: _ctx.route().current('reportspage')
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_11];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href", "active"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Settings Dropdown "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeDropdown, {
     align: "right",
     width: "48"
   }, {
     trigger: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.name) + " ", 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.name) + " ", 1
       /* TEXT */
-      ), _hoisted_15])])];
+      ), _hoisted_16])])];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeDropdownLink, {
@@ -21968,7 +22941,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         as: "button"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_16];
+          return [_hoisted_17];
         }),
         _: 1
         /* STABLE */
@@ -21980,12 +22953,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Hamburger "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Hamburger "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.showingNavigationDropdown = !$data.showingNavigationDropdown;
     }),
     "class": "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
       'hidden': $data.showingNavigationDropdown,
       'inline-flex': !$data.showingNavigationDropdown
@@ -22012,29 +22985,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       'block': $data.showingNavigationDropdown,
       'hidden': !$data.showingNavigationDropdown
     }, "sm:hidden"])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeResponsiveNavLink, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeResponsiveNavLink, {
     href: _ctx.route('dashboard'),
     active: _ctx.route().current('dashboard')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_20];
+      return [_hoisted_21];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.name), 1
+  , ["href", "active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Responsive Settings Options "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.email), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.auth.user.email), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeResponsiveNavLink, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeResponsiveNavLink, {
     href: _ctx.route('logout'),
     method: "post",
     as: "button"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_26];
+      return [_hoisted_27];
     }),
     _: 1
     /* STABLE */
@@ -22043,7 +23016,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href"])])])], 2
   /* CLASS */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Toast, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Heading "), _ctx.$slots.header ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("header", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "header")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Page Content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Toast, {
     position: "top-right"
   })])])]);
 }
@@ -23000,21 +23973,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             field: "name",
             header: "Nombre"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "size",
-            header: "Talla"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "observation",
-            header: "Observación"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "count_inventory",
-            header: "Cantidad"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "date_boarding",
-            header: "Fecha de embarque"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "brand_id.name",
-            header: "Marca"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
             bodyStyle: "text-align: center; overflow: visible",
             header: "Acción",
             headerStyle: "width: 14rem; text-align: center"
@@ -23084,10 +24042,346 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48 ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-95e63b3a");
+
+var _hoisted_1 = {
+  "class": "card"
+};
+var _hoisted_2 = {
+  "class": "formgrid grid"
+};
+var _hoisted_3 = {
+  "class": "field col"
+};
+var _hoisted_4 = {
+  "class": "font-bold"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Paciente - ");
+
+var _hoisted_6 = {
+  "class": "field col"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "font-bold text-teal-500"
+}, "Fecha de generación", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "field col"
+};
+var _hoisted_9 = {
+  "class": "font-bold text-teal-500"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Seleccione teléfono ");
+
+var _hoisted_11 = {
+  "class": "field col"
+};
+var _hoisted_12 = {
+  "class": "font-bold text-teal-500"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Diagnóstico ");
+
+var _hoisted_14 = {
+  "class": "field col"
+};
+var _hoisted_15 = {
+  "class": "font-bold text-teal-500"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Seleccione una dirección ");
+
+var _hoisted_17 = {
+  key: 0,
+  "class": "field"
+};
+var _hoisted_18 = {
+  key: 2,
+  "class": "formgrid grid"
+};
+var _hoisted_19 = {
+  "class": "field col"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Código autorización - LM | EC", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "text-red-500"
+};
+var _hoisted_22 = {
+  "class": "field col"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Autorizado por:", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  key: 3,
+  "class": "field col"
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Observaciones", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
+  key: 4,
+  "class": "field"
+};
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
+
+  var _component_Calendar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Calendar");
+
+  var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
+
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
+
+  var _component_MedicinesAdd = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MedicinesAdd");
+
+  var _component_CreatePhone = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CreatePhone");
+
+  var _component_Dialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dialog");
+
+  var _component_CreateAddress = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CreateAddress");
+
+  var _component_CreateDiagnostic = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CreateDiagnostic");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.patient.personal_id), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.patient.full_name,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.patient.full_name = $event;
+    }),
+    "class": "inputfield w-full",
+    disabled: "true"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calendar, {
+    id: "icon",
+    modelValue: $data.form.date_ini,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.form.date_ini = $event;
+    }),
+    showIcon: true,
+    dateFormat: "dd/mm/yy"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "pi pi-plus-circle justify-center cursor-pointer text-lime-600",
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $options.viewCreatePhone && $options.viewCreatePhone.apply($options, arguments);
+    }),
+    label: "Nuevo"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "w-full",
+    modelValue: $data.form.phone_id,
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.form.phone_id = $event;
+    }),
+    options: $data.phones,
+    optionLabel: "name",
+    optionValue: "id",
+    filter: false,
+    filterPlaceholder: "Seleccione telefono",
+    showClear: true
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "pi pi-plus-circle justify-center cursor-pointer text-lime-600",
+    label: "Nuevo",
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.viewCreateDiagnostic && $options.viewCreateDiagnostic.apply($options, arguments);
+    })
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "w-full",
+    modelValue: $data.form.diagnostic_id,
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.form.diagnostic_id = $event;
+    }),
+    options: $data.diagnostics,
+    optionLabel: "description",
+    optionValue: "id",
+    filter: false,
+    filterPlaceholder: "Seleccione diagnostico",
+    showClear: true,
+    editable: true,
+    onBlur: _cache[6] || (_cache[6] = function ($event) {
+      return $options.editDiagnostic($event);
+    }),
+    onChange: $options.setDiagnostic
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options", "onChange"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "pi pi-plus-circle justify-center cursor-pointer text-lime-600",
+    label: "Nuevo",
+    onClick: _cache[7] || (_cache[7] = function () {
+      return $options.viewCreateAddress && $options.viewCreateAddress.apply($options, arguments);
+    })
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "w-full",
+    modelValue: $data.form.address_id,
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+      return $data.form.address_id = $event;
+    }),
+    options: $data.addreses,
+    optionLabel: "name",
+    optionValue: "id",
+    filter: false,
+    filterPlaceholder: "Seleccione una direccion",
+    showClear: true
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options"])]), $data.activeButton === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Siguiente",
+    "class": "sm:-bottom-1.5",
+    onClick: $options.submit
+  }, null, 8
+  /* PROPS */
+  , ["onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.display === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_MedicinesAdd, {
+    key: 1,
+    order_id: $data.order_id,
+    patient_id: $data.form.patient_id
+  }, null, 8
+  /* PROPS */
+  , ["order_id", "patient_id"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.displayLms === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.lm_id,
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $data.form.lm_id = $event;
+    }),
+    "class": "inputfield w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_lm_id), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.authorized_by,
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+      return $data.form.authorized_by = $event;
+    }),
+    "class": "inputfield w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.displayLms === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.observation,
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+      return $data.form.observation = $event;
+    }),
+    "class": "inputfield w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.displayLms === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Guardar",
+    "class": "sm:-bottom-1.5",
+    onClick: _cache[12] || (_cache[12] = function ($event) {
+      return $options.submitLm($data.order_id);
+    })
+  })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
+    header: 'Nuevo número de teléfono',
+    style: {
+      width: '25vw'
+    },
+    visible: $data.displayCreatePhone,
+    "onUpdate:visible": _cache[13] || (_cache[13] = function ($event) {
+      return $data.displayCreatePhone = $event;
+    }),
+    maximizable: false
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreatePhone, {
+        patient_id: $data.patient.id
+      }, null, 8
+      /* PROPS */
+      , ["patient_id"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["visible"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
+    header: 'Nueva dirección',
+    style: {
+      width: '25vw'
+    },
+    visible: $data.displayCreateAddress,
+    "onUpdate:visible": _cache[14] || (_cache[14] = function ($event) {
+      return $data.displayCreateAddress = $event;
+    }),
+    maximizable: false
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreateAddress, {
+        patient_id: $data.patient.id
+      }, null, 8
+      /* PROPS */
+      , ["patient_id"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["visible"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
+    header: 'Nuevo diagnóstico',
+    style: {
+      width: '25vw'
+    },
+    visible: $data.displayCreateDiagnostic,
+    "onUpdate:visible": _cache[15] || (_cache[15] = function ($event) {
+      return $data.displayCreateDiagnostic = $event;
+    }),
+    maximizable: false
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CreateDiagnostic, {
+        patient_id: $data.patient.id
+      }, null, 8
+      /* PROPS */
+      , ["patient_id"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["visible"])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23098,81 +24392,320 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "py-12"
+  "class": "card"
 };
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Datos del paciente");
-
+var _hoisted_2 = {
+  "class": "field"
+};
 var _hoisted_3 = {
-  "class": "p-fluid"
+  "class": "formgrid grid"
 };
 var _hoisted_4 = {
-  "class": "p-field"
+  "class": "field col"
+};
+var _hoisted_5 = {
+  "class": "font-bold text-teal-500"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre", -1
-/* HOISTED */
-);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Seleccione Medicamento");
 
-var _hoisted_6 = {
-  "class": "p-field"
+var _hoisted_7 = {
+  "class": "field col"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Apellido", -1
-/* HOISTED */
-);
-
-var _hoisted_8 = {
-  "class": "p-fluid"
-};
-var _hoisted_9 = {
-  "class": "p-field"
-};
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Identificacion", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "font-bold text-teal-500"
+}, "Cantidad", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
+
+  var _component_InputNumber = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputNumber");
+
+  var _component_Column = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Column");
+
   var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
 
-  var _component_Card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Card");
+  var _component_DataTable = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DataTable");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card, null, {
-    header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_2];
+  var _component_ProductForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ProductForm");
+
+  var _component_Dialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dialog");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "pi pi-plus-circle float-right cursor-pointer text-lime-600",
+    label: "Continuar",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.add && $options.add.apply($options, arguments);
+    })
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "pi pi-plus-circle justify-center cursor-pointer text-lime-600",
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.viewCreateProduct && $options.viewCreateProduct.apply($options, arguments);
     }),
-    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.patient.first_name,
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.patient.first_name = $event;
+    label: "Nuevo"
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "w-full",
+    modelValue: $data.formprod.product_id,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.formprod.product_id = $event;
+    }),
+    options: $data.medicines,
+    optionLabel: "full_name",
+    optionValue: "id",
+    filter: true,
+    filterPlaceholder: "Buscar medicamento",
+    showClear: true
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputNumber, {
+    modelValue: $data.formprod.prescription,
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.formprod.prescription = $event;
+    }),
+    "class": "w-full",
+    placeholder: "Ingrese una cantidad",
+    minFractionDigits: 0
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
+    filters: $data.filter,
+    value: $data.details,
+    dataKey: "id",
+    responsiveLayout: "scroll",
+    editMode: "row",
+    editingRows: $data.editingRows,
+    "onUpdate:editingRows": _cache[4] || (_cache[4] = function ($event) {
+      return $data.editingRows = $event;
+    }),
+    onRowEditSave: $options.onRowEditSave,
+    paginate: true,
+    rows: 20,
+    "class": "editable-cells-table"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        field: "products.full_name",
+        header: "Medicamento"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        field: "prescription",
+        header: "Cantidad"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        field: "products.price",
+        header: "Precio",
+        dataType: "numeric"
+      }, {
+        editor: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
+          var data = _ref.data;
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ data.products.price[field] }} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+            modelValue: data.products.price,
+            "onUpdate:modelValue": function onUpdateModelValue($event) {
+              return data.products.price = $event;
+            },
+            autofocus: ""
+          }, null, 8
+          /* PROPS */
+          , ["modelValue", "onUpdate:modelValue"])];
         }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.patient.last_name,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.patient.last_name = $event;
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        header: "Total"
+      }, {
+        body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
+          var data = _ref2.data;
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.formatCurrency(data.products.price * data.prescription)), 1
+          /* TEXT */
+          )];
         }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.patient.personal_id,
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.patient.personal_id = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])])])];
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+        rowEditor: true,
+        style: {
+          "width": "10%",
+          "min-width": "8rem"
+        },
+        bodyStyle: "text-align:center"
+      })];
     }),
     _: 1
     /* STABLE */
 
-  })]);
+  }, 8
+  /* PROPS */
+  , ["filters", "value", "editingRows", "onRowEditSave"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
+    header: 'Nuevo medicamento',
+    style: {
+      width: '25vw'
+    },
+    visible: $data.displayCreateProduct,
+    "onUpdate:visible": _cache[5] || (_cache[5] = function ($event) {
+      return $data.displayCreateProduct = $event;
+    }),
+    maximizable: false
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ProductForm, {
+        editId: $data.editId
+      }, null, 8
+      /* PROPS */
+      , ["editId"])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["visible"])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "font-semibold text-xl text-gray-800 leading-tight"
+}, " Ordenes ", -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  "class": "py-12"
+};
+var _hoisted_3 = {
+  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
+};
+var _hoisted_4 = {
+  "class": "bg-white overflow-hidden shadow-sm sm:rounded-lg"
+};
+var _hoisted_5 = {
+  "class": "p-6 bg-white border-b border-gray-200"
+};
+var _hoisted_6 = {
+  "class": "p-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Buscar", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "text-red-500"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "p-field"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
+
+  var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
+
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
+
+  var _component_Column = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Column");
+
+  var _component_DataTable = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DataTable");
+
+  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+    title: "Order"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
+    header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+        modelValue: $data.form.search,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return $data.form.search = $event;
+        }),
+        "class": "w-full"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+        icon: "pi pi-search",
+        label: "Buscar",
+        "class": "sm:-bottom-1.5",
+        onClick: $options.search
+      }, null, 8
+      /* PROPS */
+      , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
+        filters: _ctx.filter,
+        value: $data.orders,
+        dataKey: "id",
+        responsiveLayout: "scroll",
+        paginate: true,
+        rows: 20
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+            field: "first_name",
+            header: "Nombre"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+            field: "last_name",
+            header: "Apellido"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+            field: "personal_id",
+            header: "Identificación"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+            field: "lm_code",
+            header: "LM"
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
+            bodyStyle: "justify-center",
+            header: "Acción",
+            headerStyle: "width: 14rem; justify-center"
+          }, {
+            body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (slotProps) {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+                onClick: function onClick($event) {
+                  return $options.newLm(slotProps.data);
+                },
+                icon: "pi pi-tags",
+                "class": "btn_lms",
+                title: "Cargar Lm"
+              }, null, 8
+              /* PROPS */
+              , ["onClick"])];
+            }),
+            _: 1
+            /* STABLE */
+
+          })];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["filters", "value"])])])])])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -23193,27 +24726,24 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-f2ae53ca");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_1 = {
   "class": "font-semibold text-xl text-gray-800 leading-tight"
-}, " Pacientes ", -1
-/* HOISTED */
-);
+};
 
-var _hoisted_2 = {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Pacientes ");
+
+var _hoisted_3 = {
   "class": "py-12"
 };
-var _hoisted_3 = {
+var _hoisted_4 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
-var _hoisted_4 = {
+var _hoisted_5 = {
   "class": "bg-white overflow-hidden shadow-sm sm:rounded-lg"
 };
-var _hoisted_5 = {
+var _hoisted_6 = {
   "class": "p-6 bg-white border-b border-gray-200"
 };
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Nuevo");
-
 var _hoisted_7 = {
   "class": "flex justify-content-center"
 };
@@ -23244,7 +24774,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Dialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dialog");
 
-  var _component_LmsCreatePages = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LmsCreatePages");
+  var _component_OrderCreatePage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("OrderCreatePage");
 
   var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
 
@@ -23252,22 +24782,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Patient"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+        label: "Nuevo",
+        icon: "pi pi-plus",
+        iconPos: "right",
+        "class": "float-right add-button",
+        onClick: $options.createPatient
+      }, null, 8
+      /* PROPS */
+      , ["onClick"])])];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
-        "class": "add-btn",
-        onClick: $options.createPatient
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_6];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
         filters: $data.filters1,
         "onUpdate:filters": _cache[1] || (_cache[1] = function ($event) {
           return $data.filters1 = $event;
@@ -23302,20 +24828,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
             field: "personal_id",
             header: "Cedula"
-          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
-            field: "lms",
-            header: "LM"
-          }, {
-            body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (slotProps) {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(slotProps.data.lms.map(function (lms) {
-                return lms.lm_id;
-              }).join(', ')), 1
-              /* TEXT */
-              )];
-            }),
-            _: 1
-            /* STABLE */
-
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {
             bodyStyle: "justify-center",
             header: "Acción",
@@ -23383,17 +24895,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["header", "visible"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dialog, {
-        header: 'Crear Lm',
+        header: 'Crear Formulación',
         style: {
           width: '50vw'
         },
         visible: $data.displayLm,
         "onUpdate:visible": _cache[3] || (_cache[3] = function ($event) {
           return $data.displayLm = $event;
-        })
+        }),
+        maximizable: true
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_LmsCreatePages, {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_OrderCreatePage, {
             createLm: $data.createLm
           }, null, 8
           /* PROPS */
@@ -23416,6 +24929,184 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "card"
+};
+var _hoisted_2 = {
+  "class": "formgrid grid"
+};
+var _hoisted_3 = {
+  "class": "field col"
+};
+var _hoisted_4 = {
+  "class": "text-red-500"
+};
+var _hoisted_5 = {
+  "class": "formgrid grid"
+};
+var _hoisted_6 = {
+  "class": "field col"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
+
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.name,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.form.name = $event;
+    }),
+    "class": "w-full",
+    placeholder: "Ingrese una dirección"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_name), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Guardar",
+    "class": "sm:-bottom-1.5",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.add();
+    })
+  })])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "card"
+};
+var _hoisted_2 = {
+  "class": "formgrid grid"
+};
+var _hoisted_3 = {
+  "class": "field col"
+};
+var _hoisted_4 = {
+  "class": "text-red-500"
+};
+var _hoisted_5 = {
+  "class": "formgrid grid"
+};
+var _hoisted_6 = {
+  "class": "field col"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
+
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.description,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.form.description = $event;
+    }),
+    "class": "w-full",
+    placeholder: "Ingrese una diagnóstico"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_description), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Guardar",
+    "class": "sm:-bottom-1.5",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.add();
+    })
+  })])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "card"
+};
+var _hoisted_2 = {
+  "class": "formgrid grid"
+};
+var _hoisted_3 = {
+  "class": "field col"
+};
+var _hoisted_4 = {
+  "class": "text-red-500"
+};
+var _hoisted_5 = {
+  "class": "formgrid grid"
+};
+var _hoisted_6 = {
+  "class": "field col"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_InputMask = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputMask");
+
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputMask, {
+    mask: "9999999999",
+    modelValue: $data.form.name,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.form.name = $event;
+    }),
+    "class": "w-full",
+    placeholder: "Ingrese un número de teléfono"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_name), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Guardar",
+    "class": "sm:-bottom-1.5",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.add();
+    })
+  })])])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/PatientForm.vue?vue&type=template&id=6854c7f1":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/PatientForm.vue?vue&type=template&id=6854c7f1 ***!
@@ -23430,174 +25121,220 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "p-fluid"
+  "class": "formgrid grid"
 };
 var _hoisted_2 = {
-  "class": "p-field"
+  "class": "field col"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre", -1
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Ciudad", -1
 /* HOISTED */
 );
 
 var _hoisted_4 = {
-  "class": "text-red-500"
-};
-var _hoisted_5 = {
-  "class": "p-field"
+  "class": "field col"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Apellido", -1
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Nombre", -1
 /* HOISTED */
 );
 
+var _hoisted_6 = {
+  "class": "text-red-500"
+};
 var _hoisted_7 = {
-  "class": "text-red-500"
-};
-var _hoisted_8 = {
-  "class": "p-field"
+  "class": "field col"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Identificacion", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Apellido", -1
 /* HOISTED */
 );
 
+var _hoisted_9 = {
+  "class": "text-red-500"
+};
 var _hoisted_10 = {
-  "class": "text-red-500"
+  "class": "formgrid grid"
+};
+var _hoisted_11 = {
+  "class": "field col"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Edad", -1
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Identificacion", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Telefono", -1
-/* HOISTED */
-);
+var _hoisted_13 = {
+  "class": "text-red-500"
+};
+var _hoisted_14 = {
+  "class": "field col"
+};
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Email", -1
-/* HOISTED */
-);
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Direccion", -1
-/* HOISTED */
-);
-
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Ciudad", -1
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Edad", -1
 /* HOISTED */
 );
 
 var _hoisted_16 = {
-  "class": "p-field"
+  "class": "field col mt-4"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
+
   var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
 
   var _component_InputNumber = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputNumber");
 
-  var _component_TextArea = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TextArea");
+  var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
 
-  var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "w-full",
+    modelValue: $data.form.city_id,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.form.city_id = $event;
+    }),
+    options: $data.cities,
+    optionLabel: "city",
+    optionValue: "id",
+    placeholder: "Selecione ciudad",
+    filter: true
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.first_name,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.form.first_name = $event;
+    }),
+    "class": "w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_first_name), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.last_name,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.form.last_name = $event;
+    }),
+    "class": "w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_last_name), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
+    modelValue: $data.form.personal_id,
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.form.personal_id = $event;
+    }),
+    "class": "w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_personal_id), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputNumber, {
+    modelValue: $data.form.age,
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.form.age = $event;
+    }),
+    "class": "w-full"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+    icon: "pi pi-save",
+    label: "Siguiente",
+    "class": "sm:-bottom-1.5",
+    onClick: $options.submit
+  }, null, 8
+  /* PROPS */
+  , ["onClick"])])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "font-semibold text-xl text-gray-800 leading-tight"
+}, " Reportes ", -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  "class": "py-12"
+};
+var _hoisted_3 = {
+  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
+};
+var _hoisted_4 = {
+  "class": "bg-white overflow-hidden shadow-sm sm:rounded-lg"
+};
+var _hoisted_5 = {
+  "class": "p-6 bg-white border-b border-gray-200"
+};
+var _hoisted_6 = {
+  "class": "p-field"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Buscar por fecha", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "p-field mt-4 mb-4 float-right"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
+
+  var _component_Calendar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Calendar");
 
   var _component_PrimeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PrimeButton");
 
-  var _component_Card = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Card");
+  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card, null, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+    title: "Reports"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [];
+      return [_hoisted_1];
     }),
-    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [];
-    }),
-    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.form.first_name,
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Calendar, {
+        modelValue: $data.form.dates,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.form.first_name = $event;
+          return $data.form.dates = $event;
         }),
-        "class": "w-100"
+        selectionMode: "range",
+        dateFormat: "yy-mm-dd",
+        showIcon: true,
+        "class": "w-full"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_first_name), 1
-      /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.form.last_name,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.last_name = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_last_name), 1
-      /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.form.personal_id,
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.form.personal_id = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.error_personal_id), 1
-      /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputNumber, {
-        modelValue: $data.form.age,
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.age = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.form.phone,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.phone = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputText, {
-        modelValue: $data.form.email,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.email = $event;
-        }),
-        "class": "w-100"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextArea, {
-        modelValue: $data.form.address,
-        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return $data.form.address = $event;
-        }),
-        rows: "5",
-        cols: "30",
-        autoResize: true
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
-        modelValue: $data.form.city_id,
-        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.form.city_id = $event;
-        }),
-        options: $data.cities,
-        optionLabel: "city",
-        optionValue: "id",
-        placeholder: "Selecione ciudad"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "options"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
-        icon: "pi pi-save",
-        label: "Guardar",
-        "class": "sm:-bottom-1.5",
-        onClick: $options.submit
-      }, null, 8
-      /* PROPS */
-      , ["onClick"])])])];
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimeButton, {
+        label: "Buscar",
+        icon: "pi pi-search",
+        iconPos: "right",
+        onClick: _cache[1] || (_cache[1] = function ($event) {
+          return $options.searchEvents($event);
+        })
+      })])])])])])];
     }),
     _: 1
     /* STABLE */
 
-  })]);
+  })], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -23724,19 +25461,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primevue_resources_themes_saga_blue_theme_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primevue/resources/themes/saga-blue/theme.css */ "./node_modules/primevue/resources/themes/saga-blue/theme.css");
 /* harmony import */ var primevue_resources_primevue_min_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primevue/resources/primevue.min.css */ "./node_modules/primevue/resources/primevue.min.css");
 /* harmony import */ var primeicons_primeicons_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primeicons/primeicons.css */ "./node_modules/primeicons/primeicons.css");
-/* harmony import */ var primevue_autocomplete__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primevue/autocomplete */ "./node_modules/primevue/autocomplete/autocomplete.esm.js");
-/* harmony import */ var primevue_datatable__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primevue/datatable */ "./node_modules/primevue/datatable/datatable.esm.js");
-/* harmony import */ var primevue_inputtext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! primevue/inputtext */ "./node_modules/primevue/inputtext/inputtext.esm.js");
-/* harmony import */ var primevue_inputnumber__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! primevue/inputnumber */ "./node_modules/primevue/inputnumber/inputnumber.esm.js");
-/* harmony import */ var primevue_column__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! primevue/column */ "./node_modules/primevue/column/column.esm.js");
-/* harmony import */ var primevue_dialog__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primevue/dialog */ "./node_modules/primevue/dialog/dialog.esm.js");
-/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
-/* harmony import */ var primevue_toast__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! primevue/toast */ "./node_modules/primevue/toast/toast.esm.js");
-/* harmony import */ var primevue_card__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! primevue/card */ "./node_modules/primevue/card/card.esm.js");
-/* harmony import */ var primevue_textarea__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/textarea */ "./node_modules/primevue/textarea/textarea.esm.js");
-/* harmony import */ var primevue_button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/button */ "./node_modules/primevue/button/button.esm.js");
-/* harmony import */ var primevue_dropdown__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! primevue/dropdown */ "./node_modules/primevue/dropdown/dropdown.esm.js");
-/* harmony import */ var primevue_calendar__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! primevue/calendar */ "./node_modules/primevue/calendar/calendar.esm.js");
+/* harmony import */ var primeflex_primeflex_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primeflex/primeflex.css */ "./node_modules/primeflex/primeflex.css");
+/* harmony import */ var primevue_autocomplete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primevue/autocomplete */ "./node_modules/primevue/autocomplete/autocomplete.esm.js");
+/* harmony import */ var primevue_datatable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! primevue/datatable */ "./node_modules/primevue/datatable/datatable.esm.js");
+/* harmony import */ var primevue_inputtext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! primevue/inputtext */ "./node_modules/primevue/inputtext/inputtext.esm.js");
+/* harmony import */ var primevue_inputnumber__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! primevue/inputnumber */ "./node_modules/primevue/inputnumber/inputnumber.esm.js");
+/* harmony import */ var primevue_column__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! primevue/column */ "./node_modules/primevue/column/column.esm.js");
+/* harmony import */ var primevue_dialog__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! primevue/dialog */ "./node_modules/primevue/dialog/dialog.esm.js");
+/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
+/* harmony import */ var primevue_toast__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! primevue/toast */ "./node_modules/primevue/toast/toast.esm.js");
+/* harmony import */ var primevue_card__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/card */ "./node_modules/primevue/card/card.esm.js");
+/* harmony import */ var primevue_textarea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/textarea */ "./node_modules/primevue/textarea/textarea.esm.js");
+/* harmony import */ var primevue_button__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! primevue/button */ "./node_modules/primevue/button/button.esm.js");
+/* harmony import */ var primevue_dropdown__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! primevue/dropdown */ "./node_modules/primevue/dropdown/dropdown.esm.js");
+/* harmony import */ var primevue_calendar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! primevue/calendar */ "./node_modules/primevue/calendar/calendar.esm.js");
+/* harmony import */ var primevue_radiobutton__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! primevue/radiobutton */ "./node_modules/primevue/radiobutton/radiobutton.esm.js");
+/* harmony import */ var primevue_inputmask__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! primevue/inputmask */ "./node_modules/primevue/inputmask/inputmask.esm.js");
 var _window$document$getE;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -23749,7 +25489,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
  //import libraries
+
+
 
 
 
@@ -23783,7 +25526,7 @@ var emitter = (0,mitt__WEBPACK_IMPORTED_MODULE_4__["default"])();
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(app, props);
       }
     });
-    vueApp.component('AutoComplete', primevue_autocomplete__WEBPACK_IMPORTED_MODULE_9__["default"]).component('DataTable', primevue_datatable__WEBPACK_IMPORTED_MODULE_10__["default"]).component('InputText', primevue_inputtext__WEBPACK_IMPORTED_MODULE_11__["default"]).component('InputNumber', primevue_inputnumber__WEBPACK_IMPORTED_MODULE_12__["default"]).component('Column', primevue_column__WEBPACK_IMPORTED_MODULE_13__["default"]).component('Dialog', primevue_dialog__WEBPACK_IMPORTED_MODULE_14__["default"]).component('Toast', primevue_toast__WEBPACK_IMPORTED_MODULE_16__["default"]).component('Card', primevue_card__WEBPACK_IMPORTED_MODULE_17__["default"]).component('TextArea', primevue_textarea__WEBPACK_IMPORTED_MODULE_18__["default"]).component('PrimeButton', primevue_button__WEBPACK_IMPORTED_MODULE_19__["default"]).component('Dropdown', primevue_dropdown__WEBPACK_IMPORTED_MODULE_20__["default"]).component('Calendar', primevue_calendar__WEBPACK_IMPORTED_MODULE_21__["default"]).use(plugin).use(primevue_config__WEBPACK_IMPORTED_MODULE_3__["default"]).use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_15__["default"]).use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5___default())).mixin({
+    vueApp.component('AutoComplete', primevue_autocomplete__WEBPACK_IMPORTED_MODULE_10__["default"]).component('DataTable', primevue_datatable__WEBPACK_IMPORTED_MODULE_11__["default"]).component('InputText', primevue_inputtext__WEBPACK_IMPORTED_MODULE_12__["default"]).component('InputNumber', primevue_inputnumber__WEBPACK_IMPORTED_MODULE_13__["default"]).component('Column', primevue_column__WEBPACK_IMPORTED_MODULE_14__["default"]).component('Dialog', primevue_dialog__WEBPACK_IMPORTED_MODULE_15__["default"]).component('Toast', primevue_toast__WEBPACK_IMPORTED_MODULE_17__["default"]).component('Card', primevue_card__WEBPACK_IMPORTED_MODULE_18__["default"]).component('TextArea', primevue_textarea__WEBPACK_IMPORTED_MODULE_19__["default"]).component('PrimeButton', primevue_button__WEBPACK_IMPORTED_MODULE_20__["default"]).component('Dropdown', primevue_dropdown__WEBPACK_IMPORTED_MODULE_21__["default"]).component('Calendar', primevue_calendar__WEBPACK_IMPORTED_MODULE_22__["default"]).component('RadioButton', primevue_radiobutton__WEBPACK_IMPORTED_MODULE_23__["default"]).component('InputMask', primevue_inputmask__WEBPACK_IMPORTED_MODULE_24__["default"]).use(plugin).use(primevue_config__WEBPACK_IMPORTED_MODULE_3__["default"]).use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_16__["default"]).use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5___default())).mixin({
       methods: {
         route: route
       }
@@ -23911,6 +25654,30 @@ if ($defineProperty) {
 } else {
 	module.exports.apply = applyBind;
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/primeflex/primeflex.css":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/primeflex/primeflex.css ***!
+  \******************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".grid {\n  display: flex;\n  flex-wrap: wrap;\n  margin-right: -0.5rem;\n  margin-left: -0.5rem;\n  margin-top: -0.5rem;\n}\n\n.grid > .col,\n.grid > [class*=col] {\n  box-sizing: border-box;\n}\n\n.grid-nogutter {\n  margin-right: 0;\n  margin-left: 0;\n  margin-top: 0;\n}\n\n.grid-nogutter > .col,\n.grid-nogutter > [class*=col-] {\n  padding: 0;\n}\n\n.col {\n  flex-grow: 1;\n  flex-basis: 0;\n  padding: 0.5rem;\n}\n\n.col-fixed {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n}\n\n.col-1 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 8.3333%;\n}\n\n.col-2 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 16.6667%;\n}\n\n.col-3 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 25%;\n}\n\n.col-4 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 33.3333%;\n}\n\n.col-5 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 41.6667%;\n}\n\n.col-6 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 50%;\n}\n\n.col-7 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 58.3333%;\n}\n\n.col-8 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 66.6667%;\n}\n\n.col-9 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 75%;\n}\n\n.col-10 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 83.3333%;\n}\n\n.col-11 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 91.6667%;\n}\n\n.col-12 {\n  flex: 0 0 auto;\n  padding: 0.5rem;\n  width: 100%;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:col-1 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 8.3333%;\n  }\n  .sm\\:col-2 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 16.6667%;\n  }\n  .sm\\:col-3 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 25%;\n  }\n  .sm\\:col-4 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 33.3333%;\n  }\n  .sm\\:col-5 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 41.6667%;\n  }\n  .sm\\:col-6 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 50%;\n  }\n  .sm\\:col-7 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 58.3333%;\n  }\n  .sm\\:col-8 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 66.6667%;\n  }\n  .sm\\:col-9 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 75%;\n  }\n  .sm\\:col-10 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 83.3333%;\n  }\n  .sm\\:col-11 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 91.6667%;\n  }\n  .sm\\:col-12 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 100%;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:col-1 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 8.3333%;\n  }\n  .md\\:col-2 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 16.6667%;\n  }\n  .md\\:col-3 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 25%;\n  }\n  .md\\:col-4 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 33.3333%;\n  }\n  .md\\:col-5 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 41.6667%;\n  }\n  .md\\:col-6 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 50%;\n  }\n  .md\\:col-7 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 58.3333%;\n  }\n  .md\\:col-8 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 66.6667%;\n  }\n  .md\\:col-9 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 75%;\n  }\n  .md\\:col-10 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 83.3333%;\n  }\n  .md\\:col-11 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 91.6667%;\n  }\n  .md\\:col-12 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 100%;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:col-1 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 8.3333%;\n  }\n  .lg\\:col-2 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 16.6667%;\n  }\n  .lg\\:col-3 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 25%;\n  }\n  .lg\\:col-4 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 33.3333%;\n  }\n  .lg\\:col-5 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 41.6667%;\n  }\n  .lg\\:col-6 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 50%;\n  }\n  .lg\\:col-7 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 58.3333%;\n  }\n  .lg\\:col-8 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 66.6667%;\n  }\n  .lg\\:col-9 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 75%;\n  }\n  .lg\\:col-10 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 83.3333%;\n  }\n  .lg\\:col-11 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 91.6667%;\n  }\n  .lg\\:col-12 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 100%;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:col-1 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 8.3333%;\n  }\n  .xl\\:col-2 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 16.6667%;\n  }\n  .xl\\:col-3 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 25%;\n  }\n  .xl\\:col-4 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 33.3333%;\n  }\n  .xl\\:col-5 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 41.6667%;\n  }\n  .xl\\:col-6 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 50%;\n  }\n  .xl\\:col-7 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 58.3333%;\n  }\n  .xl\\:col-8 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 66.6667%;\n  }\n  .xl\\:col-9 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 75%;\n  }\n  .xl\\:col-10 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 83.3333%;\n  }\n  .xl\\:col-11 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 91.6667%;\n  }\n  .xl\\:col-12 {\n    flex: 0 0 auto;\n    padding: 0.5rem;\n    width: 100%;\n  }\n}\n.col-offset-0 {\n  margin-left: 0 !important;\n}\n\n.col-offset-1 {\n  margin-left: 8.3333% !important;\n}\n\n.col-offset-2 {\n  margin-left: 16.6667% !important;\n}\n\n.col-offset-3 {\n  margin-left: 25% !important;\n}\n\n.col-offset-4 {\n  margin-left: 33.3333% !important;\n}\n\n.col-offset-5 {\n  margin-left: 41.6667% !important;\n}\n\n.col-offset-6 {\n  margin-left: 50% !important;\n}\n\n.col-offset-7 {\n  margin-left: 58.3333% !important;\n}\n\n.col-offset-8 {\n  margin-left: 66.6667% !important;\n}\n\n.col-offset-9 {\n  margin-left: 75% !important;\n}\n\n.col-offset-10 {\n  margin-left: 83.3333% !important;\n}\n\n.col-offset-11 {\n  margin-left: 91.6667% !important;\n}\n\n.col-offset-12 {\n  margin-left: 100% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:col-offset-0 {\n    margin-left: 0 !important;\n  }\n  .sm\\:col-offset-1 {\n    margin-left: 8.3333% !important;\n  }\n  .sm\\:col-offset-2 {\n    margin-left: 16.6667% !important;\n  }\n  .sm\\:col-offset-3 {\n    margin-left: 25% !important;\n  }\n  .sm\\:col-offset-4 {\n    margin-left: 33.3333% !important;\n  }\n  .sm\\:col-offset-5 {\n    margin-left: 41.6667% !important;\n  }\n  .sm\\:col-offset-6 {\n    margin-left: 50% !important;\n  }\n  .sm\\:col-offset-7 {\n    margin-left: 58.3333% !important;\n  }\n  .sm\\:col-offset-8 {\n    margin-left: 66.6667% !important;\n  }\n  .sm\\:col-offset-9 {\n    margin-left: 75% !important;\n  }\n  .sm\\:col-offset-10 {\n    margin-left: 83.3333% !important;\n  }\n  .sm\\:col-offset-11 {\n    margin-left: 91.6667% !important;\n  }\n  .sm\\:col-offset-12 {\n    margin-left: 100% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:col-offset-0 {\n    margin-left: 0 !important;\n  }\n  .md\\:col-offset-1 {\n    margin-left: 8.3333% !important;\n  }\n  .md\\:col-offset-2 {\n    margin-left: 16.6667% !important;\n  }\n  .md\\:col-offset-3 {\n    margin-left: 25% !important;\n  }\n  .md\\:col-offset-4 {\n    margin-left: 33.3333% !important;\n  }\n  .md\\:col-offset-5 {\n    margin-left: 41.6667% !important;\n  }\n  .md\\:col-offset-6 {\n    margin-left: 50% !important;\n  }\n  .md\\:col-offset-7 {\n    margin-left: 58.3333% !important;\n  }\n  .md\\:col-offset-8 {\n    margin-left: 66.6667% !important;\n  }\n  .md\\:col-offset-9 {\n    margin-left: 75% !important;\n  }\n  .md\\:col-offset-10 {\n    margin-left: 83.3333% !important;\n  }\n  .md\\:col-offset-11 {\n    margin-left: 91.6667% !important;\n  }\n  .md\\:col-offset-12 {\n    margin-left: 100% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:col-offset-0 {\n    margin-left: 0 !important;\n  }\n  .lg\\:col-offset-1 {\n    margin-left: 8.3333% !important;\n  }\n  .lg\\:col-offset-2 {\n    margin-left: 16.6667% !important;\n  }\n  .lg\\:col-offset-3 {\n    margin-left: 25% !important;\n  }\n  .lg\\:col-offset-4 {\n    margin-left: 33.3333% !important;\n  }\n  .lg\\:col-offset-5 {\n    margin-left: 41.6667% !important;\n  }\n  .lg\\:col-offset-6 {\n    margin-left: 50% !important;\n  }\n  .lg\\:col-offset-7 {\n    margin-left: 58.3333% !important;\n  }\n  .lg\\:col-offset-8 {\n    margin-left: 66.6667% !important;\n  }\n  .lg\\:col-offset-9 {\n    margin-left: 75% !important;\n  }\n  .lg\\:col-offset-10 {\n    margin-left: 83.3333% !important;\n  }\n  .lg\\:col-offset-11 {\n    margin-left: 91.6667% !important;\n  }\n  .lg\\:col-offset-12 {\n    margin-left: 100% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:col-offset-0 {\n    margin-left: 0 !important;\n  }\n  .xl\\:col-offset-1 {\n    margin-left: 8.3333% !important;\n  }\n  .xl\\:col-offset-2 {\n    margin-left: 16.6667% !important;\n  }\n  .xl\\:col-offset-3 {\n    margin-left: 25% !important;\n  }\n  .xl\\:col-offset-4 {\n    margin-left: 33.3333% !important;\n  }\n  .xl\\:col-offset-5 {\n    margin-left: 41.6667% !important;\n  }\n  .xl\\:col-offset-6 {\n    margin-left: 50% !important;\n  }\n  .xl\\:col-offset-7 {\n    margin-left: 58.3333% !important;\n  }\n  .xl\\:col-offset-8 {\n    margin-left: 66.6667% !important;\n  }\n  .xl\\:col-offset-9 {\n    margin-left: 75% !important;\n  }\n  .xl\\:col-offset-10 {\n    margin-left: 83.3333% !important;\n  }\n  .xl\\:col-offset-11 {\n    margin-left: 91.6667% !important;\n  }\n  .xl\\:col-offset-12 {\n    margin-left: 100% !important;\n  }\n}\n.text-0 {\n  color: var(--surface-0) !important;\n}\n\n.text-50 {\n  color: var(--surface-50) !important;\n}\n\n.text-100 {\n  color: var(--surface-100) !important;\n}\n\n.text-200 {\n  color: var(--surface-200) !important;\n}\n\n.text-300 {\n  color: var(--surface-300) !important;\n}\n\n.text-400 {\n  color: var(--surface-400) !important;\n}\n\n.text-500 {\n  color: var(--surface-500) !important;\n}\n\n.text-600 {\n  color: var(--surface-600) !important;\n}\n\n.text-700 {\n  color: var(--surface-700) !important;\n}\n\n.text-800 {\n  color: var(--surface-800) !important;\n}\n\n.text-900 {\n  color: var(--surface-900) !important;\n}\n\n.focus\\:text-0:focus {\n  color: var(--surface-0) !important;\n}\n\n.hover\\:text-0:hover {\n  color: var(--surface-0) !important;\n}\n\n.active\\:text-0:active {\n  color: var(--surface-0) !important;\n}\n\n.focus\\:text-50:focus {\n  color: var(--surface-50) !important;\n}\n\n.hover\\:text-50:hover {\n  color: var(--surface-50) !important;\n}\n\n.active\\:text-50:active {\n  color: var(--surface-50) !important;\n}\n\n.focus\\:text-100:focus {\n  color: var(--surface-100) !important;\n}\n\n.hover\\:text-100:hover {\n  color: var(--surface-100) !important;\n}\n\n.active\\:text-100:active {\n  color: var(--surface-100) !important;\n}\n\n.focus\\:text-200:focus {\n  color: var(--surface-200) !important;\n}\n\n.hover\\:text-200:hover {\n  color: var(--surface-200) !important;\n}\n\n.active\\:text-200:active {\n  color: var(--surface-200) !important;\n}\n\n.focus\\:text-300:focus {\n  color: var(--surface-300) !important;\n}\n\n.hover\\:text-300:hover {\n  color: var(--surface-300) !important;\n}\n\n.active\\:text-300:active {\n  color: var(--surface-300) !important;\n}\n\n.focus\\:text-400:focus {\n  color: var(--surface-400) !important;\n}\n\n.hover\\:text-400:hover {\n  color: var(--surface-400) !important;\n}\n\n.active\\:text-400:active {\n  color: var(--surface-400) !important;\n}\n\n.focus\\:text-500:focus {\n  color: var(--surface-500) !important;\n}\n\n.hover\\:text-500:hover {\n  color: var(--surface-500) !important;\n}\n\n.active\\:text-500:active {\n  color: var(--surface-500) !important;\n}\n\n.focus\\:text-600:focus {\n  color: var(--surface-600) !important;\n}\n\n.hover\\:text-600:hover {\n  color: var(--surface-600) !important;\n}\n\n.active\\:text-600:active {\n  color: var(--surface-600) !important;\n}\n\n.focus\\:text-700:focus {\n  color: var(--surface-700) !important;\n}\n\n.hover\\:text-700:hover {\n  color: var(--surface-700) !important;\n}\n\n.active\\:text-700:active {\n  color: var(--surface-700) !important;\n}\n\n.focus\\:text-800:focus {\n  color: var(--surface-800) !important;\n}\n\n.hover\\:text-800:hover {\n  color: var(--surface-800) !important;\n}\n\n.active\\:text-800:active {\n  color: var(--surface-800) !important;\n}\n\n.focus\\:text-900:focus {\n  color: var(--surface-900) !important;\n}\n\n.hover\\:text-900:hover {\n  color: var(--surface-900) !important;\n}\n\n.active\\:text-900:active {\n  color: var(--surface-900) !important;\n}\n\n.surface-0 {\n  background-color: var(--surface-0) !important;\n}\n\n.surface-50 {\n  background-color: var(--surface-50) !important;\n}\n\n.surface-100 {\n  background-color: var(--surface-100) !important;\n}\n\n.surface-200 {\n  background-color: var(--surface-200) !important;\n}\n\n.surface-300 {\n  background-color: var(--surface-300) !important;\n}\n\n.surface-400 {\n  background-color: var(--surface-400) !important;\n}\n\n.surface-500 {\n  background-color: var(--surface-500) !important;\n}\n\n.surface-600 {\n  background-color: var(--surface-600) !important;\n}\n\n.surface-700 {\n  background-color: var(--surface-700) !important;\n}\n\n.surface-800 {\n  background-color: var(--surface-800) !important;\n}\n\n.surface-900 {\n  background-color: var(--surface-900) !important;\n}\n\n.focus\\:surface-0:focus {\n  background-color: var(--surface-0) !important;\n}\n\n.hover\\:surface-0:hover {\n  background-color: var(--surface-0) !important;\n}\n\n.active\\:surface-0:active {\n  background-color: var(--surface-0) !important;\n}\n\n.focus\\:surface-50:focus {\n  background-color: var(--surface-50) !important;\n}\n\n.hover\\:surface-50:hover {\n  background-color: var(--surface-50) !important;\n}\n\n.active\\:surface-50:active {\n  background-color: var(--surface-50) !important;\n}\n\n.focus\\:surface-100:focus {\n  background-color: var(--surface-100) !important;\n}\n\n.hover\\:surface-100:hover {\n  background-color: var(--surface-100) !important;\n}\n\n.active\\:surface-100:active {\n  background-color: var(--surface-100) !important;\n}\n\n.focus\\:surface-200:focus {\n  background-color: var(--surface-200) !important;\n}\n\n.hover\\:surface-200:hover {\n  background-color: var(--surface-200) !important;\n}\n\n.active\\:surface-200:active {\n  background-color: var(--surface-200) !important;\n}\n\n.focus\\:surface-300:focus {\n  background-color: var(--surface-300) !important;\n}\n\n.hover\\:surface-300:hover {\n  background-color: var(--surface-300) !important;\n}\n\n.active\\:surface-300:active {\n  background-color: var(--surface-300) !important;\n}\n\n.focus\\:surface-400:focus {\n  background-color: var(--surface-400) !important;\n}\n\n.hover\\:surface-400:hover {\n  background-color: var(--surface-400) !important;\n}\n\n.active\\:surface-400:active {\n  background-color: var(--surface-400) !important;\n}\n\n.focus\\:surface-500:focus {\n  background-color: var(--surface-500) !important;\n}\n\n.hover\\:surface-500:hover {\n  background-color: var(--surface-500) !important;\n}\n\n.active\\:surface-500:active {\n  background-color: var(--surface-500) !important;\n}\n\n.focus\\:surface-600:focus {\n  background-color: var(--surface-600) !important;\n}\n\n.hover\\:surface-600:hover {\n  background-color: var(--surface-600) !important;\n}\n\n.active\\:surface-600:active {\n  background-color: var(--surface-600) !important;\n}\n\n.focus\\:surface-700:focus {\n  background-color: var(--surface-700) !important;\n}\n\n.hover\\:surface-700:hover {\n  background-color: var(--surface-700) !important;\n}\n\n.active\\:surface-700:active {\n  background-color: var(--surface-700) !important;\n}\n\n.focus\\:surface-800:focus {\n  background-color: var(--surface-800) !important;\n}\n\n.hover\\:surface-800:hover {\n  background-color: var(--surface-800) !important;\n}\n\n.active\\:surface-800:active {\n  background-color: var(--surface-800) !important;\n}\n\n.focus\\:surface-900:focus {\n  background-color: var(--surface-900) !important;\n}\n\n.hover\\:surface-900:hover {\n  background-color: var(--surface-900) !important;\n}\n\n.active\\:surface-900:active {\n  background-color: var(--surface-900) !important;\n}\n\n.border-0 {\n  border-color: var(--surface-0) !important;\n}\n\n.border-50 {\n  border-color: var(--surface-50) !important;\n}\n\n.border-100 {\n  border-color: var(--surface-100) !important;\n}\n\n.border-200 {\n  border-color: var(--surface-200) !important;\n}\n\n.border-300 {\n  border-color: var(--surface-300) !important;\n}\n\n.border-400 {\n  border-color: var(--surface-400) !important;\n}\n\n.border-500 {\n  border-color: var(--surface-500) !important;\n}\n\n.border-600 {\n  border-color: var(--surface-600) !important;\n}\n\n.border-700 {\n  border-color: var(--surface-700) !important;\n}\n\n.border-800 {\n  border-color: var(--surface-800) !important;\n}\n\n.border-900 {\n  border-color: var(--surface-900) !important;\n}\n\n.focus\\:border-0:focus {\n  border-color: var(--surface-0) !important;\n}\n\n.hover\\:border-0:hover {\n  border-color: var(--surface-0) !important;\n}\n\n.active\\:border-0:active {\n  border-color: var(--surface-0) !important;\n}\n\n.focus\\:border-50:focus {\n  border-color: var(--surface-50) !important;\n}\n\n.hover\\:border-50:hover {\n  border-color: var(--surface-50) !important;\n}\n\n.active\\:border-50:active {\n  border-color: var(--surface-50) !important;\n}\n\n.focus\\:border-100:focus {\n  border-color: var(--surface-100) !important;\n}\n\n.hover\\:border-100:hover {\n  border-color: var(--surface-100) !important;\n}\n\n.active\\:border-100:active {\n  border-color: var(--surface-100) !important;\n}\n\n.focus\\:border-200:focus {\n  border-color: var(--surface-200) !important;\n}\n\n.hover\\:border-200:hover {\n  border-color: var(--surface-200) !important;\n}\n\n.active\\:border-200:active {\n  border-color: var(--surface-200) !important;\n}\n\n.focus\\:border-300:focus {\n  border-color: var(--surface-300) !important;\n}\n\n.hover\\:border-300:hover {\n  border-color: var(--surface-300) !important;\n}\n\n.active\\:border-300:active {\n  border-color: var(--surface-300) !important;\n}\n\n.focus\\:border-400:focus {\n  border-color: var(--surface-400) !important;\n}\n\n.hover\\:border-400:hover {\n  border-color: var(--surface-400) !important;\n}\n\n.active\\:border-400:active {\n  border-color: var(--surface-400) !important;\n}\n\n.focus\\:border-500:focus {\n  border-color: var(--surface-500) !important;\n}\n\n.hover\\:border-500:hover {\n  border-color: var(--surface-500) !important;\n}\n\n.active\\:border-500:active {\n  border-color: var(--surface-500) !important;\n}\n\n.focus\\:border-600:focus {\n  border-color: var(--surface-600) !important;\n}\n\n.hover\\:border-600:hover {\n  border-color: var(--surface-600) !important;\n}\n\n.active\\:border-600:active {\n  border-color: var(--surface-600) !important;\n}\n\n.focus\\:border-700:focus {\n  border-color: var(--surface-700) !important;\n}\n\n.hover\\:border-700:hover {\n  border-color: var(--surface-700) !important;\n}\n\n.active\\:border-700:active {\n  border-color: var(--surface-700) !important;\n}\n\n.focus\\:border-800:focus {\n  border-color: var(--surface-800) !important;\n}\n\n.hover\\:border-800:hover {\n  border-color: var(--surface-800) !important;\n}\n\n.active\\:border-800:active {\n  border-color: var(--surface-800) !important;\n}\n\n.focus\\:border-900:focus {\n  border-color: var(--surface-900) !important;\n}\n\n.hover\\:border-900:hover {\n  border-color: var(--surface-900) !important;\n}\n\n.active\\:border-900:active {\n  border-color: var(--surface-900) !important;\n}\n\n.bg-transparent {\n  background-color: transparent !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:bg-transparent {\n    background-color: transparent !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:bg-transparent {\n    background-color: transparent !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:bg-transparent {\n    background-color: transparent !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:bg-transparent {\n    background-color: transparent !important;\n  }\n}\n.border-transparent {\n  border-color: transparent !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:border-transparent {\n    border-color: transparent !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:border-transparent {\n    border-color: transparent !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:border-transparent {\n    border-color: transparent !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:border-transparent {\n    border-color: transparent !important;\n  }\n}\n.text-blue-50 {\n  color: var(--blue-50) !important;\n}\n.text-blue-100 {\n  color: var(--blue-100) !important;\n}\n.text-blue-200 {\n  color: var(--blue-200) !important;\n}\n.text-blue-300 {\n  color: var(--blue-300) !important;\n}\n.text-blue-400 {\n  color: var(--blue-400) !important;\n}\n.text-blue-500 {\n  color: var(--blue-500) !important;\n}\n.text-blue-600 {\n  color: var(--blue-600) !important;\n}\n.text-blue-700 {\n  color: var(--blue-700) !important;\n}\n.text-blue-800 {\n  color: var(--blue-800) !important;\n}\n.text-blue-900 {\n  color: var(--blue-900) !important;\n}\n\n.focus\\:text-blue-50:focus {\n  color: var(--blue-50) !important;\n}\n.focus\\:text-blue-100:focus {\n  color: var(--blue-100) !important;\n}\n.focus\\:text-blue-200:focus {\n  color: var(--blue-200) !important;\n}\n.focus\\:text-blue-300:focus {\n  color: var(--blue-300) !important;\n}\n.focus\\:text-blue-400:focus {\n  color: var(--blue-400) !important;\n}\n.focus\\:text-blue-500:focus {\n  color: var(--blue-500) !important;\n}\n.focus\\:text-blue-600:focus {\n  color: var(--blue-600) !important;\n}\n.focus\\:text-blue-700:focus {\n  color: var(--blue-700) !important;\n}\n.focus\\:text-blue-800:focus {\n  color: var(--blue-800) !important;\n}\n.focus\\:text-blue-900:focus {\n  color: var(--blue-900) !important;\n}\n\n.hover\\:text-blue-50:hover {\n  color: var(--blue-50) !important;\n}\n.hover\\:text-blue-100:hover {\n  color: var(--blue-100) !important;\n}\n.hover\\:text-blue-200:hover {\n  color: var(--blue-200) !important;\n}\n.hover\\:text-blue-300:hover {\n  color: var(--blue-300) !important;\n}\n.hover\\:text-blue-400:hover {\n  color: var(--blue-400) !important;\n}\n.hover\\:text-blue-500:hover {\n  color: var(--blue-500) !important;\n}\n.hover\\:text-blue-600:hover {\n  color: var(--blue-600) !important;\n}\n.hover\\:text-blue-700:hover {\n  color: var(--blue-700) !important;\n}\n.hover\\:text-blue-800:hover {\n  color: var(--blue-800) !important;\n}\n.hover\\:text-blue-900:hover {\n  color: var(--blue-900) !important;\n}\n\n.active\\:text-blue-50:active {\n  color: var(--blue-50) !important;\n}\n.active\\:text-blue-100:active {\n  color: var(--blue-100) !important;\n}\n.active\\:text-blue-200:active {\n  color: var(--blue-200) !important;\n}\n.active\\:text-blue-300:active {\n  color: var(--blue-300) !important;\n}\n.active\\:text-blue-400:active {\n  color: var(--blue-400) !important;\n}\n.active\\:text-blue-500:active {\n  color: var(--blue-500) !important;\n}\n.active\\:text-blue-600:active {\n  color: var(--blue-600) !important;\n}\n.active\\:text-blue-700:active {\n  color: var(--blue-700) !important;\n}\n.active\\:text-blue-800:active {\n  color: var(--blue-800) !important;\n}\n.active\\:text-blue-900:active {\n  color: var(--blue-900) !important;\n}\n\n.text-green-50 {\n  color: var(--green-50) !important;\n}\n.text-green-100 {\n  color: var(--green-100) !important;\n}\n.text-green-200 {\n  color: var(--green-200) !important;\n}\n.text-green-300 {\n  color: var(--green-300) !important;\n}\n.text-green-400 {\n  color: var(--green-400) !important;\n}\n.text-green-500 {\n  color: var(--green-500) !important;\n}\n.text-green-600 {\n  color: var(--green-600) !important;\n}\n.text-green-700 {\n  color: var(--green-700) !important;\n}\n.text-green-800 {\n  color: var(--green-800) !important;\n}\n.text-green-900 {\n  color: var(--green-900) !important;\n}\n\n.focus\\:text-green-50:focus {\n  color: var(--green-50) !important;\n}\n.focus\\:text-green-100:focus {\n  color: var(--green-100) !important;\n}\n.focus\\:text-green-200:focus {\n  color: var(--green-200) !important;\n}\n.focus\\:text-green-300:focus {\n  color: var(--green-300) !important;\n}\n.focus\\:text-green-400:focus {\n  color: var(--green-400) !important;\n}\n.focus\\:text-green-500:focus {\n  color: var(--green-500) !important;\n}\n.focus\\:text-green-600:focus {\n  color: var(--green-600) !important;\n}\n.focus\\:text-green-700:focus {\n  color: var(--green-700) !important;\n}\n.focus\\:text-green-800:focus {\n  color: var(--green-800) !important;\n}\n.focus\\:text-green-900:focus {\n  color: var(--green-900) !important;\n}\n\n.hover\\:text-green-50:hover {\n  color: var(--green-50) !important;\n}\n.hover\\:text-green-100:hover {\n  color: var(--green-100) !important;\n}\n.hover\\:text-green-200:hover {\n  color: var(--green-200) !important;\n}\n.hover\\:text-green-300:hover {\n  color: var(--green-300) !important;\n}\n.hover\\:text-green-400:hover {\n  color: var(--green-400) !important;\n}\n.hover\\:text-green-500:hover {\n  color: var(--green-500) !important;\n}\n.hover\\:text-green-600:hover {\n  color: var(--green-600) !important;\n}\n.hover\\:text-green-700:hover {\n  color: var(--green-700) !important;\n}\n.hover\\:text-green-800:hover {\n  color: var(--green-800) !important;\n}\n.hover\\:text-green-900:hover {\n  color: var(--green-900) !important;\n}\n\n.active\\:text-green-50:active {\n  color: var(--green-50) !important;\n}\n.active\\:text-green-100:active {\n  color: var(--green-100) !important;\n}\n.active\\:text-green-200:active {\n  color: var(--green-200) !important;\n}\n.active\\:text-green-300:active {\n  color: var(--green-300) !important;\n}\n.active\\:text-green-400:active {\n  color: var(--green-400) !important;\n}\n.active\\:text-green-500:active {\n  color: var(--green-500) !important;\n}\n.active\\:text-green-600:active {\n  color: var(--green-600) !important;\n}\n.active\\:text-green-700:active {\n  color: var(--green-700) !important;\n}\n.active\\:text-green-800:active {\n  color: var(--green-800) !important;\n}\n.active\\:text-green-900:active {\n  color: var(--green-900) !important;\n}\n\n.text-yellow-50 {\n  color: var(--yellow-50) !important;\n}\n.text-yellow-100 {\n  color: var(--yellow-100) !important;\n}\n.text-yellow-200 {\n  color: var(--yellow-200) !important;\n}\n.text-yellow-300 {\n  color: var(--yellow-300) !important;\n}\n.text-yellow-400 {\n  color: var(--yellow-400) !important;\n}\n.text-yellow-500 {\n  color: var(--yellow-500) !important;\n}\n.text-yellow-600 {\n  color: var(--yellow-600) !important;\n}\n.text-yellow-700 {\n  color: var(--yellow-700) !important;\n}\n.text-yellow-800 {\n  color: var(--yellow-800) !important;\n}\n.text-yellow-900 {\n  color: var(--yellow-900) !important;\n}\n\n.focus\\:text-yellow-50:focus {\n  color: var(--yellow-50) !important;\n}\n.focus\\:text-yellow-100:focus {\n  color: var(--yellow-100) !important;\n}\n.focus\\:text-yellow-200:focus {\n  color: var(--yellow-200) !important;\n}\n.focus\\:text-yellow-300:focus {\n  color: var(--yellow-300) !important;\n}\n.focus\\:text-yellow-400:focus {\n  color: var(--yellow-400) !important;\n}\n.focus\\:text-yellow-500:focus {\n  color: var(--yellow-500) !important;\n}\n.focus\\:text-yellow-600:focus {\n  color: var(--yellow-600) !important;\n}\n.focus\\:text-yellow-700:focus {\n  color: var(--yellow-700) !important;\n}\n.focus\\:text-yellow-800:focus {\n  color: var(--yellow-800) !important;\n}\n.focus\\:text-yellow-900:focus {\n  color: var(--yellow-900) !important;\n}\n\n.hover\\:text-yellow-50:hover {\n  color: var(--yellow-50) !important;\n}\n.hover\\:text-yellow-100:hover {\n  color: var(--yellow-100) !important;\n}\n.hover\\:text-yellow-200:hover {\n  color: var(--yellow-200) !important;\n}\n.hover\\:text-yellow-300:hover {\n  color: var(--yellow-300) !important;\n}\n.hover\\:text-yellow-400:hover {\n  color: var(--yellow-400) !important;\n}\n.hover\\:text-yellow-500:hover {\n  color: var(--yellow-500) !important;\n}\n.hover\\:text-yellow-600:hover {\n  color: var(--yellow-600) !important;\n}\n.hover\\:text-yellow-700:hover {\n  color: var(--yellow-700) !important;\n}\n.hover\\:text-yellow-800:hover {\n  color: var(--yellow-800) !important;\n}\n.hover\\:text-yellow-900:hover {\n  color: var(--yellow-900) !important;\n}\n\n.active\\:text-yellow-50:active {\n  color: var(--yellow-50) !important;\n}\n.active\\:text-yellow-100:active {\n  color: var(--yellow-100) !important;\n}\n.active\\:text-yellow-200:active {\n  color: var(--yellow-200) !important;\n}\n.active\\:text-yellow-300:active {\n  color: var(--yellow-300) !important;\n}\n.active\\:text-yellow-400:active {\n  color: var(--yellow-400) !important;\n}\n.active\\:text-yellow-500:active {\n  color: var(--yellow-500) !important;\n}\n.active\\:text-yellow-600:active {\n  color: var(--yellow-600) !important;\n}\n.active\\:text-yellow-700:active {\n  color: var(--yellow-700) !important;\n}\n.active\\:text-yellow-800:active {\n  color: var(--yellow-800) !important;\n}\n.active\\:text-yellow-900:active {\n  color: var(--yellow-900) !important;\n}\n\n.text-cyan-50 {\n  color: var(--cyan-50) !important;\n}\n.text-cyan-100 {\n  color: var(--cyan-100) !important;\n}\n.text-cyan-200 {\n  color: var(--cyan-200) !important;\n}\n.text-cyan-300 {\n  color: var(--cyan-300) !important;\n}\n.text-cyan-400 {\n  color: var(--cyan-400) !important;\n}\n.text-cyan-500 {\n  color: var(--cyan-500) !important;\n}\n.text-cyan-600 {\n  color: var(--cyan-600) !important;\n}\n.text-cyan-700 {\n  color: var(--cyan-700) !important;\n}\n.text-cyan-800 {\n  color: var(--cyan-800) !important;\n}\n.text-cyan-900 {\n  color: var(--cyan-900) !important;\n}\n\n.focus\\:text-cyan-50:focus {\n  color: var(--cyan-50) !important;\n}\n.focus\\:text-cyan-100:focus {\n  color: var(--cyan-100) !important;\n}\n.focus\\:text-cyan-200:focus {\n  color: var(--cyan-200) !important;\n}\n.focus\\:text-cyan-300:focus {\n  color: var(--cyan-300) !important;\n}\n.focus\\:text-cyan-400:focus {\n  color: var(--cyan-400) !important;\n}\n.focus\\:text-cyan-500:focus {\n  color: var(--cyan-500) !important;\n}\n.focus\\:text-cyan-600:focus {\n  color: var(--cyan-600) !important;\n}\n.focus\\:text-cyan-700:focus {\n  color: var(--cyan-700) !important;\n}\n.focus\\:text-cyan-800:focus {\n  color: var(--cyan-800) !important;\n}\n.focus\\:text-cyan-900:focus {\n  color: var(--cyan-900) !important;\n}\n\n.hover\\:text-cyan-50:hover {\n  color: var(--cyan-50) !important;\n}\n.hover\\:text-cyan-100:hover {\n  color: var(--cyan-100) !important;\n}\n.hover\\:text-cyan-200:hover {\n  color: var(--cyan-200) !important;\n}\n.hover\\:text-cyan-300:hover {\n  color: var(--cyan-300) !important;\n}\n.hover\\:text-cyan-400:hover {\n  color: var(--cyan-400) !important;\n}\n.hover\\:text-cyan-500:hover {\n  color: var(--cyan-500) !important;\n}\n.hover\\:text-cyan-600:hover {\n  color: var(--cyan-600) !important;\n}\n.hover\\:text-cyan-700:hover {\n  color: var(--cyan-700) !important;\n}\n.hover\\:text-cyan-800:hover {\n  color: var(--cyan-800) !important;\n}\n.hover\\:text-cyan-900:hover {\n  color: var(--cyan-900) !important;\n}\n\n.active\\:text-cyan-50:active {\n  color: var(--cyan-50) !important;\n}\n.active\\:text-cyan-100:active {\n  color: var(--cyan-100) !important;\n}\n.active\\:text-cyan-200:active {\n  color: var(--cyan-200) !important;\n}\n.active\\:text-cyan-300:active {\n  color: var(--cyan-300) !important;\n}\n.active\\:text-cyan-400:active {\n  color: var(--cyan-400) !important;\n}\n.active\\:text-cyan-500:active {\n  color: var(--cyan-500) !important;\n}\n.active\\:text-cyan-600:active {\n  color: var(--cyan-600) !important;\n}\n.active\\:text-cyan-700:active {\n  color: var(--cyan-700) !important;\n}\n.active\\:text-cyan-800:active {\n  color: var(--cyan-800) !important;\n}\n.active\\:text-cyan-900:active {\n  color: var(--cyan-900) !important;\n}\n\n.text-pink-50 {\n  color: var(--pink-50) !important;\n}\n.text-pink-100 {\n  color: var(--pink-100) !important;\n}\n.text-pink-200 {\n  color: var(--pink-200) !important;\n}\n.text-pink-300 {\n  color: var(--pink-300) !important;\n}\n.text-pink-400 {\n  color: var(--pink-400) !important;\n}\n.text-pink-500 {\n  color: var(--pink-500) !important;\n}\n.text-pink-600 {\n  color: var(--pink-600) !important;\n}\n.text-pink-700 {\n  color: var(--pink-700) !important;\n}\n.text-pink-800 {\n  color: var(--pink-800) !important;\n}\n.text-pink-900 {\n  color: var(--pink-900) !important;\n}\n\n.focus\\:text-pink-50:focus {\n  color: var(--pink-50) !important;\n}\n.focus\\:text-pink-100:focus {\n  color: var(--pink-100) !important;\n}\n.focus\\:text-pink-200:focus {\n  color: var(--pink-200) !important;\n}\n.focus\\:text-pink-300:focus {\n  color: var(--pink-300) !important;\n}\n.focus\\:text-pink-400:focus {\n  color: var(--pink-400) !important;\n}\n.focus\\:text-pink-500:focus {\n  color: var(--pink-500) !important;\n}\n.focus\\:text-pink-600:focus {\n  color: var(--pink-600) !important;\n}\n.focus\\:text-pink-700:focus {\n  color: var(--pink-700) !important;\n}\n.focus\\:text-pink-800:focus {\n  color: var(--pink-800) !important;\n}\n.focus\\:text-pink-900:focus {\n  color: var(--pink-900) !important;\n}\n\n.hover\\:text-pink-50:hover {\n  color: var(--pink-50) !important;\n}\n.hover\\:text-pink-100:hover {\n  color: var(--pink-100) !important;\n}\n.hover\\:text-pink-200:hover {\n  color: var(--pink-200) !important;\n}\n.hover\\:text-pink-300:hover {\n  color: var(--pink-300) !important;\n}\n.hover\\:text-pink-400:hover {\n  color: var(--pink-400) !important;\n}\n.hover\\:text-pink-500:hover {\n  color: var(--pink-500) !important;\n}\n.hover\\:text-pink-600:hover {\n  color: var(--pink-600) !important;\n}\n.hover\\:text-pink-700:hover {\n  color: var(--pink-700) !important;\n}\n.hover\\:text-pink-800:hover {\n  color: var(--pink-800) !important;\n}\n.hover\\:text-pink-900:hover {\n  color: var(--pink-900) !important;\n}\n\n.active\\:text-pink-50:active {\n  color: var(--pink-50) !important;\n}\n.active\\:text-pink-100:active {\n  color: var(--pink-100) !important;\n}\n.active\\:text-pink-200:active {\n  color: var(--pink-200) !important;\n}\n.active\\:text-pink-300:active {\n  color: var(--pink-300) !important;\n}\n.active\\:text-pink-400:active {\n  color: var(--pink-400) !important;\n}\n.active\\:text-pink-500:active {\n  color: var(--pink-500) !important;\n}\n.active\\:text-pink-600:active {\n  color: var(--pink-600) !important;\n}\n.active\\:text-pink-700:active {\n  color: var(--pink-700) !important;\n}\n.active\\:text-pink-800:active {\n  color: var(--pink-800) !important;\n}\n.active\\:text-pink-900:active {\n  color: var(--pink-900) !important;\n}\n\n.text-indigo-50 {\n  color: var(--indigo-50) !important;\n}\n.text-indigo-100 {\n  color: var(--indigo-100) !important;\n}\n.text-indigo-200 {\n  color: var(--indigo-200) !important;\n}\n.text-indigo-300 {\n  color: var(--indigo-300) !important;\n}\n.text-indigo-400 {\n  color: var(--indigo-400) !important;\n}\n.text-indigo-500 {\n  color: var(--indigo-500) !important;\n}\n.text-indigo-600 {\n  color: var(--indigo-600) !important;\n}\n.text-indigo-700 {\n  color: var(--indigo-700) !important;\n}\n.text-indigo-800 {\n  color: var(--indigo-800) !important;\n}\n.text-indigo-900 {\n  color: var(--indigo-900) !important;\n}\n\n.focus\\:text-indigo-50:focus {\n  color: var(--indigo-50) !important;\n}\n.focus\\:text-indigo-100:focus {\n  color: var(--indigo-100) !important;\n}\n.focus\\:text-indigo-200:focus {\n  color: var(--indigo-200) !important;\n}\n.focus\\:text-indigo-300:focus {\n  color: var(--indigo-300) !important;\n}\n.focus\\:text-indigo-400:focus {\n  color: var(--indigo-400) !important;\n}\n.focus\\:text-indigo-500:focus {\n  color: var(--indigo-500) !important;\n}\n.focus\\:text-indigo-600:focus {\n  color: var(--indigo-600) !important;\n}\n.focus\\:text-indigo-700:focus {\n  color: var(--indigo-700) !important;\n}\n.focus\\:text-indigo-800:focus {\n  color: var(--indigo-800) !important;\n}\n.focus\\:text-indigo-900:focus {\n  color: var(--indigo-900) !important;\n}\n\n.hover\\:text-indigo-50:hover {\n  color: var(--indigo-50) !important;\n}\n.hover\\:text-indigo-100:hover {\n  color: var(--indigo-100) !important;\n}\n.hover\\:text-indigo-200:hover {\n  color: var(--indigo-200) !important;\n}\n.hover\\:text-indigo-300:hover {\n  color: var(--indigo-300) !important;\n}\n.hover\\:text-indigo-400:hover {\n  color: var(--indigo-400) !important;\n}\n.hover\\:text-indigo-500:hover {\n  color: var(--indigo-500) !important;\n}\n.hover\\:text-indigo-600:hover {\n  color: var(--indigo-600) !important;\n}\n.hover\\:text-indigo-700:hover {\n  color: var(--indigo-700) !important;\n}\n.hover\\:text-indigo-800:hover {\n  color: var(--indigo-800) !important;\n}\n.hover\\:text-indigo-900:hover {\n  color: var(--indigo-900) !important;\n}\n\n.active\\:text-indigo-50:active {\n  color: var(--indigo-50) !important;\n}\n.active\\:text-indigo-100:active {\n  color: var(--indigo-100) !important;\n}\n.active\\:text-indigo-200:active {\n  color: var(--indigo-200) !important;\n}\n.active\\:text-indigo-300:active {\n  color: var(--indigo-300) !important;\n}\n.active\\:text-indigo-400:active {\n  color: var(--indigo-400) !important;\n}\n.active\\:text-indigo-500:active {\n  color: var(--indigo-500) !important;\n}\n.active\\:text-indigo-600:active {\n  color: var(--indigo-600) !important;\n}\n.active\\:text-indigo-700:active {\n  color: var(--indigo-700) !important;\n}\n.active\\:text-indigo-800:active {\n  color: var(--indigo-800) !important;\n}\n.active\\:text-indigo-900:active {\n  color: var(--indigo-900) !important;\n}\n\n.text-teal-50 {\n  color: var(--teal-50) !important;\n}\n.text-teal-100 {\n  color: var(--teal-100) !important;\n}\n.text-teal-200 {\n  color: var(--teal-200) !important;\n}\n.text-teal-300 {\n  color: var(--teal-300) !important;\n}\n.text-teal-400 {\n  color: var(--teal-400) !important;\n}\n.text-teal-500 {\n  color: var(--teal-500) !important;\n}\n.text-teal-600 {\n  color: var(--teal-600) !important;\n}\n.text-teal-700 {\n  color: var(--teal-700) !important;\n}\n.text-teal-800 {\n  color: var(--teal-800) !important;\n}\n.text-teal-900 {\n  color: var(--teal-900) !important;\n}\n\n.focus\\:text-teal-50:focus {\n  color: var(--teal-50) !important;\n}\n.focus\\:text-teal-100:focus {\n  color: var(--teal-100) !important;\n}\n.focus\\:text-teal-200:focus {\n  color: var(--teal-200) !important;\n}\n.focus\\:text-teal-300:focus {\n  color: var(--teal-300) !important;\n}\n.focus\\:text-teal-400:focus {\n  color: var(--teal-400) !important;\n}\n.focus\\:text-teal-500:focus {\n  color: var(--teal-500) !important;\n}\n.focus\\:text-teal-600:focus {\n  color: var(--teal-600) !important;\n}\n.focus\\:text-teal-700:focus {\n  color: var(--teal-700) !important;\n}\n.focus\\:text-teal-800:focus {\n  color: var(--teal-800) !important;\n}\n.focus\\:text-teal-900:focus {\n  color: var(--teal-900) !important;\n}\n\n.hover\\:text-teal-50:hover {\n  color: var(--teal-50) !important;\n}\n.hover\\:text-teal-100:hover {\n  color: var(--teal-100) !important;\n}\n.hover\\:text-teal-200:hover {\n  color: var(--teal-200) !important;\n}\n.hover\\:text-teal-300:hover {\n  color: var(--teal-300) !important;\n}\n.hover\\:text-teal-400:hover {\n  color: var(--teal-400) !important;\n}\n.hover\\:text-teal-500:hover {\n  color: var(--teal-500) !important;\n}\n.hover\\:text-teal-600:hover {\n  color: var(--teal-600) !important;\n}\n.hover\\:text-teal-700:hover {\n  color: var(--teal-700) !important;\n}\n.hover\\:text-teal-800:hover {\n  color: var(--teal-800) !important;\n}\n.hover\\:text-teal-900:hover {\n  color: var(--teal-900) !important;\n}\n\n.active\\:text-teal-50:active {\n  color: var(--teal-50) !important;\n}\n.active\\:text-teal-100:active {\n  color: var(--teal-100) !important;\n}\n.active\\:text-teal-200:active {\n  color: var(--teal-200) !important;\n}\n.active\\:text-teal-300:active {\n  color: var(--teal-300) !important;\n}\n.active\\:text-teal-400:active {\n  color: var(--teal-400) !important;\n}\n.active\\:text-teal-500:active {\n  color: var(--teal-500) !important;\n}\n.active\\:text-teal-600:active {\n  color: var(--teal-600) !important;\n}\n.active\\:text-teal-700:active {\n  color: var(--teal-700) !important;\n}\n.active\\:text-teal-800:active {\n  color: var(--teal-800) !important;\n}\n.active\\:text-teal-900:active {\n  color: var(--teal-900) !important;\n}\n\n.text-orange-50 {\n  color: var(--orange-50) !important;\n}\n.text-orange-100 {\n  color: var(--orange-100) !important;\n}\n.text-orange-200 {\n  color: var(--orange-200) !important;\n}\n.text-orange-300 {\n  color: var(--orange-300) !important;\n}\n.text-orange-400 {\n  color: var(--orange-400) !important;\n}\n.text-orange-500 {\n  color: var(--orange-500) !important;\n}\n.text-orange-600 {\n  color: var(--orange-600) !important;\n}\n.text-orange-700 {\n  color: var(--orange-700) !important;\n}\n.text-orange-800 {\n  color: var(--orange-800) !important;\n}\n.text-orange-900 {\n  color: var(--orange-900) !important;\n}\n\n.focus\\:text-orange-50:focus {\n  color: var(--orange-50) !important;\n}\n.focus\\:text-orange-100:focus {\n  color: var(--orange-100) !important;\n}\n.focus\\:text-orange-200:focus {\n  color: var(--orange-200) !important;\n}\n.focus\\:text-orange-300:focus {\n  color: var(--orange-300) !important;\n}\n.focus\\:text-orange-400:focus {\n  color: var(--orange-400) !important;\n}\n.focus\\:text-orange-500:focus {\n  color: var(--orange-500) !important;\n}\n.focus\\:text-orange-600:focus {\n  color: var(--orange-600) !important;\n}\n.focus\\:text-orange-700:focus {\n  color: var(--orange-700) !important;\n}\n.focus\\:text-orange-800:focus {\n  color: var(--orange-800) !important;\n}\n.focus\\:text-orange-900:focus {\n  color: var(--orange-900) !important;\n}\n\n.hover\\:text-orange-50:hover {\n  color: var(--orange-50) !important;\n}\n.hover\\:text-orange-100:hover {\n  color: var(--orange-100) !important;\n}\n.hover\\:text-orange-200:hover {\n  color: var(--orange-200) !important;\n}\n.hover\\:text-orange-300:hover {\n  color: var(--orange-300) !important;\n}\n.hover\\:text-orange-400:hover {\n  color: var(--orange-400) !important;\n}\n.hover\\:text-orange-500:hover {\n  color: var(--orange-500) !important;\n}\n.hover\\:text-orange-600:hover {\n  color: var(--orange-600) !important;\n}\n.hover\\:text-orange-700:hover {\n  color: var(--orange-700) !important;\n}\n.hover\\:text-orange-800:hover {\n  color: var(--orange-800) !important;\n}\n.hover\\:text-orange-900:hover {\n  color: var(--orange-900) !important;\n}\n\n.active\\:text-orange-50:active {\n  color: var(--orange-50) !important;\n}\n.active\\:text-orange-100:active {\n  color: var(--orange-100) !important;\n}\n.active\\:text-orange-200:active {\n  color: var(--orange-200) !important;\n}\n.active\\:text-orange-300:active {\n  color: var(--orange-300) !important;\n}\n.active\\:text-orange-400:active {\n  color: var(--orange-400) !important;\n}\n.active\\:text-orange-500:active {\n  color: var(--orange-500) !important;\n}\n.active\\:text-orange-600:active {\n  color: var(--orange-600) !important;\n}\n.active\\:text-orange-700:active {\n  color: var(--orange-700) !important;\n}\n.active\\:text-orange-800:active {\n  color: var(--orange-800) !important;\n}\n.active\\:text-orange-900:active {\n  color: var(--orange-900) !important;\n}\n\n.text-bluegray-50 {\n  color: var(--bluegray-50) !important;\n}\n.text-bluegray-100 {\n  color: var(--bluegray-100) !important;\n}\n.text-bluegray-200 {\n  color: var(--bluegray-200) !important;\n}\n.text-bluegray-300 {\n  color: var(--bluegray-300) !important;\n}\n.text-bluegray-400 {\n  color: var(--bluegray-400) !important;\n}\n.text-bluegray-500 {\n  color: var(--bluegray-500) !important;\n}\n.text-bluegray-600 {\n  color: var(--bluegray-600) !important;\n}\n.text-bluegray-700 {\n  color: var(--bluegray-700) !important;\n}\n.text-bluegray-800 {\n  color: var(--bluegray-800) !important;\n}\n.text-bluegray-900 {\n  color: var(--bluegray-900) !important;\n}\n\n.focus\\:text-bluegray-50:focus {\n  color: var(--bluegray-50) !important;\n}\n.focus\\:text-bluegray-100:focus {\n  color: var(--bluegray-100) !important;\n}\n.focus\\:text-bluegray-200:focus {\n  color: var(--bluegray-200) !important;\n}\n.focus\\:text-bluegray-300:focus {\n  color: var(--bluegray-300) !important;\n}\n.focus\\:text-bluegray-400:focus {\n  color: var(--bluegray-400) !important;\n}\n.focus\\:text-bluegray-500:focus {\n  color: var(--bluegray-500) !important;\n}\n.focus\\:text-bluegray-600:focus {\n  color: var(--bluegray-600) !important;\n}\n.focus\\:text-bluegray-700:focus {\n  color: var(--bluegray-700) !important;\n}\n.focus\\:text-bluegray-800:focus {\n  color: var(--bluegray-800) !important;\n}\n.focus\\:text-bluegray-900:focus {\n  color: var(--bluegray-900) !important;\n}\n\n.hover\\:text-bluegray-50:hover {\n  color: var(--bluegray-50) !important;\n}\n.hover\\:text-bluegray-100:hover {\n  color: var(--bluegray-100) !important;\n}\n.hover\\:text-bluegray-200:hover {\n  color: var(--bluegray-200) !important;\n}\n.hover\\:text-bluegray-300:hover {\n  color: var(--bluegray-300) !important;\n}\n.hover\\:text-bluegray-400:hover {\n  color: var(--bluegray-400) !important;\n}\n.hover\\:text-bluegray-500:hover {\n  color: var(--bluegray-500) !important;\n}\n.hover\\:text-bluegray-600:hover {\n  color: var(--bluegray-600) !important;\n}\n.hover\\:text-bluegray-700:hover {\n  color: var(--bluegray-700) !important;\n}\n.hover\\:text-bluegray-800:hover {\n  color: var(--bluegray-800) !important;\n}\n.hover\\:text-bluegray-900:hover {\n  color: var(--bluegray-900) !important;\n}\n\n.active\\:text-bluegray-50:active {\n  color: var(--bluegray-50) !important;\n}\n.active\\:text-bluegray-100:active {\n  color: var(--bluegray-100) !important;\n}\n.active\\:text-bluegray-200:active {\n  color: var(--bluegray-200) !important;\n}\n.active\\:text-bluegray-300:active {\n  color: var(--bluegray-300) !important;\n}\n.active\\:text-bluegray-400:active {\n  color: var(--bluegray-400) !important;\n}\n.active\\:text-bluegray-500:active {\n  color: var(--bluegray-500) !important;\n}\n.active\\:text-bluegray-600:active {\n  color: var(--bluegray-600) !important;\n}\n.active\\:text-bluegray-700:active {\n  color: var(--bluegray-700) !important;\n}\n.active\\:text-bluegray-800:active {\n  color: var(--bluegray-800) !important;\n}\n.active\\:text-bluegray-900:active {\n  color: var(--bluegray-900) !important;\n}\n\n.text-purple-50 {\n  color: var(--purple-50) !important;\n}\n.text-purple-100 {\n  color: var(--purple-100) !important;\n}\n.text-purple-200 {\n  color: var(--purple-200) !important;\n}\n.text-purple-300 {\n  color: var(--purple-300) !important;\n}\n.text-purple-400 {\n  color: var(--purple-400) !important;\n}\n.text-purple-500 {\n  color: var(--purple-500) !important;\n}\n.text-purple-600 {\n  color: var(--purple-600) !important;\n}\n.text-purple-700 {\n  color: var(--purple-700) !important;\n}\n.text-purple-800 {\n  color: var(--purple-800) !important;\n}\n.text-purple-900 {\n  color: var(--purple-900) !important;\n}\n\n.focus\\:text-purple-50:focus {\n  color: var(--purple-50) !important;\n}\n.focus\\:text-purple-100:focus {\n  color: var(--purple-100) !important;\n}\n.focus\\:text-purple-200:focus {\n  color: var(--purple-200) !important;\n}\n.focus\\:text-purple-300:focus {\n  color: var(--purple-300) !important;\n}\n.focus\\:text-purple-400:focus {\n  color: var(--purple-400) !important;\n}\n.focus\\:text-purple-500:focus {\n  color: var(--purple-500) !important;\n}\n.focus\\:text-purple-600:focus {\n  color: var(--purple-600) !important;\n}\n.focus\\:text-purple-700:focus {\n  color: var(--purple-700) !important;\n}\n.focus\\:text-purple-800:focus {\n  color: var(--purple-800) !important;\n}\n.focus\\:text-purple-900:focus {\n  color: var(--purple-900) !important;\n}\n\n.hover\\:text-purple-50:hover {\n  color: var(--purple-50) !important;\n}\n.hover\\:text-purple-100:hover {\n  color: var(--purple-100) !important;\n}\n.hover\\:text-purple-200:hover {\n  color: var(--purple-200) !important;\n}\n.hover\\:text-purple-300:hover {\n  color: var(--purple-300) !important;\n}\n.hover\\:text-purple-400:hover {\n  color: var(--purple-400) !important;\n}\n.hover\\:text-purple-500:hover {\n  color: var(--purple-500) !important;\n}\n.hover\\:text-purple-600:hover {\n  color: var(--purple-600) !important;\n}\n.hover\\:text-purple-700:hover {\n  color: var(--purple-700) !important;\n}\n.hover\\:text-purple-800:hover {\n  color: var(--purple-800) !important;\n}\n.hover\\:text-purple-900:hover {\n  color: var(--purple-900) !important;\n}\n\n.active\\:text-purple-50:active {\n  color: var(--purple-50) !important;\n}\n.active\\:text-purple-100:active {\n  color: var(--purple-100) !important;\n}\n.active\\:text-purple-200:active {\n  color: var(--purple-200) !important;\n}\n.active\\:text-purple-300:active {\n  color: var(--purple-300) !important;\n}\n.active\\:text-purple-400:active {\n  color: var(--purple-400) !important;\n}\n.active\\:text-purple-500:active {\n  color: var(--purple-500) !important;\n}\n.active\\:text-purple-600:active {\n  color: var(--purple-600) !important;\n}\n.active\\:text-purple-700:active {\n  color: var(--purple-700) !important;\n}\n.active\\:text-purple-800:active {\n  color: var(--purple-800) !important;\n}\n.active\\:text-purple-900:active {\n  color: var(--purple-900) !important;\n}\n\n.text-gray-50 {\n  color: var(--gray-50) !important;\n}\n.text-gray-100 {\n  color: var(--gray-100) !important;\n}\n.text-gray-200 {\n  color: var(--gray-200) !important;\n}\n.text-gray-300 {\n  color: var(--gray-300) !important;\n}\n.text-gray-400 {\n  color: var(--gray-400) !important;\n}\n.text-gray-500 {\n  color: var(--gray-500) !important;\n}\n.text-gray-600 {\n  color: var(--gray-600) !important;\n}\n.text-gray-700 {\n  color: var(--gray-700) !important;\n}\n.text-gray-800 {\n  color: var(--gray-800) !important;\n}\n.text-gray-900 {\n  color: var(--gray-900) !important;\n}\n\n.focus\\:text-gray-50:focus {\n  color: var(--gray-50) !important;\n}\n.focus\\:text-gray-100:focus {\n  color: var(--gray-100) !important;\n}\n.focus\\:text-gray-200:focus {\n  color: var(--gray-200) !important;\n}\n.focus\\:text-gray-300:focus {\n  color: var(--gray-300) !important;\n}\n.focus\\:text-gray-400:focus {\n  color: var(--gray-400) !important;\n}\n.focus\\:text-gray-500:focus {\n  color: var(--gray-500) !important;\n}\n.focus\\:text-gray-600:focus {\n  color: var(--gray-600) !important;\n}\n.focus\\:text-gray-700:focus {\n  color: var(--gray-700) !important;\n}\n.focus\\:text-gray-800:focus {\n  color: var(--gray-800) !important;\n}\n.focus\\:text-gray-900:focus {\n  color: var(--gray-900) !important;\n}\n\n.hover\\:text-gray-50:hover {\n  color: var(--gray-50) !important;\n}\n.hover\\:text-gray-100:hover {\n  color: var(--gray-100) !important;\n}\n.hover\\:text-gray-200:hover {\n  color: var(--gray-200) !important;\n}\n.hover\\:text-gray-300:hover {\n  color: var(--gray-300) !important;\n}\n.hover\\:text-gray-400:hover {\n  color: var(--gray-400) !important;\n}\n.hover\\:text-gray-500:hover {\n  color: var(--gray-500) !important;\n}\n.hover\\:text-gray-600:hover {\n  color: var(--gray-600) !important;\n}\n.hover\\:text-gray-700:hover {\n  color: var(--gray-700) !important;\n}\n.hover\\:text-gray-800:hover {\n  color: var(--gray-800) !important;\n}\n.hover\\:text-gray-900:hover {\n  color: var(--gray-900) !important;\n}\n\n.active\\:text-gray-50:active {\n  color: var(--gray-50) !important;\n}\n.active\\:text-gray-100:active {\n  color: var(--gray-100) !important;\n}\n.active\\:text-gray-200:active {\n  color: var(--gray-200) !important;\n}\n.active\\:text-gray-300:active {\n  color: var(--gray-300) !important;\n}\n.active\\:text-gray-400:active {\n  color: var(--gray-400) !important;\n}\n.active\\:text-gray-500:active {\n  color: var(--gray-500) !important;\n}\n.active\\:text-gray-600:active {\n  color: var(--gray-600) !important;\n}\n.active\\:text-gray-700:active {\n  color: var(--gray-700) !important;\n}\n.active\\:text-gray-800:active {\n  color: var(--gray-800) !important;\n}\n.active\\:text-gray-900:active {\n  color: var(--gray-900) !important;\n}\n\n.bg-blue-50 {\n  background-color: var(--blue-50) !important;\n}\n.bg-blue-100 {\n  background-color: var(--blue-100) !important;\n}\n.bg-blue-200 {\n  background-color: var(--blue-200) !important;\n}\n.bg-blue-300 {\n  background-color: var(--blue-300) !important;\n}\n.bg-blue-400 {\n  background-color: var(--blue-400) !important;\n}\n.bg-blue-500 {\n  background-color: var(--blue-500) !important;\n}\n.bg-blue-600 {\n  background-color: var(--blue-600) !important;\n}\n.bg-blue-700 {\n  background-color: var(--blue-700) !important;\n}\n.bg-blue-800 {\n  background-color: var(--blue-800) !important;\n}\n.bg-blue-900 {\n  background-color: var(--blue-900) !important;\n}\n\n.focus\\:bg-blue-50:focus {\n  background-color: var(--blue-50) !important;\n}\n.focus\\:bg-blue-100:focus {\n  background-color: var(--blue-100) !important;\n}\n.focus\\:bg-blue-200:focus {\n  background-color: var(--blue-200) !important;\n}\n.focus\\:bg-blue-300:focus {\n  background-color: var(--blue-300) !important;\n}\n.focus\\:bg-blue-400:focus {\n  background-color: var(--blue-400) !important;\n}\n.focus\\:bg-blue-500:focus {\n  background-color: var(--blue-500) !important;\n}\n.focus\\:bg-blue-600:focus {\n  background-color: var(--blue-600) !important;\n}\n.focus\\:bg-blue-700:focus {\n  background-color: var(--blue-700) !important;\n}\n.focus\\:bg-blue-800:focus {\n  background-color: var(--blue-800) !important;\n}\n.focus\\:bg-blue-900:focus {\n  background-color: var(--blue-900) !important;\n}\n\n.hover\\:bg-blue-50:hover {\n  background-color: var(--blue-50) !important;\n}\n.hover\\:bg-blue-100:hover {\n  background-color: var(--blue-100) !important;\n}\n.hover\\:bg-blue-200:hover {\n  background-color: var(--blue-200) !important;\n}\n.hover\\:bg-blue-300:hover {\n  background-color: var(--blue-300) !important;\n}\n.hover\\:bg-blue-400:hover {\n  background-color: var(--blue-400) !important;\n}\n.hover\\:bg-blue-500:hover {\n  background-color: var(--blue-500) !important;\n}\n.hover\\:bg-blue-600:hover {\n  background-color: var(--blue-600) !important;\n}\n.hover\\:bg-blue-700:hover {\n  background-color: var(--blue-700) !important;\n}\n.hover\\:bg-blue-800:hover {\n  background-color: var(--blue-800) !important;\n}\n.hover\\:bg-blue-900:hover {\n  background-color: var(--blue-900) !important;\n}\n\n.active\\:bg-blue-50:active {\n  background-color: var(--blue-50) !important;\n}\n.active\\:bg-blue-100:active {\n  background-color: var(--blue-100) !important;\n}\n.active\\:bg-blue-200:active {\n  background-color: var(--blue-200) !important;\n}\n.active\\:bg-blue-300:active {\n  background-color: var(--blue-300) !important;\n}\n.active\\:bg-blue-400:active {\n  background-color: var(--blue-400) !important;\n}\n.active\\:bg-blue-500:active {\n  background-color: var(--blue-500) !important;\n}\n.active\\:bg-blue-600:active {\n  background-color: var(--blue-600) !important;\n}\n.active\\:bg-blue-700:active {\n  background-color: var(--blue-700) !important;\n}\n.active\\:bg-blue-800:active {\n  background-color: var(--blue-800) !important;\n}\n.active\\:bg-blue-900:active {\n  background-color: var(--blue-900) !important;\n}\n\n.bg-green-50 {\n  background-color: var(--green-50) !important;\n}\n.bg-green-100 {\n  background-color: var(--green-100) !important;\n}\n.bg-green-200 {\n  background-color: var(--green-200) !important;\n}\n.bg-green-300 {\n  background-color: var(--green-300) !important;\n}\n.bg-green-400 {\n  background-color: var(--green-400) !important;\n}\n.bg-green-500 {\n  background-color: var(--green-500) !important;\n}\n.bg-green-600 {\n  background-color: var(--green-600) !important;\n}\n.bg-green-700 {\n  background-color: var(--green-700) !important;\n}\n.bg-green-800 {\n  background-color: var(--green-800) !important;\n}\n.bg-green-900 {\n  background-color: var(--green-900) !important;\n}\n\n.focus\\:bg-green-50:focus {\n  background-color: var(--green-50) !important;\n}\n.focus\\:bg-green-100:focus {\n  background-color: var(--green-100) !important;\n}\n.focus\\:bg-green-200:focus {\n  background-color: var(--green-200) !important;\n}\n.focus\\:bg-green-300:focus {\n  background-color: var(--green-300) !important;\n}\n.focus\\:bg-green-400:focus {\n  background-color: var(--green-400) !important;\n}\n.focus\\:bg-green-500:focus {\n  background-color: var(--green-500) !important;\n}\n.focus\\:bg-green-600:focus {\n  background-color: var(--green-600) !important;\n}\n.focus\\:bg-green-700:focus {\n  background-color: var(--green-700) !important;\n}\n.focus\\:bg-green-800:focus {\n  background-color: var(--green-800) !important;\n}\n.focus\\:bg-green-900:focus {\n  background-color: var(--green-900) !important;\n}\n\n.hover\\:bg-green-50:hover {\n  background-color: var(--green-50) !important;\n}\n.hover\\:bg-green-100:hover {\n  background-color: var(--green-100) !important;\n}\n.hover\\:bg-green-200:hover {\n  background-color: var(--green-200) !important;\n}\n.hover\\:bg-green-300:hover {\n  background-color: var(--green-300) !important;\n}\n.hover\\:bg-green-400:hover {\n  background-color: var(--green-400) !important;\n}\n.hover\\:bg-green-500:hover {\n  background-color: var(--green-500) !important;\n}\n.hover\\:bg-green-600:hover {\n  background-color: var(--green-600) !important;\n}\n.hover\\:bg-green-700:hover {\n  background-color: var(--green-700) !important;\n}\n.hover\\:bg-green-800:hover {\n  background-color: var(--green-800) !important;\n}\n.hover\\:bg-green-900:hover {\n  background-color: var(--green-900) !important;\n}\n\n.active\\:bg-green-50:active {\n  background-color: var(--green-50) !important;\n}\n.active\\:bg-green-100:active {\n  background-color: var(--green-100) !important;\n}\n.active\\:bg-green-200:active {\n  background-color: var(--green-200) !important;\n}\n.active\\:bg-green-300:active {\n  background-color: var(--green-300) !important;\n}\n.active\\:bg-green-400:active {\n  background-color: var(--green-400) !important;\n}\n.active\\:bg-green-500:active {\n  background-color: var(--green-500) !important;\n}\n.active\\:bg-green-600:active {\n  background-color: var(--green-600) !important;\n}\n.active\\:bg-green-700:active {\n  background-color: var(--green-700) !important;\n}\n.active\\:bg-green-800:active {\n  background-color: var(--green-800) !important;\n}\n.active\\:bg-green-900:active {\n  background-color: var(--green-900) !important;\n}\n\n.bg-yellow-50 {\n  background-color: var(--yellow-50) !important;\n}\n.bg-yellow-100 {\n  background-color: var(--yellow-100) !important;\n}\n.bg-yellow-200 {\n  background-color: var(--yellow-200) !important;\n}\n.bg-yellow-300 {\n  background-color: var(--yellow-300) !important;\n}\n.bg-yellow-400 {\n  background-color: var(--yellow-400) !important;\n}\n.bg-yellow-500 {\n  background-color: var(--yellow-500) !important;\n}\n.bg-yellow-600 {\n  background-color: var(--yellow-600) !important;\n}\n.bg-yellow-700 {\n  background-color: var(--yellow-700) !important;\n}\n.bg-yellow-800 {\n  background-color: var(--yellow-800) !important;\n}\n.bg-yellow-900 {\n  background-color: var(--yellow-900) !important;\n}\n\n.focus\\:bg-yellow-50:focus {\n  background-color: var(--yellow-50) !important;\n}\n.focus\\:bg-yellow-100:focus {\n  background-color: var(--yellow-100) !important;\n}\n.focus\\:bg-yellow-200:focus {\n  background-color: var(--yellow-200) !important;\n}\n.focus\\:bg-yellow-300:focus {\n  background-color: var(--yellow-300) !important;\n}\n.focus\\:bg-yellow-400:focus {\n  background-color: var(--yellow-400) !important;\n}\n.focus\\:bg-yellow-500:focus {\n  background-color: var(--yellow-500) !important;\n}\n.focus\\:bg-yellow-600:focus {\n  background-color: var(--yellow-600) !important;\n}\n.focus\\:bg-yellow-700:focus {\n  background-color: var(--yellow-700) !important;\n}\n.focus\\:bg-yellow-800:focus {\n  background-color: var(--yellow-800) !important;\n}\n.focus\\:bg-yellow-900:focus {\n  background-color: var(--yellow-900) !important;\n}\n\n.hover\\:bg-yellow-50:hover {\n  background-color: var(--yellow-50) !important;\n}\n.hover\\:bg-yellow-100:hover {\n  background-color: var(--yellow-100) !important;\n}\n.hover\\:bg-yellow-200:hover {\n  background-color: var(--yellow-200) !important;\n}\n.hover\\:bg-yellow-300:hover {\n  background-color: var(--yellow-300) !important;\n}\n.hover\\:bg-yellow-400:hover {\n  background-color: var(--yellow-400) !important;\n}\n.hover\\:bg-yellow-500:hover {\n  background-color: var(--yellow-500) !important;\n}\n.hover\\:bg-yellow-600:hover {\n  background-color: var(--yellow-600) !important;\n}\n.hover\\:bg-yellow-700:hover {\n  background-color: var(--yellow-700) !important;\n}\n.hover\\:bg-yellow-800:hover {\n  background-color: var(--yellow-800) !important;\n}\n.hover\\:bg-yellow-900:hover {\n  background-color: var(--yellow-900) !important;\n}\n\n.active\\:bg-yellow-50:active {\n  background-color: var(--yellow-50) !important;\n}\n.active\\:bg-yellow-100:active {\n  background-color: var(--yellow-100) !important;\n}\n.active\\:bg-yellow-200:active {\n  background-color: var(--yellow-200) !important;\n}\n.active\\:bg-yellow-300:active {\n  background-color: var(--yellow-300) !important;\n}\n.active\\:bg-yellow-400:active {\n  background-color: var(--yellow-400) !important;\n}\n.active\\:bg-yellow-500:active {\n  background-color: var(--yellow-500) !important;\n}\n.active\\:bg-yellow-600:active {\n  background-color: var(--yellow-600) !important;\n}\n.active\\:bg-yellow-700:active {\n  background-color: var(--yellow-700) !important;\n}\n.active\\:bg-yellow-800:active {\n  background-color: var(--yellow-800) !important;\n}\n.active\\:bg-yellow-900:active {\n  background-color: var(--yellow-900) !important;\n}\n\n.bg-cyan-50 {\n  background-color: var(--cyan-50) !important;\n}\n.bg-cyan-100 {\n  background-color: var(--cyan-100) !important;\n}\n.bg-cyan-200 {\n  background-color: var(--cyan-200) !important;\n}\n.bg-cyan-300 {\n  background-color: var(--cyan-300) !important;\n}\n.bg-cyan-400 {\n  background-color: var(--cyan-400) !important;\n}\n.bg-cyan-500 {\n  background-color: var(--cyan-500) !important;\n}\n.bg-cyan-600 {\n  background-color: var(--cyan-600) !important;\n}\n.bg-cyan-700 {\n  background-color: var(--cyan-700) !important;\n}\n.bg-cyan-800 {\n  background-color: var(--cyan-800) !important;\n}\n.bg-cyan-900 {\n  background-color: var(--cyan-900) !important;\n}\n\n.focus\\:bg-cyan-50:focus {\n  background-color: var(--cyan-50) !important;\n}\n.focus\\:bg-cyan-100:focus {\n  background-color: var(--cyan-100) !important;\n}\n.focus\\:bg-cyan-200:focus {\n  background-color: var(--cyan-200) !important;\n}\n.focus\\:bg-cyan-300:focus {\n  background-color: var(--cyan-300) !important;\n}\n.focus\\:bg-cyan-400:focus {\n  background-color: var(--cyan-400) !important;\n}\n.focus\\:bg-cyan-500:focus {\n  background-color: var(--cyan-500) !important;\n}\n.focus\\:bg-cyan-600:focus {\n  background-color: var(--cyan-600) !important;\n}\n.focus\\:bg-cyan-700:focus {\n  background-color: var(--cyan-700) !important;\n}\n.focus\\:bg-cyan-800:focus {\n  background-color: var(--cyan-800) !important;\n}\n.focus\\:bg-cyan-900:focus {\n  background-color: var(--cyan-900) !important;\n}\n\n.hover\\:bg-cyan-50:hover {\n  background-color: var(--cyan-50) !important;\n}\n.hover\\:bg-cyan-100:hover {\n  background-color: var(--cyan-100) !important;\n}\n.hover\\:bg-cyan-200:hover {\n  background-color: var(--cyan-200) !important;\n}\n.hover\\:bg-cyan-300:hover {\n  background-color: var(--cyan-300) !important;\n}\n.hover\\:bg-cyan-400:hover {\n  background-color: var(--cyan-400) !important;\n}\n.hover\\:bg-cyan-500:hover {\n  background-color: var(--cyan-500) !important;\n}\n.hover\\:bg-cyan-600:hover {\n  background-color: var(--cyan-600) !important;\n}\n.hover\\:bg-cyan-700:hover {\n  background-color: var(--cyan-700) !important;\n}\n.hover\\:bg-cyan-800:hover {\n  background-color: var(--cyan-800) !important;\n}\n.hover\\:bg-cyan-900:hover {\n  background-color: var(--cyan-900) !important;\n}\n\n.active\\:bg-cyan-50:active {\n  background-color: var(--cyan-50) !important;\n}\n.active\\:bg-cyan-100:active {\n  background-color: var(--cyan-100) !important;\n}\n.active\\:bg-cyan-200:active {\n  background-color: var(--cyan-200) !important;\n}\n.active\\:bg-cyan-300:active {\n  background-color: var(--cyan-300) !important;\n}\n.active\\:bg-cyan-400:active {\n  background-color: var(--cyan-400) !important;\n}\n.active\\:bg-cyan-500:active {\n  background-color: var(--cyan-500) !important;\n}\n.active\\:bg-cyan-600:active {\n  background-color: var(--cyan-600) !important;\n}\n.active\\:bg-cyan-700:active {\n  background-color: var(--cyan-700) !important;\n}\n.active\\:bg-cyan-800:active {\n  background-color: var(--cyan-800) !important;\n}\n.active\\:bg-cyan-900:active {\n  background-color: var(--cyan-900) !important;\n}\n\n.bg-pink-50 {\n  background-color: var(--pink-50) !important;\n}\n.bg-pink-100 {\n  background-color: var(--pink-100) !important;\n}\n.bg-pink-200 {\n  background-color: var(--pink-200) !important;\n}\n.bg-pink-300 {\n  background-color: var(--pink-300) !important;\n}\n.bg-pink-400 {\n  background-color: var(--pink-400) !important;\n}\n.bg-pink-500 {\n  background-color: var(--pink-500) !important;\n}\n.bg-pink-600 {\n  background-color: var(--pink-600) !important;\n}\n.bg-pink-700 {\n  background-color: var(--pink-700) !important;\n}\n.bg-pink-800 {\n  background-color: var(--pink-800) !important;\n}\n.bg-pink-900 {\n  background-color: var(--pink-900) !important;\n}\n\n.focus\\:bg-pink-50:focus {\n  background-color: var(--pink-50) !important;\n}\n.focus\\:bg-pink-100:focus {\n  background-color: var(--pink-100) !important;\n}\n.focus\\:bg-pink-200:focus {\n  background-color: var(--pink-200) !important;\n}\n.focus\\:bg-pink-300:focus {\n  background-color: var(--pink-300) !important;\n}\n.focus\\:bg-pink-400:focus {\n  background-color: var(--pink-400) !important;\n}\n.focus\\:bg-pink-500:focus {\n  background-color: var(--pink-500) !important;\n}\n.focus\\:bg-pink-600:focus {\n  background-color: var(--pink-600) !important;\n}\n.focus\\:bg-pink-700:focus {\n  background-color: var(--pink-700) !important;\n}\n.focus\\:bg-pink-800:focus {\n  background-color: var(--pink-800) !important;\n}\n.focus\\:bg-pink-900:focus {\n  background-color: var(--pink-900) !important;\n}\n\n.hover\\:bg-pink-50:hover {\n  background-color: var(--pink-50) !important;\n}\n.hover\\:bg-pink-100:hover {\n  background-color: var(--pink-100) !important;\n}\n.hover\\:bg-pink-200:hover {\n  background-color: var(--pink-200) !important;\n}\n.hover\\:bg-pink-300:hover {\n  background-color: var(--pink-300) !important;\n}\n.hover\\:bg-pink-400:hover {\n  background-color: var(--pink-400) !important;\n}\n.hover\\:bg-pink-500:hover {\n  background-color: var(--pink-500) !important;\n}\n.hover\\:bg-pink-600:hover {\n  background-color: var(--pink-600) !important;\n}\n.hover\\:bg-pink-700:hover {\n  background-color: var(--pink-700) !important;\n}\n.hover\\:bg-pink-800:hover {\n  background-color: var(--pink-800) !important;\n}\n.hover\\:bg-pink-900:hover {\n  background-color: var(--pink-900) !important;\n}\n\n.active\\:bg-pink-50:active {\n  background-color: var(--pink-50) !important;\n}\n.active\\:bg-pink-100:active {\n  background-color: var(--pink-100) !important;\n}\n.active\\:bg-pink-200:active {\n  background-color: var(--pink-200) !important;\n}\n.active\\:bg-pink-300:active {\n  background-color: var(--pink-300) !important;\n}\n.active\\:bg-pink-400:active {\n  background-color: var(--pink-400) !important;\n}\n.active\\:bg-pink-500:active {\n  background-color: var(--pink-500) !important;\n}\n.active\\:bg-pink-600:active {\n  background-color: var(--pink-600) !important;\n}\n.active\\:bg-pink-700:active {\n  background-color: var(--pink-700) !important;\n}\n.active\\:bg-pink-800:active {\n  background-color: var(--pink-800) !important;\n}\n.active\\:bg-pink-900:active {\n  background-color: var(--pink-900) !important;\n}\n\n.bg-indigo-50 {\n  background-color: var(--indigo-50) !important;\n}\n.bg-indigo-100 {\n  background-color: var(--indigo-100) !important;\n}\n.bg-indigo-200 {\n  background-color: var(--indigo-200) !important;\n}\n.bg-indigo-300 {\n  background-color: var(--indigo-300) !important;\n}\n.bg-indigo-400 {\n  background-color: var(--indigo-400) !important;\n}\n.bg-indigo-500 {\n  background-color: var(--indigo-500) !important;\n}\n.bg-indigo-600 {\n  background-color: var(--indigo-600) !important;\n}\n.bg-indigo-700 {\n  background-color: var(--indigo-700) !important;\n}\n.bg-indigo-800 {\n  background-color: var(--indigo-800) !important;\n}\n.bg-indigo-900 {\n  background-color: var(--indigo-900) !important;\n}\n\n.focus\\:bg-indigo-50:focus {\n  background-color: var(--indigo-50) !important;\n}\n.focus\\:bg-indigo-100:focus {\n  background-color: var(--indigo-100) !important;\n}\n.focus\\:bg-indigo-200:focus {\n  background-color: var(--indigo-200) !important;\n}\n.focus\\:bg-indigo-300:focus {\n  background-color: var(--indigo-300) !important;\n}\n.focus\\:bg-indigo-400:focus {\n  background-color: var(--indigo-400) !important;\n}\n.focus\\:bg-indigo-500:focus {\n  background-color: var(--indigo-500) !important;\n}\n.focus\\:bg-indigo-600:focus {\n  background-color: var(--indigo-600) !important;\n}\n.focus\\:bg-indigo-700:focus {\n  background-color: var(--indigo-700) !important;\n}\n.focus\\:bg-indigo-800:focus {\n  background-color: var(--indigo-800) !important;\n}\n.focus\\:bg-indigo-900:focus {\n  background-color: var(--indigo-900) !important;\n}\n\n.hover\\:bg-indigo-50:hover {\n  background-color: var(--indigo-50) !important;\n}\n.hover\\:bg-indigo-100:hover {\n  background-color: var(--indigo-100) !important;\n}\n.hover\\:bg-indigo-200:hover {\n  background-color: var(--indigo-200) !important;\n}\n.hover\\:bg-indigo-300:hover {\n  background-color: var(--indigo-300) !important;\n}\n.hover\\:bg-indigo-400:hover {\n  background-color: var(--indigo-400) !important;\n}\n.hover\\:bg-indigo-500:hover {\n  background-color: var(--indigo-500) !important;\n}\n.hover\\:bg-indigo-600:hover {\n  background-color: var(--indigo-600) !important;\n}\n.hover\\:bg-indigo-700:hover {\n  background-color: var(--indigo-700) !important;\n}\n.hover\\:bg-indigo-800:hover {\n  background-color: var(--indigo-800) !important;\n}\n.hover\\:bg-indigo-900:hover {\n  background-color: var(--indigo-900) !important;\n}\n\n.active\\:bg-indigo-50:active {\n  background-color: var(--indigo-50) !important;\n}\n.active\\:bg-indigo-100:active {\n  background-color: var(--indigo-100) !important;\n}\n.active\\:bg-indigo-200:active {\n  background-color: var(--indigo-200) !important;\n}\n.active\\:bg-indigo-300:active {\n  background-color: var(--indigo-300) !important;\n}\n.active\\:bg-indigo-400:active {\n  background-color: var(--indigo-400) !important;\n}\n.active\\:bg-indigo-500:active {\n  background-color: var(--indigo-500) !important;\n}\n.active\\:bg-indigo-600:active {\n  background-color: var(--indigo-600) !important;\n}\n.active\\:bg-indigo-700:active {\n  background-color: var(--indigo-700) !important;\n}\n.active\\:bg-indigo-800:active {\n  background-color: var(--indigo-800) !important;\n}\n.active\\:bg-indigo-900:active {\n  background-color: var(--indigo-900) !important;\n}\n\n.bg-teal-50 {\n  background-color: var(--teal-50) !important;\n}\n.bg-teal-100 {\n  background-color: var(--teal-100) !important;\n}\n.bg-teal-200 {\n  background-color: var(--teal-200) !important;\n}\n.bg-teal-300 {\n  background-color: var(--teal-300) !important;\n}\n.bg-teal-400 {\n  background-color: var(--teal-400) !important;\n}\n.bg-teal-500 {\n  background-color: var(--teal-500) !important;\n}\n.bg-teal-600 {\n  background-color: var(--teal-600) !important;\n}\n.bg-teal-700 {\n  background-color: var(--teal-700) !important;\n}\n.bg-teal-800 {\n  background-color: var(--teal-800) !important;\n}\n.bg-teal-900 {\n  background-color: var(--teal-900) !important;\n}\n\n.focus\\:bg-teal-50:focus {\n  background-color: var(--teal-50) !important;\n}\n.focus\\:bg-teal-100:focus {\n  background-color: var(--teal-100) !important;\n}\n.focus\\:bg-teal-200:focus {\n  background-color: var(--teal-200) !important;\n}\n.focus\\:bg-teal-300:focus {\n  background-color: var(--teal-300) !important;\n}\n.focus\\:bg-teal-400:focus {\n  background-color: var(--teal-400) !important;\n}\n.focus\\:bg-teal-500:focus {\n  background-color: var(--teal-500) !important;\n}\n.focus\\:bg-teal-600:focus {\n  background-color: var(--teal-600) !important;\n}\n.focus\\:bg-teal-700:focus {\n  background-color: var(--teal-700) !important;\n}\n.focus\\:bg-teal-800:focus {\n  background-color: var(--teal-800) !important;\n}\n.focus\\:bg-teal-900:focus {\n  background-color: var(--teal-900) !important;\n}\n\n.hover\\:bg-teal-50:hover {\n  background-color: var(--teal-50) !important;\n}\n.hover\\:bg-teal-100:hover {\n  background-color: var(--teal-100) !important;\n}\n.hover\\:bg-teal-200:hover {\n  background-color: var(--teal-200) !important;\n}\n.hover\\:bg-teal-300:hover {\n  background-color: var(--teal-300) !important;\n}\n.hover\\:bg-teal-400:hover {\n  background-color: var(--teal-400) !important;\n}\n.hover\\:bg-teal-500:hover {\n  background-color: var(--teal-500) !important;\n}\n.hover\\:bg-teal-600:hover {\n  background-color: var(--teal-600) !important;\n}\n.hover\\:bg-teal-700:hover {\n  background-color: var(--teal-700) !important;\n}\n.hover\\:bg-teal-800:hover {\n  background-color: var(--teal-800) !important;\n}\n.hover\\:bg-teal-900:hover {\n  background-color: var(--teal-900) !important;\n}\n\n.active\\:bg-teal-50:active {\n  background-color: var(--teal-50) !important;\n}\n.active\\:bg-teal-100:active {\n  background-color: var(--teal-100) !important;\n}\n.active\\:bg-teal-200:active {\n  background-color: var(--teal-200) !important;\n}\n.active\\:bg-teal-300:active {\n  background-color: var(--teal-300) !important;\n}\n.active\\:bg-teal-400:active {\n  background-color: var(--teal-400) !important;\n}\n.active\\:bg-teal-500:active {\n  background-color: var(--teal-500) !important;\n}\n.active\\:bg-teal-600:active {\n  background-color: var(--teal-600) !important;\n}\n.active\\:bg-teal-700:active {\n  background-color: var(--teal-700) !important;\n}\n.active\\:bg-teal-800:active {\n  background-color: var(--teal-800) !important;\n}\n.active\\:bg-teal-900:active {\n  background-color: var(--teal-900) !important;\n}\n\n.bg-orange-50 {\n  background-color: var(--orange-50) !important;\n}\n.bg-orange-100 {\n  background-color: var(--orange-100) !important;\n}\n.bg-orange-200 {\n  background-color: var(--orange-200) !important;\n}\n.bg-orange-300 {\n  background-color: var(--orange-300) !important;\n}\n.bg-orange-400 {\n  background-color: var(--orange-400) !important;\n}\n.bg-orange-500 {\n  background-color: var(--orange-500) !important;\n}\n.bg-orange-600 {\n  background-color: var(--orange-600) !important;\n}\n.bg-orange-700 {\n  background-color: var(--orange-700) !important;\n}\n.bg-orange-800 {\n  background-color: var(--orange-800) !important;\n}\n.bg-orange-900 {\n  background-color: var(--orange-900) !important;\n}\n\n.focus\\:bg-orange-50:focus {\n  background-color: var(--orange-50) !important;\n}\n.focus\\:bg-orange-100:focus {\n  background-color: var(--orange-100) !important;\n}\n.focus\\:bg-orange-200:focus {\n  background-color: var(--orange-200) !important;\n}\n.focus\\:bg-orange-300:focus {\n  background-color: var(--orange-300) !important;\n}\n.focus\\:bg-orange-400:focus {\n  background-color: var(--orange-400) !important;\n}\n.focus\\:bg-orange-500:focus {\n  background-color: var(--orange-500) !important;\n}\n.focus\\:bg-orange-600:focus {\n  background-color: var(--orange-600) !important;\n}\n.focus\\:bg-orange-700:focus {\n  background-color: var(--orange-700) !important;\n}\n.focus\\:bg-orange-800:focus {\n  background-color: var(--orange-800) !important;\n}\n.focus\\:bg-orange-900:focus {\n  background-color: var(--orange-900) !important;\n}\n\n.hover\\:bg-orange-50:hover {\n  background-color: var(--orange-50) !important;\n}\n.hover\\:bg-orange-100:hover {\n  background-color: var(--orange-100) !important;\n}\n.hover\\:bg-orange-200:hover {\n  background-color: var(--orange-200) !important;\n}\n.hover\\:bg-orange-300:hover {\n  background-color: var(--orange-300) !important;\n}\n.hover\\:bg-orange-400:hover {\n  background-color: var(--orange-400) !important;\n}\n.hover\\:bg-orange-500:hover {\n  background-color: var(--orange-500) !important;\n}\n.hover\\:bg-orange-600:hover {\n  background-color: var(--orange-600) !important;\n}\n.hover\\:bg-orange-700:hover {\n  background-color: var(--orange-700) !important;\n}\n.hover\\:bg-orange-800:hover {\n  background-color: var(--orange-800) !important;\n}\n.hover\\:bg-orange-900:hover {\n  background-color: var(--orange-900) !important;\n}\n\n.active\\:bg-orange-50:active {\n  background-color: var(--orange-50) !important;\n}\n.active\\:bg-orange-100:active {\n  background-color: var(--orange-100) !important;\n}\n.active\\:bg-orange-200:active {\n  background-color: var(--orange-200) !important;\n}\n.active\\:bg-orange-300:active {\n  background-color: var(--orange-300) !important;\n}\n.active\\:bg-orange-400:active {\n  background-color: var(--orange-400) !important;\n}\n.active\\:bg-orange-500:active {\n  background-color: var(--orange-500) !important;\n}\n.active\\:bg-orange-600:active {\n  background-color: var(--orange-600) !important;\n}\n.active\\:bg-orange-700:active {\n  background-color: var(--orange-700) !important;\n}\n.active\\:bg-orange-800:active {\n  background-color: var(--orange-800) !important;\n}\n.active\\:bg-orange-900:active {\n  background-color: var(--orange-900) !important;\n}\n\n.bg-bluegray-50 {\n  background-color: var(--bluegray-50) !important;\n}\n.bg-bluegray-100 {\n  background-color: var(--bluegray-100) !important;\n}\n.bg-bluegray-200 {\n  background-color: var(--bluegray-200) !important;\n}\n.bg-bluegray-300 {\n  background-color: var(--bluegray-300) !important;\n}\n.bg-bluegray-400 {\n  background-color: var(--bluegray-400) !important;\n}\n.bg-bluegray-500 {\n  background-color: var(--bluegray-500) !important;\n}\n.bg-bluegray-600 {\n  background-color: var(--bluegray-600) !important;\n}\n.bg-bluegray-700 {\n  background-color: var(--bluegray-700) !important;\n}\n.bg-bluegray-800 {\n  background-color: var(--bluegray-800) !important;\n}\n.bg-bluegray-900 {\n  background-color: var(--bluegray-900) !important;\n}\n\n.focus\\:bg-bluegray-50:focus {\n  background-color: var(--bluegray-50) !important;\n}\n.focus\\:bg-bluegray-100:focus {\n  background-color: var(--bluegray-100) !important;\n}\n.focus\\:bg-bluegray-200:focus {\n  background-color: var(--bluegray-200) !important;\n}\n.focus\\:bg-bluegray-300:focus {\n  background-color: var(--bluegray-300) !important;\n}\n.focus\\:bg-bluegray-400:focus {\n  background-color: var(--bluegray-400) !important;\n}\n.focus\\:bg-bluegray-500:focus {\n  background-color: var(--bluegray-500) !important;\n}\n.focus\\:bg-bluegray-600:focus {\n  background-color: var(--bluegray-600) !important;\n}\n.focus\\:bg-bluegray-700:focus {\n  background-color: var(--bluegray-700) !important;\n}\n.focus\\:bg-bluegray-800:focus {\n  background-color: var(--bluegray-800) !important;\n}\n.focus\\:bg-bluegray-900:focus {\n  background-color: var(--bluegray-900) !important;\n}\n\n.hover\\:bg-bluegray-50:hover {\n  background-color: var(--bluegray-50) !important;\n}\n.hover\\:bg-bluegray-100:hover {\n  background-color: var(--bluegray-100) !important;\n}\n.hover\\:bg-bluegray-200:hover {\n  background-color: var(--bluegray-200) !important;\n}\n.hover\\:bg-bluegray-300:hover {\n  background-color: var(--bluegray-300) !important;\n}\n.hover\\:bg-bluegray-400:hover {\n  background-color: var(--bluegray-400) !important;\n}\n.hover\\:bg-bluegray-500:hover {\n  background-color: var(--bluegray-500) !important;\n}\n.hover\\:bg-bluegray-600:hover {\n  background-color: var(--bluegray-600) !important;\n}\n.hover\\:bg-bluegray-700:hover {\n  background-color: var(--bluegray-700) !important;\n}\n.hover\\:bg-bluegray-800:hover {\n  background-color: var(--bluegray-800) !important;\n}\n.hover\\:bg-bluegray-900:hover {\n  background-color: var(--bluegray-900) !important;\n}\n\n.active\\:bg-bluegray-50:active {\n  background-color: var(--bluegray-50) !important;\n}\n.active\\:bg-bluegray-100:active {\n  background-color: var(--bluegray-100) !important;\n}\n.active\\:bg-bluegray-200:active {\n  background-color: var(--bluegray-200) !important;\n}\n.active\\:bg-bluegray-300:active {\n  background-color: var(--bluegray-300) !important;\n}\n.active\\:bg-bluegray-400:active {\n  background-color: var(--bluegray-400) !important;\n}\n.active\\:bg-bluegray-500:active {\n  background-color: var(--bluegray-500) !important;\n}\n.active\\:bg-bluegray-600:active {\n  background-color: var(--bluegray-600) !important;\n}\n.active\\:bg-bluegray-700:active {\n  background-color: var(--bluegray-700) !important;\n}\n.active\\:bg-bluegray-800:active {\n  background-color: var(--bluegray-800) !important;\n}\n.active\\:bg-bluegray-900:active {\n  background-color: var(--bluegray-900) !important;\n}\n\n.bg-purple-50 {\n  background-color: var(--purple-50) !important;\n}\n.bg-purple-100 {\n  background-color: var(--purple-100) !important;\n}\n.bg-purple-200 {\n  background-color: var(--purple-200) !important;\n}\n.bg-purple-300 {\n  background-color: var(--purple-300) !important;\n}\n.bg-purple-400 {\n  background-color: var(--purple-400) !important;\n}\n.bg-purple-500 {\n  background-color: var(--purple-500) !important;\n}\n.bg-purple-600 {\n  background-color: var(--purple-600) !important;\n}\n.bg-purple-700 {\n  background-color: var(--purple-700) !important;\n}\n.bg-purple-800 {\n  background-color: var(--purple-800) !important;\n}\n.bg-purple-900 {\n  background-color: var(--purple-900) !important;\n}\n\n.focus\\:bg-purple-50:focus {\n  background-color: var(--purple-50) !important;\n}\n.focus\\:bg-purple-100:focus {\n  background-color: var(--purple-100) !important;\n}\n.focus\\:bg-purple-200:focus {\n  background-color: var(--purple-200) !important;\n}\n.focus\\:bg-purple-300:focus {\n  background-color: var(--purple-300) !important;\n}\n.focus\\:bg-purple-400:focus {\n  background-color: var(--purple-400) !important;\n}\n.focus\\:bg-purple-500:focus {\n  background-color: var(--purple-500) !important;\n}\n.focus\\:bg-purple-600:focus {\n  background-color: var(--purple-600) !important;\n}\n.focus\\:bg-purple-700:focus {\n  background-color: var(--purple-700) !important;\n}\n.focus\\:bg-purple-800:focus {\n  background-color: var(--purple-800) !important;\n}\n.focus\\:bg-purple-900:focus {\n  background-color: var(--purple-900) !important;\n}\n\n.hover\\:bg-purple-50:hover {\n  background-color: var(--purple-50) !important;\n}\n.hover\\:bg-purple-100:hover {\n  background-color: var(--purple-100) !important;\n}\n.hover\\:bg-purple-200:hover {\n  background-color: var(--purple-200) !important;\n}\n.hover\\:bg-purple-300:hover {\n  background-color: var(--purple-300) !important;\n}\n.hover\\:bg-purple-400:hover {\n  background-color: var(--purple-400) !important;\n}\n.hover\\:bg-purple-500:hover {\n  background-color: var(--purple-500) !important;\n}\n.hover\\:bg-purple-600:hover {\n  background-color: var(--purple-600) !important;\n}\n.hover\\:bg-purple-700:hover {\n  background-color: var(--purple-700) !important;\n}\n.hover\\:bg-purple-800:hover {\n  background-color: var(--purple-800) !important;\n}\n.hover\\:bg-purple-900:hover {\n  background-color: var(--purple-900) !important;\n}\n\n.active\\:bg-purple-50:active {\n  background-color: var(--purple-50) !important;\n}\n.active\\:bg-purple-100:active {\n  background-color: var(--purple-100) !important;\n}\n.active\\:bg-purple-200:active {\n  background-color: var(--purple-200) !important;\n}\n.active\\:bg-purple-300:active {\n  background-color: var(--purple-300) !important;\n}\n.active\\:bg-purple-400:active {\n  background-color: var(--purple-400) !important;\n}\n.active\\:bg-purple-500:active {\n  background-color: var(--purple-500) !important;\n}\n.active\\:bg-purple-600:active {\n  background-color: var(--purple-600) !important;\n}\n.active\\:bg-purple-700:active {\n  background-color: var(--purple-700) !important;\n}\n.active\\:bg-purple-800:active {\n  background-color: var(--purple-800) !important;\n}\n.active\\:bg-purple-900:active {\n  background-color: var(--purple-900) !important;\n}\n\n.bg-gray-50 {\n  background-color: var(--gray-50) !important;\n}\n.bg-gray-100 {\n  background-color: var(--gray-100) !important;\n}\n.bg-gray-200 {\n  background-color: var(--gray-200) !important;\n}\n.bg-gray-300 {\n  background-color: var(--gray-300) !important;\n}\n.bg-gray-400 {\n  background-color: var(--gray-400) !important;\n}\n.bg-gray-500 {\n  background-color: var(--gray-500) !important;\n}\n.bg-gray-600 {\n  background-color: var(--gray-600) !important;\n}\n.bg-gray-700 {\n  background-color: var(--gray-700) !important;\n}\n.bg-gray-800 {\n  background-color: var(--gray-800) !important;\n}\n.bg-gray-900 {\n  background-color: var(--gray-900) !important;\n}\n\n.focus\\:bg-gray-50:focus {\n  background-color: var(--gray-50) !important;\n}\n.focus\\:bg-gray-100:focus {\n  background-color: var(--gray-100) !important;\n}\n.focus\\:bg-gray-200:focus {\n  background-color: var(--gray-200) !important;\n}\n.focus\\:bg-gray-300:focus {\n  background-color: var(--gray-300) !important;\n}\n.focus\\:bg-gray-400:focus {\n  background-color: var(--gray-400) !important;\n}\n.focus\\:bg-gray-500:focus {\n  background-color: var(--gray-500) !important;\n}\n.focus\\:bg-gray-600:focus {\n  background-color: var(--gray-600) !important;\n}\n.focus\\:bg-gray-700:focus {\n  background-color: var(--gray-700) !important;\n}\n.focus\\:bg-gray-800:focus {\n  background-color: var(--gray-800) !important;\n}\n.focus\\:bg-gray-900:focus {\n  background-color: var(--gray-900) !important;\n}\n\n.hover\\:bg-gray-50:hover {\n  background-color: var(--gray-50) !important;\n}\n.hover\\:bg-gray-100:hover {\n  background-color: var(--gray-100) !important;\n}\n.hover\\:bg-gray-200:hover {\n  background-color: var(--gray-200) !important;\n}\n.hover\\:bg-gray-300:hover {\n  background-color: var(--gray-300) !important;\n}\n.hover\\:bg-gray-400:hover {\n  background-color: var(--gray-400) !important;\n}\n.hover\\:bg-gray-500:hover {\n  background-color: var(--gray-500) !important;\n}\n.hover\\:bg-gray-600:hover {\n  background-color: var(--gray-600) !important;\n}\n.hover\\:bg-gray-700:hover {\n  background-color: var(--gray-700) !important;\n}\n.hover\\:bg-gray-800:hover {\n  background-color: var(--gray-800) !important;\n}\n.hover\\:bg-gray-900:hover {\n  background-color: var(--gray-900) !important;\n}\n\n.active\\:bg-gray-50:active {\n  background-color: var(--gray-50) !important;\n}\n.active\\:bg-gray-100:active {\n  background-color: var(--gray-100) !important;\n}\n.active\\:bg-gray-200:active {\n  background-color: var(--gray-200) !important;\n}\n.active\\:bg-gray-300:active {\n  background-color: var(--gray-300) !important;\n}\n.active\\:bg-gray-400:active {\n  background-color: var(--gray-400) !important;\n}\n.active\\:bg-gray-500:active {\n  background-color: var(--gray-500) !important;\n}\n.active\\:bg-gray-600:active {\n  background-color: var(--gray-600) !important;\n}\n.active\\:bg-gray-700:active {\n  background-color: var(--gray-700) !important;\n}\n.active\\:bg-gray-800:active {\n  background-color: var(--gray-800) !important;\n}\n.active\\:bg-gray-900:active {\n  background-color: var(--gray-900) !important;\n}\n\n.border-blue-50 {\n  border-color: var(--blue-50) !important;\n}\n.border-blue-100 {\n  border-color: var(--blue-100) !important;\n}\n.border-blue-200 {\n  border-color: var(--blue-200) !important;\n}\n.border-blue-300 {\n  border-color: var(--blue-300) !important;\n}\n.border-blue-400 {\n  border-color: var(--blue-400) !important;\n}\n.border-blue-500 {\n  border-color: var(--blue-500) !important;\n}\n.border-blue-600 {\n  border-color: var(--blue-600) !important;\n}\n.border-blue-700 {\n  border-color: var(--blue-700) !important;\n}\n.border-blue-800 {\n  border-color: var(--blue-800) !important;\n}\n.border-blue-900 {\n  border-color: var(--blue-900) !important;\n}\n\n.focus\\:border-blue-50:focus {\n  border-color: var(--blue-50) !important;\n}\n.focus\\:border-blue-100:focus {\n  border-color: var(--blue-100) !important;\n}\n.focus\\:border-blue-200:focus {\n  border-color: var(--blue-200) !important;\n}\n.focus\\:border-blue-300:focus {\n  border-color: var(--blue-300) !important;\n}\n.focus\\:border-blue-400:focus {\n  border-color: var(--blue-400) !important;\n}\n.focus\\:border-blue-500:focus {\n  border-color: var(--blue-500) !important;\n}\n.focus\\:border-blue-600:focus {\n  border-color: var(--blue-600) !important;\n}\n.focus\\:border-blue-700:focus {\n  border-color: var(--blue-700) !important;\n}\n.focus\\:border-blue-800:focus {\n  border-color: var(--blue-800) !important;\n}\n.focus\\:border-blue-900:focus {\n  border-color: var(--blue-900) !important;\n}\n\n.hover\\:border-blue-50:hover {\n  border-color: var(--blue-50) !important;\n}\n.hover\\:border-blue-100:hover {\n  border-color: var(--blue-100) !important;\n}\n.hover\\:border-blue-200:hover {\n  border-color: var(--blue-200) !important;\n}\n.hover\\:border-blue-300:hover {\n  border-color: var(--blue-300) !important;\n}\n.hover\\:border-blue-400:hover {\n  border-color: var(--blue-400) !important;\n}\n.hover\\:border-blue-500:hover {\n  border-color: var(--blue-500) !important;\n}\n.hover\\:border-blue-600:hover {\n  border-color: var(--blue-600) !important;\n}\n.hover\\:border-blue-700:hover {\n  border-color: var(--blue-700) !important;\n}\n.hover\\:border-blue-800:hover {\n  border-color: var(--blue-800) !important;\n}\n.hover\\:border-blue-900:hover {\n  border-color: var(--blue-900) !important;\n}\n\n.active\\:border-blue-50:active {\n  border-color: var(--blue-50) !important;\n}\n.active\\:border-blue-100:active {\n  border-color: var(--blue-100) !important;\n}\n.active\\:border-blue-200:active {\n  border-color: var(--blue-200) !important;\n}\n.active\\:border-blue-300:active {\n  border-color: var(--blue-300) !important;\n}\n.active\\:border-blue-400:active {\n  border-color: var(--blue-400) !important;\n}\n.active\\:border-blue-500:active {\n  border-color: var(--blue-500) !important;\n}\n.active\\:border-blue-600:active {\n  border-color: var(--blue-600) !important;\n}\n.active\\:border-blue-700:active {\n  border-color: var(--blue-700) !important;\n}\n.active\\:border-blue-800:active {\n  border-color: var(--blue-800) !important;\n}\n.active\\:border-blue-900:active {\n  border-color: var(--blue-900) !important;\n}\n\n.border-green-50 {\n  border-color: var(--green-50) !important;\n}\n.border-green-100 {\n  border-color: var(--green-100) !important;\n}\n.border-green-200 {\n  border-color: var(--green-200) !important;\n}\n.border-green-300 {\n  border-color: var(--green-300) !important;\n}\n.border-green-400 {\n  border-color: var(--green-400) !important;\n}\n.border-green-500 {\n  border-color: var(--green-500) !important;\n}\n.border-green-600 {\n  border-color: var(--green-600) !important;\n}\n.border-green-700 {\n  border-color: var(--green-700) !important;\n}\n.border-green-800 {\n  border-color: var(--green-800) !important;\n}\n.border-green-900 {\n  border-color: var(--green-900) !important;\n}\n\n.focus\\:border-green-50:focus {\n  border-color: var(--green-50) !important;\n}\n.focus\\:border-green-100:focus {\n  border-color: var(--green-100) !important;\n}\n.focus\\:border-green-200:focus {\n  border-color: var(--green-200) !important;\n}\n.focus\\:border-green-300:focus {\n  border-color: var(--green-300) !important;\n}\n.focus\\:border-green-400:focus {\n  border-color: var(--green-400) !important;\n}\n.focus\\:border-green-500:focus {\n  border-color: var(--green-500) !important;\n}\n.focus\\:border-green-600:focus {\n  border-color: var(--green-600) !important;\n}\n.focus\\:border-green-700:focus {\n  border-color: var(--green-700) !important;\n}\n.focus\\:border-green-800:focus {\n  border-color: var(--green-800) !important;\n}\n.focus\\:border-green-900:focus {\n  border-color: var(--green-900) !important;\n}\n\n.hover\\:border-green-50:hover {\n  border-color: var(--green-50) !important;\n}\n.hover\\:border-green-100:hover {\n  border-color: var(--green-100) !important;\n}\n.hover\\:border-green-200:hover {\n  border-color: var(--green-200) !important;\n}\n.hover\\:border-green-300:hover {\n  border-color: var(--green-300) !important;\n}\n.hover\\:border-green-400:hover {\n  border-color: var(--green-400) !important;\n}\n.hover\\:border-green-500:hover {\n  border-color: var(--green-500) !important;\n}\n.hover\\:border-green-600:hover {\n  border-color: var(--green-600) !important;\n}\n.hover\\:border-green-700:hover {\n  border-color: var(--green-700) !important;\n}\n.hover\\:border-green-800:hover {\n  border-color: var(--green-800) !important;\n}\n.hover\\:border-green-900:hover {\n  border-color: var(--green-900) !important;\n}\n\n.active\\:border-green-50:active {\n  border-color: var(--green-50) !important;\n}\n.active\\:border-green-100:active {\n  border-color: var(--green-100) !important;\n}\n.active\\:border-green-200:active {\n  border-color: var(--green-200) !important;\n}\n.active\\:border-green-300:active {\n  border-color: var(--green-300) !important;\n}\n.active\\:border-green-400:active {\n  border-color: var(--green-400) !important;\n}\n.active\\:border-green-500:active {\n  border-color: var(--green-500) !important;\n}\n.active\\:border-green-600:active {\n  border-color: var(--green-600) !important;\n}\n.active\\:border-green-700:active {\n  border-color: var(--green-700) !important;\n}\n.active\\:border-green-800:active {\n  border-color: var(--green-800) !important;\n}\n.active\\:border-green-900:active {\n  border-color: var(--green-900) !important;\n}\n\n.border-yellow-50 {\n  border-color: var(--yellow-50) !important;\n}\n.border-yellow-100 {\n  border-color: var(--yellow-100) !important;\n}\n.border-yellow-200 {\n  border-color: var(--yellow-200) !important;\n}\n.border-yellow-300 {\n  border-color: var(--yellow-300) !important;\n}\n.border-yellow-400 {\n  border-color: var(--yellow-400) !important;\n}\n.border-yellow-500 {\n  border-color: var(--yellow-500) !important;\n}\n.border-yellow-600 {\n  border-color: var(--yellow-600) !important;\n}\n.border-yellow-700 {\n  border-color: var(--yellow-700) !important;\n}\n.border-yellow-800 {\n  border-color: var(--yellow-800) !important;\n}\n.border-yellow-900 {\n  border-color: var(--yellow-900) !important;\n}\n\n.focus\\:border-yellow-50:focus {\n  border-color: var(--yellow-50) !important;\n}\n.focus\\:border-yellow-100:focus {\n  border-color: var(--yellow-100) !important;\n}\n.focus\\:border-yellow-200:focus {\n  border-color: var(--yellow-200) !important;\n}\n.focus\\:border-yellow-300:focus {\n  border-color: var(--yellow-300) !important;\n}\n.focus\\:border-yellow-400:focus {\n  border-color: var(--yellow-400) !important;\n}\n.focus\\:border-yellow-500:focus {\n  border-color: var(--yellow-500) !important;\n}\n.focus\\:border-yellow-600:focus {\n  border-color: var(--yellow-600) !important;\n}\n.focus\\:border-yellow-700:focus {\n  border-color: var(--yellow-700) !important;\n}\n.focus\\:border-yellow-800:focus {\n  border-color: var(--yellow-800) !important;\n}\n.focus\\:border-yellow-900:focus {\n  border-color: var(--yellow-900) !important;\n}\n\n.hover\\:border-yellow-50:hover {\n  border-color: var(--yellow-50) !important;\n}\n.hover\\:border-yellow-100:hover {\n  border-color: var(--yellow-100) !important;\n}\n.hover\\:border-yellow-200:hover {\n  border-color: var(--yellow-200) !important;\n}\n.hover\\:border-yellow-300:hover {\n  border-color: var(--yellow-300) !important;\n}\n.hover\\:border-yellow-400:hover {\n  border-color: var(--yellow-400) !important;\n}\n.hover\\:border-yellow-500:hover {\n  border-color: var(--yellow-500) !important;\n}\n.hover\\:border-yellow-600:hover {\n  border-color: var(--yellow-600) !important;\n}\n.hover\\:border-yellow-700:hover {\n  border-color: var(--yellow-700) !important;\n}\n.hover\\:border-yellow-800:hover {\n  border-color: var(--yellow-800) !important;\n}\n.hover\\:border-yellow-900:hover {\n  border-color: var(--yellow-900) !important;\n}\n\n.active\\:border-yellow-50:active {\n  border-color: var(--yellow-50) !important;\n}\n.active\\:border-yellow-100:active {\n  border-color: var(--yellow-100) !important;\n}\n.active\\:border-yellow-200:active {\n  border-color: var(--yellow-200) !important;\n}\n.active\\:border-yellow-300:active {\n  border-color: var(--yellow-300) !important;\n}\n.active\\:border-yellow-400:active {\n  border-color: var(--yellow-400) !important;\n}\n.active\\:border-yellow-500:active {\n  border-color: var(--yellow-500) !important;\n}\n.active\\:border-yellow-600:active {\n  border-color: var(--yellow-600) !important;\n}\n.active\\:border-yellow-700:active {\n  border-color: var(--yellow-700) !important;\n}\n.active\\:border-yellow-800:active {\n  border-color: var(--yellow-800) !important;\n}\n.active\\:border-yellow-900:active {\n  border-color: var(--yellow-900) !important;\n}\n\n.border-cyan-50 {\n  border-color: var(--cyan-50) !important;\n}\n.border-cyan-100 {\n  border-color: var(--cyan-100) !important;\n}\n.border-cyan-200 {\n  border-color: var(--cyan-200) !important;\n}\n.border-cyan-300 {\n  border-color: var(--cyan-300) !important;\n}\n.border-cyan-400 {\n  border-color: var(--cyan-400) !important;\n}\n.border-cyan-500 {\n  border-color: var(--cyan-500) !important;\n}\n.border-cyan-600 {\n  border-color: var(--cyan-600) !important;\n}\n.border-cyan-700 {\n  border-color: var(--cyan-700) !important;\n}\n.border-cyan-800 {\n  border-color: var(--cyan-800) !important;\n}\n.border-cyan-900 {\n  border-color: var(--cyan-900) !important;\n}\n\n.focus\\:border-cyan-50:focus {\n  border-color: var(--cyan-50) !important;\n}\n.focus\\:border-cyan-100:focus {\n  border-color: var(--cyan-100) !important;\n}\n.focus\\:border-cyan-200:focus {\n  border-color: var(--cyan-200) !important;\n}\n.focus\\:border-cyan-300:focus {\n  border-color: var(--cyan-300) !important;\n}\n.focus\\:border-cyan-400:focus {\n  border-color: var(--cyan-400) !important;\n}\n.focus\\:border-cyan-500:focus {\n  border-color: var(--cyan-500) !important;\n}\n.focus\\:border-cyan-600:focus {\n  border-color: var(--cyan-600) !important;\n}\n.focus\\:border-cyan-700:focus {\n  border-color: var(--cyan-700) !important;\n}\n.focus\\:border-cyan-800:focus {\n  border-color: var(--cyan-800) !important;\n}\n.focus\\:border-cyan-900:focus {\n  border-color: var(--cyan-900) !important;\n}\n\n.hover\\:border-cyan-50:hover {\n  border-color: var(--cyan-50) !important;\n}\n.hover\\:border-cyan-100:hover {\n  border-color: var(--cyan-100) !important;\n}\n.hover\\:border-cyan-200:hover {\n  border-color: var(--cyan-200) !important;\n}\n.hover\\:border-cyan-300:hover {\n  border-color: var(--cyan-300) !important;\n}\n.hover\\:border-cyan-400:hover {\n  border-color: var(--cyan-400) !important;\n}\n.hover\\:border-cyan-500:hover {\n  border-color: var(--cyan-500) !important;\n}\n.hover\\:border-cyan-600:hover {\n  border-color: var(--cyan-600) !important;\n}\n.hover\\:border-cyan-700:hover {\n  border-color: var(--cyan-700) !important;\n}\n.hover\\:border-cyan-800:hover {\n  border-color: var(--cyan-800) !important;\n}\n.hover\\:border-cyan-900:hover {\n  border-color: var(--cyan-900) !important;\n}\n\n.active\\:border-cyan-50:active {\n  border-color: var(--cyan-50) !important;\n}\n.active\\:border-cyan-100:active {\n  border-color: var(--cyan-100) !important;\n}\n.active\\:border-cyan-200:active {\n  border-color: var(--cyan-200) !important;\n}\n.active\\:border-cyan-300:active {\n  border-color: var(--cyan-300) !important;\n}\n.active\\:border-cyan-400:active {\n  border-color: var(--cyan-400) !important;\n}\n.active\\:border-cyan-500:active {\n  border-color: var(--cyan-500) !important;\n}\n.active\\:border-cyan-600:active {\n  border-color: var(--cyan-600) !important;\n}\n.active\\:border-cyan-700:active {\n  border-color: var(--cyan-700) !important;\n}\n.active\\:border-cyan-800:active {\n  border-color: var(--cyan-800) !important;\n}\n.active\\:border-cyan-900:active {\n  border-color: var(--cyan-900) !important;\n}\n\n.border-pink-50 {\n  border-color: var(--pink-50) !important;\n}\n.border-pink-100 {\n  border-color: var(--pink-100) !important;\n}\n.border-pink-200 {\n  border-color: var(--pink-200) !important;\n}\n.border-pink-300 {\n  border-color: var(--pink-300) !important;\n}\n.border-pink-400 {\n  border-color: var(--pink-400) !important;\n}\n.border-pink-500 {\n  border-color: var(--pink-500) !important;\n}\n.border-pink-600 {\n  border-color: var(--pink-600) !important;\n}\n.border-pink-700 {\n  border-color: var(--pink-700) !important;\n}\n.border-pink-800 {\n  border-color: var(--pink-800) !important;\n}\n.border-pink-900 {\n  border-color: var(--pink-900) !important;\n}\n\n.focus\\:border-pink-50:focus {\n  border-color: var(--pink-50) !important;\n}\n.focus\\:border-pink-100:focus {\n  border-color: var(--pink-100) !important;\n}\n.focus\\:border-pink-200:focus {\n  border-color: var(--pink-200) !important;\n}\n.focus\\:border-pink-300:focus {\n  border-color: var(--pink-300) !important;\n}\n.focus\\:border-pink-400:focus {\n  border-color: var(--pink-400) !important;\n}\n.focus\\:border-pink-500:focus {\n  border-color: var(--pink-500) !important;\n}\n.focus\\:border-pink-600:focus {\n  border-color: var(--pink-600) !important;\n}\n.focus\\:border-pink-700:focus {\n  border-color: var(--pink-700) !important;\n}\n.focus\\:border-pink-800:focus {\n  border-color: var(--pink-800) !important;\n}\n.focus\\:border-pink-900:focus {\n  border-color: var(--pink-900) !important;\n}\n\n.hover\\:border-pink-50:hover {\n  border-color: var(--pink-50) !important;\n}\n.hover\\:border-pink-100:hover {\n  border-color: var(--pink-100) !important;\n}\n.hover\\:border-pink-200:hover {\n  border-color: var(--pink-200) !important;\n}\n.hover\\:border-pink-300:hover {\n  border-color: var(--pink-300) !important;\n}\n.hover\\:border-pink-400:hover {\n  border-color: var(--pink-400) !important;\n}\n.hover\\:border-pink-500:hover {\n  border-color: var(--pink-500) !important;\n}\n.hover\\:border-pink-600:hover {\n  border-color: var(--pink-600) !important;\n}\n.hover\\:border-pink-700:hover {\n  border-color: var(--pink-700) !important;\n}\n.hover\\:border-pink-800:hover {\n  border-color: var(--pink-800) !important;\n}\n.hover\\:border-pink-900:hover {\n  border-color: var(--pink-900) !important;\n}\n\n.active\\:border-pink-50:active {\n  border-color: var(--pink-50) !important;\n}\n.active\\:border-pink-100:active {\n  border-color: var(--pink-100) !important;\n}\n.active\\:border-pink-200:active {\n  border-color: var(--pink-200) !important;\n}\n.active\\:border-pink-300:active {\n  border-color: var(--pink-300) !important;\n}\n.active\\:border-pink-400:active {\n  border-color: var(--pink-400) !important;\n}\n.active\\:border-pink-500:active {\n  border-color: var(--pink-500) !important;\n}\n.active\\:border-pink-600:active {\n  border-color: var(--pink-600) !important;\n}\n.active\\:border-pink-700:active {\n  border-color: var(--pink-700) !important;\n}\n.active\\:border-pink-800:active {\n  border-color: var(--pink-800) !important;\n}\n.active\\:border-pink-900:active {\n  border-color: var(--pink-900) !important;\n}\n\n.border-indigo-50 {\n  border-color: var(--indigo-50) !important;\n}\n.border-indigo-100 {\n  border-color: var(--indigo-100) !important;\n}\n.border-indigo-200 {\n  border-color: var(--indigo-200) !important;\n}\n.border-indigo-300 {\n  border-color: var(--indigo-300) !important;\n}\n.border-indigo-400 {\n  border-color: var(--indigo-400) !important;\n}\n.border-indigo-500 {\n  border-color: var(--indigo-500) !important;\n}\n.border-indigo-600 {\n  border-color: var(--indigo-600) !important;\n}\n.border-indigo-700 {\n  border-color: var(--indigo-700) !important;\n}\n.border-indigo-800 {\n  border-color: var(--indigo-800) !important;\n}\n.border-indigo-900 {\n  border-color: var(--indigo-900) !important;\n}\n\n.focus\\:border-indigo-50:focus {\n  border-color: var(--indigo-50) !important;\n}\n.focus\\:border-indigo-100:focus {\n  border-color: var(--indigo-100) !important;\n}\n.focus\\:border-indigo-200:focus {\n  border-color: var(--indigo-200) !important;\n}\n.focus\\:border-indigo-300:focus {\n  border-color: var(--indigo-300) !important;\n}\n.focus\\:border-indigo-400:focus {\n  border-color: var(--indigo-400) !important;\n}\n.focus\\:border-indigo-500:focus {\n  border-color: var(--indigo-500) !important;\n}\n.focus\\:border-indigo-600:focus {\n  border-color: var(--indigo-600) !important;\n}\n.focus\\:border-indigo-700:focus {\n  border-color: var(--indigo-700) !important;\n}\n.focus\\:border-indigo-800:focus {\n  border-color: var(--indigo-800) !important;\n}\n.focus\\:border-indigo-900:focus {\n  border-color: var(--indigo-900) !important;\n}\n\n.hover\\:border-indigo-50:hover {\n  border-color: var(--indigo-50) !important;\n}\n.hover\\:border-indigo-100:hover {\n  border-color: var(--indigo-100) !important;\n}\n.hover\\:border-indigo-200:hover {\n  border-color: var(--indigo-200) !important;\n}\n.hover\\:border-indigo-300:hover {\n  border-color: var(--indigo-300) !important;\n}\n.hover\\:border-indigo-400:hover {\n  border-color: var(--indigo-400) !important;\n}\n.hover\\:border-indigo-500:hover {\n  border-color: var(--indigo-500) !important;\n}\n.hover\\:border-indigo-600:hover {\n  border-color: var(--indigo-600) !important;\n}\n.hover\\:border-indigo-700:hover {\n  border-color: var(--indigo-700) !important;\n}\n.hover\\:border-indigo-800:hover {\n  border-color: var(--indigo-800) !important;\n}\n.hover\\:border-indigo-900:hover {\n  border-color: var(--indigo-900) !important;\n}\n\n.active\\:border-indigo-50:active {\n  border-color: var(--indigo-50) !important;\n}\n.active\\:border-indigo-100:active {\n  border-color: var(--indigo-100) !important;\n}\n.active\\:border-indigo-200:active {\n  border-color: var(--indigo-200) !important;\n}\n.active\\:border-indigo-300:active {\n  border-color: var(--indigo-300) !important;\n}\n.active\\:border-indigo-400:active {\n  border-color: var(--indigo-400) !important;\n}\n.active\\:border-indigo-500:active {\n  border-color: var(--indigo-500) !important;\n}\n.active\\:border-indigo-600:active {\n  border-color: var(--indigo-600) !important;\n}\n.active\\:border-indigo-700:active {\n  border-color: var(--indigo-700) !important;\n}\n.active\\:border-indigo-800:active {\n  border-color: var(--indigo-800) !important;\n}\n.active\\:border-indigo-900:active {\n  border-color: var(--indigo-900) !important;\n}\n\n.border-teal-50 {\n  border-color: var(--teal-50) !important;\n}\n.border-teal-100 {\n  border-color: var(--teal-100) !important;\n}\n.border-teal-200 {\n  border-color: var(--teal-200) !important;\n}\n.border-teal-300 {\n  border-color: var(--teal-300) !important;\n}\n.border-teal-400 {\n  border-color: var(--teal-400) !important;\n}\n.border-teal-500 {\n  border-color: var(--teal-500) !important;\n}\n.border-teal-600 {\n  border-color: var(--teal-600) !important;\n}\n.border-teal-700 {\n  border-color: var(--teal-700) !important;\n}\n.border-teal-800 {\n  border-color: var(--teal-800) !important;\n}\n.border-teal-900 {\n  border-color: var(--teal-900) !important;\n}\n\n.focus\\:border-teal-50:focus {\n  border-color: var(--teal-50) !important;\n}\n.focus\\:border-teal-100:focus {\n  border-color: var(--teal-100) !important;\n}\n.focus\\:border-teal-200:focus {\n  border-color: var(--teal-200) !important;\n}\n.focus\\:border-teal-300:focus {\n  border-color: var(--teal-300) !important;\n}\n.focus\\:border-teal-400:focus {\n  border-color: var(--teal-400) !important;\n}\n.focus\\:border-teal-500:focus {\n  border-color: var(--teal-500) !important;\n}\n.focus\\:border-teal-600:focus {\n  border-color: var(--teal-600) !important;\n}\n.focus\\:border-teal-700:focus {\n  border-color: var(--teal-700) !important;\n}\n.focus\\:border-teal-800:focus {\n  border-color: var(--teal-800) !important;\n}\n.focus\\:border-teal-900:focus {\n  border-color: var(--teal-900) !important;\n}\n\n.hover\\:border-teal-50:hover {\n  border-color: var(--teal-50) !important;\n}\n.hover\\:border-teal-100:hover {\n  border-color: var(--teal-100) !important;\n}\n.hover\\:border-teal-200:hover {\n  border-color: var(--teal-200) !important;\n}\n.hover\\:border-teal-300:hover {\n  border-color: var(--teal-300) !important;\n}\n.hover\\:border-teal-400:hover {\n  border-color: var(--teal-400) !important;\n}\n.hover\\:border-teal-500:hover {\n  border-color: var(--teal-500) !important;\n}\n.hover\\:border-teal-600:hover {\n  border-color: var(--teal-600) !important;\n}\n.hover\\:border-teal-700:hover {\n  border-color: var(--teal-700) !important;\n}\n.hover\\:border-teal-800:hover {\n  border-color: var(--teal-800) !important;\n}\n.hover\\:border-teal-900:hover {\n  border-color: var(--teal-900) !important;\n}\n\n.active\\:border-teal-50:active {\n  border-color: var(--teal-50) !important;\n}\n.active\\:border-teal-100:active {\n  border-color: var(--teal-100) !important;\n}\n.active\\:border-teal-200:active {\n  border-color: var(--teal-200) !important;\n}\n.active\\:border-teal-300:active {\n  border-color: var(--teal-300) !important;\n}\n.active\\:border-teal-400:active {\n  border-color: var(--teal-400) !important;\n}\n.active\\:border-teal-500:active {\n  border-color: var(--teal-500) !important;\n}\n.active\\:border-teal-600:active {\n  border-color: var(--teal-600) !important;\n}\n.active\\:border-teal-700:active {\n  border-color: var(--teal-700) !important;\n}\n.active\\:border-teal-800:active {\n  border-color: var(--teal-800) !important;\n}\n.active\\:border-teal-900:active {\n  border-color: var(--teal-900) !important;\n}\n\n.border-orange-50 {\n  border-color: var(--orange-50) !important;\n}\n.border-orange-100 {\n  border-color: var(--orange-100) !important;\n}\n.border-orange-200 {\n  border-color: var(--orange-200) !important;\n}\n.border-orange-300 {\n  border-color: var(--orange-300) !important;\n}\n.border-orange-400 {\n  border-color: var(--orange-400) !important;\n}\n.border-orange-500 {\n  border-color: var(--orange-500) !important;\n}\n.border-orange-600 {\n  border-color: var(--orange-600) !important;\n}\n.border-orange-700 {\n  border-color: var(--orange-700) !important;\n}\n.border-orange-800 {\n  border-color: var(--orange-800) !important;\n}\n.border-orange-900 {\n  border-color: var(--orange-900) !important;\n}\n\n.focus\\:border-orange-50:focus {\n  border-color: var(--orange-50) !important;\n}\n.focus\\:border-orange-100:focus {\n  border-color: var(--orange-100) !important;\n}\n.focus\\:border-orange-200:focus {\n  border-color: var(--orange-200) !important;\n}\n.focus\\:border-orange-300:focus {\n  border-color: var(--orange-300) !important;\n}\n.focus\\:border-orange-400:focus {\n  border-color: var(--orange-400) !important;\n}\n.focus\\:border-orange-500:focus {\n  border-color: var(--orange-500) !important;\n}\n.focus\\:border-orange-600:focus {\n  border-color: var(--orange-600) !important;\n}\n.focus\\:border-orange-700:focus {\n  border-color: var(--orange-700) !important;\n}\n.focus\\:border-orange-800:focus {\n  border-color: var(--orange-800) !important;\n}\n.focus\\:border-orange-900:focus {\n  border-color: var(--orange-900) !important;\n}\n\n.hover\\:border-orange-50:hover {\n  border-color: var(--orange-50) !important;\n}\n.hover\\:border-orange-100:hover {\n  border-color: var(--orange-100) !important;\n}\n.hover\\:border-orange-200:hover {\n  border-color: var(--orange-200) !important;\n}\n.hover\\:border-orange-300:hover {\n  border-color: var(--orange-300) !important;\n}\n.hover\\:border-orange-400:hover {\n  border-color: var(--orange-400) !important;\n}\n.hover\\:border-orange-500:hover {\n  border-color: var(--orange-500) !important;\n}\n.hover\\:border-orange-600:hover {\n  border-color: var(--orange-600) !important;\n}\n.hover\\:border-orange-700:hover {\n  border-color: var(--orange-700) !important;\n}\n.hover\\:border-orange-800:hover {\n  border-color: var(--orange-800) !important;\n}\n.hover\\:border-orange-900:hover {\n  border-color: var(--orange-900) !important;\n}\n\n.active\\:border-orange-50:active {\n  border-color: var(--orange-50) !important;\n}\n.active\\:border-orange-100:active {\n  border-color: var(--orange-100) !important;\n}\n.active\\:border-orange-200:active {\n  border-color: var(--orange-200) !important;\n}\n.active\\:border-orange-300:active {\n  border-color: var(--orange-300) !important;\n}\n.active\\:border-orange-400:active {\n  border-color: var(--orange-400) !important;\n}\n.active\\:border-orange-500:active {\n  border-color: var(--orange-500) !important;\n}\n.active\\:border-orange-600:active {\n  border-color: var(--orange-600) !important;\n}\n.active\\:border-orange-700:active {\n  border-color: var(--orange-700) !important;\n}\n.active\\:border-orange-800:active {\n  border-color: var(--orange-800) !important;\n}\n.active\\:border-orange-900:active {\n  border-color: var(--orange-900) !important;\n}\n\n.border-bluegray-50 {\n  border-color: var(--bluegray-50) !important;\n}\n.border-bluegray-100 {\n  border-color: var(--bluegray-100) !important;\n}\n.border-bluegray-200 {\n  border-color: var(--bluegray-200) !important;\n}\n.border-bluegray-300 {\n  border-color: var(--bluegray-300) !important;\n}\n.border-bluegray-400 {\n  border-color: var(--bluegray-400) !important;\n}\n.border-bluegray-500 {\n  border-color: var(--bluegray-500) !important;\n}\n.border-bluegray-600 {\n  border-color: var(--bluegray-600) !important;\n}\n.border-bluegray-700 {\n  border-color: var(--bluegray-700) !important;\n}\n.border-bluegray-800 {\n  border-color: var(--bluegray-800) !important;\n}\n.border-bluegray-900 {\n  border-color: var(--bluegray-900) !important;\n}\n\n.focus\\:border-bluegray-50:focus {\n  border-color: var(--bluegray-50) !important;\n}\n.focus\\:border-bluegray-100:focus {\n  border-color: var(--bluegray-100) !important;\n}\n.focus\\:border-bluegray-200:focus {\n  border-color: var(--bluegray-200) !important;\n}\n.focus\\:border-bluegray-300:focus {\n  border-color: var(--bluegray-300) !important;\n}\n.focus\\:border-bluegray-400:focus {\n  border-color: var(--bluegray-400) !important;\n}\n.focus\\:border-bluegray-500:focus {\n  border-color: var(--bluegray-500) !important;\n}\n.focus\\:border-bluegray-600:focus {\n  border-color: var(--bluegray-600) !important;\n}\n.focus\\:border-bluegray-700:focus {\n  border-color: var(--bluegray-700) !important;\n}\n.focus\\:border-bluegray-800:focus {\n  border-color: var(--bluegray-800) !important;\n}\n.focus\\:border-bluegray-900:focus {\n  border-color: var(--bluegray-900) !important;\n}\n\n.hover\\:border-bluegray-50:hover {\n  border-color: var(--bluegray-50) !important;\n}\n.hover\\:border-bluegray-100:hover {\n  border-color: var(--bluegray-100) !important;\n}\n.hover\\:border-bluegray-200:hover {\n  border-color: var(--bluegray-200) !important;\n}\n.hover\\:border-bluegray-300:hover {\n  border-color: var(--bluegray-300) !important;\n}\n.hover\\:border-bluegray-400:hover {\n  border-color: var(--bluegray-400) !important;\n}\n.hover\\:border-bluegray-500:hover {\n  border-color: var(--bluegray-500) !important;\n}\n.hover\\:border-bluegray-600:hover {\n  border-color: var(--bluegray-600) !important;\n}\n.hover\\:border-bluegray-700:hover {\n  border-color: var(--bluegray-700) !important;\n}\n.hover\\:border-bluegray-800:hover {\n  border-color: var(--bluegray-800) !important;\n}\n.hover\\:border-bluegray-900:hover {\n  border-color: var(--bluegray-900) !important;\n}\n\n.active\\:border-bluegray-50:active {\n  border-color: var(--bluegray-50) !important;\n}\n.active\\:border-bluegray-100:active {\n  border-color: var(--bluegray-100) !important;\n}\n.active\\:border-bluegray-200:active {\n  border-color: var(--bluegray-200) !important;\n}\n.active\\:border-bluegray-300:active {\n  border-color: var(--bluegray-300) !important;\n}\n.active\\:border-bluegray-400:active {\n  border-color: var(--bluegray-400) !important;\n}\n.active\\:border-bluegray-500:active {\n  border-color: var(--bluegray-500) !important;\n}\n.active\\:border-bluegray-600:active {\n  border-color: var(--bluegray-600) !important;\n}\n.active\\:border-bluegray-700:active {\n  border-color: var(--bluegray-700) !important;\n}\n.active\\:border-bluegray-800:active {\n  border-color: var(--bluegray-800) !important;\n}\n.active\\:border-bluegray-900:active {\n  border-color: var(--bluegray-900) !important;\n}\n\n.border-purple-50 {\n  border-color: var(--purple-50) !important;\n}\n.border-purple-100 {\n  border-color: var(--purple-100) !important;\n}\n.border-purple-200 {\n  border-color: var(--purple-200) !important;\n}\n.border-purple-300 {\n  border-color: var(--purple-300) !important;\n}\n.border-purple-400 {\n  border-color: var(--purple-400) !important;\n}\n.border-purple-500 {\n  border-color: var(--purple-500) !important;\n}\n.border-purple-600 {\n  border-color: var(--purple-600) !important;\n}\n.border-purple-700 {\n  border-color: var(--purple-700) !important;\n}\n.border-purple-800 {\n  border-color: var(--purple-800) !important;\n}\n.border-purple-900 {\n  border-color: var(--purple-900) !important;\n}\n\n.focus\\:border-purple-50:focus {\n  border-color: var(--purple-50) !important;\n}\n.focus\\:border-purple-100:focus {\n  border-color: var(--purple-100) !important;\n}\n.focus\\:border-purple-200:focus {\n  border-color: var(--purple-200) !important;\n}\n.focus\\:border-purple-300:focus {\n  border-color: var(--purple-300) !important;\n}\n.focus\\:border-purple-400:focus {\n  border-color: var(--purple-400) !important;\n}\n.focus\\:border-purple-500:focus {\n  border-color: var(--purple-500) !important;\n}\n.focus\\:border-purple-600:focus {\n  border-color: var(--purple-600) !important;\n}\n.focus\\:border-purple-700:focus {\n  border-color: var(--purple-700) !important;\n}\n.focus\\:border-purple-800:focus {\n  border-color: var(--purple-800) !important;\n}\n.focus\\:border-purple-900:focus {\n  border-color: var(--purple-900) !important;\n}\n\n.hover\\:border-purple-50:hover {\n  border-color: var(--purple-50) !important;\n}\n.hover\\:border-purple-100:hover {\n  border-color: var(--purple-100) !important;\n}\n.hover\\:border-purple-200:hover {\n  border-color: var(--purple-200) !important;\n}\n.hover\\:border-purple-300:hover {\n  border-color: var(--purple-300) !important;\n}\n.hover\\:border-purple-400:hover {\n  border-color: var(--purple-400) !important;\n}\n.hover\\:border-purple-500:hover {\n  border-color: var(--purple-500) !important;\n}\n.hover\\:border-purple-600:hover {\n  border-color: var(--purple-600) !important;\n}\n.hover\\:border-purple-700:hover {\n  border-color: var(--purple-700) !important;\n}\n.hover\\:border-purple-800:hover {\n  border-color: var(--purple-800) !important;\n}\n.hover\\:border-purple-900:hover {\n  border-color: var(--purple-900) !important;\n}\n\n.active\\:border-purple-50:active {\n  border-color: var(--purple-50) !important;\n}\n.active\\:border-purple-100:active {\n  border-color: var(--purple-100) !important;\n}\n.active\\:border-purple-200:active {\n  border-color: var(--purple-200) !important;\n}\n.active\\:border-purple-300:active {\n  border-color: var(--purple-300) !important;\n}\n.active\\:border-purple-400:active {\n  border-color: var(--purple-400) !important;\n}\n.active\\:border-purple-500:active {\n  border-color: var(--purple-500) !important;\n}\n.active\\:border-purple-600:active {\n  border-color: var(--purple-600) !important;\n}\n.active\\:border-purple-700:active {\n  border-color: var(--purple-700) !important;\n}\n.active\\:border-purple-800:active {\n  border-color: var(--purple-800) !important;\n}\n.active\\:border-purple-900:active {\n  border-color: var(--purple-900) !important;\n}\n\n.border-gray-50 {\n  border-color: var(--gray-50) !important;\n}\n.border-gray-100 {\n  border-color: var(--gray-100) !important;\n}\n.border-gray-200 {\n  border-color: var(--gray-200) !important;\n}\n.border-gray-300 {\n  border-color: var(--gray-300) !important;\n}\n.border-gray-400 {\n  border-color: var(--gray-400) !important;\n}\n.border-gray-500 {\n  border-color: var(--gray-500) !important;\n}\n.border-gray-600 {\n  border-color: var(--gray-600) !important;\n}\n.border-gray-700 {\n  border-color: var(--gray-700) !important;\n}\n.border-gray-800 {\n  border-color: var(--gray-800) !important;\n}\n.border-gray-900 {\n  border-color: var(--gray-900) !important;\n}\n\n.focus\\:border-gray-50:focus {\n  border-color: var(--gray-50) !important;\n}\n.focus\\:border-gray-100:focus {\n  border-color: var(--gray-100) !important;\n}\n.focus\\:border-gray-200:focus {\n  border-color: var(--gray-200) !important;\n}\n.focus\\:border-gray-300:focus {\n  border-color: var(--gray-300) !important;\n}\n.focus\\:border-gray-400:focus {\n  border-color: var(--gray-400) !important;\n}\n.focus\\:border-gray-500:focus {\n  border-color: var(--gray-500) !important;\n}\n.focus\\:border-gray-600:focus {\n  border-color: var(--gray-600) !important;\n}\n.focus\\:border-gray-700:focus {\n  border-color: var(--gray-700) !important;\n}\n.focus\\:border-gray-800:focus {\n  border-color: var(--gray-800) !important;\n}\n.focus\\:border-gray-900:focus {\n  border-color: var(--gray-900) !important;\n}\n\n.hover\\:border-gray-50:hover {\n  border-color: var(--gray-50) !important;\n}\n.hover\\:border-gray-100:hover {\n  border-color: var(--gray-100) !important;\n}\n.hover\\:border-gray-200:hover {\n  border-color: var(--gray-200) !important;\n}\n.hover\\:border-gray-300:hover {\n  border-color: var(--gray-300) !important;\n}\n.hover\\:border-gray-400:hover {\n  border-color: var(--gray-400) !important;\n}\n.hover\\:border-gray-500:hover {\n  border-color: var(--gray-500) !important;\n}\n.hover\\:border-gray-600:hover {\n  border-color: var(--gray-600) !important;\n}\n.hover\\:border-gray-700:hover {\n  border-color: var(--gray-700) !important;\n}\n.hover\\:border-gray-800:hover {\n  border-color: var(--gray-800) !important;\n}\n.hover\\:border-gray-900:hover {\n  border-color: var(--gray-900) !important;\n}\n\n.active\\:border-gray-50:active {\n  border-color: var(--gray-50) !important;\n}\n.active\\:border-gray-100:active {\n  border-color: var(--gray-100) !important;\n}\n.active\\:border-gray-200:active {\n  border-color: var(--gray-200) !important;\n}\n.active\\:border-gray-300:active {\n  border-color: var(--gray-300) !important;\n}\n.active\\:border-gray-400:active {\n  border-color: var(--gray-400) !important;\n}\n.active\\:border-gray-500:active {\n  border-color: var(--gray-500) !important;\n}\n.active\\:border-gray-600:active {\n  border-color: var(--gray-600) !important;\n}\n.active\\:border-gray-700:active {\n  border-color: var(--gray-700) !important;\n}\n.active\\:border-gray-800:active {\n  border-color: var(--gray-800) !important;\n}\n.active\\:border-gray-900:active {\n  border-color: var(--gray-900) !important;\n}\n\n.bg-white-alpha-10 {\n  background-color: rgba(255,255,255,0.1) !important;\n}\n.bg-white-alpha-20 {\n  background-color: rgba(255,255,255,0.2) !important;\n}\n.bg-white-alpha-30 {\n  background-color: rgba(255,255,255,0.3) !important;\n}\n.bg-white-alpha-40 {\n  background-color: rgba(255,255,255,0.4) !important;\n}\n.bg-white-alpha-50 {\n  background-color: rgba(255,255,255,0.5) !important;\n}\n.bg-white-alpha-60 {\n  background-color: rgba(255,255,255,0.6) !important;\n}\n.bg-white-alpha-70 {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.bg-white-alpha-80 {\n  background-color: rgba(255,255,255,0.8) !important;\n}\n.bg-white-alpha-90 {\n  background-color: rgba(255,255,255,0.9) !important;\n}\n\n.hover\\:bg-white-alpha-10:hover {\n  background-color: rgba(255,255,255,0.1) !important;\n}\n.hover\\:bg-white-alpha-20:hover {\n  background-color: rgba(255,255,255,0.2) !important;\n}\n.hover\\:bg-white-alpha-30:hover {\n  background-color: rgba(255,255,255,0.3) !important;\n}\n.hover\\:bg-white-alpha-40:hover {\n  background-color: rgba(255,255,255,0.4) !important;\n}\n.hover\\:bg-white-alpha-50:hover {\n  background-color: rgba(255,255,255,0.5) !important;\n}\n.hover\\:bg-white-alpha-60:hover {\n  background-color: rgba(255,255,255,0.6) !important;\n}\n.hover\\:bg-white-alpha-70:hover {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.hover\\:bg-white-alpha-80:hover {\n  background-color: rgba(255,255,255,0.8) !important;\n}\n.hover\\:bg-white-alpha-90:hover {\n  background-color: rgba(255,255,255,0.9) !important;\n}\n\n.focus\\:bg-white-alpha-10:focus {\n  background-color: rgba(255,255,255,0.1) !important;\n}\n.focus\\:bg-white-alpha-20:focus {\n  background-color: rgba(255,255,255,0.2) !important;\n}\n.focus\\:bg-white-alpha-30:focus {\n  background-color: rgba(255,255,255,0.3) !important;\n}\n.focus\\:bg-white-alpha-40:focus {\n  background-color: rgba(255,255,255,0.4) !important;\n}\n.focus\\:bg-white-alpha-50:focus {\n  background-color: rgba(255,255,255,0.5) !important;\n}\n.focus\\:bg-white-alpha-60:focus {\n  background-color: rgba(255,255,255,0.6) !important;\n}\n.focus\\:bg-white-alpha-70:focus {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.focus\\:bg-white-alpha-80:focus {\n  background-color: rgba(255,255,255,0.8) !important;\n}\n.focus\\:bg-white-alpha-90:focus {\n  background-color: rgba(255,255,255,0.9) !important;\n}\n\n.active\\:bg-white-alpha-10:active {\n  background-color: rgba(255,255,255,0.1) !important;\n}\n.active\\:bg-white-alpha-20:active {\n  background-color: rgba(255,255,255,0.2) !important;\n}\n.active\\:bg-white-alpha-30:active {\n  background-color: rgba(255,255,255,0.3) !important;\n}\n.active\\:bg-white-alpha-40:active {\n  background-color: rgba(255,255,255,0.4) !important;\n}\n.active\\:bg-white-alpha-50:active {\n  background-color: rgba(255,255,255,0.5) !important;\n}\n.active\\:bg-white-alpha-60:active {\n  background-color: rgba(255,255,255,0.6) !important;\n}\n.active\\:bg-white-alpha-70:active {\n  background-color: rgba(255,255,255,0.7) !important;\n}\n.active\\:bg-white-alpha-80:active {\n  background-color: rgba(255,255,255,0.8) !important;\n}\n.active\\:bg-white-alpha-90:active {\n  background-color: rgba(255,255,255,0.9) !important;\n}\n\n.bg-black-alpha-10 {\n  background-color: rgba(0,0,0,0.1) !important;\n}\n.bg-black-alpha-20 {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.bg-black-alpha-30 {\n  background-color: rgba(0,0,0,0.3) !important;\n}\n.bg-black-alpha-40 {\n  background-color: rgba(0,0,0,0.4) !important;\n}\n.bg-black-alpha-50 {\n  background-color: rgba(0,0,0,0.5) !important;\n}\n.bg-black-alpha-60 {\n  background-color: rgba(0,0,0,0.6) !important;\n}\n.bg-black-alpha-70 {\n  background-color: rgba(0,0,0,0.7) !important;\n}\n.bg-black-alpha-80 {\n  background-color: rgba(0,0,0,0.8) !important;\n}\n.bg-black-alpha-90 {\n  background-color: rgba(0,0,0,0.9) !important;\n}\n\n.hover\\:bg-black-alpha-10:hover {\n  background-color: rgba(0,0,0,0.1) !important;\n}\n.hover\\:bg-black-alpha-20:hover {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.hover\\:bg-black-alpha-30:hover {\n  background-color: rgba(0,0,0,0.3) !important;\n}\n.hover\\:bg-black-alpha-40:hover {\n  background-color: rgba(0,0,0,0.4) !important;\n}\n.hover\\:bg-black-alpha-50:hover {\n  background-color: rgba(0,0,0,0.5) !important;\n}\n.hover\\:bg-black-alpha-60:hover {\n  background-color: rgba(0,0,0,0.6) !important;\n}\n.hover\\:bg-black-alpha-70:hover {\n  background-color: rgba(0,0,0,0.7) !important;\n}\n.hover\\:bg-black-alpha-80:hover {\n  background-color: rgba(0,0,0,0.8) !important;\n}\n.hover\\:bg-black-alpha-90:hover {\n  background-color: rgba(0,0,0,0.9) !important;\n}\n\n.focus\\:bg-black-alpha-10:focus {\n  background-color: rgba(0,0,0,0.1) !important;\n}\n.focus\\:bg-black-alpha-20:focus {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.focus\\:bg-black-alpha-30:focus {\n  background-color: rgba(0,0,0,0.3) !important;\n}\n.focus\\:bg-black-alpha-40:focus {\n  background-color: rgba(0,0,0,0.4) !important;\n}\n.focus\\:bg-black-alpha-50:focus {\n  background-color: rgba(0,0,0,0.5) !important;\n}\n.focus\\:bg-black-alpha-60:focus {\n  background-color: rgba(0,0,0,0.6) !important;\n}\n.focus\\:bg-black-alpha-70:focus {\n  background-color: rgba(0,0,0,0.7) !important;\n}\n.focus\\:bg-black-alpha-80:focus {\n  background-color: rgba(0,0,0,0.8) !important;\n}\n.focus\\:bg-black-alpha-90:focus {\n  background-color: rgba(0,0,0,0.9) !important;\n}\n\n.active\\:bg-black-alpha-10:active {\n  background-color: rgba(0,0,0,0.1) !important;\n}\n.active\\:bg-black-alpha-20:active {\n  background-color: rgba(0,0,0,0.2) !important;\n}\n.active\\:bg-black-alpha-30:active {\n  background-color: rgba(0,0,0,0.3) !important;\n}\n.active\\:bg-black-alpha-40:active {\n  background-color: rgba(0,0,0,0.4) !important;\n}\n.active\\:bg-black-alpha-50:active {\n  background-color: rgba(0,0,0,0.5) !important;\n}\n.active\\:bg-black-alpha-60:active {\n  background-color: rgba(0,0,0,0.6) !important;\n}\n.active\\:bg-black-alpha-70:active {\n  background-color: rgba(0,0,0,0.7) !important;\n}\n.active\\:bg-black-alpha-80:active {\n  background-color: rgba(0,0,0,0.8) !important;\n}\n.active\\:bg-black-alpha-90:active {\n  background-color: rgba(0,0,0,0.9) !important;\n}\n\n.border-white-alpha-10 {\n  border-color: rgba(255,255,255,0.1) !important;\n}\n.border-white-alpha-20 {\n  border-color: rgba(255,255,255,0.2) !important;\n}\n.border-white-alpha-30 {\n  border-color: rgba(255,255,255,0.3) !important;\n}\n.border-white-alpha-40 {\n  border-color: rgba(255,255,255,0.4) !important;\n}\n.border-white-alpha-50 {\n  border-color: rgba(255,255,255,0.5) !important;\n}\n.border-white-alpha-60 {\n  border-color: rgba(255,255,255,0.6) !important;\n}\n.border-white-alpha-70 {\n  border-color: rgba(255,255,255,0.7) !important;\n}\n.border-white-alpha-80 {\n  border-color: rgba(255,255,255,0.8) !important;\n}\n.border-white-alpha-90 {\n  border-color: rgba(255,255,255,0.9) !important;\n}\n\n.hover\\:border-white-alpha-10:hover {\n  border-color: rgba(255,255,255,0.1) !important;\n}\n.hover\\:border-white-alpha-20:hover {\n  border-color: rgba(255,255,255,0.2) !important;\n}\n.hover\\:border-white-alpha-30:hover {\n  border-color: rgba(255,255,255,0.3) !important;\n}\n.hover\\:border-white-alpha-40:hover {\n  border-color: rgba(255,255,255,0.4) !important;\n}\n.hover\\:border-white-alpha-50:hover {\n  border-color: rgba(255,255,255,0.5) !important;\n}\n.hover\\:border-white-alpha-60:hover {\n  border-color: rgba(255,255,255,0.6) !important;\n}\n.hover\\:border-white-alpha-70:hover {\n  border-color: rgba(255,255,255,0.7) !important;\n}\n.hover\\:border-white-alpha-80:hover {\n  border-color: rgba(255,255,255,0.8) !important;\n}\n.hover\\:border-white-alpha-90:hover {\n  border-color: rgba(255,255,255,0.9) !important;\n}\n\n.focus\\:border-white-alpha-10:focus {\n  border-color: rgba(255,255,255,0.1) !important;\n}\n.focus\\:border-white-alpha-20:focus {\n  border-color: rgba(255,255,255,0.2) !important;\n}\n.focus\\:border-white-alpha-30:focus {\n  border-color: rgba(255,255,255,0.3) !important;\n}\n.focus\\:border-white-alpha-40:focus {\n  border-color: rgba(255,255,255,0.4) !important;\n}\n.focus\\:border-white-alpha-50:focus {\n  border-color: rgba(255,255,255,0.5) !important;\n}\n.focus\\:border-white-alpha-60:focus {\n  border-color: rgba(255,255,255,0.6) !important;\n}\n.focus\\:border-white-alpha-70:focus {\n  border-color: rgba(255,255,255,0.7) !important;\n}\n.focus\\:border-white-alpha-80:focus {\n  border-color: rgba(255,255,255,0.8) !important;\n}\n.focus\\:border-white-alpha-90:focus {\n  border-color: rgba(255,255,255,0.9) !important;\n}\n\n.active\\:border-white-alpha-10:active {\n  border-color: rgba(255,255,255,0.1) !important;\n}\n.active\\:border-white-alpha-20:active {\n  border-color: rgba(255,255,255,0.2) !important;\n}\n.active\\:border-white-alpha-30:active {\n  border-color: rgba(255,255,255,0.3) !important;\n}\n.active\\:border-white-alpha-40:active {\n  border-color: rgba(255,255,255,0.4) !important;\n}\n.active\\:border-white-alpha-50:active {\n  border-color: rgba(255,255,255,0.5) !important;\n}\n.active\\:border-white-alpha-60:active {\n  border-color: rgba(255,255,255,0.6) !important;\n}\n.active\\:border-white-alpha-70:active {\n  border-color: rgba(255,255,255,0.7) !important;\n}\n.active\\:border-white-alpha-80:active {\n  border-color: rgba(255,255,255,0.8) !important;\n}\n.active\\:border-white-alpha-90:active {\n  border-color: rgba(255,255,255,0.9) !important;\n}\n\n.border-black-alpha-10 {\n  border-color: rgba(0,0,0,0.1) !important;\n}\n.border-black-alpha-20 {\n  border-color: rgba(0,0,0,0.2) !important;\n}\n.border-black-alpha-30 {\n  border-color: rgba(0,0,0,0.3) !important;\n}\n.border-black-alpha-40 {\n  border-color: rgba(0,0,0,0.4) !important;\n}\n.border-black-alpha-50 {\n  border-color: rgba(0,0,0,0.5) !important;\n}\n.border-black-alpha-60 {\n  border-color: rgba(0,0,0,0.6) !important;\n}\n.border-black-alpha-70 {\n  border-color: rgba(0,0,0,0.7) !important;\n}\n.border-black-alpha-80 {\n  border-color: rgba(0,0,0,0.8) !important;\n}\n.border-black-alpha-90 {\n  border-color: rgba(0,0,0,0.9) !important;\n}\n\n.hover\\:border-black-alpha-10:hover {\n  border-color: rgba(0,0,0,0.1) !important;\n}\n.hover\\:border-black-alpha-20:hover {\n  border-color: rgba(0,0,0,0.2) !important;\n}\n.hover\\:border-black-alpha-30:hover {\n  border-color: rgba(0,0,0,0.3) !important;\n}\n.hover\\:border-black-alpha-40:hover {\n  border-color: rgba(0,0,0,0.4) !important;\n}\n.hover\\:border-black-alpha-50:hover {\n  border-color: rgba(0,0,0,0.5) !important;\n}\n.hover\\:border-black-alpha-60:hover {\n  border-color: rgba(0,0,0,0.6) !important;\n}\n.hover\\:border-black-alpha-70:hover {\n  border-color: rgba(0,0,0,0.7) !important;\n}\n.hover\\:border-black-alpha-80:hover {\n  border-color: rgba(0,0,0,0.8) !important;\n}\n.hover\\:border-black-alpha-90:hover {\n  border-color: rgba(0,0,0,0.9) !important;\n}\n\n.focus\\:border-black-alpha-10:focus {\n  border-color: rgba(0,0,0,0.1) !important;\n}\n.focus\\:border-black-alpha-20:focus {\n  border-color: rgba(0,0,0,0.2) !important;\n}\n.focus\\:border-black-alpha-30:focus {\n  border-color: rgba(0,0,0,0.3) !important;\n}\n.focus\\:border-black-alpha-40:focus {\n  border-color: rgba(0,0,0,0.4) !important;\n}\n.focus\\:border-black-alpha-50:focus {\n  border-color: rgba(0,0,0,0.5) !important;\n}\n.focus\\:border-black-alpha-60:focus {\n  border-color: rgba(0,0,0,0.6) !important;\n}\n.focus\\:border-black-alpha-70:focus {\n  border-color: rgba(0,0,0,0.7) !important;\n}\n.focus\\:border-black-alpha-80:focus {\n  border-color: rgba(0,0,0,0.8) !important;\n}\n.focus\\:border-black-alpha-90:focus {\n  border-color: rgba(0,0,0,0.9) !important;\n}\n\n.active\\:border-black-alpha-10:active {\n  border-color: rgba(0,0,0,0.1) !important;\n}\n.active\\:border-black-alpha-20:active {\n  border-color: rgba(0,0,0,0.2) !important;\n}\n.active\\:border-black-alpha-30:active {\n  border-color: rgba(0,0,0,0.3) !important;\n}\n.active\\:border-black-alpha-40:active {\n  border-color: rgba(0,0,0,0.4) !important;\n}\n.active\\:border-black-alpha-50:active {\n  border-color: rgba(0,0,0,0.5) !important;\n}\n.active\\:border-black-alpha-60:active {\n  border-color: rgba(0,0,0,0.6) !important;\n}\n.active\\:border-black-alpha-70:active {\n  border-color: rgba(0,0,0,0.7) !important;\n}\n.active\\:border-black-alpha-80:active {\n  border-color: rgba(0,0,0,0.8) !important;\n}\n.active\\:border-black-alpha-90:active {\n  border-color: rgba(0,0,0,0.9) !important;\n}\n\n.text-white-alpha-10 {\n  color: rgba(255,255,255,0.1) !important;\n}\n.text-white-alpha-20 {\n  color: rgba(255,255,255,0.2) !important;\n}\n.text-white-alpha-30 {\n  color: rgba(255,255,255,0.3) !important;\n}\n.text-white-alpha-40 {\n  color: rgba(255,255,255,0.4) !important;\n}\n.text-white-alpha-50 {\n  color: rgba(255,255,255,0.5) !important;\n}\n.text-white-alpha-60 {\n  color: rgba(255,255,255,0.6) !important;\n}\n.text-white-alpha-70 {\n  color: rgba(255,255,255,0.7) !important;\n}\n.text-white-alpha-80 {\n  color: rgba(255,255,255,0.8) !important;\n}\n.text-white-alpha-90 {\n  color: rgba(255,255,255,0.9) !important;\n}\n\n.hover\\:text-white-alpha-10:hover {\n  color: rgba(255,255,255,0.1) !important;\n}\n.hover\\:text-white-alpha-20:hover {\n  color: rgba(255,255,255,0.2) !important;\n}\n.hover\\:text-white-alpha-30:hover {\n  color: rgba(255,255,255,0.3) !important;\n}\n.hover\\:text-white-alpha-40:hover {\n  color: rgba(255,255,255,0.4) !important;\n}\n.hover\\:text-white-alpha-50:hover {\n  color: rgba(255,255,255,0.5) !important;\n}\n.hover\\:text-white-alpha-60:hover {\n  color: rgba(255,255,255,0.6) !important;\n}\n.hover\\:text-white-alpha-70:hover {\n  color: rgba(255,255,255,0.7) !important;\n}\n.hover\\:text-white-alpha-80:hover {\n  color: rgba(255,255,255,0.8) !important;\n}\n.hover\\:text-white-alpha-90:hover {\n  color: rgba(255,255,255,0.9) !important;\n}\n\n.focus\\:text-white-alpha-10:focus {\n  color: rgba(255,255,255,0.1) !important;\n}\n.focus\\:text-white-alpha-20:focus {\n  color: rgba(255,255,255,0.2) !important;\n}\n.focus\\:text-white-alpha-30:focus {\n  color: rgba(255,255,255,0.3) !important;\n}\n.focus\\:text-white-alpha-40:focus {\n  color: rgba(255,255,255,0.4) !important;\n}\n.focus\\:text-white-alpha-50:focus {\n  color: rgba(255,255,255,0.5) !important;\n}\n.focus\\:text-white-alpha-60:focus {\n  color: rgba(255,255,255,0.6) !important;\n}\n.focus\\:text-white-alpha-70:focus {\n  color: rgba(255,255,255,0.7) !important;\n}\n.focus\\:text-white-alpha-80:focus {\n  color: rgba(255,255,255,0.8) !important;\n}\n.focus\\:text-white-alpha-90:focus {\n  color: rgba(255,255,255,0.9) !important;\n}\n\n.active\\:text-white-alpha-10:active {\n  color: rgba(255,255,255,0.1) !important;\n}\n.active\\:text-white-alpha-20:active {\n  color: rgba(255,255,255,0.2) !important;\n}\n.active\\:text-white-alpha-30:active {\n  color: rgba(255,255,255,0.3) !important;\n}\n.active\\:text-white-alpha-40:active {\n  color: rgba(255,255,255,0.4) !important;\n}\n.active\\:text-white-alpha-50:active {\n  color: rgba(255,255,255,0.5) !important;\n}\n.active\\:text-white-alpha-60:active {\n  color: rgba(255,255,255,0.6) !important;\n}\n.active\\:text-white-alpha-70:active {\n  color: rgba(255,255,255,0.7) !important;\n}\n.active\\:text-white-alpha-80:active {\n  color: rgba(255,255,255,0.8) !important;\n}\n.active\\:text-white-alpha-90:active {\n  color: rgba(255,255,255,0.9) !important;\n}\n\n.text-black-alpha-10 {\n  color: rgba(0,0,0,0.1) !important;\n}\n.text-black-alpha-20 {\n  color: rgba(0,0,0,0.2) !important;\n}\n.text-black-alpha-30 {\n  color: rgba(0,0,0,0.3) !important;\n}\n.text-black-alpha-40 {\n  color: rgba(0,0,0,0.4) !important;\n}\n.text-black-alpha-50 {\n  color: rgba(0,0,0,0.5) !important;\n}\n.text-black-alpha-60 {\n  color: rgba(0,0,0,0.6) !important;\n}\n.text-black-alpha-70 {\n  color: rgba(0,0,0,0.7) !important;\n}\n.text-black-alpha-80 {\n  color: rgba(0,0,0,0.8) !important;\n}\n.text-black-alpha-90 {\n  color: rgba(0,0,0,0.9) !important;\n}\n\n.hover\\:text-black-alpha-10:hover {\n  color: rgba(0,0,0,0.1) !important;\n}\n.hover\\:text-black-alpha-20:hover {\n  color: rgba(0,0,0,0.2) !important;\n}\n.hover\\:text-black-alpha-30:hover {\n  color: rgba(0,0,0,0.3) !important;\n}\n.hover\\:text-black-alpha-40:hover {\n  color: rgba(0,0,0,0.4) !important;\n}\n.hover\\:text-black-alpha-50:hover {\n  color: rgba(0,0,0,0.5) !important;\n}\n.hover\\:text-black-alpha-60:hover {\n  color: rgba(0,0,0,0.6) !important;\n}\n.hover\\:text-black-alpha-70:hover {\n  color: rgba(0,0,0,0.7) !important;\n}\n.hover\\:text-black-alpha-80:hover {\n  color: rgba(0,0,0,0.8) !important;\n}\n.hover\\:text-black-alpha-90:hover {\n  color: rgba(0,0,0,0.9) !important;\n}\n\n.focus\\:text-black-alpha-10:focus {\n  color: rgba(0,0,0,0.1) !important;\n}\n.focus\\:text-black-alpha-20:focus {\n  color: rgba(0,0,0,0.2) !important;\n}\n.focus\\:text-black-alpha-30:focus {\n  color: rgba(0,0,0,0.3) !important;\n}\n.focus\\:text-black-alpha-40:focus {\n  color: rgba(0,0,0,0.4) !important;\n}\n.focus\\:text-black-alpha-50:focus {\n  color: rgba(0,0,0,0.5) !important;\n}\n.focus\\:text-black-alpha-60:focus {\n  color: rgba(0,0,0,0.6) !important;\n}\n.focus\\:text-black-alpha-70:focus {\n  color: rgba(0,0,0,0.7) !important;\n}\n.focus\\:text-black-alpha-80:focus {\n  color: rgba(0,0,0,0.8) !important;\n}\n.focus\\:text-black-alpha-90:focus {\n  color: rgba(0,0,0,0.9) !important;\n}\n\n.active\\:text-black-alpha-10:active {\n  color: rgba(0,0,0,0.1) !important;\n}\n.active\\:text-black-alpha-20:active {\n  color: rgba(0,0,0,0.2) !important;\n}\n.active\\:text-black-alpha-30:active {\n  color: rgba(0,0,0,0.3) !important;\n}\n.active\\:text-black-alpha-40:active {\n  color: rgba(0,0,0,0.4) !important;\n}\n.active\\:text-black-alpha-50:active {\n  color: rgba(0,0,0,0.5) !important;\n}\n.active\\:text-black-alpha-60:active {\n  color: rgba(0,0,0,0.6) !important;\n}\n.active\\:text-black-alpha-70:active {\n  color: rgba(0,0,0,0.7) !important;\n}\n.active\\:text-black-alpha-80:active {\n  color: rgba(0,0,0,0.8) !important;\n}\n.active\\:text-black-alpha-90:active {\n  color: rgba(0,0,0,0.9) !important;\n}\n\n.text-primary {\n  color: var(--primary-color) !important;\n}\n\n.hover\\:text-primary:hover {\n  color: var(--primary-color) !important;\n}\n\n.bg-primary {\n  background-color: var(--primary-color) !important;\n  color: var(--primary-color-text) !important;\n}\n\n.hover\\:bg-primary:hover {\n  background-color: var(--primary-color) !important;\n  color: var(--primary-color-text) !important;\n}\n\n.border-primary {\n  border-color: var(--primary-color) !important;\n}\n\n.hover\\:border-primary:hover {\n  border-color: var(--primary-color) !important;\n}\n\n.bg-primary-reverse {\n  background-color: var(--primary-color-text) !important;\n  color: var(--primary-color) !important;\n}\n\n.hover\\:bg-primary-reverse:hover {\n  background-color: var(--primary-color-text) !important;\n  color: var(--primary-color) !important;\n}\n\n.text-white {\n  color: #ffffff !important;\n}\n\n.hover\\:text-white:hover {\n  color: #ffffff !important;\n}\n\n.bg-white {\n  background-color: #ffffff !important;\n}\n\n.hover\\:bg-white:hover {\n  background-color: #ffffff !important;\n}\n\n.border-white {\n  border-color: #ffffff !important;\n}\n\n.hover\\:border-white:hover {\n  border-color: #ffffff !important;\n}\n\n.surface-ground {\n  background-color: var(--surface-ground) !important;\n}\n\n.surface-section {\n  background-color: var(--surface-section) !important;\n}\n\n.surface-card {\n  background-color: var(--surface-card) !important;\n}\n\n.surface-overlay {\n  background-color: var(--surface-overlay) !important;\n}\n\n.surface-border {\n  border-color: var(--surface-border) !important;\n}\n\n.surface-hover {\n  background-color: var(--surface-hover) !important;\n}\n\n.field {\n  margin-bottom: 1rem;\n}\n\n.field > label {\n  display: inline-block;\n  margin-bottom: 0.5rem;\n}\n\n.field.grid > label {\n  display: flex;\n  align-items: center;\n}\n\n.field > small {\n  margin-top: 0.25rem;\n}\n\n.field.grid,\n.formgrid.grid {\n  margin-top: 0;\n}\n\n.field.grid .col-fixed,\n.formgrid.grid .col-fixed,\n.field.grid .col,\n.formgrid.grid .col,\n.field.grid .col-1,\n.formgrid.grid .col-1,\n.field.grid .col-2,\n.formgrid.grid .col-2,\n.field.grid .col-3,\n.formgrid.grid .col-3,\n.field.grid .col-4,\n.formgrid.grid .col-4,\n.field.grid .col-5,\n.formgrid.grid .col-5,\n.field.grid .col-6,\n.formgrid.grid .col-6,\n.field.grid .col-7,\n.formgrid.grid .col-7,\n.field.grid .col-8,\n.formgrid.grid .col-8,\n.field.grid .col-9,\n.formgrid.grid .col-9,\n.field.grid .col-10,\n.formgrid.grid .col-10,\n.field.grid .col-11,\n.formgrid.grid .col-11,\n.field.grid .col-12,\n.formgrid.grid .col-12 {\n  padding-top: 0;\n  padding-bottom: 0;\n}\n\n.formgroup-inline {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: flex-start;\n}\n\n.formgroup-inline .field,\n.formgroup-inline .field-checkbox,\n.formgroup-inline .field-radiobutton {\n  margin-right: 1rem;\n}\n\n.formgroup-inline .field > label,\n.formgroup-inline .field-checkbox > label,\n.formgroup-inline .field-radiobutton > label {\n  margin-right: 0.5rem;\n  margin-bottom: 0;\n}\n\n.field-checkbox,\n.field-radiobutton {\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n}\n\n.field-checkbox > label,\n.field-radiobutton > label {\n  margin-left: 0.5rem;\n  line-height: 1;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.block {\n  display: block !important;\n}\n\n.inline {\n  display: inline !important;\n}\n\n.inline-block {\n  display: inline-block !important;\n}\n\n.flex {\n  display: flex !important;\n}\n\n.inline-flex {\n  display: inline-flex !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:hidden {\n    display: none !important;\n  }\n  .sm\\:block {\n    display: block !important;\n  }\n  .sm\\:inline {\n    display: inline !important;\n  }\n  .sm\\:inline-block {\n    display: inline-block !important;\n  }\n  .sm\\:flex {\n    display: flex !important;\n  }\n  .sm\\:inline-flex {\n    display: inline-flex !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:hidden {\n    display: none !important;\n  }\n  .md\\:block {\n    display: block !important;\n  }\n  .md\\:inline {\n    display: inline !important;\n  }\n  .md\\:inline-block {\n    display: inline-block !important;\n  }\n  .md\\:flex {\n    display: flex !important;\n  }\n  .md\\:inline-flex {\n    display: inline-flex !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:hidden {\n    display: none !important;\n  }\n  .lg\\:block {\n    display: block !important;\n  }\n  .lg\\:inline {\n    display: inline !important;\n  }\n  .lg\\:inline-block {\n    display: inline-block !important;\n  }\n  .lg\\:flex {\n    display: flex !important;\n  }\n  .lg\\:inline-flex {\n    display: inline-flex !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:hidden {\n    display: none !important;\n  }\n  .xl\\:block {\n    display: block !important;\n  }\n  .xl\\:inline {\n    display: inline !important;\n  }\n  .xl\\:inline-block {\n    display: inline-block !important;\n  }\n  .xl\\:flex {\n    display: flex !important;\n  }\n  .xl\\:inline-flex {\n    display: inline-flex !important;\n  }\n}\n.text-center {\n  text-align: center !important;\n}\n\n.text-justify {\n  text-align: justify !important;\n}\n\n.text-left {\n  text-align: left !important;\n}\n\n.text-right {\n  text-align: right !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:text-center {\n    text-align: center !important;\n  }\n  .sm\\:text-justify {\n    text-align: justify !important;\n  }\n  .sm\\:text-left {\n    text-align: left !important;\n  }\n  .sm\\:text-right {\n    text-align: right !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:text-center {\n    text-align: center !important;\n  }\n  .md\\:text-justify {\n    text-align: justify !important;\n  }\n  .md\\:text-left {\n    text-align: left !important;\n  }\n  .md\\:text-right {\n    text-align: right !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:text-center {\n    text-align: center !important;\n  }\n  .lg\\:text-justify {\n    text-align: justify !important;\n  }\n  .lg\\:text-left {\n    text-align: left !important;\n  }\n  .lg\\:text-right {\n    text-align: right !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:text-center {\n    text-align: center !important;\n  }\n  .xl\\:text-justify {\n    text-align: justify !important;\n  }\n  .xl\\:text-left {\n    text-align: left !important;\n  }\n  .xl\\:text-right {\n    text-align: right !important;\n  }\n}\n.underline {\n  text-decoration: underline !important;\n}\n\n.line-through {\n  text-decoration: line-through !important;\n}\n\n.no-underline {\n  text-decoration: none !important;\n}\n\n.lowercase {\n  text-transform: lowercase !important;\n}\n\n.uppercase {\n  text-transform: uppercase !important;\n}\n\n.capitalize {\n  text-transform: capitalize !important;\n}\n\n.text-overflow-clip {\n  text-overflow: clip !important;\n}\n\n.text-overflow-ellipsis {\n  text-overflow: ellipsis !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:text-overflow-clip {\n    text-overflow: clip !important;\n  }\n  .sm\\:text-overflow-ellipsis {\n    text-overflow: ellipsis !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:text-overflow-clip {\n    text-overflow: clip !important;\n  }\n  .md\\:text-overflow-ellipsis {\n    text-overflow: ellipsis !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:text-overflow-clip {\n    text-overflow: clip !important;\n  }\n  .lg\\:text-overflow-ellipsis {\n    text-overflow: ellipsis !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:text-overflow-clip {\n    text-overflow: clip !important;\n  }\n  .xl\\:text-overflow-ellipsis {\n    text-overflow: ellipsis !important;\n  }\n}\n.font-light {\n  font-weight: 300 !important;\n}\n\n.font-normal {\n  font-weight: 400 !important;\n}\n\n.font-medium {\n  font-weight: 500 !important;\n}\n\n.font-semibold {\n  font-weight: 600 !important;\n}\n\n.font-bold {\n  font-weight: 700 !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:font-light {\n    font-weight: 300 !important;\n  }\n  .sm\\:font-normal {\n    font-weight: 400 !important;\n  }\n  .sm\\:font-medium {\n    font-weight: 500 !important;\n  }\n  .sm\\:font-semibold {\n    font-weight: 600 !important;\n  }\n  .sm\\:font-bold {\n    font-weight: 700 !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:font-light {\n    font-weight: 300 !important;\n  }\n  .md\\:font-normal {\n    font-weight: 400 !important;\n  }\n  .md\\:font-medium {\n    font-weight: 500 !important;\n  }\n  .md\\:font-semibold {\n    font-weight: 600 !important;\n  }\n  .md\\:font-bold {\n    font-weight: 700 !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:font-light {\n    font-weight: 300 !important;\n  }\n  .lg\\:font-normal {\n    font-weight: 400 !important;\n  }\n  .lg\\:font-medium {\n    font-weight: 500 !important;\n  }\n  .lg\\:font-semibold {\n    font-weight: 600 !important;\n  }\n  .lg\\:font-bold {\n    font-weight: 700 !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:font-light {\n    font-weight: 300 !important;\n  }\n  .xl\\:font-normal {\n    font-weight: 400 !important;\n  }\n  .xl\\:font-medium {\n    font-weight: 500 !important;\n  }\n  .xl\\:font-semibold {\n    font-weight: 600 !important;\n  }\n  .xl\\:font-bold {\n    font-weight: 700 !important;\n  }\n}\n.font-italic {\n  font-style: italic !important;\n}\n\n.text-xs {\n  font-size: 0.75rem !important;\n}\n\n.text-sm {\n  font-size: 0.875rem !important;\n}\n\n.text-base {\n  font-size: 1rem !important;\n}\n\n.text-lg {\n  font-size: 1.125rem !important;\n}\n\n.text-xl {\n  font-size: 1.25rem !important;\n}\n\n.text-2xl {\n  font-size: 1.5rem !important;\n}\n\n.text-3xl {\n  font-size: 1.75rem !important;\n}\n\n.text-4xl {\n  font-size: 2rem !important;\n}\n\n.text-5xl {\n  font-size: 2.5rem !important;\n}\n\n.text-6xl {\n  font-size: 3rem !important;\n}\n\n.text-7xl {\n  font-size: 4rem !important;\n}\n\n.text-8xl {\n  font-size: 6rem !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:text-xs {\n    font-size: 0.75rem !important;\n  }\n  .sm\\:text-sm {\n    font-size: 0.875rem !important;\n  }\n  .sm\\:text-base {\n    font-size: 1rem !important;\n  }\n  .sm\\:text-lg {\n    font-size: 1.125rem !important;\n  }\n  .sm\\:text-xl {\n    font-size: 1.25rem !important;\n  }\n  .sm\\:text-2xl {\n    font-size: 1.5rem !important;\n  }\n  .sm\\:text-3xl {\n    font-size: 1.75rem !important;\n  }\n  .sm\\:text-4xl {\n    font-size: 2rem !important;\n  }\n  .sm\\:text-5xl {\n    font-size: 2.5rem !important;\n  }\n  .sm\\:text-6xl {\n    font-size: 3rem !important;\n  }\n  .sm\\:text-7xl {\n    font-size: 4rem !important;\n  }\n  .sm\\:text-8xl {\n    font-size: 6rem !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:text-xs {\n    font-size: 0.75rem !important;\n  }\n  .md\\:text-sm {\n    font-size: 0.875rem !important;\n  }\n  .md\\:text-base {\n    font-size: 1rem !important;\n  }\n  .md\\:text-lg {\n    font-size: 1.125rem !important;\n  }\n  .md\\:text-xl {\n    font-size: 1.25rem !important;\n  }\n  .md\\:text-2xl {\n    font-size: 1.5rem !important;\n  }\n  .md\\:text-3xl {\n    font-size: 1.75rem !important;\n  }\n  .md\\:text-4xl {\n    font-size: 2rem !important;\n  }\n  .md\\:text-5xl {\n    font-size: 2.5rem !important;\n  }\n  .md\\:text-6xl {\n    font-size: 3rem !important;\n  }\n  .md\\:text-7xl {\n    font-size: 4rem !important;\n  }\n  .md\\:text-8xl {\n    font-size: 6rem !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:text-xs {\n    font-size: 0.75rem !important;\n  }\n  .lg\\:text-sm {\n    font-size: 0.875rem !important;\n  }\n  .lg\\:text-base {\n    font-size: 1rem !important;\n  }\n  .lg\\:text-lg {\n    font-size: 1.125rem !important;\n  }\n  .lg\\:text-xl {\n    font-size: 1.25rem !important;\n  }\n  .lg\\:text-2xl {\n    font-size: 1.5rem !important;\n  }\n  .lg\\:text-3xl {\n    font-size: 1.75rem !important;\n  }\n  .lg\\:text-4xl {\n    font-size: 2rem !important;\n  }\n  .lg\\:text-5xl {\n    font-size: 2.5rem !important;\n  }\n  .lg\\:text-6xl {\n    font-size: 3rem !important;\n  }\n  .lg\\:text-7xl {\n    font-size: 4rem !important;\n  }\n  .lg\\:text-8xl {\n    font-size: 6rem !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:text-xs {\n    font-size: 0.75rem !important;\n  }\n  .xl\\:text-sm {\n    font-size: 0.875rem !important;\n  }\n  .xl\\:text-base {\n    font-size: 1rem !important;\n  }\n  .xl\\:text-lg {\n    font-size: 1.125rem !important;\n  }\n  .xl\\:text-xl {\n    font-size: 1.25rem !important;\n  }\n  .xl\\:text-2xl {\n    font-size: 1.5rem !important;\n  }\n  .xl\\:text-3xl {\n    font-size: 1.75rem !important;\n  }\n  .xl\\:text-4xl {\n    font-size: 2rem !important;\n  }\n  .xl\\:text-5xl {\n    font-size: 2.5rem !important;\n  }\n  .xl\\:text-6xl {\n    font-size: 3rem !important;\n  }\n  .xl\\:text-7xl {\n    font-size: 4rem !important;\n  }\n  .xl\\:text-8xl {\n    font-size: 6rem !important;\n  }\n}\n.line-height-1 {\n  line-height: 1 !important;\n}\n\n.line-height-2 {\n  line-height: 1.25 !important;\n}\n\n.line-height-3 {\n  line-height: 1.5 !important;\n}\n\n.line-height-4 {\n  line-height: 2 !important;\n}\n\n.white-space-normal {\n  white-space: normal !important;\n}\n\n.white-space-nowrap {\n  white-space: nowrap !important;\n}\n\n.flex-row {\n  flex-direction: row !important;\n}\n\n.flex-row-reverse {\n  flex-direction: row-reverse !important;\n}\n\n.flex-column {\n  flex-direction: column !important;\n}\n\n.flex-column-reverse {\n  flex-direction: column-reverse !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-row {\n    flex-direction: row !important;\n  }\n  .sm\\:flex-row-reverse {\n    flex-direction: row-reverse !important;\n  }\n  .sm\\:flex-column {\n    flex-direction: column !important;\n  }\n  .sm\\:flex-column-reverse {\n    flex-direction: column-reverse !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-row {\n    flex-direction: row !important;\n  }\n  .md\\:flex-row-reverse {\n    flex-direction: row-reverse !important;\n  }\n  .md\\:flex-column {\n    flex-direction: column !important;\n  }\n  .md\\:flex-column-reverse {\n    flex-direction: column-reverse !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-row {\n    flex-direction: row !important;\n  }\n  .lg\\:flex-row-reverse {\n    flex-direction: row-reverse !important;\n  }\n  .lg\\:flex-column {\n    flex-direction: column !important;\n  }\n  .lg\\:flex-column-reverse {\n    flex-direction: column-reverse !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-row {\n    flex-direction: row !important;\n  }\n  .xl\\:flex-row-reverse {\n    flex-direction: row-reverse !important;\n  }\n  .xl\\:flex-column {\n    flex-direction: column !important;\n  }\n  .xl\\:flex-column-reverse {\n    flex-direction: column-reverse !important;\n  }\n}\n.flex-wrap {\n  flex-wrap: wrap !important;\n}\n\n.flex-wrap-reverse {\n  flex-wrap: wrap-reverse !important;\n}\n\n.flex-nowrap {\n  flex-wrap: nowrap !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-wrap {\n    flex-wrap: wrap !important;\n  }\n  .sm\\:flex-wrap-reverse {\n    flex-wrap: wrap-reverse !important;\n  }\n  .sm\\:flex-nowrap {\n    flex-wrap: nowrap !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-wrap {\n    flex-wrap: wrap !important;\n  }\n  .md\\:flex-wrap-reverse {\n    flex-wrap: wrap-reverse !important;\n  }\n  .md\\:flex-nowrap {\n    flex-wrap: nowrap !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-wrap {\n    flex-wrap: wrap !important;\n  }\n  .lg\\:flex-wrap-reverse {\n    flex-wrap: wrap-reverse !important;\n  }\n  .lg\\:flex-nowrap {\n    flex-wrap: nowrap !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-wrap {\n    flex-wrap: wrap !important;\n  }\n  .xl\\:flex-wrap-reverse {\n    flex-wrap: wrap-reverse !important;\n  }\n  .xl\\:flex-nowrap {\n    flex-wrap: nowrap !important;\n  }\n}\n.justify-content-start {\n  justify-content: flex-start !important;\n}\n\n.justify-content-end {\n  justify-content: flex-end !important;\n}\n\n.justify-content-center {\n  justify-content: center !important;\n}\n\n.justify-content-between {\n  justify-content: space-between !important;\n}\n\n.justify-content-around {\n  justify-content: space-around !important;\n}\n\n.justify-content-evenly {\n  justify-content: space-evenly !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:justify-content-start {\n    justify-content: flex-start !important;\n  }\n  .sm\\:justify-content-end {\n    justify-content: flex-end !important;\n  }\n  .sm\\:justify-content-center {\n    justify-content: center !important;\n  }\n  .sm\\:justify-content-between {\n    justify-content: space-between !important;\n  }\n  .sm\\:justify-content-around {\n    justify-content: space-around !important;\n  }\n  .sm\\:justify-content-evenly {\n    justify-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:justify-content-start {\n    justify-content: flex-start !important;\n  }\n  .md\\:justify-content-end {\n    justify-content: flex-end !important;\n  }\n  .md\\:justify-content-center {\n    justify-content: center !important;\n  }\n  .md\\:justify-content-between {\n    justify-content: space-between !important;\n  }\n  .md\\:justify-content-around {\n    justify-content: space-around !important;\n  }\n  .md\\:justify-content-evenly {\n    justify-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:justify-content-start {\n    justify-content: flex-start !important;\n  }\n  .lg\\:justify-content-end {\n    justify-content: flex-end !important;\n  }\n  .lg\\:justify-content-center {\n    justify-content: center !important;\n  }\n  .lg\\:justify-content-between {\n    justify-content: space-between !important;\n  }\n  .lg\\:justify-content-around {\n    justify-content: space-around !important;\n  }\n  .lg\\:justify-content-evenly {\n    justify-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:justify-content-start {\n    justify-content: flex-start !important;\n  }\n  .xl\\:justify-content-end {\n    justify-content: flex-end !important;\n  }\n  .xl\\:justify-content-center {\n    justify-content: center !important;\n  }\n  .xl\\:justify-content-between {\n    justify-content: space-between !important;\n  }\n  .xl\\:justify-content-around {\n    justify-content: space-around !important;\n  }\n  .xl\\:justify-content-evenly {\n    justify-content: space-evenly !important;\n  }\n}\n.align-content-start {\n  align-content: flex-start !important;\n}\n\n.align-content-end {\n  align-content: flex-end !important;\n}\n\n.align-content-center {\n  align-content: center !important;\n}\n\n.align-content-between {\n  align-content: space-between !important;\n}\n\n.align-content-around {\n  align-content: space-around !important;\n}\n\n.align-content-evenly {\n  align-content: space-evenly !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:align-content-start {\n    align-content: flex-start !important;\n  }\n  .sm\\:align-content-end {\n    align-content: flex-end !important;\n  }\n  .sm\\:align-content-center {\n    align-content: center !important;\n  }\n  .sm\\:align-content-between {\n    align-content: space-between !important;\n  }\n  .sm\\:align-content-around {\n    align-content: space-around !important;\n  }\n  .sm\\:align-content-evenly {\n    align-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:align-content-start {\n    align-content: flex-start !important;\n  }\n  .md\\:align-content-end {\n    align-content: flex-end !important;\n  }\n  .md\\:align-content-center {\n    align-content: center !important;\n  }\n  .md\\:align-content-between {\n    align-content: space-between !important;\n  }\n  .md\\:align-content-around {\n    align-content: space-around !important;\n  }\n  .md\\:align-content-evenly {\n    align-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:align-content-start {\n    align-content: flex-start !important;\n  }\n  .lg\\:align-content-end {\n    align-content: flex-end !important;\n  }\n  .lg\\:align-content-center {\n    align-content: center !important;\n  }\n  .lg\\:align-content-between {\n    align-content: space-between !important;\n  }\n  .lg\\:align-content-around {\n    align-content: space-around !important;\n  }\n  .lg\\:align-content-evenly {\n    align-content: space-evenly !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:align-content-start {\n    align-content: flex-start !important;\n  }\n  .xl\\:align-content-end {\n    align-content: flex-end !important;\n  }\n  .xl\\:align-content-center {\n    align-content: center !important;\n  }\n  .xl\\:align-content-between {\n    align-content: space-between !important;\n  }\n  .xl\\:align-content-around {\n    align-content: space-around !important;\n  }\n  .xl\\:align-content-evenly {\n    align-content: space-evenly !important;\n  }\n}\n.align-items-stretch {\n  align-items: stretch !important;\n}\n\n.align-items-start {\n  align-items: flex-start !important;\n}\n\n.align-items-center {\n  align-items: center !important;\n}\n\n.align-items-end {\n  align-items: flex-end !important;\n}\n\n.align-items-baseline {\n  align-items: baseline !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:align-items-stretch {\n    align-items: stretch !important;\n  }\n  .sm\\:align-items-start {\n    align-items: flex-start !important;\n  }\n  .sm\\:align-items-center {\n    align-items: center !important;\n  }\n  .sm\\:align-items-end {\n    align-items: flex-end !important;\n  }\n  .sm\\:align-items-baseline {\n    align-items: baseline !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:align-items-stretch {\n    align-items: stretch !important;\n  }\n  .md\\:align-items-start {\n    align-items: flex-start !important;\n  }\n  .md\\:align-items-center {\n    align-items: center !important;\n  }\n  .md\\:align-items-end {\n    align-items: flex-end !important;\n  }\n  .md\\:align-items-baseline {\n    align-items: baseline !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:align-items-stretch {\n    align-items: stretch !important;\n  }\n  .lg\\:align-items-start {\n    align-items: flex-start !important;\n  }\n  .lg\\:align-items-center {\n    align-items: center !important;\n  }\n  .lg\\:align-items-end {\n    align-items: flex-end !important;\n  }\n  .lg\\:align-items-baseline {\n    align-items: baseline !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:align-items-stretch {\n    align-items: stretch !important;\n  }\n  .xl\\:align-items-start {\n    align-items: flex-start !important;\n  }\n  .xl\\:align-items-center {\n    align-items: center !important;\n  }\n  .xl\\:align-items-end {\n    align-items: flex-end !important;\n  }\n  .xl\\:align-items-baseline {\n    align-items: baseline !important;\n  }\n}\n.align-self-auto {\n  align-self: auto !important;\n}\n\n.align-self-start {\n  align-self: flex-start !important;\n}\n\n.align-self-end {\n  align-self: flex-end !important;\n}\n\n.align-self-center {\n  align-self: center !important;\n}\n\n.align-self-stretch {\n  align-self: stretch !important;\n}\n\n.align-self-baseline {\n  align-self: baseline !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:align-self-auto {\n    align-self: auto !important;\n  }\n  .sm\\:align-self-start {\n    align-self: flex-start !important;\n  }\n  .sm\\:align-self-end {\n    align-self: flex-end !important;\n  }\n  .sm\\:align-self-center {\n    align-self: center !important;\n  }\n  .sm\\:align-self-stretch {\n    align-self: stretch !important;\n  }\n  .sm\\:align-self-baseline {\n    align-self: baseline !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:align-self-auto {\n    align-self: auto !important;\n  }\n  .md\\:align-self-start {\n    align-self: flex-start !important;\n  }\n  .md\\:align-self-end {\n    align-self: flex-end !important;\n  }\n  .md\\:align-self-center {\n    align-self: center !important;\n  }\n  .md\\:align-self-stretch {\n    align-self: stretch !important;\n  }\n  .md\\:align-self-baseline {\n    align-self: baseline !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:align-self-auto {\n    align-self: auto !important;\n  }\n  .lg\\:align-self-start {\n    align-self: flex-start !important;\n  }\n  .lg\\:align-self-end {\n    align-self: flex-end !important;\n  }\n  .lg\\:align-self-center {\n    align-self: center !important;\n  }\n  .lg\\:align-self-stretch {\n    align-self: stretch !important;\n  }\n  .lg\\:align-self-baseline {\n    align-self: baseline !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:align-self-auto {\n    align-self: auto !important;\n  }\n  .xl\\:align-self-start {\n    align-self: flex-start !important;\n  }\n  .xl\\:align-self-end {\n    align-self: flex-end !important;\n  }\n  .xl\\:align-self-center {\n    align-self: center !important;\n  }\n  .xl\\:align-self-stretch {\n    align-self: stretch !important;\n  }\n  .xl\\:align-self-baseline {\n    align-self: baseline !important;\n  }\n}\n.flex-order-0 {\n  order: 0 !important;\n}\n\n.flex-order-1 {\n  order: 1 !important;\n}\n\n.flex-order-2 {\n  order: 2 !important;\n}\n\n.flex-order-3 {\n  order: 3 !important;\n}\n\n.flex-order-4 {\n  order: 4 !important;\n}\n\n.flex-order-5 {\n  order: 5 !important;\n}\n\n.flex-order-6 {\n  order: 6 !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-order-0 {\n    order: 0 !important;\n  }\n  .sm\\:flex-order-1 {\n    order: 1 !important;\n  }\n  .sm\\:flex-order-2 {\n    order: 2 !important;\n  }\n  .sm\\:flex-order-3 {\n    order: 3 !important;\n  }\n  .sm\\:flex-order-4 {\n    order: 4 !important;\n  }\n  .sm\\:flex-order-5 {\n    order: 5 !important;\n  }\n  .sm\\:flex-order-6 {\n    order: 6 !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-order-0 {\n    order: 0 !important;\n  }\n  .md\\:flex-order-1 {\n    order: 1 !important;\n  }\n  .md\\:flex-order-2 {\n    order: 2 !important;\n  }\n  .md\\:flex-order-3 {\n    order: 3 !important;\n  }\n  .md\\:flex-order-4 {\n    order: 4 !important;\n  }\n  .md\\:flex-order-5 {\n    order: 5 !important;\n  }\n  .md\\:flex-order-6 {\n    order: 6 !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-order-0 {\n    order: 0 !important;\n  }\n  .lg\\:flex-order-1 {\n    order: 1 !important;\n  }\n  .lg\\:flex-order-2 {\n    order: 2 !important;\n  }\n  .lg\\:flex-order-3 {\n    order: 3 !important;\n  }\n  .lg\\:flex-order-4 {\n    order: 4 !important;\n  }\n  .lg\\:flex-order-5 {\n    order: 5 !important;\n  }\n  .lg\\:flex-order-6 {\n    order: 6 !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-order-0 {\n    order: 0 !important;\n  }\n  .xl\\:flex-order-1 {\n    order: 1 !important;\n  }\n  .xl\\:flex-order-2 {\n    order: 2 !important;\n  }\n  .xl\\:flex-order-3 {\n    order: 3 !important;\n  }\n  .xl\\:flex-order-4 {\n    order: 4 !important;\n  }\n  .xl\\:flex-order-5 {\n    order: 5 !important;\n  }\n  .xl\\:flex-order-6 {\n    order: 6 !important;\n  }\n}\n.flex-1 {\n  flex: 1 1 0% !important;\n}\n\n.flex-auto {\n  flex: 1 1 auto !important;\n}\n\n.flex-initial {\n  flex: 0 1 auto !important;\n}\n\n.flex-none {\n  flex: none !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-1 {\n    flex: 1 1 0% !important;\n  }\n  .sm\\:flex-auto {\n    flex: 1 1 auto !important;\n  }\n  .sm\\:flex-initial {\n    flex: 0 1 auto !important;\n  }\n  .sm\\:flex-none {\n    flex: none !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-1 {\n    flex: 1 1 0% !important;\n  }\n  .md\\:flex-auto {\n    flex: 1 1 auto !important;\n  }\n  .md\\:flex-initial {\n    flex: 0 1 auto !important;\n  }\n  .md\\:flex-none {\n    flex: none !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-1 {\n    flex: 1 1 0% !important;\n  }\n  .lg\\:flex-auto {\n    flex: 1 1 auto !important;\n  }\n  .lg\\:flex-initial {\n    flex: 0 1 auto !important;\n  }\n  .lg\\:flex-none {\n    flex: none !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-1 {\n    flex: 1 1 0% !important;\n  }\n  .xl\\:flex-auto {\n    flex: 1 1 auto !important;\n  }\n  .xl\\:flex-initial {\n    flex: 0 1 auto !important;\n  }\n  .xl\\:flex-none {\n    flex: none !important;\n  }\n}\n.flex-grow-0 {\n  flex-grow: 0 !important;\n}\n\n.flex-grow-1 {\n  flex-grow: 1 !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-grow-0 {\n    flex-grow: 0 !important;\n  }\n  .sm\\:flex-grow-1 {\n    flex-grow: 1 !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-grow-0 {\n    flex-grow: 0 !important;\n  }\n  .md\\:flex-grow-1 {\n    flex-grow: 1 !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-grow-0 {\n    flex-grow: 0 !important;\n  }\n  .lg\\:flex-grow-1 {\n    flex-grow: 1 !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-grow-0 {\n    flex-grow: 0 !important;\n  }\n  .xl\\:flex-grow-1 {\n    flex-grow: 1 !important;\n  }\n}\n.flex-shrink-0 {\n  flex-shrink: 0 !important;\n}\n\n.flex-shrink-1 {\n  flex-shrink: 1 !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:flex-shrink-0 {\n    flex-shrink: 0 !important;\n  }\n  .sm\\:flex-shrink-1 {\n    flex-shrink: 1 !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:flex-shrink-0 {\n    flex-shrink: 0 !important;\n  }\n  .md\\:flex-shrink-1 {\n    flex-shrink: 1 !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:flex-shrink-0 {\n    flex-shrink: 0 !important;\n  }\n  .lg\\:flex-shrink-1 {\n    flex-shrink: 1 !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:flex-shrink-0 {\n    flex-shrink: 0 !important;\n  }\n  .xl\\:flex-shrink-1 {\n    flex-shrink: 1 !important;\n  }\n}\n.p-0 {\n  padding: 0rem !important;\n}\n\n.p-1 {\n  padding: 0.25rem !important;\n}\n\n.p-2 {\n  padding: 0.5rem !important;\n}\n\n.p-3 {\n  padding: 1rem !important;\n}\n\n.p-4 {\n  padding: 1.5rem !important;\n}\n\n.p-5 {\n  padding: 2rem !important;\n}\n\n.p-6 {\n  padding: 3rem !important;\n}\n\n.p-7 {\n  padding: 4rem !important;\n}\n\n.p-8 {\n  padding: 5rem !important;\n}\n\n.pt-0 {\n  padding-top: 0rem !important;\n}\n\n.pt-1 {\n  padding-top: 0.25rem !important;\n}\n\n.pt-2 {\n  padding-top: 0.5rem !important;\n}\n\n.pt-3 {\n  padding-top: 1rem !important;\n}\n\n.pt-4 {\n  padding-top: 1.5rem !important;\n}\n\n.pt-5 {\n  padding-top: 2rem !important;\n}\n\n.pt-6 {\n  padding-top: 3rem !important;\n}\n\n.pt-7 {\n  padding-top: 4rem !important;\n}\n\n.pt-8 {\n  padding-top: 5rem !important;\n}\n\n.pr-0 {\n  padding-right: 0rem !important;\n}\n\n.pr-1 {\n  padding-right: 0.25rem !important;\n}\n\n.pr-2 {\n  padding-right: 0.5rem !important;\n}\n\n.pr-3 {\n  padding-right: 1rem !important;\n}\n\n.pr-4 {\n  padding-right: 1.5rem !important;\n}\n\n.pr-5 {\n  padding-right: 2rem !important;\n}\n\n.pr-6 {\n  padding-right: 3rem !important;\n}\n\n.pr-7 {\n  padding-right: 4rem !important;\n}\n\n.pr-8 {\n  padding-right: 5rem !important;\n}\n\n.pl-0 {\n  padding-left: 0rem !important;\n}\n\n.pl-1 {\n  padding-left: 0.25rem !important;\n}\n\n.pl-2 {\n  padding-left: 0.5rem !important;\n}\n\n.pl-3 {\n  padding-left: 1rem !important;\n}\n\n.pl-4 {\n  padding-left: 1.5rem !important;\n}\n\n.pl-5 {\n  padding-left: 2rem !important;\n}\n\n.pl-6 {\n  padding-left: 3rem !important;\n}\n\n.pl-7 {\n  padding-left: 4rem !important;\n}\n\n.pl-8 {\n  padding-left: 5rem !important;\n}\n\n.pb-0 {\n  padding-bottom: 0rem !important;\n}\n\n.pb-1 {\n  padding-bottom: 0.25rem !important;\n}\n\n.pb-2 {\n  padding-bottom: 0.5rem !important;\n}\n\n.pb-3 {\n  padding-bottom: 1rem !important;\n}\n\n.pb-4 {\n  padding-bottom: 1.5rem !important;\n}\n\n.pb-5 {\n  padding-bottom: 2rem !important;\n}\n\n.pb-6 {\n  padding-bottom: 3rem !important;\n}\n\n.pb-7 {\n  padding-bottom: 4rem !important;\n}\n\n.pb-8 {\n  padding-bottom: 5rem !important;\n}\n\n.px-0 {\n  padding-left: 0rem !important;\n  padding-right: 0rem !important;\n}\n\n.px-1 {\n  padding-left: 0.25rem !important;\n  padding-right: 0.25rem !important;\n}\n\n.px-2 {\n  padding-left: 0.5rem !important;\n  padding-right: 0.5rem !important;\n}\n\n.px-3 {\n  padding-left: 1rem !important;\n  padding-right: 1rem !important;\n}\n\n.px-4 {\n  padding-left: 1.5rem !important;\n  padding-right: 1.5rem !important;\n}\n\n.px-5 {\n  padding-left: 2rem !important;\n  padding-right: 2rem !important;\n}\n\n.px-6 {\n  padding-left: 3rem !important;\n  padding-right: 3rem !important;\n}\n\n.px-7 {\n  padding-left: 4rem !important;\n  padding-right: 4rem !important;\n}\n\n.px-8 {\n  padding-left: 5rem !important;\n  padding-right: 5rem !important;\n}\n\n.py-0 {\n  padding-top: 0rem !important;\n  padding-bottom: 0rem !important;\n}\n\n.py-1 {\n  padding-top: 0.25rem !important;\n  padding-bottom: 0.25rem !important;\n}\n\n.py-2 {\n  padding-top: 0.5rem !important;\n  padding-bottom: 0.5rem !important;\n}\n\n.py-3 {\n  padding-top: 1rem !important;\n  padding-bottom: 1rem !important;\n}\n\n.py-4 {\n  padding-top: 1.5rem !important;\n  padding-bottom: 1.5rem !important;\n}\n\n.py-5 {\n  padding-top: 2rem !important;\n  padding-bottom: 2rem !important;\n}\n\n.py-6 {\n  padding-top: 3rem !important;\n  padding-bottom: 3rem !important;\n}\n\n.py-7 {\n  padding-top: 4rem !important;\n  padding-bottom: 4rem !important;\n}\n\n.py-8 {\n  padding-top: 5rem !important;\n  padding-bottom: 5rem !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:p-0 {\n    padding: 0rem !important;\n  }\n\n  .sm\\:p-1 {\n    padding: 0.25rem !important;\n  }\n\n  .sm\\:p-2 {\n    padding: 0.5rem !important;\n  }\n\n  .sm\\:p-3 {\n    padding: 1rem !important;\n  }\n\n  .sm\\:p-4 {\n    padding: 1.5rem !important;\n  }\n\n  .sm\\:p-5 {\n    padding: 2rem !important;\n  }\n\n  .sm\\:p-6 {\n    padding: 3rem !important;\n  }\n\n  .sm\\:p-7 {\n    padding: 4rem !important;\n  }\n\n  .sm\\:p-8 {\n    padding: 5rem !important;\n  }\n\n  .sm\\:pt-0 {\n    padding-top: 0rem !important;\n  }\n\n  .sm\\:pt-1 {\n    padding-top: 0.25rem !important;\n  }\n\n  .sm\\:pt-2 {\n    padding-top: 0.5rem !important;\n  }\n\n  .sm\\:pt-3 {\n    padding-top: 1rem !important;\n  }\n\n  .sm\\:pt-4 {\n    padding-top: 1.5rem !important;\n  }\n\n  .sm\\:pt-5 {\n    padding-top: 2rem !important;\n  }\n\n  .sm\\:pt-6 {\n    padding-top: 3rem !important;\n  }\n\n  .sm\\:pt-7 {\n    padding-top: 4rem !important;\n  }\n\n  .sm\\:pt-8 {\n    padding-top: 5rem !important;\n  }\n\n  .sm\\:pr-0 {\n    padding-right: 0rem !important;\n  }\n\n  .sm\\:pr-1 {\n    padding-right: 0.25rem !important;\n  }\n\n  .sm\\:pr-2 {\n    padding-right: 0.5rem !important;\n  }\n\n  .sm\\:pr-3 {\n    padding-right: 1rem !important;\n  }\n\n  .sm\\:pr-4 {\n    padding-right: 1.5rem !important;\n  }\n\n  .sm\\:pr-5 {\n    padding-right: 2rem !important;\n  }\n\n  .sm\\:pr-6 {\n    padding-right: 3rem !important;\n  }\n\n  .sm\\:pr-7 {\n    padding-right: 4rem !important;\n  }\n\n  .sm\\:pr-8 {\n    padding-right: 5rem !important;\n  }\n\n  .sm\\:pl-0 {\n    padding-left: 0rem !important;\n  }\n\n  .sm\\:pl-1 {\n    padding-left: 0.25rem !important;\n  }\n\n  .sm\\:pl-2 {\n    padding-left: 0.5rem !important;\n  }\n\n  .sm\\:pl-3 {\n    padding-left: 1rem !important;\n  }\n\n  .sm\\:pl-4 {\n    padding-left: 1.5rem !important;\n  }\n\n  .sm\\:pl-5 {\n    padding-left: 2rem !important;\n  }\n\n  .sm\\:pl-6 {\n    padding-left: 3rem !important;\n  }\n\n  .sm\\:pl-7 {\n    padding-left: 4rem !important;\n  }\n\n  .sm\\:pl-8 {\n    padding-left: 5rem !important;\n  }\n\n  .sm\\:pb-0 {\n    padding-bottom: 0rem !important;\n  }\n\n  .sm\\:pb-1 {\n    padding-bottom: 0.25rem !important;\n  }\n\n  .sm\\:pb-2 {\n    padding-bottom: 0.5rem !important;\n  }\n\n  .sm\\:pb-3 {\n    padding-bottom: 1rem !important;\n  }\n\n  .sm\\:pb-4 {\n    padding-bottom: 1.5rem !important;\n  }\n\n  .sm\\:pb-5 {\n    padding-bottom: 2rem !important;\n  }\n\n  .sm\\:pb-6 {\n    padding-bottom: 3rem !important;\n  }\n\n  .sm\\:pb-7 {\n    padding-bottom: 4rem !important;\n  }\n\n  .sm\\:pb-8 {\n    padding-bottom: 5rem !important;\n  }\n\n  .sm\\:px-0 {\n    padding-left: 0rem !important;\n    padding-right: 0rem !important;\n  }\n\n  .sm\\:px-1 {\n    padding-left: 0.25rem !important;\n    padding-right: 0.25rem !important;\n  }\n\n  .sm\\:px-2 {\n    padding-left: 0.5rem !important;\n    padding-right: 0.5rem !important;\n  }\n\n  .sm\\:px-3 {\n    padding-left: 1rem !important;\n    padding-right: 1rem !important;\n  }\n\n  .sm\\:px-4 {\n    padding-left: 1.5rem !important;\n    padding-right: 1.5rem !important;\n  }\n\n  .sm\\:px-5 {\n    padding-left: 2rem !important;\n    padding-right: 2rem !important;\n  }\n\n  .sm\\:px-6 {\n    padding-left: 3rem !important;\n    padding-right: 3rem !important;\n  }\n\n  .sm\\:px-7 {\n    padding-left: 4rem !important;\n    padding-right: 4rem !important;\n  }\n\n  .sm\\:px-8 {\n    padding-left: 5rem !important;\n    padding-right: 5rem !important;\n  }\n\n  .sm\\:py-0 {\n    padding-top: 0rem !important;\n    padding-bottom: 0rem !important;\n  }\n\n  .sm\\:py-1 {\n    padding-top: 0.25rem !important;\n    padding-bottom: 0.25rem !important;\n  }\n\n  .sm\\:py-2 {\n    padding-top: 0.5rem !important;\n    padding-bottom: 0.5rem !important;\n  }\n\n  .sm\\:py-3 {\n    padding-top: 1rem !important;\n    padding-bottom: 1rem !important;\n  }\n\n  .sm\\:py-4 {\n    padding-top: 1.5rem !important;\n    padding-bottom: 1.5rem !important;\n  }\n\n  .sm\\:py-5 {\n    padding-top: 2rem !important;\n    padding-bottom: 2rem !important;\n  }\n\n  .sm\\:py-6 {\n    padding-top: 3rem !important;\n    padding-bottom: 3rem !important;\n  }\n\n  .sm\\:py-7 {\n    padding-top: 4rem !important;\n    padding-bottom: 4rem !important;\n  }\n\n  .sm\\:py-8 {\n    padding-top: 5rem !important;\n    padding-bottom: 5rem !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:p-0 {\n    padding: 0rem !important;\n  }\n\n  .md\\:p-1 {\n    padding: 0.25rem !important;\n  }\n\n  .md\\:p-2 {\n    padding: 0.5rem !important;\n  }\n\n  .md\\:p-3 {\n    padding: 1rem !important;\n  }\n\n  .md\\:p-4 {\n    padding: 1.5rem !important;\n  }\n\n  .md\\:p-5 {\n    padding: 2rem !important;\n  }\n\n  .md\\:p-6 {\n    padding: 3rem !important;\n  }\n\n  .md\\:p-7 {\n    padding: 4rem !important;\n  }\n\n  .md\\:p-8 {\n    padding: 5rem !important;\n  }\n\n  .md\\:pt-0 {\n    padding-top: 0rem !important;\n  }\n\n  .md\\:pt-1 {\n    padding-top: 0.25rem !important;\n  }\n\n  .md\\:pt-2 {\n    padding-top: 0.5rem !important;\n  }\n\n  .md\\:pt-3 {\n    padding-top: 1rem !important;\n  }\n\n  .md\\:pt-4 {\n    padding-top: 1.5rem !important;\n  }\n\n  .md\\:pt-5 {\n    padding-top: 2rem !important;\n  }\n\n  .md\\:pt-6 {\n    padding-top: 3rem !important;\n  }\n\n  .md\\:pt-7 {\n    padding-top: 4rem !important;\n  }\n\n  .md\\:pt-8 {\n    padding-top: 5rem !important;\n  }\n\n  .md\\:pr-0 {\n    padding-right: 0rem !important;\n  }\n\n  .md\\:pr-1 {\n    padding-right: 0.25rem !important;\n  }\n\n  .md\\:pr-2 {\n    padding-right: 0.5rem !important;\n  }\n\n  .md\\:pr-3 {\n    padding-right: 1rem !important;\n  }\n\n  .md\\:pr-4 {\n    padding-right: 1.5rem !important;\n  }\n\n  .md\\:pr-5 {\n    padding-right: 2rem !important;\n  }\n\n  .md\\:pr-6 {\n    padding-right: 3rem !important;\n  }\n\n  .md\\:pr-7 {\n    padding-right: 4rem !important;\n  }\n\n  .md\\:pr-8 {\n    padding-right: 5rem !important;\n  }\n\n  .md\\:pl-0 {\n    padding-left: 0rem !important;\n  }\n\n  .md\\:pl-1 {\n    padding-left: 0.25rem !important;\n  }\n\n  .md\\:pl-2 {\n    padding-left: 0.5rem !important;\n  }\n\n  .md\\:pl-3 {\n    padding-left: 1rem !important;\n  }\n\n  .md\\:pl-4 {\n    padding-left: 1.5rem !important;\n  }\n\n  .md\\:pl-5 {\n    padding-left: 2rem !important;\n  }\n\n  .md\\:pl-6 {\n    padding-left: 3rem !important;\n  }\n\n  .md\\:pl-7 {\n    padding-left: 4rem !important;\n  }\n\n  .md\\:pl-8 {\n    padding-left: 5rem !important;\n  }\n\n  .md\\:pb-0 {\n    padding-bottom: 0rem !important;\n  }\n\n  .md\\:pb-1 {\n    padding-bottom: 0.25rem !important;\n  }\n\n  .md\\:pb-2 {\n    padding-bottom: 0.5rem !important;\n  }\n\n  .md\\:pb-3 {\n    padding-bottom: 1rem !important;\n  }\n\n  .md\\:pb-4 {\n    padding-bottom: 1.5rem !important;\n  }\n\n  .md\\:pb-5 {\n    padding-bottom: 2rem !important;\n  }\n\n  .md\\:pb-6 {\n    padding-bottom: 3rem !important;\n  }\n\n  .md\\:pb-7 {\n    padding-bottom: 4rem !important;\n  }\n\n  .md\\:pb-8 {\n    padding-bottom: 5rem !important;\n  }\n\n  .md\\:px-0 {\n    padding-left: 0rem !important;\n    padding-right: 0rem !important;\n  }\n\n  .md\\:px-1 {\n    padding-left: 0.25rem !important;\n    padding-right: 0.25rem !important;\n  }\n\n  .md\\:px-2 {\n    padding-left: 0.5rem !important;\n    padding-right: 0.5rem !important;\n  }\n\n  .md\\:px-3 {\n    padding-left: 1rem !important;\n    padding-right: 1rem !important;\n  }\n\n  .md\\:px-4 {\n    padding-left: 1.5rem !important;\n    padding-right: 1.5rem !important;\n  }\n\n  .md\\:px-5 {\n    padding-left: 2rem !important;\n    padding-right: 2rem !important;\n  }\n\n  .md\\:px-6 {\n    padding-left: 3rem !important;\n    padding-right: 3rem !important;\n  }\n\n  .md\\:px-7 {\n    padding-left: 4rem !important;\n    padding-right: 4rem !important;\n  }\n\n  .md\\:px-8 {\n    padding-left: 5rem !important;\n    padding-right: 5rem !important;\n  }\n\n  .md\\:py-0 {\n    padding-top: 0rem !important;\n    padding-bottom: 0rem !important;\n  }\n\n  .md\\:py-1 {\n    padding-top: 0.25rem !important;\n    padding-bottom: 0.25rem !important;\n  }\n\n  .md\\:py-2 {\n    padding-top: 0.5rem !important;\n    padding-bottom: 0.5rem !important;\n  }\n\n  .md\\:py-3 {\n    padding-top: 1rem !important;\n    padding-bottom: 1rem !important;\n  }\n\n  .md\\:py-4 {\n    padding-top: 1.5rem !important;\n    padding-bottom: 1.5rem !important;\n  }\n\n  .md\\:py-5 {\n    padding-top: 2rem !important;\n    padding-bottom: 2rem !important;\n  }\n\n  .md\\:py-6 {\n    padding-top: 3rem !important;\n    padding-bottom: 3rem !important;\n  }\n\n  .md\\:py-7 {\n    padding-top: 4rem !important;\n    padding-bottom: 4rem !important;\n  }\n\n  .md\\:py-8 {\n    padding-top: 5rem !important;\n    padding-bottom: 5rem !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:p-0 {\n    padding: 0rem !important;\n  }\n\n  .lg\\:p-1 {\n    padding: 0.25rem !important;\n  }\n\n  .lg\\:p-2 {\n    padding: 0.5rem !important;\n  }\n\n  .lg\\:p-3 {\n    padding: 1rem !important;\n  }\n\n  .lg\\:p-4 {\n    padding: 1.5rem !important;\n  }\n\n  .lg\\:p-5 {\n    padding: 2rem !important;\n  }\n\n  .lg\\:p-6 {\n    padding: 3rem !important;\n  }\n\n  .lg\\:p-7 {\n    padding: 4rem !important;\n  }\n\n  .lg\\:p-8 {\n    padding: 5rem !important;\n  }\n\n  .lg\\:pt-0 {\n    padding-top: 0rem !important;\n  }\n\n  .lg\\:pt-1 {\n    padding-top: 0.25rem !important;\n  }\n\n  .lg\\:pt-2 {\n    padding-top: 0.5rem !important;\n  }\n\n  .lg\\:pt-3 {\n    padding-top: 1rem !important;\n  }\n\n  .lg\\:pt-4 {\n    padding-top: 1.5rem !important;\n  }\n\n  .lg\\:pt-5 {\n    padding-top: 2rem !important;\n  }\n\n  .lg\\:pt-6 {\n    padding-top: 3rem !important;\n  }\n\n  .lg\\:pt-7 {\n    padding-top: 4rem !important;\n  }\n\n  .lg\\:pt-8 {\n    padding-top: 5rem !important;\n  }\n\n  .lg\\:pr-0 {\n    padding-right: 0rem !important;\n  }\n\n  .lg\\:pr-1 {\n    padding-right: 0.25rem !important;\n  }\n\n  .lg\\:pr-2 {\n    padding-right: 0.5rem !important;\n  }\n\n  .lg\\:pr-3 {\n    padding-right: 1rem !important;\n  }\n\n  .lg\\:pr-4 {\n    padding-right: 1.5rem !important;\n  }\n\n  .lg\\:pr-5 {\n    padding-right: 2rem !important;\n  }\n\n  .lg\\:pr-6 {\n    padding-right: 3rem !important;\n  }\n\n  .lg\\:pr-7 {\n    padding-right: 4rem !important;\n  }\n\n  .lg\\:pr-8 {\n    padding-right: 5rem !important;\n  }\n\n  .lg\\:pl-0 {\n    padding-left: 0rem !important;\n  }\n\n  .lg\\:pl-1 {\n    padding-left: 0.25rem !important;\n  }\n\n  .lg\\:pl-2 {\n    padding-left: 0.5rem !important;\n  }\n\n  .lg\\:pl-3 {\n    padding-left: 1rem !important;\n  }\n\n  .lg\\:pl-4 {\n    padding-left: 1.5rem !important;\n  }\n\n  .lg\\:pl-5 {\n    padding-left: 2rem !important;\n  }\n\n  .lg\\:pl-6 {\n    padding-left: 3rem !important;\n  }\n\n  .lg\\:pl-7 {\n    padding-left: 4rem !important;\n  }\n\n  .lg\\:pl-8 {\n    padding-left: 5rem !important;\n  }\n\n  .lg\\:pb-0 {\n    padding-bottom: 0rem !important;\n  }\n\n  .lg\\:pb-1 {\n    padding-bottom: 0.25rem !important;\n  }\n\n  .lg\\:pb-2 {\n    padding-bottom: 0.5rem !important;\n  }\n\n  .lg\\:pb-3 {\n    padding-bottom: 1rem !important;\n  }\n\n  .lg\\:pb-4 {\n    padding-bottom: 1.5rem !important;\n  }\n\n  .lg\\:pb-5 {\n    padding-bottom: 2rem !important;\n  }\n\n  .lg\\:pb-6 {\n    padding-bottom: 3rem !important;\n  }\n\n  .lg\\:pb-7 {\n    padding-bottom: 4rem !important;\n  }\n\n  .lg\\:pb-8 {\n    padding-bottom: 5rem !important;\n  }\n\n  .lg\\:px-0 {\n    padding-left: 0rem !important;\n    padding-right: 0rem !important;\n  }\n\n  .lg\\:px-1 {\n    padding-left: 0.25rem !important;\n    padding-right: 0.25rem !important;\n  }\n\n  .lg\\:px-2 {\n    padding-left: 0.5rem !important;\n    padding-right: 0.5rem !important;\n  }\n\n  .lg\\:px-3 {\n    padding-left: 1rem !important;\n    padding-right: 1rem !important;\n  }\n\n  .lg\\:px-4 {\n    padding-left: 1.5rem !important;\n    padding-right: 1.5rem !important;\n  }\n\n  .lg\\:px-5 {\n    padding-left: 2rem !important;\n    padding-right: 2rem !important;\n  }\n\n  .lg\\:px-6 {\n    padding-left: 3rem !important;\n    padding-right: 3rem !important;\n  }\n\n  .lg\\:px-7 {\n    padding-left: 4rem !important;\n    padding-right: 4rem !important;\n  }\n\n  .lg\\:px-8 {\n    padding-left: 5rem !important;\n    padding-right: 5rem !important;\n  }\n\n  .lg\\:py-0 {\n    padding-top: 0rem !important;\n    padding-bottom: 0rem !important;\n  }\n\n  .lg\\:py-1 {\n    padding-top: 0.25rem !important;\n    padding-bottom: 0.25rem !important;\n  }\n\n  .lg\\:py-2 {\n    padding-top: 0.5rem !important;\n    padding-bottom: 0.5rem !important;\n  }\n\n  .lg\\:py-3 {\n    padding-top: 1rem !important;\n    padding-bottom: 1rem !important;\n  }\n\n  .lg\\:py-4 {\n    padding-top: 1.5rem !important;\n    padding-bottom: 1.5rem !important;\n  }\n\n  .lg\\:py-5 {\n    padding-top: 2rem !important;\n    padding-bottom: 2rem !important;\n  }\n\n  .lg\\:py-6 {\n    padding-top: 3rem !important;\n    padding-bottom: 3rem !important;\n  }\n\n  .lg\\:py-7 {\n    padding-top: 4rem !important;\n    padding-bottom: 4rem !important;\n  }\n\n  .lg\\:py-8 {\n    padding-top: 5rem !important;\n    padding-bottom: 5rem !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:p-0 {\n    padding: 0rem !important;\n  }\n\n  .xl\\:p-1 {\n    padding: 0.25rem !important;\n  }\n\n  .xl\\:p-2 {\n    padding: 0.5rem !important;\n  }\n\n  .xl\\:p-3 {\n    padding: 1rem !important;\n  }\n\n  .xl\\:p-4 {\n    padding: 1.5rem !important;\n  }\n\n  .xl\\:p-5 {\n    padding: 2rem !important;\n  }\n\n  .xl\\:p-6 {\n    padding: 3rem !important;\n  }\n\n  .xl\\:p-7 {\n    padding: 4rem !important;\n  }\n\n  .xl\\:p-8 {\n    padding: 5rem !important;\n  }\n\n  .xl\\:pt-0 {\n    padding-top: 0rem !important;\n  }\n\n  .xl\\:pt-1 {\n    padding-top: 0.25rem !important;\n  }\n\n  .xl\\:pt-2 {\n    padding-top: 0.5rem !important;\n  }\n\n  .xl\\:pt-3 {\n    padding-top: 1rem !important;\n  }\n\n  .xl\\:pt-4 {\n    padding-top: 1.5rem !important;\n  }\n\n  .xl\\:pt-5 {\n    padding-top: 2rem !important;\n  }\n\n  .xl\\:pt-6 {\n    padding-top: 3rem !important;\n  }\n\n  .xl\\:pt-7 {\n    padding-top: 4rem !important;\n  }\n\n  .xl\\:pt-8 {\n    padding-top: 5rem !important;\n  }\n\n  .xl\\:pr-0 {\n    padding-right: 0rem !important;\n  }\n\n  .xl\\:pr-1 {\n    padding-right: 0.25rem !important;\n  }\n\n  .xl\\:pr-2 {\n    padding-right: 0.5rem !important;\n  }\n\n  .xl\\:pr-3 {\n    padding-right: 1rem !important;\n  }\n\n  .xl\\:pr-4 {\n    padding-right: 1.5rem !important;\n  }\n\n  .xl\\:pr-5 {\n    padding-right: 2rem !important;\n  }\n\n  .xl\\:pr-6 {\n    padding-right: 3rem !important;\n  }\n\n  .xl\\:pr-7 {\n    padding-right: 4rem !important;\n  }\n\n  .xl\\:pr-8 {\n    padding-right: 5rem !important;\n  }\n\n  .xl\\:pl-0 {\n    padding-left: 0rem !important;\n  }\n\n  .xl\\:pl-1 {\n    padding-left: 0.25rem !important;\n  }\n\n  .xl\\:pl-2 {\n    padding-left: 0.5rem !important;\n  }\n\n  .xl\\:pl-3 {\n    padding-left: 1rem !important;\n  }\n\n  .xl\\:pl-4 {\n    padding-left: 1.5rem !important;\n  }\n\n  .xl\\:pl-5 {\n    padding-left: 2rem !important;\n  }\n\n  .xl\\:pl-6 {\n    padding-left: 3rem !important;\n  }\n\n  .xl\\:pl-7 {\n    padding-left: 4rem !important;\n  }\n\n  .xl\\:pl-8 {\n    padding-left: 5rem !important;\n  }\n\n  .xl\\:pb-0 {\n    padding-bottom: 0rem !important;\n  }\n\n  .xl\\:pb-1 {\n    padding-bottom: 0.25rem !important;\n  }\n\n  .xl\\:pb-2 {\n    padding-bottom: 0.5rem !important;\n  }\n\n  .xl\\:pb-3 {\n    padding-bottom: 1rem !important;\n  }\n\n  .xl\\:pb-4 {\n    padding-bottom: 1.5rem !important;\n  }\n\n  .xl\\:pb-5 {\n    padding-bottom: 2rem !important;\n  }\n\n  .xl\\:pb-6 {\n    padding-bottom: 3rem !important;\n  }\n\n  .xl\\:pb-7 {\n    padding-bottom: 4rem !important;\n  }\n\n  .xl\\:pb-8 {\n    padding-bottom: 5rem !important;\n  }\n\n  .xl\\:px-0 {\n    padding-left: 0rem !important;\n    padding-right: 0rem !important;\n  }\n\n  .xl\\:px-1 {\n    padding-left: 0.25rem !important;\n    padding-right: 0.25rem !important;\n  }\n\n  .xl\\:px-2 {\n    padding-left: 0.5rem !important;\n    padding-right: 0.5rem !important;\n  }\n\n  .xl\\:px-3 {\n    padding-left: 1rem !important;\n    padding-right: 1rem !important;\n  }\n\n  .xl\\:px-4 {\n    padding-left: 1.5rem !important;\n    padding-right: 1.5rem !important;\n  }\n\n  .xl\\:px-5 {\n    padding-left: 2rem !important;\n    padding-right: 2rem !important;\n  }\n\n  .xl\\:px-6 {\n    padding-left: 3rem !important;\n    padding-right: 3rem !important;\n  }\n\n  .xl\\:px-7 {\n    padding-left: 4rem !important;\n    padding-right: 4rem !important;\n  }\n\n  .xl\\:px-8 {\n    padding-left: 5rem !important;\n    padding-right: 5rem !important;\n  }\n\n  .xl\\:py-0 {\n    padding-top: 0rem !important;\n    padding-bottom: 0rem !important;\n  }\n\n  .xl\\:py-1 {\n    padding-top: 0.25rem !important;\n    padding-bottom: 0.25rem !important;\n  }\n\n  .xl\\:py-2 {\n    padding-top: 0.5rem !important;\n    padding-bottom: 0.5rem !important;\n  }\n\n  .xl\\:py-3 {\n    padding-top: 1rem !important;\n    padding-bottom: 1rem !important;\n  }\n\n  .xl\\:py-4 {\n    padding-top: 1.5rem !important;\n    padding-bottom: 1.5rem !important;\n  }\n\n  .xl\\:py-5 {\n    padding-top: 2rem !important;\n    padding-bottom: 2rem !important;\n  }\n\n  .xl\\:py-6 {\n    padding-top: 3rem !important;\n    padding-bottom: 3rem !important;\n  }\n\n  .xl\\:py-7 {\n    padding-top: 4rem !important;\n    padding-bottom: 4rem !important;\n  }\n\n  .xl\\:py-8 {\n    padding-top: 5rem !important;\n    padding-bottom: 5rem !important;\n  }\n}\n.m-0 {\n  margin: 0rem !important;\n}\n\n.m-1 {\n  margin: 0.25rem !important;\n}\n\n.m-2 {\n  margin: 0.5rem !important;\n}\n\n.m-3 {\n  margin: 1rem !important;\n}\n\n.m-4 {\n  margin: 1.5rem !important;\n}\n\n.m-5 {\n  margin: 2rem !important;\n}\n\n.m-6 {\n  margin: 3rem !important;\n}\n\n.m-7 {\n  margin: 4rem !important;\n}\n\n.m-8 {\n  margin: 5rem !important;\n}\n\n.-m-1 {\n  margin: -0.25rem !important;\n}\n\n.-m-2 {\n  margin: -0.5rem !important;\n}\n\n.-m-3 {\n  margin: -1rem !important;\n}\n\n.-m-4 {\n  margin: -1.5rem !important;\n}\n\n.-m-5 {\n  margin: -2rem !important;\n}\n\n.-m-6 {\n  margin: -3rem !important;\n}\n\n.-m-7 {\n  margin: -4rem !important;\n}\n\n.-m-8 {\n  margin: -5rem !important;\n}\n\n.m-auto {\n  margin: auto !important;\n}\n\n.mt-0 {\n  margin-top: 0rem !important;\n}\n\n.mt-1 {\n  margin-top: 0.25rem !important;\n}\n\n.mt-2 {\n  margin-top: 0.5rem !important;\n}\n\n.mt-3 {\n  margin-top: 1rem !important;\n}\n\n.mt-4 {\n  margin-top: 1.5rem !important;\n}\n\n.mt-5 {\n  margin-top: 2rem !important;\n}\n\n.mt-6 {\n  margin-top: 3rem !important;\n}\n\n.mt-7 {\n  margin-top: 4rem !important;\n}\n\n.mt-8 {\n  margin-top: 5rem !important;\n}\n\n.-mt-1 {\n  margin-top: -0.25rem !important;\n}\n\n.-mt-2 {\n  margin-top: -0.5rem !important;\n}\n\n.-mt-3 {\n  margin-top: -1rem !important;\n}\n\n.-mt-4 {\n  margin-top: -1.5rem !important;\n}\n\n.-mt-5 {\n  margin-top: -2rem !important;\n}\n\n.-mt-6 {\n  margin-top: -3rem !important;\n}\n\n.-mt-7 {\n  margin-top: -4rem !important;\n}\n\n.-mt-8 {\n  margin-top: -5rem !important;\n}\n\n.mt-auto {\n  margin-top: auto !important;\n}\n\n.mr-0 {\n  margin-right: 0rem !important;\n}\n\n.mr-1 {\n  margin-right: 0.25rem !important;\n}\n\n.mr-2 {\n  margin-right: 0.5rem !important;\n}\n\n.mr-3 {\n  margin-right: 1rem !important;\n}\n\n.mr-4 {\n  margin-right: 1.5rem !important;\n}\n\n.mr-5 {\n  margin-right: 2rem !important;\n}\n\n.mr-6 {\n  margin-right: 3rem !important;\n}\n\n.mr-7 {\n  margin-right: 4rem !important;\n}\n\n.mr-8 {\n  margin-right: 5rem !important;\n}\n\n.-mr-1 {\n  margin-right: -0.25rem !important;\n}\n\n.-mr-2 {\n  margin-right: -0.5rem !important;\n}\n\n.-mr-3 {\n  margin-right: -1rem !important;\n}\n\n.-mr-4 {\n  margin-right: -1.5rem !important;\n}\n\n.-mr-5 {\n  margin-right: -2rem !important;\n}\n\n.-mr-6 {\n  margin-right: -3rem !important;\n}\n\n.-mr-7 {\n  margin-right: -4rem !important;\n}\n\n.-mr-8 {\n  margin-right: -5rem !important;\n}\n\n.mr-auto {\n  margin-right: auto !important;\n}\n\n.ml-0 {\n  margin-left: 0rem !important;\n}\n\n.ml-1 {\n  margin-left: 0.25rem !important;\n}\n\n.ml-2 {\n  margin-left: 0.5rem !important;\n}\n\n.ml-3 {\n  margin-left: 1rem !important;\n}\n\n.ml-4 {\n  margin-left: 1.5rem !important;\n}\n\n.ml-5 {\n  margin-left: 2rem !important;\n}\n\n.ml-6 {\n  margin-left: 3rem !important;\n}\n\n.ml-7 {\n  margin-left: 4rem !important;\n}\n\n.ml-8 {\n  margin-left: 5rem !important;\n}\n\n.-ml-1 {\n  margin-left: -0.25rem !important;\n}\n\n.-ml-2 {\n  margin-left: -0.5rem !important;\n}\n\n.-ml-3 {\n  margin-left: -1rem !important;\n}\n\n.-ml-4 {\n  margin-left: -1.5rem !important;\n}\n\n.-ml-5 {\n  margin-left: -2rem !important;\n}\n\n.-ml-6 {\n  margin-left: -3rem !important;\n}\n\n.-ml-7 {\n  margin-left: -4rem !important;\n}\n\n.-ml-8 {\n  margin-left: -5rem !important;\n}\n\n.ml-auto {\n  margin-left: auto !important;\n}\n\n.mb-0 {\n  margin-bottom: 0rem !important;\n}\n\n.mb-1 {\n  margin-bottom: 0.25rem !important;\n}\n\n.mb-2 {\n  margin-bottom: 0.5rem !important;\n}\n\n.mb-3 {\n  margin-bottom: 1rem !important;\n}\n\n.mb-4 {\n  margin-bottom: 1.5rem !important;\n}\n\n.mb-5 {\n  margin-bottom: 2rem !important;\n}\n\n.mb-6 {\n  margin-bottom: 3rem !important;\n}\n\n.mb-7 {\n  margin-bottom: 4rem !important;\n}\n\n.mb-8 {\n  margin-bottom: 5rem !important;\n}\n\n.-mb-1 {\n  margin-bottom: -0.25rem !important;\n}\n\n.-mb-2 {\n  margin-bottom: -0.5rem !important;\n}\n\n.-mb-3 {\n  margin-bottom: -1rem !important;\n}\n\n.-mb-4 {\n  margin-bottom: -1.5rem !important;\n}\n\n.-mb-5 {\n  margin-bottom: -2rem !important;\n}\n\n.-mb-6 {\n  margin-bottom: -3rem !important;\n}\n\n.-mb-7 {\n  margin-bottom: -4rem !important;\n}\n\n.-mb-8 {\n  margin-bottom: -5rem !important;\n}\n\n.mb-auto {\n  margin-bottom: auto !important;\n}\n\n.mx-0 {\n  margin-left: 0rem !important;\n  margin-right: 0rem !important;\n}\n\n.mx-1 {\n  margin-left: 0.25rem !important;\n  margin-right: 0.25rem !important;\n}\n\n.mx-2 {\n  margin-left: 0.5rem !important;\n  margin-right: 0.5rem !important;\n}\n\n.mx-3 {\n  margin-left: 1rem !important;\n  margin-right: 1rem !important;\n}\n\n.mx-4 {\n  margin-left: 1.5rem !important;\n  margin-right: 1.5rem !important;\n}\n\n.mx-5 {\n  margin-left: 2rem !important;\n  margin-right: 2rem !important;\n}\n\n.mx-6 {\n  margin-left: 3rem !important;\n  margin-right: 3rem !important;\n}\n\n.mx-7 {\n  margin-left: 4rem !important;\n  margin-right: 4rem !important;\n}\n\n.mx-8 {\n  margin-left: 5rem !important;\n  margin-right: 5rem !important;\n}\n\n.-mx-1 {\n  margin-left: -0.25rem !important;\n  margin-right: -0.25rem !important;\n}\n\n.-mx-2 {\n  margin-left: -0.5rem !important;\n  margin-right: -0.5rem !important;\n}\n\n.-mx-3 {\n  margin-left: -1rem !important;\n  margin-right: -1rem !important;\n}\n\n.-mx-4 {\n  margin-left: -1.5rem !important;\n  margin-right: -1.5rem !important;\n}\n\n.-mx-5 {\n  margin-left: -2rem !important;\n  margin-right: -2rem !important;\n}\n\n.-mx-6 {\n  margin-left: -3rem !important;\n  margin-right: -3rem !important;\n}\n\n.-mx-7 {\n  margin-left: -4rem !important;\n  margin-right: -4rem !important;\n}\n\n.-mx-8 {\n  margin-left: -5rem !important;\n  margin-right: -5rem !important;\n}\n\n.mx-auto {\n  margin-left: auto !important;\n  margin-right: auto !important;\n}\n\n.my-0 {\n  margin-top: 0rem !important;\n  margin-bottom: 0rem !important;\n}\n\n.my-1 {\n  margin-top: 0.25rem !important;\n  margin-bottom: 0.25rem !important;\n}\n\n.my-2 {\n  margin-top: 0.5rem !important;\n  margin-bottom: 0.5rem !important;\n}\n\n.my-3 {\n  margin-top: 1rem !important;\n  margin-bottom: 1rem !important;\n}\n\n.my-4 {\n  margin-top: 1.5rem !important;\n  margin-bottom: 1.5rem !important;\n}\n\n.my-5 {\n  margin-top: 2rem !important;\n  margin-bottom: 2rem !important;\n}\n\n.my-6 {\n  margin-top: 3rem !important;\n  margin-bottom: 3rem !important;\n}\n\n.my-7 {\n  margin-top: 4rem !important;\n  margin-bottom: 4rem !important;\n}\n\n.my-8 {\n  margin-top: 5rem !important;\n  margin-bottom: 5rem !important;\n}\n\n.-my-1 {\n  margin-top: -0.25rem !important;\n  margin-bottom: -0.25rem !important;\n}\n\n.-my-2 {\n  margin-top: -0.5rem !important;\n  margin-bottom: -0.5rem !important;\n}\n\n.-my-3 {\n  margin-top: -1rem !important;\n  margin-bottom: -1rem !important;\n}\n\n.-my-4 {\n  margin-top: -1.5rem !important;\n  margin-bottom: -1.5rem !important;\n}\n\n.-my-5 {\n  margin-top: -2rem !important;\n  margin-bottom: -2rem !important;\n}\n\n.-my-6 {\n  margin-top: -3rem !important;\n  margin-bottom: -3rem !important;\n}\n\n.-my-7 {\n  margin-top: -4rem !important;\n  margin-bottom: -4rem !important;\n}\n\n.-my-8 {\n  margin-top: -5rem !important;\n  margin-bottom: -5rem !important;\n}\n\n.my-auto {\n  margin-top: auto !important;\n  margin-bottom: auto !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:m-0 {\n    margin: 0rem !important;\n  }\n\n  .sm\\:m-1 {\n    margin: 0.25rem !important;\n  }\n\n  .sm\\:m-2 {\n    margin: 0.5rem !important;\n  }\n\n  .sm\\:m-3 {\n    margin: 1rem !important;\n  }\n\n  .sm\\:m-4 {\n    margin: 1.5rem !important;\n  }\n\n  .sm\\:m-5 {\n    margin: 2rem !important;\n  }\n\n  .sm\\:m-6 {\n    margin: 3rem !important;\n  }\n\n  .sm\\:m-7 {\n    margin: 4rem !important;\n  }\n\n  .sm\\:m-8 {\n    margin: 5rem !important;\n  }\n\n  .sm\\:-m-1 {\n    margin: -0.25rem !important;\n  }\n\n  .sm\\:-m-2 {\n    margin: -0.5rem !important;\n  }\n\n  .sm\\:-m-3 {\n    margin: -1rem !important;\n  }\n\n  .sm\\:-m-4 {\n    margin: -1.5rem !important;\n  }\n\n  .sm\\:-m-5 {\n    margin: -2rem !important;\n  }\n\n  .sm\\:-m-6 {\n    margin: -3rem !important;\n  }\n\n  .sm\\:-m-7 {\n    margin: -4rem !important;\n  }\n\n  .sm\\:-m-8 {\n    margin: -5rem !important;\n  }\n\n  .sm\\:m-auto {\n    margin: auto !important;\n  }\n\n  .sm\\:mt-0 {\n    margin-top: 0rem !important;\n  }\n\n  .sm\\:mt-1 {\n    margin-top: 0.25rem !important;\n  }\n\n  .sm\\:mt-2 {\n    margin-top: 0.5rem !important;\n  }\n\n  .sm\\:mt-3 {\n    margin-top: 1rem !important;\n  }\n\n  .sm\\:mt-4 {\n    margin-top: 1.5rem !important;\n  }\n\n  .sm\\:mt-5 {\n    margin-top: 2rem !important;\n  }\n\n  .sm\\:mt-6 {\n    margin-top: 3rem !important;\n  }\n\n  .sm\\:mt-7 {\n    margin-top: 4rem !important;\n  }\n\n  .sm\\:mt-8 {\n    margin-top: 5rem !important;\n  }\n\n  .sm\\:-mt-1 {\n    margin-top: -0.25rem !important;\n  }\n\n  .sm\\:-mt-2 {\n    margin-top: -0.5rem !important;\n  }\n\n  .sm\\:-mt-3 {\n    margin-top: -1rem !important;\n  }\n\n  .sm\\:-mt-4 {\n    margin-top: -1.5rem !important;\n  }\n\n  .sm\\:-mt-5 {\n    margin-top: -2rem !important;\n  }\n\n  .sm\\:-mt-6 {\n    margin-top: -3rem !important;\n  }\n\n  .sm\\:-mt-7 {\n    margin-top: -4rem !important;\n  }\n\n  .sm\\:-mt-8 {\n    margin-top: -5rem !important;\n  }\n\n  .sm\\:mt-auto {\n    margin-top: auto !important;\n  }\n\n  .sm\\:mr-0 {\n    margin-right: 0rem !important;\n  }\n\n  .sm\\:mr-1 {\n    margin-right: 0.25rem !important;\n  }\n\n  .sm\\:mr-2 {\n    margin-right: 0.5rem !important;\n  }\n\n  .sm\\:mr-3 {\n    margin-right: 1rem !important;\n  }\n\n  .sm\\:mr-4 {\n    margin-right: 1.5rem !important;\n  }\n\n  .sm\\:mr-5 {\n    margin-right: 2rem !important;\n  }\n\n  .sm\\:mr-6 {\n    margin-right: 3rem !important;\n  }\n\n  .sm\\:mr-7 {\n    margin-right: 4rem !important;\n  }\n\n  .sm\\:mr-8 {\n    margin-right: 5rem !important;\n  }\n\n  .sm\\:-mr-1 {\n    margin-right: -0.25rem !important;\n  }\n\n  .sm\\:-mr-2 {\n    margin-right: -0.5rem !important;\n  }\n\n  .sm\\:-mr-3 {\n    margin-right: -1rem !important;\n  }\n\n  .sm\\:-mr-4 {\n    margin-right: -1.5rem !important;\n  }\n\n  .sm\\:-mr-5 {\n    margin-right: -2rem !important;\n  }\n\n  .sm\\:-mr-6 {\n    margin-right: -3rem !important;\n  }\n\n  .sm\\:-mr-7 {\n    margin-right: -4rem !important;\n  }\n\n  .sm\\:-mr-8 {\n    margin-right: -5rem !important;\n  }\n\n  .sm\\:mr-auto {\n    margin-right: auto !important;\n  }\n\n  .sm\\:ml-0 {\n    margin-left: 0rem !important;\n  }\n\n  .sm\\:ml-1 {\n    margin-left: 0.25rem !important;\n  }\n\n  .sm\\:ml-2 {\n    margin-left: 0.5rem !important;\n  }\n\n  .sm\\:ml-3 {\n    margin-left: 1rem !important;\n  }\n\n  .sm\\:ml-4 {\n    margin-left: 1.5rem !important;\n  }\n\n  .sm\\:ml-5 {\n    margin-left: 2rem !important;\n  }\n\n  .sm\\:ml-6 {\n    margin-left: 3rem !important;\n  }\n\n  .sm\\:ml-7 {\n    margin-left: 4rem !important;\n  }\n\n  .sm\\:ml-8 {\n    margin-left: 5rem !important;\n  }\n\n  .sm\\:-ml-1 {\n    margin-left: -0.25rem !important;\n  }\n\n  .sm\\:-ml-2 {\n    margin-left: -0.5rem !important;\n  }\n\n  .sm\\:-ml-3 {\n    margin-left: -1rem !important;\n  }\n\n  .sm\\:-ml-4 {\n    margin-left: -1.5rem !important;\n  }\n\n  .sm\\:-ml-5 {\n    margin-left: -2rem !important;\n  }\n\n  .sm\\:-ml-6 {\n    margin-left: -3rem !important;\n  }\n\n  .sm\\:-ml-7 {\n    margin-left: -4rem !important;\n  }\n\n  .sm\\:-ml-8 {\n    margin-left: -5rem !important;\n  }\n\n  .sm\\:ml-auto {\n    margin-left: auto !important;\n  }\n\n  .sm\\:mb-0 {\n    margin-bottom: 0rem !important;\n  }\n\n  .sm\\:mb-1 {\n    margin-bottom: 0.25rem !important;\n  }\n\n  .sm\\:mb-2 {\n    margin-bottom: 0.5rem !important;\n  }\n\n  .sm\\:mb-3 {\n    margin-bottom: 1rem !important;\n  }\n\n  .sm\\:mb-4 {\n    margin-bottom: 1.5rem !important;\n  }\n\n  .sm\\:mb-5 {\n    margin-bottom: 2rem !important;\n  }\n\n  .sm\\:mb-6 {\n    margin-bottom: 3rem !important;\n  }\n\n  .sm\\:mb-7 {\n    margin-bottom: 4rem !important;\n  }\n\n  .sm\\:mb-8 {\n    margin-bottom: 5rem !important;\n  }\n\n  .sm\\:-mb-1 {\n    margin-bottom: -0.25rem !important;\n  }\n\n  .sm\\:-mb-2 {\n    margin-bottom: -0.5rem !important;\n  }\n\n  .sm\\:-mb-3 {\n    margin-bottom: -1rem !important;\n  }\n\n  .sm\\:-mb-4 {\n    margin-bottom: -1.5rem !important;\n  }\n\n  .sm\\:-mb-5 {\n    margin-bottom: -2rem !important;\n  }\n\n  .sm\\:-mb-6 {\n    margin-bottom: -3rem !important;\n  }\n\n  .sm\\:-mb-7 {\n    margin-bottom: -4rem !important;\n  }\n\n  .sm\\:-mb-8 {\n    margin-bottom: -5rem !important;\n  }\n\n  .sm\\:mb-auto {\n    margin-bottom: auto !important;\n  }\n\n  .sm\\:mx-0 {\n    margin-left: 0rem !important;\n    margin-right: 0rem !important;\n  }\n\n  .sm\\:mx-1 {\n    margin-left: 0.25rem !important;\n    margin-right: 0.25rem !important;\n  }\n\n  .sm\\:mx-2 {\n    margin-left: 0.5rem !important;\n    margin-right: 0.5rem !important;\n  }\n\n  .sm\\:mx-3 {\n    margin-left: 1rem !important;\n    margin-right: 1rem !important;\n  }\n\n  .sm\\:mx-4 {\n    margin-left: 1.5rem !important;\n    margin-right: 1.5rem !important;\n  }\n\n  .sm\\:mx-5 {\n    margin-left: 2rem !important;\n    margin-right: 2rem !important;\n  }\n\n  .sm\\:mx-6 {\n    margin-left: 3rem !important;\n    margin-right: 3rem !important;\n  }\n\n  .sm\\:mx-7 {\n    margin-left: 4rem !important;\n    margin-right: 4rem !important;\n  }\n\n  .sm\\:mx-8 {\n    margin-left: 5rem !important;\n    margin-right: 5rem !important;\n  }\n\n  .sm\\:-mx-1 {\n    margin-left: -0.25rem !important;\n    margin-right: -0.25rem !important;\n  }\n\n  .sm\\:-mx-2 {\n    margin-left: -0.5rem !important;\n    margin-right: -0.5rem !important;\n  }\n\n  .sm\\:-mx-3 {\n    margin-left: -1rem !important;\n    margin-right: -1rem !important;\n  }\n\n  .sm\\:-mx-4 {\n    margin-left: -1.5rem !important;\n    margin-right: -1.5rem !important;\n  }\n\n  .sm\\:-mx-5 {\n    margin-left: -2rem !important;\n    margin-right: -2rem !important;\n  }\n\n  .sm\\:-mx-6 {\n    margin-left: -3rem !important;\n    margin-right: -3rem !important;\n  }\n\n  .sm\\:-mx-7 {\n    margin-left: -4rem !important;\n    margin-right: -4rem !important;\n  }\n\n  .sm\\:-mx-8 {\n    margin-left: -5rem !important;\n    margin-right: -5rem !important;\n  }\n\n  .sm\\:mx-auto {\n    margin-left: auto !important;\n    margin-right: auto !important;\n  }\n\n  .sm\\:my-0 {\n    margin-top: 0rem !important;\n    margin-bottom: 0rem !important;\n  }\n\n  .sm\\:my-1 {\n    margin-top: 0.25rem !important;\n    margin-bottom: 0.25rem !important;\n  }\n\n  .sm\\:my-2 {\n    margin-top: 0.5rem !important;\n    margin-bottom: 0.5rem !important;\n  }\n\n  .sm\\:my-3 {\n    margin-top: 1rem !important;\n    margin-bottom: 1rem !important;\n  }\n\n  .sm\\:my-4 {\n    margin-top: 1.5rem !important;\n    margin-bottom: 1.5rem !important;\n  }\n\n  .sm\\:my-5 {\n    margin-top: 2rem !important;\n    margin-bottom: 2rem !important;\n  }\n\n  .sm\\:my-6 {\n    margin-top: 3rem !important;\n    margin-bottom: 3rem !important;\n  }\n\n  .sm\\:my-7 {\n    margin-top: 4rem !important;\n    margin-bottom: 4rem !important;\n  }\n\n  .sm\\:my-8 {\n    margin-top: 5rem !important;\n    margin-bottom: 5rem !important;\n  }\n\n  .sm\\:-my-1 {\n    margin-top: -0.25rem !important;\n    margin-bottom: -0.25rem !important;\n  }\n\n  .sm\\:-my-2 {\n    margin-top: -0.5rem !important;\n    margin-bottom: -0.5rem !important;\n  }\n\n  .sm\\:-my-3 {\n    margin-top: -1rem !important;\n    margin-bottom: -1rem !important;\n  }\n\n  .sm\\:-my-4 {\n    margin-top: -1.5rem !important;\n    margin-bottom: -1.5rem !important;\n  }\n\n  .sm\\:-my-5 {\n    margin-top: -2rem !important;\n    margin-bottom: -2rem !important;\n  }\n\n  .sm\\:-my-6 {\n    margin-top: -3rem !important;\n    margin-bottom: -3rem !important;\n  }\n\n  .sm\\:-my-7 {\n    margin-top: -4rem !important;\n    margin-bottom: -4rem !important;\n  }\n\n  .sm\\:-my-8 {\n    margin-top: -5rem !important;\n    margin-bottom: -5rem !important;\n  }\n\n  .sm\\:my-auto {\n    margin-top: auto !important;\n    margin-bottom: auto !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:m-0 {\n    margin: 0rem !important;\n  }\n\n  .md\\:m-1 {\n    margin: 0.25rem !important;\n  }\n\n  .md\\:m-2 {\n    margin: 0.5rem !important;\n  }\n\n  .md\\:m-3 {\n    margin: 1rem !important;\n  }\n\n  .md\\:m-4 {\n    margin: 1.5rem !important;\n  }\n\n  .md\\:m-5 {\n    margin: 2rem !important;\n  }\n\n  .md\\:m-6 {\n    margin: 3rem !important;\n  }\n\n  .md\\:m-7 {\n    margin: 4rem !important;\n  }\n\n  .md\\:m-8 {\n    margin: 5rem !important;\n  }\n\n  .md\\:-m-1 {\n    margin: -0.25rem !important;\n  }\n\n  .md\\:-m-2 {\n    margin: -0.5rem !important;\n  }\n\n  .md\\:-m-3 {\n    margin: -1rem !important;\n  }\n\n  .md\\:-m-4 {\n    margin: -1.5rem !important;\n  }\n\n  .md\\:-m-5 {\n    margin: -2rem !important;\n  }\n\n  .md\\:-m-6 {\n    margin: -3rem !important;\n  }\n\n  .md\\:-m-7 {\n    margin: -4rem !important;\n  }\n\n  .md\\:-m-8 {\n    margin: -5rem !important;\n  }\n\n  .md\\:m-auto {\n    margin: auto !important;\n  }\n\n  .md\\:mt-0 {\n    margin-top: 0rem !important;\n  }\n\n  .md\\:mt-1 {\n    margin-top: 0.25rem !important;\n  }\n\n  .md\\:mt-2 {\n    margin-top: 0.5rem !important;\n  }\n\n  .md\\:mt-3 {\n    margin-top: 1rem !important;\n  }\n\n  .md\\:mt-4 {\n    margin-top: 1.5rem !important;\n  }\n\n  .md\\:mt-5 {\n    margin-top: 2rem !important;\n  }\n\n  .md\\:mt-6 {\n    margin-top: 3rem !important;\n  }\n\n  .md\\:mt-7 {\n    margin-top: 4rem !important;\n  }\n\n  .md\\:mt-8 {\n    margin-top: 5rem !important;\n  }\n\n  .md\\:-mt-1 {\n    margin-top: -0.25rem !important;\n  }\n\n  .md\\:-mt-2 {\n    margin-top: -0.5rem !important;\n  }\n\n  .md\\:-mt-3 {\n    margin-top: -1rem !important;\n  }\n\n  .md\\:-mt-4 {\n    margin-top: -1.5rem !important;\n  }\n\n  .md\\:-mt-5 {\n    margin-top: -2rem !important;\n  }\n\n  .md\\:-mt-6 {\n    margin-top: -3rem !important;\n  }\n\n  .md\\:-mt-7 {\n    margin-top: -4rem !important;\n  }\n\n  .md\\:-mt-8 {\n    margin-top: -5rem !important;\n  }\n\n  .md\\:mt-auto {\n    margin-top: auto !important;\n  }\n\n  .md\\:mr-0 {\n    margin-right: 0rem !important;\n  }\n\n  .md\\:mr-1 {\n    margin-right: 0.25rem !important;\n  }\n\n  .md\\:mr-2 {\n    margin-right: 0.5rem !important;\n  }\n\n  .md\\:mr-3 {\n    margin-right: 1rem !important;\n  }\n\n  .md\\:mr-4 {\n    margin-right: 1.5rem !important;\n  }\n\n  .md\\:mr-5 {\n    margin-right: 2rem !important;\n  }\n\n  .md\\:mr-6 {\n    margin-right: 3rem !important;\n  }\n\n  .md\\:mr-7 {\n    margin-right: 4rem !important;\n  }\n\n  .md\\:mr-8 {\n    margin-right: 5rem !important;\n  }\n\n  .md\\:-mr-1 {\n    margin-right: -0.25rem !important;\n  }\n\n  .md\\:-mr-2 {\n    margin-right: -0.5rem !important;\n  }\n\n  .md\\:-mr-3 {\n    margin-right: -1rem !important;\n  }\n\n  .md\\:-mr-4 {\n    margin-right: -1.5rem !important;\n  }\n\n  .md\\:-mr-5 {\n    margin-right: -2rem !important;\n  }\n\n  .md\\:-mr-6 {\n    margin-right: -3rem !important;\n  }\n\n  .md\\:-mr-7 {\n    margin-right: -4rem !important;\n  }\n\n  .md\\:-mr-8 {\n    margin-right: -5rem !important;\n  }\n\n  .md\\:mr-auto {\n    margin-right: auto !important;\n  }\n\n  .md\\:ml-0 {\n    margin-left: 0rem !important;\n  }\n\n  .md\\:ml-1 {\n    margin-left: 0.25rem !important;\n  }\n\n  .md\\:ml-2 {\n    margin-left: 0.5rem !important;\n  }\n\n  .md\\:ml-3 {\n    margin-left: 1rem !important;\n  }\n\n  .md\\:ml-4 {\n    margin-left: 1.5rem !important;\n  }\n\n  .md\\:ml-5 {\n    margin-left: 2rem !important;\n  }\n\n  .md\\:ml-6 {\n    margin-left: 3rem !important;\n  }\n\n  .md\\:ml-7 {\n    margin-left: 4rem !important;\n  }\n\n  .md\\:ml-8 {\n    margin-left: 5rem !important;\n  }\n\n  .md\\:-ml-1 {\n    margin-left: -0.25rem !important;\n  }\n\n  .md\\:-ml-2 {\n    margin-left: -0.5rem !important;\n  }\n\n  .md\\:-ml-3 {\n    margin-left: -1rem !important;\n  }\n\n  .md\\:-ml-4 {\n    margin-left: -1.5rem !important;\n  }\n\n  .md\\:-ml-5 {\n    margin-left: -2rem !important;\n  }\n\n  .md\\:-ml-6 {\n    margin-left: -3rem !important;\n  }\n\n  .md\\:-ml-7 {\n    margin-left: -4rem !important;\n  }\n\n  .md\\:-ml-8 {\n    margin-left: -5rem !important;\n  }\n\n  .md\\:ml-auto {\n    margin-left: auto !important;\n  }\n\n  .md\\:mb-0 {\n    margin-bottom: 0rem !important;\n  }\n\n  .md\\:mb-1 {\n    margin-bottom: 0.25rem !important;\n  }\n\n  .md\\:mb-2 {\n    margin-bottom: 0.5rem !important;\n  }\n\n  .md\\:mb-3 {\n    margin-bottom: 1rem !important;\n  }\n\n  .md\\:mb-4 {\n    margin-bottom: 1.5rem !important;\n  }\n\n  .md\\:mb-5 {\n    margin-bottom: 2rem !important;\n  }\n\n  .md\\:mb-6 {\n    margin-bottom: 3rem !important;\n  }\n\n  .md\\:mb-7 {\n    margin-bottom: 4rem !important;\n  }\n\n  .md\\:mb-8 {\n    margin-bottom: 5rem !important;\n  }\n\n  .md\\:-mb-1 {\n    margin-bottom: -0.25rem !important;\n  }\n\n  .md\\:-mb-2 {\n    margin-bottom: -0.5rem !important;\n  }\n\n  .md\\:-mb-3 {\n    margin-bottom: -1rem !important;\n  }\n\n  .md\\:-mb-4 {\n    margin-bottom: -1.5rem !important;\n  }\n\n  .md\\:-mb-5 {\n    margin-bottom: -2rem !important;\n  }\n\n  .md\\:-mb-6 {\n    margin-bottom: -3rem !important;\n  }\n\n  .md\\:-mb-7 {\n    margin-bottom: -4rem !important;\n  }\n\n  .md\\:-mb-8 {\n    margin-bottom: -5rem !important;\n  }\n\n  .md\\:mb-auto {\n    margin-bottom: auto !important;\n  }\n\n  .md\\:mx-0 {\n    margin-left: 0rem !important;\n    margin-right: 0rem !important;\n  }\n\n  .md\\:mx-1 {\n    margin-left: 0.25rem !important;\n    margin-right: 0.25rem !important;\n  }\n\n  .md\\:mx-2 {\n    margin-left: 0.5rem !important;\n    margin-right: 0.5rem !important;\n  }\n\n  .md\\:mx-3 {\n    margin-left: 1rem !important;\n    margin-right: 1rem !important;\n  }\n\n  .md\\:mx-4 {\n    margin-left: 1.5rem !important;\n    margin-right: 1.5rem !important;\n  }\n\n  .md\\:mx-5 {\n    margin-left: 2rem !important;\n    margin-right: 2rem !important;\n  }\n\n  .md\\:mx-6 {\n    margin-left: 3rem !important;\n    margin-right: 3rem !important;\n  }\n\n  .md\\:mx-7 {\n    margin-left: 4rem !important;\n    margin-right: 4rem !important;\n  }\n\n  .md\\:mx-8 {\n    margin-left: 5rem !important;\n    margin-right: 5rem !important;\n  }\n\n  .md\\:-mx-1 {\n    margin-left: -0.25rem !important;\n    margin-right: -0.25rem !important;\n  }\n\n  .md\\:-mx-2 {\n    margin-left: -0.5rem !important;\n    margin-right: -0.5rem !important;\n  }\n\n  .md\\:-mx-3 {\n    margin-left: -1rem !important;\n    margin-right: -1rem !important;\n  }\n\n  .md\\:-mx-4 {\n    margin-left: -1.5rem !important;\n    margin-right: -1.5rem !important;\n  }\n\n  .md\\:-mx-5 {\n    margin-left: -2rem !important;\n    margin-right: -2rem !important;\n  }\n\n  .md\\:-mx-6 {\n    margin-left: -3rem !important;\n    margin-right: -3rem !important;\n  }\n\n  .md\\:-mx-7 {\n    margin-left: -4rem !important;\n    margin-right: -4rem !important;\n  }\n\n  .md\\:-mx-8 {\n    margin-left: -5rem !important;\n    margin-right: -5rem !important;\n  }\n\n  .md\\:mx-auto {\n    margin-left: auto !important;\n    margin-right: auto !important;\n  }\n\n  .md\\:my-0 {\n    margin-top: 0rem !important;\n    margin-bottom: 0rem !important;\n  }\n\n  .md\\:my-1 {\n    margin-top: 0.25rem !important;\n    margin-bottom: 0.25rem !important;\n  }\n\n  .md\\:my-2 {\n    margin-top: 0.5rem !important;\n    margin-bottom: 0.5rem !important;\n  }\n\n  .md\\:my-3 {\n    margin-top: 1rem !important;\n    margin-bottom: 1rem !important;\n  }\n\n  .md\\:my-4 {\n    margin-top: 1.5rem !important;\n    margin-bottom: 1.5rem !important;\n  }\n\n  .md\\:my-5 {\n    margin-top: 2rem !important;\n    margin-bottom: 2rem !important;\n  }\n\n  .md\\:my-6 {\n    margin-top: 3rem !important;\n    margin-bottom: 3rem !important;\n  }\n\n  .md\\:my-7 {\n    margin-top: 4rem !important;\n    margin-bottom: 4rem !important;\n  }\n\n  .md\\:my-8 {\n    margin-top: 5rem !important;\n    margin-bottom: 5rem !important;\n  }\n\n  .md\\:-my-1 {\n    margin-top: -0.25rem !important;\n    margin-bottom: -0.25rem !important;\n  }\n\n  .md\\:-my-2 {\n    margin-top: -0.5rem !important;\n    margin-bottom: -0.5rem !important;\n  }\n\n  .md\\:-my-3 {\n    margin-top: -1rem !important;\n    margin-bottom: -1rem !important;\n  }\n\n  .md\\:-my-4 {\n    margin-top: -1.5rem !important;\n    margin-bottom: -1.5rem !important;\n  }\n\n  .md\\:-my-5 {\n    margin-top: -2rem !important;\n    margin-bottom: -2rem !important;\n  }\n\n  .md\\:-my-6 {\n    margin-top: -3rem !important;\n    margin-bottom: -3rem !important;\n  }\n\n  .md\\:-my-7 {\n    margin-top: -4rem !important;\n    margin-bottom: -4rem !important;\n  }\n\n  .md\\:-my-8 {\n    margin-top: -5rem !important;\n    margin-bottom: -5rem !important;\n  }\n\n  .md\\:my-auto {\n    margin-top: auto !important;\n    margin-bottom: auto !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:m-0 {\n    margin: 0rem !important;\n  }\n\n  .lg\\:m-1 {\n    margin: 0.25rem !important;\n  }\n\n  .lg\\:m-2 {\n    margin: 0.5rem !important;\n  }\n\n  .lg\\:m-3 {\n    margin: 1rem !important;\n  }\n\n  .lg\\:m-4 {\n    margin: 1.5rem !important;\n  }\n\n  .lg\\:m-5 {\n    margin: 2rem !important;\n  }\n\n  .lg\\:m-6 {\n    margin: 3rem !important;\n  }\n\n  .lg\\:m-7 {\n    margin: 4rem !important;\n  }\n\n  .lg\\:m-8 {\n    margin: 5rem !important;\n  }\n\n  .lg\\:-m-1 {\n    margin: -0.25rem !important;\n  }\n\n  .lg\\:-m-2 {\n    margin: -0.5rem !important;\n  }\n\n  .lg\\:-m-3 {\n    margin: -1rem !important;\n  }\n\n  .lg\\:-m-4 {\n    margin: -1.5rem !important;\n  }\n\n  .lg\\:-m-5 {\n    margin: -2rem !important;\n  }\n\n  .lg\\:-m-6 {\n    margin: -3rem !important;\n  }\n\n  .lg\\:-m-7 {\n    margin: -4rem !important;\n  }\n\n  .lg\\:-m-8 {\n    margin: -5rem !important;\n  }\n\n  .lg\\:m-auto {\n    margin: auto !important;\n  }\n\n  .lg\\:mt-0 {\n    margin-top: 0rem !important;\n  }\n\n  .lg\\:mt-1 {\n    margin-top: 0.25rem !important;\n  }\n\n  .lg\\:mt-2 {\n    margin-top: 0.5rem !important;\n  }\n\n  .lg\\:mt-3 {\n    margin-top: 1rem !important;\n  }\n\n  .lg\\:mt-4 {\n    margin-top: 1.5rem !important;\n  }\n\n  .lg\\:mt-5 {\n    margin-top: 2rem !important;\n  }\n\n  .lg\\:mt-6 {\n    margin-top: 3rem !important;\n  }\n\n  .lg\\:mt-7 {\n    margin-top: 4rem !important;\n  }\n\n  .lg\\:mt-8 {\n    margin-top: 5rem !important;\n  }\n\n  .lg\\:-mt-1 {\n    margin-top: -0.25rem !important;\n  }\n\n  .lg\\:-mt-2 {\n    margin-top: -0.5rem !important;\n  }\n\n  .lg\\:-mt-3 {\n    margin-top: -1rem !important;\n  }\n\n  .lg\\:-mt-4 {\n    margin-top: -1.5rem !important;\n  }\n\n  .lg\\:-mt-5 {\n    margin-top: -2rem !important;\n  }\n\n  .lg\\:-mt-6 {\n    margin-top: -3rem !important;\n  }\n\n  .lg\\:-mt-7 {\n    margin-top: -4rem !important;\n  }\n\n  .lg\\:-mt-8 {\n    margin-top: -5rem !important;\n  }\n\n  .lg\\:mt-auto {\n    margin-top: auto !important;\n  }\n\n  .lg\\:mr-0 {\n    margin-right: 0rem !important;\n  }\n\n  .lg\\:mr-1 {\n    margin-right: 0.25rem !important;\n  }\n\n  .lg\\:mr-2 {\n    margin-right: 0.5rem !important;\n  }\n\n  .lg\\:mr-3 {\n    margin-right: 1rem !important;\n  }\n\n  .lg\\:mr-4 {\n    margin-right: 1.5rem !important;\n  }\n\n  .lg\\:mr-5 {\n    margin-right: 2rem !important;\n  }\n\n  .lg\\:mr-6 {\n    margin-right: 3rem !important;\n  }\n\n  .lg\\:mr-7 {\n    margin-right: 4rem !important;\n  }\n\n  .lg\\:mr-8 {\n    margin-right: 5rem !important;\n  }\n\n  .lg\\:-mr-1 {\n    margin-right: -0.25rem !important;\n  }\n\n  .lg\\:-mr-2 {\n    margin-right: -0.5rem !important;\n  }\n\n  .lg\\:-mr-3 {\n    margin-right: -1rem !important;\n  }\n\n  .lg\\:-mr-4 {\n    margin-right: -1.5rem !important;\n  }\n\n  .lg\\:-mr-5 {\n    margin-right: -2rem !important;\n  }\n\n  .lg\\:-mr-6 {\n    margin-right: -3rem !important;\n  }\n\n  .lg\\:-mr-7 {\n    margin-right: -4rem !important;\n  }\n\n  .lg\\:-mr-8 {\n    margin-right: -5rem !important;\n  }\n\n  .lg\\:mr-auto {\n    margin-right: auto !important;\n  }\n\n  .lg\\:ml-0 {\n    margin-left: 0rem !important;\n  }\n\n  .lg\\:ml-1 {\n    margin-left: 0.25rem !important;\n  }\n\n  .lg\\:ml-2 {\n    margin-left: 0.5rem !important;\n  }\n\n  .lg\\:ml-3 {\n    margin-left: 1rem !important;\n  }\n\n  .lg\\:ml-4 {\n    margin-left: 1.5rem !important;\n  }\n\n  .lg\\:ml-5 {\n    margin-left: 2rem !important;\n  }\n\n  .lg\\:ml-6 {\n    margin-left: 3rem !important;\n  }\n\n  .lg\\:ml-7 {\n    margin-left: 4rem !important;\n  }\n\n  .lg\\:ml-8 {\n    margin-left: 5rem !important;\n  }\n\n  .lg\\:-ml-1 {\n    margin-left: -0.25rem !important;\n  }\n\n  .lg\\:-ml-2 {\n    margin-left: -0.5rem !important;\n  }\n\n  .lg\\:-ml-3 {\n    margin-left: -1rem !important;\n  }\n\n  .lg\\:-ml-4 {\n    margin-left: -1.5rem !important;\n  }\n\n  .lg\\:-ml-5 {\n    margin-left: -2rem !important;\n  }\n\n  .lg\\:-ml-6 {\n    margin-left: -3rem !important;\n  }\n\n  .lg\\:-ml-7 {\n    margin-left: -4rem !important;\n  }\n\n  .lg\\:-ml-8 {\n    margin-left: -5rem !important;\n  }\n\n  .lg\\:ml-auto {\n    margin-left: auto !important;\n  }\n\n  .lg\\:mb-0 {\n    margin-bottom: 0rem !important;\n  }\n\n  .lg\\:mb-1 {\n    margin-bottom: 0.25rem !important;\n  }\n\n  .lg\\:mb-2 {\n    margin-bottom: 0.5rem !important;\n  }\n\n  .lg\\:mb-3 {\n    margin-bottom: 1rem !important;\n  }\n\n  .lg\\:mb-4 {\n    margin-bottom: 1.5rem !important;\n  }\n\n  .lg\\:mb-5 {\n    margin-bottom: 2rem !important;\n  }\n\n  .lg\\:mb-6 {\n    margin-bottom: 3rem !important;\n  }\n\n  .lg\\:mb-7 {\n    margin-bottom: 4rem !important;\n  }\n\n  .lg\\:mb-8 {\n    margin-bottom: 5rem !important;\n  }\n\n  .lg\\:-mb-1 {\n    margin-bottom: -0.25rem !important;\n  }\n\n  .lg\\:-mb-2 {\n    margin-bottom: -0.5rem !important;\n  }\n\n  .lg\\:-mb-3 {\n    margin-bottom: -1rem !important;\n  }\n\n  .lg\\:-mb-4 {\n    margin-bottom: -1.5rem !important;\n  }\n\n  .lg\\:-mb-5 {\n    margin-bottom: -2rem !important;\n  }\n\n  .lg\\:-mb-6 {\n    margin-bottom: -3rem !important;\n  }\n\n  .lg\\:-mb-7 {\n    margin-bottom: -4rem !important;\n  }\n\n  .lg\\:-mb-8 {\n    margin-bottom: -5rem !important;\n  }\n\n  .lg\\:mb-auto {\n    margin-bottom: auto !important;\n  }\n\n  .lg\\:mx-0 {\n    margin-left: 0rem !important;\n    margin-right: 0rem !important;\n  }\n\n  .lg\\:mx-1 {\n    margin-left: 0.25rem !important;\n    margin-right: 0.25rem !important;\n  }\n\n  .lg\\:mx-2 {\n    margin-left: 0.5rem !important;\n    margin-right: 0.5rem !important;\n  }\n\n  .lg\\:mx-3 {\n    margin-left: 1rem !important;\n    margin-right: 1rem !important;\n  }\n\n  .lg\\:mx-4 {\n    margin-left: 1.5rem !important;\n    margin-right: 1.5rem !important;\n  }\n\n  .lg\\:mx-5 {\n    margin-left: 2rem !important;\n    margin-right: 2rem !important;\n  }\n\n  .lg\\:mx-6 {\n    margin-left: 3rem !important;\n    margin-right: 3rem !important;\n  }\n\n  .lg\\:mx-7 {\n    margin-left: 4rem !important;\n    margin-right: 4rem !important;\n  }\n\n  .lg\\:mx-8 {\n    margin-left: 5rem !important;\n    margin-right: 5rem !important;\n  }\n\n  .lg\\:-mx-1 {\n    margin-left: -0.25rem !important;\n    margin-right: -0.25rem !important;\n  }\n\n  .lg\\:-mx-2 {\n    margin-left: -0.5rem !important;\n    margin-right: -0.5rem !important;\n  }\n\n  .lg\\:-mx-3 {\n    margin-left: -1rem !important;\n    margin-right: -1rem !important;\n  }\n\n  .lg\\:-mx-4 {\n    margin-left: -1.5rem !important;\n    margin-right: -1.5rem !important;\n  }\n\n  .lg\\:-mx-5 {\n    margin-left: -2rem !important;\n    margin-right: -2rem !important;\n  }\n\n  .lg\\:-mx-6 {\n    margin-left: -3rem !important;\n    margin-right: -3rem !important;\n  }\n\n  .lg\\:-mx-7 {\n    margin-left: -4rem !important;\n    margin-right: -4rem !important;\n  }\n\n  .lg\\:-mx-8 {\n    margin-left: -5rem !important;\n    margin-right: -5rem !important;\n  }\n\n  .lg\\:mx-auto {\n    margin-left: auto !important;\n    margin-right: auto !important;\n  }\n\n  .lg\\:my-0 {\n    margin-top: 0rem !important;\n    margin-bottom: 0rem !important;\n  }\n\n  .lg\\:my-1 {\n    margin-top: 0.25rem !important;\n    margin-bottom: 0.25rem !important;\n  }\n\n  .lg\\:my-2 {\n    margin-top: 0.5rem !important;\n    margin-bottom: 0.5rem !important;\n  }\n\n  .lg\\:my-3 {\n    margin-top: 1rem !important;\n    margin-bottom: 1rem !important;\n  }\n\n  .lg\\:my-4 {\n    margin-top: 1.5rem !important;\n    margin-bottom: 1.5rem !important;\n  }\n\n  .lg\\:my-5 {\n    margin-top: 2rem !important;\n    margin-bottom: 2rem !important;\n  }\n\n  .lg\\:my-6 {\n    margin-top: 3rem !important;\n    margin-bottom: 3rem !important;\n  }\n\n  .lg\\:my-7 {\n    margin-top: 4rem !important;\n    margin-bottom: 4rem !important;\n  }\n\n  .lg\\:my-8 {\n    margin-top: 5rem !important;\n    margin-bottom: 5rem !important;\n  }\n\n  .lg\\:-my-1 {\n    margin-top: -0.25rem !important;\n    margin-bottom: -0.25rem !important;\n  }\n\n  .lg\\:-my-2 {\n    margin-top: -0.5rem !important;\n    margin-bottom: -0.5rem !important;\n  }\n\n  .lg\\:-my-3 {\n    margin-top: -1rem !important;\n    margin-bottom: -1rem !important;\n  }\n\n  .lg\\:-my-4 {\n    margin-top: -1.5rem !important;\n    margin-bottom: -1.5rem !important;\n  }\n\n  .lg\\:-my-5 {\n    margin-top: -2rem !important;\n    margin-bottom: -2rem !important;\n  }\n\n  .lg\\:-my-6 {\n    margin-top: -3rem !important;\n    margin-bottom: -3rem !important;\n  }\n\n  .lg\\:-my-7 {\n    margin-top: -4rem !important;\n    margin-bottom: -4rem !important;\n  }\n\n  .lg\\:-my-8 {\n    margin-top: -5rem !important;\n    margin-bottom: -5rem !important;\n  }\n\n  .lg\\:my-auto {\n    margin-top: auto !important;\n    margin-bottom: auto !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:m-0 {\n    margin: 0rem !important;\n  }\n\n  .xl\\:m-1 {\n    margin: 0.25rem !important;\n  }\n\n  .xl\\:m-2 {\n    margin: 0.5rem !important;\n  }\n\n  .xl\\:m-3 {\n    margin: 1rem !important;\n  }\n\n  .xl\\:m-4 {\n    margin: 1.5rem !important;\n  }\n\n  .xl\\:m-5 {\n    margin: 2rem !important;\n  }\n\n  .xl\\:m-6 {\n    margin: 3rem !important;\n  }\n\n  .xl\\:m-7 {\n    margin: 4rem !important;\n  }\n\n  .xl\\:m-8 {\n    margin: 5rem !important;\n  }\n\n  .xl\\:-m-1 {\n    margin: -0.25rem !important;\n  }\n\n  .xl\\:-m-2 {\n    margin: -0.5rem !important;\n  }\n\n  .xl\\:-m-3 {\n    margin: -1rem !important;\n  }\n\n  .xl\\:-m-4 {\n    margin: -1.5rem !important;\n  }\n\n  .xl\\:-m-5 {\n    margin: -2rem !important;\n  }\n\n  .xl\\:-m-6 {\n    margin: -3rem !important;\n  }\n\n  .xl\\:-m-7 {\n    margin: -4rem !important;\n  }\n\n  .xl\\:-m-8 {\n    margin: -5rem !important;\n  }\n\n  .xl\\:m-auto {\n    margin: auto !important;\n  }\n\n  .xl\\:mt-0 {\n    margin-top: 0rem !important;\n  }\n\n  .xl\\:mt-1 {\n    margin-top: 0.25rem !important;\n  }\n\n  .xl\\:mt-2 {\n    margin-top: 0.5rem !important;\n  }\n\n  .xl\\:mt-3 {\n    margin-top: 1rem !important;\n  }\n\n  .xl\\:mt-4 {\n    margin-top: 1.5rem !important;\n  }\n\n  .xl\\:mt-5 {\n    margin-top: 2rem !important;\n  }\n\n  .xl\\:mt-6 {\n    margin-top: 3rem !important;\n  }\n\n  .xl\\:mt-7 {\n    margin-top: 4rem !important;\n  }\n\n  .xl\\:mt-8 {\n    margin-top: 5rem !important;\n  }\n\n  .xl\\:-mt-1 {\n    margin-top: -0.25rem !important;\n  }\n\n  .xl\\:-mt-2 {\n    margin-top: -0.5rem !important;\n  }\n\n  .xl\\:-mt-3 {\n    margin-top: -1rem !important;\n  }\n\n  .xl\\:-mt-4 {\n    margin-top: -1.5rem !important;\n  }\n\n  .xl\\:-mt-5 {\n    margin-top: -2rem !important;\n  }\n\n  .xl\\:-mt-6 {\n    margin-top: -3rem !important;\n  }\n\n  .xl\\:-mt-7 {\n    margin-top: -4rem !important;\n  }\n\n  .xl\\:-mt-8 {\n    margin-top: -5rem !important;\n  }\n\n  .xl\\:mt-auto {\n    margin-top: auto !important;\n  }\n\n  .xl\\:mr-0 {\n    margin-right: 0rem !important;\n  }\n\n  .xl\\:mr-1 {\n    margin-right: 0.25rem !important;\n  }\n\n  .xl\\:mr-2 {\n    margin-right: 0.5rem !important;\n  }\n\n  .xl\\:mr-3 {\n    margin-right: 1rem !important;\n  }\n\n  .xl\\:mr-4 {\n    margin-right: 1.5rem !important;\n  }\n\n  .xl\\:mr-5 {\n    margin-right: 2rem !important;\n  }\n\n  .xl\\:mr-6 {\n    margin-right: 3rem !important;\n  }\n\n  .xl\\:mr-7 {\n    margin-right: 4rem !important;\n  }\n\n  .xl\\:mr-8 {\n    margin-right: 5rem !important;\n  }\n\n  .xl\\:-mr-1 {\n    margin-right: -0.25rem !important;\n  }\n\n  .xl\\:-mr-2 {\n    margin-right: -0.5rem !important;\n  }\n\n  .xl\\:-mr-3 {\n    margin-right: -1rem !important;\n  }\n\n  .xl\\:-mr-4 {\n    margin-right: -1.5rem !important;\n  }\n\n  .xl\\:-mr-5 {\n    margin-right: -2rem !important;\n  }\n\n  .xl\\:-mr-6 {\n    margin-right: -3rem !important;\n  }\n\n  .xl\\:-mr-7 {\n    margin-right: -4rem !important;\n  }\n\n  .xl\\:-mr-8 {\n    margin-right: -5rem !important;\n  }\n\n  .xl\\:mr-auto {\n    margin-right: auto !important;\n  }\n\n  .xl\\:ml-0 {\n    margin-left: 0rem !important;\n  }\n\n  .xl\\:ml-1 {\n    margin-left: 0.25rem !important;\n  }\n\n  .xl\\:ml-2 {\n    margin-left: 0.5rem !important;\n  }\n\n  .xl\\:ml-3 {\n    margin-left: 1rem !important;\n  }\n\n  .xl\\:ml-4 {\n    margin-left: 1.5rem !important;\n  }\n\n  .xl\\:ml-5 {\n    margin-left: 2rem !important;\n  }\n\n  .xl\\:ml-6 {\n    margin-left: 3rem !important;\n  }\n\n  .xl\\:ml-7 {\n    margin-left: 4rem !important;\n  }\n\n  .xl\\:ml-8 {\n    margin-left: 5rem !important;\n  }\n\n  .xl\\:-ml-1 {\n    margin-left: -0.25rem !important;\n  }\n\n  .xl\\:-ml-2 {\n    margin-left: -0.5rem !important;\n  }\n\n  .xl\\:-ml-3 {\n    margin-left: -1rem !important;\n  }\n\n  .xl\\:-ml-4 {\n    margin-left: -1.5rem !important;\n  }\n\n  .xl\\:-ml-5 {\n    margin-left: -2rem !important;\n  }\n\n  .xl\\:-ml-6 {\n    margin-left: -3rem !important;\n  }\n\n  .xl\\:-ml-7 {\n    margin-left: -4rem !important;\n  }\n\n  .xl\\:-ml-8 {\n    margin-left: -5rem !important;\n  }\n\n  .xl\\:ml-auto {\n    margin-left: auto !important;\n  }\n\n  .xl\\:mb-0 {\n    margin-bottom: 0rem !important;\n  }\n\n  .xl\\:mb-1 {\n    margin-bottom: 0.25rem !important;\n  }\n\n  .xl\\:mb-2 {\n    margin-bottom: 0.5rem !important;\n  }\n\n  .xl\\:mb-3 {\n    margin-bottom: 1rem !important;\n  }\n\n  .xl\\:mb-4 {\n    margin-bottom: 1.5rem !important;\n  }\n\n  .xl\\:mb-5 {\n    margin-bottom: 2rem !important;\n  }\n\n  .xl\\:mb-6 {\n    margin-bottom: 3rem !important;\n  }\n\n  .xl\\:mb-7 {\n    margin-bottom: 4rem !important;\n  }\n\n  .xl\\:mb-8 {\n    margin-bottom: 5rem !important;\n  }\n\n  .xl\\:-mb-1 {\n    margin-bottom: -0.25rem !important;\n  }\n\n  .xl\\:-mb-2 {\n    margin-bottom: -0.5rem !important;\n  }\n\n  .xl\\:-mb-3 {\n    margin-bottom: -1rem !important;\n  }\n\n  .xl\\:-mb-4 {\n    margin-bottom: -1.5rem !important;\n  }\n\n  .xl\\:-mb-5 {\n    margin-bottom: -2rem !important;\n  }\n\n  .xl\\:-mb-6 {\n    margin-bottom: -3rem !important;\n  }\n\n  .xl\\:-mb-7 {\n    margin-bottom: -4rem !important;\n  }\n\n  .xl\\:-mb-8 {\n    margin-bottom: -5rem !important;\n  }\n\n  .xl\\:mb-auto {\n    margin-bottom: auto !important;\n  }\n\n  .xl\\:mx-0 {\n    margin-left: 0rem !important;\n    margin-right: 0rem !important;\n  }\n\n  .xl\\:mx-1 {\n    margin-left: 0.25rem !important;\n    margin-right: 0.25rem !important;\n  }\n\n  .xl\\:mx-2 {\n    margin-left: 0.5rem !important;\n    margin-right: 0.5rem !important;\n  }\n\n  .xl\\:mx-3 {\n    margin-left: 1rem !important;\n    margin-right: 1rem !important;\n  }\n\n  .xl\\:mx-4 {\n    margin-left: 1.5rem !important;\n    margin-right: 1.5rem !important;\n  }\n\n  .xl\\:mx-5 {\n    margin-left: 2rem !important;\n    margin-right: 2rem !important;\n  }\n\n  .xl\\:mx-6 {\n    margin-left: 3rem !important;\n    margin-right: 3rem !important;\n  }\n\n  .xl\\:mx-7 {\n    margin-left: 4rem !important;\n    margin-right: 4rem !important;\n  }\n\n  .xl\\:mx-8 {\n    margin-left: 5rem !important;\n    margin-right: 5rem !important;\n  }\n\n  .xl\\:-mx-1 {\n    margin-left: -0.25rem !important;\n    margin-right: -0.25rem !important;\n  }\n\n  .xl\\:-mx-2 {\n    margin-left: -0.5rem !important;\n    margin-right: -0.5rem !important;\n  }\n\n  .xl\\:-mx-3 {\n    margin-left: -1rem !important;\n    margin-right: -1rem !important;\n  }\n\n  .xl\\:-mx-4 {\n    margin-left: -1.5rem !important;\n    margin-right: -1.5rem !important;\n  }\n\n  .xl\\:-mx-5 {\n    margin-left: -2rem !important;\n    margin-right: -2rem !important;\n  }\n\n  .xl\\:-mx-6 {\n    margin-left: -3rem !important;\n    margin-right: -3rem !important;\n  }\n\n  .xl\\:-mx-7 {\n    margin-left: -4rem !important;\n    margin-right: -4rem !important;\n  }\n\n  .xl\\:-mx-8 {\n    margin-left: -5rem !important;\n    margin-right: -5rem !important;\n  }\n\n  .xl\\:mx-auto {\n    margin-left: auto !important;\n    margin-right: auto !important;\n  }\n\n  .xl\\:my-0 {\n    margin-top: 0rem !important;\n    margin-bottom: 0rem !important;\n  }\n\n  .xl\\:my-1 {\n    margin-top: 0.25rem !important;\n    margin-bottom: 0.25rem !important;\n  }\n\n  .xl\\:my-2 {\n    margin-top: 0.5rem !important;\n    margin-bottom: 0.5rem !important;\n  }\n\n  .xl\\:my-3 {\n    margin-top: 1rem !important;\n    margin-bottom: 1rem !important;\n  }\n\n  .xl\\:my-4 {\n    margin-top: 1.5rem !important;\n    margin-bottom: 1.5rem !important;\n  }\n\n  .xl\\:my-5 {\n    margin-top: 2rem !important;\n    margin-bottom: 2rem !important;\n  }\n\n  .xl\\:my-6 {\n    margin-top: 3rem !important;\n    margin-bottom: 3rem !important;\n  }\n\n  .xl\\:my-7 {\n    margin-top: 4rem !important;\n    margin-bottom: 4rem !important;\n  }\n\n  .xl\\:my-8 {\n    margin-top: 5rem !important;\n    margin-bottom: 5rem !important;\n  }\n\n  .xl\\:-my-1 {\n    margin-top: -0.25rem !important;\n    margin-bottom: -0.25rem !important;\n  }\n\n  .xl\\:-my-2 {\n    margin-top: -0.5rem !important;\n    margin-bottom: -0.5rem !important;\n  }\n\n  .xl\\:-my-3 {\n    margin-top: -1rem !important;\n    margin-bottom: -1rem !important;\n  }\n\n  .xl\\:-my-4 {\n    margin-top: -1.5rem !important;\n    margin-bottom: -1.5rem !important;\n  }\n\n  .xl\\:-my-5 {\n    margin-top: -2rem !important;\n    margin-bottom: -2rem !important;\n  }\n\n  .xl\\:-my-6 {\n    margin-top: -3rem !important;\n    margin-bottom: -3rem !important;\n  }\n\n  .xl\\:-my-7 {\n    margin-top: -4rem !important;\n    margin-bottom: -4rem !important;\n  }\n\n  .xl\\:-my-8 {\n    margin-top: -5rem !important;\n    margin-bottom: -5rem !important;\n  }\n\n  .xl\\:my-auto {\n    margin-top: auto !important;\n    margin-bottom: auto !important;\n  }\n}\n.shadow-none {\n  box-shadow: none !important;\n}\n\n.shadow-1 {\n  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08) !important;\n}\n\n.shadow-2 {\n  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.12) !important;\n}\n\n.shadow-3 {\n  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1) !important;\n}\n\n.shadow-4 {\n  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2) !important;\n}\n\n.shadow-5 {\n  box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1), 0px 4px 5px -2px rgba(0, 0, 0, 0.12), 0px 10px 15px -5px rgba(0, 0, 0, 0.2) !important;\n}\n\n.shadow-6 {\n  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18) !important;\n}\n\n.shadow-7 {\n  box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.08), 0px 22px 30px 2px rgba(0, 0, 0, 0.15), 0px 8px 10px rgba(0, 0, 0, 0.15) !important;\n}\n\n.shadow-8 {\n  box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:shadow-none {\n    box-shadow: none !important;\n  }\n  .sm\\:shadow-1 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08) !important;\n  }\n  .sm\\:shadow-2 {\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.12) !important;\n  }\n  .sm\\:shadow-3 {\n    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1) !important;\n  }\n  .sm\\:shadow-4 {\n    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2) !important;\n  }\n  .sm\\:shadow-5 {\n    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1), 0px 4px 5px -2px rgba(0, 0, 0, 0.12), 0px 10px 15px -5px rgba(0, 0, 0, 0.2) !important;\n  }\n  .sm\\:shadow-6 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18) !important;\n  }\n  .sm\\:shadow-7 {\n    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.08), 0px 22px 30px 2px rgba(0, 0, 0, 0.15), 0px 8px 10px rgba(0, 0, 0, 0.15) !important;\n  }\n  .sm\\:shadow-8 {\n    box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:shadow-none {\n    box-shadow: none !important;\n  }\n  .md\\:shadow-1 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08) !important;\n  }\n  .md\\:shadow-2 {\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.12) !important;\n  }\n  .md\\:shadow-3 {\n    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1) !important;\n  }\n  .md\\:shadow-4 {\n    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2) !important;\n  }\n  .md\\:shadow-5 {\n    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1), 0px 4px 5px -2px rgba(0, 0, 0, 0.12), 0px 10px 15px -5px rgba(0, 0, 0, 0.2) !important;\n  }\n  .md\\:shadow-6 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18) !important;\n  }\n  .md\\:shadow-7 {\n    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.08), 0px 22px 30px 2px rgba(0, 0, 0, 0.15), 0px 8px 10px rgba(0, 0, 0, 0.15) !important;\n  }\n  .md\\:shadow-8 {\n    box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:shadow-none {\n    box-shadow: none !important;\n  }\n  .lg\\:shadow-1 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08) !important;\n  }\n  .lg\\:shadow-2 {\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.12) !important;\n  }\n  .lg\\:shadow-3 {\n    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1) !important;\n  }\n  .lg\\:shadow-4 {\n    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2) !important;\n  }\n  .lg\\:shadow-5 {\n    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1), 0px 4px 5px -2px rgba(0, 0, 0, 0.12), 0px 10px 15px -5px rgba(0, 0, 0, 0.2) !important;\n  }\n  .lg\\:shadow-6 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18) !important;\n  }\n  .lg\\:shadow-7 {\n    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.08), 0px 22px 30px 2px rgba(0, 0, 0, 0.15), 0px 8px 10px rgba(0, 0, 0, 0.15) !important;\n  }\n  .lg\\:shadow-8 {\n    box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:shadow-none {\n    box-shadow: none !important;\n  }\n  .xl\\:shadow-1 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08) !important;\n  }\n  .xl\\:shadow-2 {\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.12) !important;\n  }\n  .xl\\:shadow-3 {\n    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08), 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 1px 4px -1px rgba(0, 0, 0, 0.1) !important;\n  }\n  .xl\\:shadow-4 {\n    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2) !important;\n  }\n  .xl\\:shadow-5 {\n    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.1), 0px 4px 5px -2px rgba(0, 0, 0, 0.12), 0px 10px 15px -5px rgba(0, 0, 0, 0.2) !important;\n  }\n  .xl\\:shadow-6 {\n    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.06), 0px 7px 9px rgba(0, 0, 0, 0.12), 0px 20px 25px -8px rgba(0, 0, 0, 0.18) !important;\n  }\n  .xl\\:shadow-7 {\n    box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.08), 0px 22px 30px 2px rgba(0, 0, 0, 0.15), 0px 8px 10px rgba(0, 0, 0, 0.15) !important;\n  }\n  .xl\\:shadow-8 {\n    box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) !important;\n  }\n}\n.border-none {\n  border-width: 0px !important;\n  border-style: none;\n}\n\n.border-1 {\n  border-width: 1px !important;\n  border-style: solid;\n}\n\n.border-2 {\n  border-width: 2px !important;\n  border-style: solid;\n}\n\n.border-3 {\n  border-width: 3px !important;\n  border-style: solid;\n}\n\n.border-top-none {\n  border-top-width: 0px !important;\n  border-top-style: none;\n}\n\n.border-top-1 {\n  border-top-width: 1px !important;\n  border-top-style: solid;\n}\n\n.border-top-2 {\n  border-top-width: 2px !important;\n  border-top-style: solid;\n}\n\n.border-top-3 {\n  border-top-width: 3px !important;\n  border-top-style: solid;\n}\n\n.border-right-none {\n  border-right-width: 0px !important;\n  border-right-style: none;\n}\n\n.border-right-1 {\n  border-right-width: 1px !important;\n  border-right-style: solid;\n}\n\n.border-right-2 {\n  border-right-width: 2px !important;\n  border-right-style: solid;\n}\n\n.border-right-3 {\n  border-right-width: 3px !important;\n  border-right-style: solid;\n}\n\n.border-left-none {\n  border-left-width: 0px !important;\n  border-left-style: none;\n}\n\n.border-left-1 {\n  border-left-width: 1px !important;\n  border-left-style: solid;\n}\n\n.border-left-2 {\n  border-left-width: 2px !important;\n  border-left-style: solid;\n}\n\n.border-left-3 {\n  border-left-width: 3px !important;\n  border-left-style: solid;\n}\n\n.border-bottom-none {\n  border-bottom-width: 0px !important;\n  border-bottom-style: none;\n}\n\n.border-bottom-1 {\n  border-bottom-width: 1px !important;\n  border-bottom-style: solid;\n}\n\n.border-bottom-2 {\n  border-bottom-width: 2px !important;\n  border-bottom-style: solid;\n}\n\n.border-bottom-3 {\n  border-bottom-width: 3px !important;\n  border-bottom-style: solid;\n}\n\n.border-x-none {\n  border-left-width: 0px !important;\n  border-left-style: none;\n  border-right-width: 0px !important;\n  border-right-style: none;\n}\n\n.border-x-1 {\n  border-left-width: 1px !important;\n  border-left-style: solid;\n  border-right-width: 1px !important;\n  border-right-style: solid;\n}\n\n.border-x-2 {\n  border-left-width: 2px !important;\n  border-left-style: solid;\n  border-right-width: 2px !important;\n  border-right-style: solid;\n}\n\n.border-x-3 {\n  border-left-width: 3px !important;\n  border-left-style: solid;\n  border-right-width: 3px !important;\n  border-right-style: solid;\n}\n\n.border-y-none {\n  border-top-width: 0px !important;\n  border-top-style: none;\n  border-bottom-width: 0px !important;\n  border-bottom-style: none;\n}\n\n.border-y-1 {\n  border-top-width: 1px !important;\n  border-top-style: solid;\n  border-bottom-width: 1px !important;\n  border-bottom-style: solid;\n}\n\n.border-y-2 {\n  border-top-width: 2px !important;\n  border-top-style: solid;\n  border-bottom-width: 2px !important;\n  border-bottom-style: solid;\n}\n\n.border-y-3 {\n  border-top-width: 3px !important;\n  border-top-style: solid;\n  border-bottom-width: 3px !important;\n  border-bottom-style: solid;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:border-none {\n    border-width: 0px !important;\n    border-style: none;\n  }\n  .sm\\:border-1 {\n    border-width: 1px !important;\n    border-style: solid;\n  }\n  .sm\\:border-2 {\n    border-width: 2px !important;\n    border-style: solid;\n  }\n  .sm\\:border-3 {\n    border-width: 3px !important;\n    border-style: solid;\n  }\n  .sm\\:border-top-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n  }\n  .sm\\:border-top-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n  }\n  .sm\\:border-top-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n  }\n  .sm\\:border-top-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n  }\n  .sm\\:border-right-none {\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .sm\\:border-right-1 {\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-right-2 {\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-right-3 {\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-left-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n  }\n  .sm\\:border-left-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n  }\n  .sm\\:border-left-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n  }\n  .sm\\:border-left-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n  }\n  .sm\\:border-bottom-none {\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .sm\\:border-bottom-1 {\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .sm\\:border-bottom-2 {\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .sm\\:border-bottom-3 {\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n  .sm\\:border-x-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .sm\\:border-x-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-x-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-x-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .sm\\:border-y-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .sm\\:border-y-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .sm\\:border-y-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .sm\\:border-y-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:border-none {\n    border-width: 0px !important;\n    border-style: none;\n  }\n  .md\\:border-1 {\n    border-width: 1px !important;\n    border-style: solid;\n  }\n  .md\\:border-2 {\n    border-width: 2px !important;\n    border-style: solid;\n  }\n  .md\\:border-3 {\n    border-width: 3px !important;\n    border-style: solid;\n  }\n  .md\\:border-top-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n  }\n  .md\\:border-top-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n  }\n  .md\\:border-top-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n  }\n  .md\\:border-top-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n  }\n  .md\\:border-right-none {\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .md\\:border-right-1 {\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-right-2 {\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-right-3 {\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-left-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n  }\n  .md\\:border-left-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n  }\n  .md\\:border-left-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n  }\n  .md\\:border-left-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n  }\n  .md\\:border-bottom-none {\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .md\\:border-bottom-1 {\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .md\\:border-bottom-2 {\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .md\\:border-bottom-3 {\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n  .md\\:border-x-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .md\\:border-x-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-x-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-x-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .md\\:border-y-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .md\\:border-y-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .md\\:border-y-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .md\\:border-y-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:border-none {\n    border-width: 0px !important;\n    border-style: none;\n  }\n  .lg\\:border-1 {\n    border-width: 1px !important;\n    border-style: solid;\n  }\n  .lg\\:border-2 {\n    border-width: 2px !important;\n    border-style: solid;\n  }\n  .lg\\:border-3 {\n    border-width: 3px !important;\n    border-style: solid;\n  }\n  .lg\\:border-top-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n  }\n  .lg\\:border-top-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n  }\n  .lg\\:border-top-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n  }\n  .lg\\:border-top-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n  }\n  .lg\\:border-right-none {\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .lg\\:border-right-1 {\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-right-2 {\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-right-3 {\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-left-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n  }\n  .lg\\:border-left-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n  }\n  .lg\\:border-left-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n  }\n  .lg\\:border-left-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n  }\n  .lg\\:border-bottom-none {\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .lg\\:border-bottom-1 {\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .lg\\:border-bottom-2 {\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .lg\\:border-bottom-3 {\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n  .lg\\:border-x-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .lg\\:border-x-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-x-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-x-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .lg\\:border-y-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .lg\\:border-y-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .lg\\:border-y-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .lg\\:border-y-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:border-none {\n    border-width: 0px !important;\n    border-style: none;\n  }\n  .xl\\:border-1 {\n    border-width: 1px !important;\n    border-style: solid;\n  }\n  .xl\\:border-2 {\n    border-width: 2px !important;\n    border-style: solid;\n  }\n  .xl\\:border-3 {\n    border-width: 3px !important;\n    border-style: solid;\n  }\n  .xl\\:border-top-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n  }\n  .xl\\:border-top-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n  }\n  .xl\\:border-top-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n  }\n  .xl\\:border-top-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n  }\n  .xl\\:border-right-none {\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .xl\\:border-right-1 {\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-right-2 {\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-right-3 {\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-left-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n  }\n  .xl\\:border-left-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n  }\n  .xl\\:border-left-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n  }\n  .xl\\:border-left-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n  }\n  .xl\\:border-bottom-none {\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .xl\\:border-bottom-1 {\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .xl\\:border-bottom-2 {\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .xl\\:border-bottom-3 {\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n  .xl\\:border-x-none {\n    border-left-width: 0px !important;\n    border-left-style: none;\n    border-right-width: 0px !important;\n    border-right-style: none;\n  }\n  .xl\\:border-x-1 {\n    border-left-width: 1px !important;\n    border-left-style: solid;\n    border-right-width: 1px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-x-2 {\n    border-left-width: 2px !important;\n    border-left-style: solid;\n    border-right-width: 2px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-x-3 {\n    border-left-width: 3px !important;\n    border-left-style: solid;\n    border-right-width: 3px !important;\n    border-right-style: solid;\n  }\n  .xl\\:border-y-none {\n    border-top-width: 0px !important;\n    border-top-style: none;\n    border-bottom-width: 0px !important;\n    border-bottom-style: none;\n  }\n  .xl\\:border-y-1 {\n    border-top-width: 1px !important;\n    border-top-style: solid;\n    border-bottom-width: 1px !important;\n    border-bottom-style: solid;\n  }\n  .xl\\:border-y-2 {\n    border-top-width: 2px !important;\n    border-top-style: solid;\n    border-bottom-width: 2px !important;\n    border-bottom-style: solid;\n  }\n  .xl\\:border-y-3 {\n    border-top-width: 3px !important;\n    border-top-style: solid;\n    border-bottom-width: 3px !important;\n    border-bottom-style: solid;\n  }\n}\n.border-solid {\n  border-style: solid !important;\n}\n\n.border-dashed {\n  border-style: dashed !important;\n}\n\n.border-dotted {\n  border-style: dotted !important;\n}\n\n.border-double {\n  border-style: double !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:border-solid {\n    border-style: solid !important;\n  }\n  .sm\\:border-dashed {\n    border-style: dashed !important;\n  }\n  .sm\\:border-dotted {\n    border-style: dotted !important;\n  }\n  .sm\\:border-double {\n    border-style: double !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:border-solid {\n    border-style: solid !important;\n  }\n  .md\\:border-dashed {\n    border-style: dashed !important;\n  }\n  .md\\:border-dotted {\n    border-style: dotted !important;\n  }\n  .md\\:border-double {\n    border-style: double !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:border-solid {\n    border-style: solid !important;\n  }\n  .lg\\:border-dashed {\n    border-style: dashed !important;\n  }\n  .lg\\:border-dotted {\n    border-style: dotted !important;\n  }\n  .lg\\:border-double {\n    border-style: double !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:border-solid {\n    border-style: solid !important;\n  }\n  .xl\\:border-dashed {\n    border-style: dashed !important;\n  }\n  .xl\\:border-dotted {\n    border-style: dotted !important;\n  }\n  .xl\\:border-double {\n    border-style: double !important;\n  }\n}\n.border-round-left {\n  border-top-left-radius: var(--border-radius);\n  border-bottom-left-radius: var(--border-radius);\n}\n\n.border-round-top {\n  border-top-left-radius: var(--border-radius);\n  border-top-right-radius: var(--border-radius);\n}\n\n.border-round-right {\n  border-top-right-radius: var(--border-radius);\n  border-bottom-right-radius: var(--border-radius);\n}\n\n.border-round-bottom {\n  border-bottom-left-radius: var(--border-radius);\n  border-bottom-right-radius: var(--border-radius);\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:border-round-left {\n    border-top-left-radius: var(--border-radius);\n    border-bottom-left-radius: var(--border-radius);\n  }\n  .sm\\:border-round-top {\n    border-top-left-radius: var(--border-radius);\n    border-top-right-radius: var(--border-radius);\n  }\n  .sm\\:border-round-right {\n    border-top-right-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n  .sm\\:border-round-bottom {\n    border-bottom-left-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:border-round-left {\n    border-top-left-radius: var(--border-radius);\n    border-bottom-left-radius: var(--border-radius);\n  }\n  .md\\:border-round-top {\n    border-top-left-radius: var(--border-radius);\n    border-top-right-radius: var(--border-radius);\n  }\n  .md\\:border-round-right {\n    border-top-right-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n  .md\\:border-round-bottom {\n    border-bottom-left-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:border-round-left {\n    border-top-left-radius: var(--border-radius);\n    border-bottom-left-radius: var(--border-radius);\n  }\n  .lg\\:border-round-top {\n    border-top-left-radius: var(--border-radius);\n    border-top-right-radius: var(--border-radius);\n  }\n  .lg\\:border-round-right {\n    border-top-right-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n  .lg\\:border-round-bottom {\n    border-bottom-left-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:border-round-left {\n    border-top-left-radius: var(--border-radius);\n    border-bottom-left-radius: var(--border-radius);\n  }\n  .xl\\:border-round-top {\n    border-top-left-radius: var(--border-radius);\n    border-top-right-radius: var(--border-radius);\n  }\n  .xl\\:border-round-right {\n    border-top-right-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n  .xl\\:border-round-bottom {\n    border-bottom-left-radius: var(--border-radius);\n    border-bottom-right-radius: var(--border-radius);\n  }\n}\n.border-noround {\n  border-radius: 0 !important;\n}\n\n.border-round {\n  border-radius: var(--border-radius) !important;\n}\n\n.border-circle {\n  border-radius: 50% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:border-noround {\n    border-radius: 0 !important;\n  }\n  .sm\\:border-round {\n    border-radius: var(--border-radius) !important;\n  }\n  .sm\\:border-circle {\n    border-radius: 50% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:border-noround {\n    border-radius: 0 !important;\n  }\n  .md\\:border-round {\n    border-radius: var(--border-radius) !important;\n  }\n  .md\\:border-circle {\n    border-radius: 50% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:border-noround {\n    border-radius: 0 !important;\n  }\n  .lg\\:border-round {\n    border-radius: var(--border-radius) !important;\n  }\n  .lg\\:border-circle {\n    border-radius: 50% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:border-noround {\n    border-radius: 0 !important;\n  }\n  .xl\\:border-round {\n    border-radius: var(--border-radius) !important;\n  }\n  .xl\\:border-circle {\n    border-radius: 50% !important;\n  }\n}\n.w-full {\n  width: 100% !important;\n}\n\n.w-screen {\n  width: 100vw !important;\n}\n\n.w-auto {\n  width: auto !important;\n}\n\n.w-min {\n  width: -webkit-min-content !important;\n  width: -moz-min-content !important;\n  width: min-content !important;\n}\n\n.w-max {\n  width: -webkit-max-content !important;\n  width: -moz-max-content !important;\n  width: max-content !important;\n}\n\n.w-1 {\n  width: 8.3333% !important;\n}\n\n.w-2 {\n  width: 16.6667% !important;\n}\n\n.w-3 {\n  width: 25% !important;\n}\n\n.w-4 {\n  width: 33.3333% !important;\n}\n\n.w-5 {\n  width: 41.6667% !important;\n}\n\n.w-6 {\n  width: 50% !important;\n}\n\n.w-7 {\n  width: 58.3333% !important;\n}\n\n.w-8 {\n  width: 66.6667% !important;\n}\n\n.w-9 {\n  width: 75% !important;\n}\n\n.w-10 {\n  width: 83.3333% !important;\n}\n\n.w-11 {\n  width: 91.6667% !important;\n}\n\n.w-12 {\n  width: 100% !important;\n}\n\n.w-1rem {\n  width: 1rem !important;\n}\n\n.w-2rem {\n  width: 2rem !important;\n}\n\n.w-3rem {\n  width: 3rem !important;\n}\n\n.w-4rem {\n  width: 4rem !important;\n}\n\n.w-5rem {\n  width: 5rem !important;\n}\n\n.w-6rem {\n  width: 6rem !important;\n}\n\n.w-7rem {\n  width: 7rem !important;\n}\n\n.w-8rem {\n  width: 8rem !important;\n}\n\n.w-9rem {\n  width: 9rem !important;\n}\n\n.w-10rem {\n  width: 10rem !important;\n}\n\n.w-11rem {\n  width: 11rem !important;\n}\n\n.w-12rem {\n  width: 12rem !important;\n}\n\n.w-13rem {\n  width: 13rem !important;\n}\n\n.w-14rem {\n  width: 14rem !important;\n}\n\n.w-15rem {\n  width: 15rem !important;\n}\n\n.w-16rem {\n  width: 16rem !important;\n}\n\n.w-17rem {\n  width: 17rem !important;\n}\n\n.w-18rem {\n  width: 18rem !important;\n}\n\n.w-19rem {\n  width: 19rem !important;\n}\n\n.w-20rem {\n  width: 20rem !important;\n}\n\n.w-21rem {\n  width: 21rem !important;\n}\n\n.w-22rem {\n  width: 22rem !important;\n}\n\n.w-23rem {\n  width: 23rem !important;\n}\n\n.w-24rem {\n  width: 24rem !important;\n}\n\n.w-25rem {\n  width: 25rem !important;\n}\n\n.w-26rem {\n  width: 26rem !important;\n}\n\n.w-27rem {\n  width: 27rem !important;\n}\n\n.w-28rem {\n  width: 28rem !important;\n}\n\n.w-29rem {\n  width: 29rem !important;\n}\n\n.w-30rem {\n  width: 30rem !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:w-full {\n    width: 100% !important;\n  }\n  .sm\\:w-screen {\n    width: 100vw !important;\n  }\n  .sm\\:w-auto {\n    width: auto !important;\n  }\n  .sm\\:w-min {\n    width: -webkit-min-content !important;\n    width: -moz-min-content !important;\n    width: min-content !important;\n  }\n  .sm\\:w-max {\n    width: -webkit-max-content !important;\n    width: -moz-max-content !important;\n    width: max-content !important;\n  }\n  .sm\\:w-1 {\n    width: 8.3333% !important;\n  }\n  .sm\\:w-2 {\n    width: 16.6667% !important;\n  }\n  .sm\\:w-3 {\n    width: 25% !important;\n  }\n  .sm\\:w-4 {\n    width: 33.3333% !important;\n  }\n  .sm\\:w-5 {\n    width: 41.6667% !important;\n  }\n  .sm\\:w-6 {\n    width: 50% !important;\n  }\n  .sm\\:w-7 {\n    width: 58.3333% !important;\n  }\n  .sm\\:w-8 {\n    width: 66.6667% !important;\n  }\n  .sm\\:w-9 {\n    width: 75% !important;\n  }\n  .sm\\:w-10 {\n    width: 83.3333% !important;\n  }\n  .sm\\:w-11 {\n    width: 91.6667% !important;\n  }\n  .sm\\:w-12 {\n    width: 100% !important;\n  }\n  .sm\\:w-1rem {\n    width: 1rem !important;\n  }\n  .sm\\:w-2rem {\n    width: 2rem !important;\n  }\n  .sm\\:w-3rem {\n    width: 3rem !important;\n  }\n  .sm\\:w-4rem {\n    width: 4rem !important;\n  }\n  .sm\\:w-5rem {\n    width: 5rem !important;\n  }\n  .sm\\:w-6rem {\n    width: 6rem !important;\n  }\n  .sm\\:w-7rem {\n    width: 7rem !important;\n  }\n  .sm\\:w-8rem {\n    width: 8rem !important;\n  }\n  .sm\\:w-9rem {\n    width: 9rem !important;\n  }\n  .sm\\:w-10rem {\n    width: 10rem !important;\n  }\n  .sm\\:w-11rem {\n    width: 11rem !important;\n  }\n  .sm\\:w-12rem {\n    width: 12rem !important;\n  }\n  .sm\\:w-13rem {\n    width: 13rem !important;\n  }\n  .sm\\:w-14rem {\n    width: 14rem !important;\n  }\n  .sm\\:w-15rem {\n    width: 15rem !important;\n  }\n  .sm\\:w-16rem {\n    width: 16rem !important;\n  }\n  .sm\\:w-17rem {\n    width: 17rem !important;\n  }\n  .sm\\:w-18rem {\n    width: 18rem !important;\n  }\n  .sm\\:w-19rem {\n    width: 19rem !important;\n  }\n  .sm\\:w-20rem {\n    width: 20rem !important;\n  }\n  .sm\\:w-21rem {\n    width: 21rem !important;\n  }\n  .sm\\:w-22rem {\n    width: 22rem !important;\n  }\n  .sm\\:w-23rem {\n    width: 23rem !important;\n  }\n  .sm\\:w-24rem {\n    width: 24rem !important;\n  }\n  .sm\\:w-25rem {\n    width: 25rem !important;\n  }\n  .sm\\:w-26rem {\n    width: 26rem !important;\n  }\n  .sm\\:w-27rem {\n    width: 27rem !important;\n  }\n  .sm\\:w-28rem {\n    width: 28rem !important;\n  }\n  .sm\\:w-29rem {\n    width: 29rem !important;\n  }\n  .sm\\:w-30rem {\n    width: 30rem !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:w-full {\n    width: 100% !important;\n  }\n  .md\\:w-screen {\n    width: 100vw !important;\n  }\n  .md\\:w-auto {\n    width: auto !important;\n  }\n  .md\\:w-min {\n    width: -webkit-min-content !important;\n    width: -moz-min-content !important;\n    width: min-content !important;\n  }\n  .md\\:w-max {\n    width: -webkit-max-content !important;\n    width: -moz-max-content !important;\n    width: max-content !important;\n  }\n  .md\\:w-1 {\n    width: 8.3333% !important;\n  }\n  .md\\:w-2 {\n    width: 16.6667% !important;\n  }\n  .md\\:w-3 {\n    width: 25% !important;\n  }\n  .md\\:w-4 {\n    width: 33.3333% !important;\n  }\n  .md\\:w-5 {\n    width: 41.6667% !important;\n  }\n  .md\\:w-6 {\n    width: 50% !important;\n  }\n  .md\\:w-7 {\n    width: 58.3333% !important;\n  }\n  .md\\:w-8 {\n    width: 66.6667% !important;\n  }\n  .md\\:w-9 {\n    width: 75% !important;\n  }\n  .md\\:w-10 {\n    width: 83.3333% !important;\n  }\n  .md\\:w-11 {\n    width: 91.6667% !important;\n  }\n  .md\\:w-12 {\n    width: 100% !important;\n  }\n  .md\\:w-1rem {\n    width: 1rem !important;\n  }\n  .md\\:w-2rem {\n    width: 2rem !important;\n  }\n  .md\\:w-3rem {\n    width: 3rem !important;\n  }\n  .md\\:w-4rem {\n    width: 4rem !important;\n  }\n  .md\\:w-5rem {\n    width: 5rem !important;\n  }\n  .md\\:w-6rem {\n    width: 6rem !important;\n  }\n  .md\\:w-7rem {\n    width: 7rem !important;\n  }\n  .md\\:w-8rem {\n    width: 8rem !important;\n  }\n  .md\\:w-9rem {\n    width: 9rem !important;\n  }\n  .md\\:w-10rem {\n    width: 10rem !important;\n  }\n  .md\\:w-11rem {\n    width: 11rem !important;\n  }\n  .md\\:w-12rem {\n    width: 12rem !important;\n  }\n  .md\\:w-13rem {\n    width: 13rem !important;\n  }\n  .md\\:w-14rem {\n    width: 14rem !important;\n  }\n  .md\\:w-15rem {\n    width: 15rem !important;\n  }\n  .md\\:w-16rem {\n    width: 16rem !important;\n  }\n  .md\\:w-17rem {\n    width: 17rem !important;\n  }\n  .md\\:w-18rem {\n    width: 18rem !important;\n  }\n  .md\\:w-19rem {\n    width: 19rem !important;\n  }\n  .md\\:w-20rem {\n    width: 20rem !important;\n  }\n  .md\\:w-21rem {\n    width: 21rem !important;\n  }\n  .md\\:w-22rem {\n    width: 22rem !important;\n  }\n  .md\\:w-23rem {\n    width: 23rem !important;\n  }\n  .md\\:w-24rem {\n    width: 24rem !important;\n  }\n  .md\\:w-25rem {\n    width: 25rem !important;\n  }\n  .md\\:w-26rem {\n    width: 26rem !important;\n  }\n  .md\\:w-27rem {\n    width: 27rem !important;\n  }\n  .md\\:w-28rem {\n    width: 28rem !important;\n  }\n  .md\\:w-29rem {\n    width: 29rem !important;\n  }\n  .md\\:w-30rem {\n    width: 30rem !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:w-full {\n    width: 100% !important;\n  }\n  .lg\\:w-screen {\n    width: 100vw !important;\n  }\n  .lg\\:w-auto {\n    width: auto !important;\n  }\n  .lg\\:w-min {\n    width: -webkit-min-content !important;\n    width: -moz-min-content !important;\n    width: min-content !important;\n  }\n  .lg\\:w-max {\n    width: -webkit-max-content !important;\n    width: -moz-max-content !important;\n    width: max-content !important;\n  }\n  .lg\\:w-1 {\n    width: 8.3333% !important;\n  }\n  .lg\\:w-2 {\n    width: 16.6667% !important;\n  }\n  .lg\\:w-3 {\n    width: 25% !important;\n  }\n  .lg\\:w-4 {\n    width: 33.3333% !important;\n  }\n  .lg\\:w-5 {\n    width: 41.6667% !important;\n  }\n  .lg\\:w-6 {\n    width: 50% !important;\n  }\n  .lg\\:w-7 {\n    width: 58.3333% !important;\n  }\n  .lg\\:w-8 {\n    width: 66.6667% !important;\n  }\n  .lg\\:w-9 {\n    width: 75% !important;\n  }\n  .lg\\:w-10 {\n    width: 83.3333% !important;\n  }\n  .lg\\:w-11 {\n    width: 91.6667% !important;\n  }\n  .lg\\:w-12 {\n    width: 100% !important;\n  }\n  .lg\\:w-1rem {\n    width: 1rem !important;\n  }\n  .lg\\:w-2rem {\n    width: 2rem !important;\n  }\n  .lg\\:w-3rem {\n    width: 3rem !important;\n  }\n  .lg\\:w-4rem {\n    width: 4rem !important;\n  }\n  .lg\\:w-5rem {\n    width: 5rem !important;\n  }\n  .lg\\:w-6rem {\n    width: 6rem !important;\n  }\n  .lg\\:w-7rem {\n    width: 7rem !important;\n  }\n  .lg\\:w-8rem {\n    width: 8rem !important;\n  }\n  .lg\\:w-9rem {\n    width: 9rem !important;\n  }\n  .lg\\:w-10rem {\n    width: 10rem !important;\n  }\n  .lg\\:w-11rem {\n    width: 11rem !important;\n  }\n  .lg\\:w-12rem {\n    width: 12rem !important;\n  }\n  .lg\\:w-13rem {\n    width: 13rem !important;\n  }\n  .lg\\:w-14rem {\n    width: 14rem !important;\n  }\n  .lg\\:w-15rem {\n    width: 15rem !important;\n  }\n  .lg\\:w-16rem {\n    width: 16rem !important;\n  }\n  .lg\\:w-17rem {\n    width: 17rem !important;\n  }\n  .lg\\:w-18rem {\n    width: 18rem !important;\n  }\n  .lg\\:w-19rem {\n    width: 19rem !important;\n  }\n  .lg\\:w-20rem {\n    width: 20rem !important;\n  }\n  .lg\\:w-21rem {\n    width: 21rem !important;\n  }\n  .lg\\:w-22rem {\n    width: 22rem !important;\n  }\n  .lg\\:w-23rem {\n    width: 23rem !important;\n  }\n  .lg\\:w-24rem {\n    width: 24rem !important;\n  }\n  .lg\\:w-25rem {\n    width: 25rem !important;\n  }\n  .lg\\:w-26rem {\n    width: 26rem !important;\n  }\n  .lg\\:w-27rem {\n    width: 27rem !important;\n  }\n  .lg\\:w-28rem {\n    width: 28rem !important;\n  }\n  .lg\\:w-29rem {\n    width: 29rem !important;\n  }\n  .lg\\:w-30rem {\n    width: 30rem !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:w-full {\n    width: 100% !important;\n  }\n  .xl\\:w-screen {\n    width: 100vw !important;\n  }\n  .xl\\:w-auto {\n    width: auto !important;\n  }\n  .xl\\:w-min {\n    width: -webkit-min-content !important;\n    width: -moz-min-content !important;\n    width: min-content !important;\n  }\n  .xl\\:w-max {\n    width: -webkit-max-content !important;\n    width: -moz-max-content !important;\n    width: max-content !important;\n  }\n  .xl\\:w-1 {\n    width: 8.3333% !important;\n  }\n  .xl\\:w-2 {\n    width: 16.6667% !important;\n  }\n  .xl\\:w-3 {\n    width: 25% !important;\n  }\n  .xl\\:w-4 {\n    width: 33.3333% !important;\n  }\n  .xl\\:w-5 {\n    width: 41.6667% !important;\n  }\n  .xl\\:w-6 {\n    width: 50% !important;\n  }\n  .xl\\:w-7 {\n    width: 58.3333% !important;\n  }\n  .xl\\:w-8 {\n    width: 66.6667% !important;\n  }\n  .xl\\:w-9 {\n    width: 75% !important;\n  }\n  .xl\\:w-10 {\n    width: 83.3333% !important;\n  }\n  .xl\\:w-11 {\n    width: 91.6667% !important;\n  }\n  .xl\\:w-12 {\n    width: 100% !important;\n  }\n  .xl\\:w-1rem {\n    width: 1rem !important;\n  }\n  .xl\\:w-2rem {\n    width: 2rem !important;\n  }\n  .xl\\:w-3rem {\n    width: 3rem !important;\n  }\n  .xl\\:w-4rem {\n    width: 4rem !important;\n  }\n  .xl\\:w-5rem {\n    width: 5rem !important;\n  }\n  .xl\\:w-6rem {\n    width: 6rem !important;\n  }\n  .xl\\:w-7rem {\n    width: 7rem !important;\n  }\n  .xl\\:w-8rem {\n    width: 8rem !important;\n  }\n  .xl\\:w-9rem {\n    width: 9rem !important;\n  }\n  .xl\\:w-10rem {\n    width: 10rem !important;\n  }\n  .xl\\:w-11rem {\n    width: 11rem !important;\n  }\n  .xl\\:w-12rem {\n    width: 12rem !important;\n  }\n  .xl\\:w-13rem {\n    width: 13rem !important;\n  }\n  .xl\\:w-14rem {\n    width: 14rem !important;\n  }\n  .xl\\:w-15rem {\n    width: 15rem !important;\n  }\n  .xl\\:w-16rem {\n    width: 16rem !important;\n  }\n  .xl\\:w-17rem {\n    width: 17rem !important;\n  }\n  .xl\\:w-18rem {\n    width: 18rem !important;\n  }\n  .xl\\:w-19rem {\n    width: 19rem !important;\n  }\n  .xl\\:w-20rem {\n    width: 20rem !important;\n  }\n  .xl\\:w-21rem {\n    width: 21rem !important;\n  }\n  .xl\\:w-22rem {\n    width: 22rem !important;\n  }\n  .xl\\:w-23rem {\n    width: 23rem !important;\n  }\n  .xl\\:w-24rem {\n    width: 24rem !important;\n  }\n  .xl\\:w-25rem {\n    width: 25rem !important;\n  }\n  .xl\\:w-26rem {\n    width: 26rem !important;\n  }\n  .xl\\:w-27rem {\n    width: 27rem !important;\n  }\n  .xl\\:w-28rem {\n    width: 28rem !important;\n  }\n  .xl\\:w-29rem {\n    width: 29rem !important;\n  }\n  .xl\\:w-30rem {\n    width: 30rem !important;\n  }\n}\n.h-full {\n  height: 100% !important;\n}\n\n.h-screen {\n  height: 100vh !important;\n}\n\n.h-auto {\n  height: auto !important;\n}\n\n.h-1rem {\n  height: 1rem !important;\n}\n\n.h-2rem {\n  height: 2rem !important;\n}\n\n.h-3rem {\n  height: 3rem !important;\n}\n\n.h-4rem {\n  height: 4rem !important;\n}\n\n.h-5rem {\n  height: 5rem !important;\n}\n\n.h-6rem {\n  height: 6rem !important;\n}\n\n.h-7rem {\n  height: 7rem !important;\n}\n\n.h-8rem {\n  height: 8rem !important;\n}\n\n.h-9rem {\n  height: 9rem !important;\n}\n\n.h-10rem {\n  height: 10rem !important;\n}\n\n.h-11rem {\n  height: 11rem !important;\n}\n\n.h-12rem {\n  height: 12rem !important;\n}\n\n.h-13rem {\n  height: 13rem !important;\n}\n\n.h-14rem {\n  height: 14rem !important;\n}\n\n.h-15rem {\n  height: 15rem !important;\n}\n\n.h-16rem {\n  height: 16rem !important;\n}\n\n.h-17rem {\n  height: 17rem !important;\n}\n\n.h-18rem {\n  height: 18rem !important;\n}\n\n.h-19rem {\n  height: 19rem !important;\n}\n\n.h-20rem {\n  height: 20rem !important;\n}\n\n.h-21rem {\n  height: 21rem !important;\n}\n\n.h-22rem {\n  height: 22rem !important;\n}\n\n.h-23rem {\n  height: 23rem !important;\n}\n\n.h-24rem {\n  height: 24rem !important;\n}\n\n.h-25rem {\n  height: 25rem !important;\n}\n\n.h-26rem {\n  height: 26rem !important;\n}\n\n.h-27rem {\n  height: 27rem !important;\n}\n\n.h-28rem {\n  height: 28rem !important;\n}\n\n.h-29rem {\n  height: 29rem !important;\n}\n\n.h-30rem {\n  height: 30rem !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:h-full {\n    height: 100% !important;\n  }\n  .sm\\:h-screen {\n    height: 100vh !important;\n  }\n  .sm\\:h-auto {\n    height: auto !important;\n  }\n  .sm\\:h-1rem {\n    height: 1rem !important;\n  }\n  .sm\\:h-2rem {\n    height: 2rem !important;\n  }\n  .sm\\:h-3rem {\n    height: 3rem !important;\n  }\n  .sm\\:h-4rem {\n    height: 4rem !important;\n  }\n  .sm\\:h-5rem {\n    height: 5rem !important;\n  }\n  .sm\\:h-6rem {\n    height: 6rem !important;\n  }\n  .sm\\:h-7rem {\n    height: 7rem !important;\n  }\n  .sm\\:h-8rem {\n    height: 8rem !important;\n  }\n  .sm\\:h-9rem {\n    height: 9rem !important;\n  }\n  .sm\\:h-10rem {\n    height: 10rem !important;\n  }\n  .sm\\:h-11rem {\n    height: 11rem !important;\n  }\n  .sm\\:h-12rem {\n    height: 12rem !important;\n  }\n  .sm\\:h-13rem {\n    height: 13rem !important;\n  }\n  .sm\\:h-14rem {\n    height: 14rem !important;\n  }\n  .sm\\:h-15rem {\n    height: 15rem !important;\n  }\n  .sm\\:h-16rem {\n    height: 16rem !important;\n  }\n  .sm\\:h-17rem {\n    height: 17rem !important;\n  }\n  .sm\\:h-18rem {\n    height: 18rem !important;\n  }\n  .sm\\:h-19rem {\n    height: 19rem !important;\n  }\n  .sm\\:h-20rem {\n    height: 20rem !important;\n  }\n  .sm\\:h-21rem {\n    height: 21rem !important;\n  }\n  .sm\\:h-22rem {\n    height: 22rem !important;\n  }\n  .sm\\:h-23rem {\n    height: 23rem !important;\n  }\n  .sm\\:h-24rem {\n    height: 24rem !important;\n  }\n  .sm\\:h-25rem {\n    height: 25rem !important;\n  }\n  .sm\\:h-26rem {\n    height: 26rem !important;\n  }\n  .sm\\:h-27rem {\n    height: 27rem !important;\n  }\n  .sm\\:h-28rem {\n    height: 28rem !important;\n  }\n  .sm\\:h-29rem {\n    height: 29rem !important;\n  }\n  .sm\\:h-30rem {\n    height: 30rem !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:h-full {\n    height: 100% !important;\n  }\n  .md\\:h-screen {\n    height: 100vh !important;\n  }\n  .md\\:h-auto {\n    height: auto !important;\n  }\n  .md\\:h-1rem {\n    height: 1rem !important;\n  }\n  .md\\:h-2rem {\n    height: 2rem !important;\n  }\n  .md\\:h-3rem {\n    height: 3rem !important;\n  }\n  .md\\:h-4rem {\n    height: 4rem !important;\n  }\n  .md\\:h-5rem {\n    height: 5rem !important;\n  }\n  .md\\:h-6rem {\n    height: 6rem !important;\n  }\n  .md\\:h-7rem {\n    height: 7rem !important;\n  }\n  .md\\:h-8rem {\n    height: 8rem !important;\n  }\n  .md\\:h-9rem {\n    height: 9rem !important;\n  }\n  .md\\:h-10rem {\n    height: 10rem !important;\n  }\n  .md\\:h-11rem {\n    height: 11rem !important;\n  }\n  .md\\:h-12rem {\n    height: 12rem !important;\n  }\n  .md\\:h-13rem {\n    height: 13rem !important;\n  }\n  .md\\:h-14rem {\n    height: 14rem !important;\n  }\n  .md\\:h-15rem {\n    height: 15rem !important;\n  }\n  .md\\:h-16rem {\n    height: 16rem !important;\n  }\n  .md\\:h-17rem {\n    height: 17rem !important;\n  }\n  .md\\:h-18rem {\n    height: 18rem !important;\n  }\n  .md\\:h-19rem {\n    height: 19rem !important;\n  }\n  .md\\:h-20rem {\n    height: 20rem !important;\n  }\n  .md\\:h-21rem {\n    height: 21rem !important;\n  }\n  .md\\:h-22rem {\n    height: 22rem !important;\n  }\n  .md\\:h-23rem {\n    height: 23rem !important;\n  }\n  .md\\:h-24rem {\n    height: 24rem !important;\n  }\n  .md\\:h-25rem {\n    height: 25rem !important;\n  }\n  .md\\:h-26rem {\n    height: 26rem !important;\n  }\n  .md\\:h-27rem {\n    height: 27rem !important;\n  }\n  .md\\:h-28rem {\n    height: 28rem !important;\n  }\n  .md\\:h-29rem {\n    height: 29rem !important;\n  }\n  .md\\:h-30rem {\n    height: 30rem !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:h-full {\n    height: 100% !important;\n  }\n  .lg\\:h-screen {\n    height: 100vh !important;\n  }\n  .lg\\:h-auto {\n    height: auto !important;\n  }\n  .lg\\:h-1rem {\n    height: 1rem !important;\n  }\n  .lg\\:h-2rem {\n    height: 2rem !important;\n  }\n  .lg\\:h-3rem {\n    height: 3rem !important;\n  }\n  .lg\\:h-4rem {\n    height: 4rem !important;\n  }\n  .lg\\:h-5rem {\n    height: 5rem !important;\n  }\n  .lg\\:h-6rem {\n    height: 6rem !important;\n  }\n  .lg\\:h-7rem {\n    height: 7rem !important;\n  }\n  .lg\\:h-8rem {\n    height: 8rem !important;\n  }\n  .lg\\:h-9rem {\n    height: 9rem !important;\n  }\n  .lg\\:h-10rem {\n    height: 10rem !important;\n  }\n  .lg\\:h-11rem {\n    height: 11rem !important;\n  }\n  .lg\\:h-12rem {\n    height: 12rem !important;\n  }\n  .lg\\:h-13rem {\n    height: 13rem !important;\n  }\n  .lg\\:h-14rem {\n    height: 14rem !important;\n  }\n  .lg\\:h-15rem {\n    height: 15rem !important;\n  }\n  .lg\\:h-16rem {\n    height: 16rem !important;\n  }\n  .lg\\:h-17rem {\n    height: 17rem !important;\n  }\n  .lg\\:h-18rem {\n    height: 18rem !important;\n  }\n  .lg\\:h-19rem {\n    height: 19rem !important;\n  }\n  .lg\\:h-20rem {\n    height: 20rem !important;\n  }\n  .lg\\:h-21rem {\n    height: 21rem !important;\n  }\n  .lg\\:h-22rem {\n    height: 22rem !important;\n  }\n  .lg\\:h-23rem {\n    height: 23rem !important;\n  }\n  .lg\\:h-24rem {\n    height: 24rem !important;\n  }\n  .lg\\:h-25rem {\n    height: 25rem !important;\n  }\n  .lg\\:h-26rem {\n    height: 26rem !important;\n  }\n  .lg\\:h-27rem {\n    height: 27rem !important;\n  }\n  .lg\\:h-28rem {\n    height: 28rem !important;\n  }\n  .lg\\:h-29rem {\n    height: 29rem !important;\n  }\n  .lg\\:h-30rem {\n    height: 30rem !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:h-full {\n    height: 100% !important;\n  }\n  .xl\\:h-screen {\n    height: 100vh !important;\n  }\n  .xl\\:h-auto {\n    height: auto !important;\n  }\n  .xl\\:h-1rem {\n    height: 1rem !important;\n  }\n  .xl\\:h-2rem {\n    height: 2rem !important;\n  }\n  .xl\\:h-3rem {\n    height: 3rem !important;\n  }\n  .xl\\:h-4rem {\n    height: 4rem !important;\n  }\n  .xl\\:h-5rem {\n    height: 5rem !important;\n  }\n  .xl\\:h-6rem {\n    height: 6rem !important;\n  }\n  .xl\\:h-7rem {\n    height: 7rem !important;\n  }\n  .xl\\:h-8rem {\n    height: 8rem !important;\n  }\n  .xl\\:h-9rem {\n    height: 9rem !important;\n  }\n  .xl\\:h-10rem {\n    height: 10rem !important;\n  }\n  .xl\\:h-11rem {\n    height: 11rem !important;\n  }\n  .xl\\:h-12rem {\n    height: 12rem !important;\n  }\n  .xl\\:h-13rem {\n    height: 13rem !important;\n  }\n  .xl\\:h-14rem {\n    height: 14rem !important;\n  }\n  .xl\\:h-15rem {\n    height: 15rem !important;\n  }\n  .xl\\:h-16rem {\n    height: 16rem !important;\n  }\n  .xl\\:h-17rem {\n    height: 17rem !important;\n  }\n  .xl\\:h-18rem {\n    height: 18rem !important;\n  }\n  .xl\\:h-19rem {\n    height: 19rem !important;\n  }\n  .xl\\:h-20rem {\n    height: 20rem !important;\n  }\n  .xl\\:h-21rem {\n    height: 21rem !important;\n  }\n  .xl\\:h-22rem {\n    height: 22rem !important;\n  }\n  .xl\\:h-23rem {\n    height: 23rem !important;\n  }\n  .xl\\:h-24rem {\n    height: 24rem !important;\n  }\n  .xl\\:h-25rem {\n    height: 25rem !important;\n  }\n  .xl\\:h-26rem {\n    height: 26rem !important;\n  }\n  .xl\\:h-27rem {\n    height: 27rem !important;\n  }\n  .xl\\:h-28rem {\n    height: 28rem !important;\n  }\n  .xl\\:h-29rem {\n    height: 29rem !important;\n  }\n  .xl\\:h-30rem {\n    height: 30rem !important;\n  }\n}\n.min-w-0 {\n  min-width: 0px !important;\n}\n\n.min-w-full {\n  min-width: 100% !important;\n}\n\n.min-w-screen {\n  min-width: 100vw !important;\n}\n\n.min-w-min {\n  min-width: -webkit-min-content !important;\n  min-width: -moz-min-content !important;\n  min-width: min-content !important;\n}\n\n.min-w-max {\n  min-width: -webkit-max-content !important;\n  min-width: -moz-max-content !important;\n  min-width: max-content !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:min-w-0 {\n    min-width: 0px !important;\n  }\n  .sm\\:min-w-full {\n    min-width: 100% !important;\n  }\n  .sm\\:min-w-screen {\n    min-width: 100vw !important;\n  }\n  .sm\\:min-w-min {\n    min-width: -webkit-min-content !important;\n    min-width: -moz-min-content !important;\n    min-width: min-content !important;\n  }\n  .sm\\:min-w-max {\n    min-width: -webkit-max-content !important;\n    min-width: -moz-max-content !important;\n    min-width: max-content !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:min-w-0 {\n    min-width: 0px !important;\n  }\n  .md\\:min-w-full {\n    min-width: 100% !important;\n  }\n  .md\\:min-w-screen {\n    min-width: 100vw !important;\n  }\n  .md\\:min-w-min {\n    min-width: -webkit-min-content !important;\n    min-width: -moz-min-content !important;\n    min-width: min-content !important;\n  }\n  .md\\:min-w-max {\n    min-width: -webkit-max-content !important;\n    min-width: -moz-max-content !important;\n    min-width: max-content !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:min-w-0 {\n    min-width: 0px !important;\n  }\n  .lg\\:min-w-full {\n    min-width: 100% !important;\n  }\n  .lg\\:min-w-screen {\n    min-width: 100vw !important;\n  }\n  .lg\\:min-w-min {\n    min-width: -webkit-min-content !important;\n    min-width: -moz-min-content !important;\n    min-width: min-content !important;\n  }\n  .lg\\:min-w-max {\n    min-width: -webkit-max-content !important;\n    min-width: -moz-max-content !important;\n    min-width: max-content !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:min-w-0 {\n    min-width: 0px !important;\n  }\n  .xl\\:min-w-full {\n    min-width: 100% !important;\n  }\n  .xl\\:min-w-screen {\n    min-width: 100vw !important;\n  }\n  .xl\\:min-w-min {\n    min-width: -webkit-min-content !important;\n    min-width: -moz-min-content !important;\n    min-width: min-content !important;\n  }\n  .xl\\:min-w-max {\n    min-width: -webkit-max-content !important;\n    min-width: -moz-max-content !important;\n    min-width: max-content !important;\n  }\n}\n.max-w-0 {\n  max-width: 0px !important;\n}\n\n.max-w-full {\n  max-width: 100% !important;\n}\n\n.max-w-screen {\n  max-width: 100vw !important;\n}\n\n.max-w-min {\n  max-width: -webkit-min-content !important;\n  max-width: -moz-min-content !important;\n  max-width: min-content !important;\n}\n\n.max-w-max {\n  max-width: -webkit-max-content !important;\n  max-width: -moz-max-content !important;\n  max-width: max-content !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:max-w-0 {\n    max-width: 0px !important;\n  }\n  .sm\\:max-w-full {\n    max-width: 100% !important;\n  }\n  .sm\\:max-w-screen {\n    max-width: 100vw !important;\n  }\n  .sm\\:max-w-min {\n    max-width: -webkit-min-content !important;\n    max-width: -moz-min-content !important;\n    max-width: min-content !important;\n  }\n  .sm\\:max-w-max {\n    max-width: -webkit-max-content !important;\n    max-width: -moz-max-content !important;\n    max-width: max-content !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:max-w-0 {\n    max-width: 0px !important;\n  }\n  .md\\:max-w-full {\n    max-width: 100% !important;\n  }\n  .md\\:max-w-screen {\n    max-width: 100vw !important;\n  }\n  .md\\:max-w-min {\n    max-width: -webkit-min-content !important;\n    max-width: -moz-min-content !important;\n    max-width: min-content !important;\n  }\n  .md\\:max-w-max {\n    max-width: -webkit-max-content !important;\n    max-width: -moz-max-content !important;\n    max-width: max-content !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:max-w-0 {\n    max-width: 0px !important;\n  }\n  .lg\\:max-w-full {\n    max-width: 100% !important;\n  }\n  .lg\\:max-w-screen {\n    max-width: 100vw !important;\n  }\n  .lg\\:max-w-min {\n    max-width: -webkit-min-content !important;\n    max-width: -moz-min-content !important;\n    max-width: min-content !important;\n  }\n  .lg\\:max-w-max {\n    max-width: -webkit-max-content !important;\n    max-width: -moz-max-content !important;\n    max-width: max-content !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:max-w-0 {\n    max-width: 0px !important;\n  }\n  .xl\\:max-w-full {\n    max-width: 100% !important;\n  }\n  .xl\\:max-w-screen {\n    max-width: 100vw !important;\n  }\n  .xl\\:max-w-min {\n    max-width: -webkit-min-content !important;\n    max-width: -moz-min-content !important;\n    max-width: min-content !important;\n  }\n  .xl\\:max-w-max {\n    max-width: -webkit-max-content !important;\n    max-width: -moz-max-content !important;\n    max-width: max-content !important;\n  }\n}\n.min-h-0 {\n  min-height: 0px !important;\n}\n\n.min-h-full {\n  min-height: 100% !important;\n}\n\n.min-h-screen {\n  min-height: 100vh !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:min-h-0 {\n    min-height: 0px !important;\n  }\n  .sm\\:min-h-full {\n    min-height: 100% !important;\n  }\n  .sm\\:min-h-screen {\n    min-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:min-h-0 {\n    min-height: 0px !important;\n  }\n  .md\\:min-h-full {\n    min-height: 100% !important;\n  }\n  .md\\:min-h-screen {\n    min-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:min-h-0 {\n    min-height: 0px !important;\n  }\n  .lg\\:min-h-full {\n    min-height: 100% !important;\n  }\n  .lg\\:min-h-screen {\n    min-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:min-h-0 {\n    min-height: 0px !important;\n  }\n  .xl\\:min-h-full {\n    min-height: 100% !important;\n  }\n  .xl\\:min-h-screen {\n    min-height: 100vh !important;\n  }\n}\n.max-h-0 {\n  max-height: 0px !important;\n}\n\n.max-h-full {\n  max-height: 100% !important;\n}\n\n.max-h-screen {\n  max-height: 100vh !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:max-h-0 {\n    max-height: 0px !important;\n  }\n  .sm\\:max-h-full {\n    max-height: 100% !important;\n  }\n  .sm\\:max-h-screen {\n    max-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:max-h-0 {\n    max-height: 0px !important;\n  }\n  .md\\:max-h-full {\n    max-height: 100% !important;\n  }\n  .md\\:max-h-screen {\n    max-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:max-h-0 {\n    max-height: 0px !important;\n  }\n  .lg\\:max-h-full {\n    max-height: 100% !important;\n  }\n  .lg\\:max-h-screen {\n    max-height: 100vh !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:max-h-0 {\n    max-height: 0px !important;\n  }\n  .xl\\:max-h-full {\n    max-height: 100% !important;\n  }\n  .xl\\:max-h-screen {\n    max-height: 100vh !important;\n  }\n}\n.static {\n  position: static !important;\n}\n\n.fixed {\n  position: fixed !important;\n}\n\n.absolute {\n  position: absolute !important;\n}\n\n.relative {\n  position: relative !important;\n}\n\n.sticky {\n  position: sticky !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:static {\n    position: static !important;\n  }\n  .sm\\:fixed {\n    position: fixed !important;\n  }\n  .sm\\:absolute {\n    position: absolute !important;\n  }\n  .sm\\:relative {\n    position: relative !important;\n  }\n  .sm\\:sticky {\n    position: sticky !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:static {\n    position: static !important;\n  }\n  .md\\:fixed {\n    position: fixed !important;\n  }\n  .md\\:absolute {\n    position: absolute !important;\n  }\n  .md\\:relative {\n    position: relative !important;\n  }\n  .md\\:sticky {\n    position: sticky !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:static {\n    position: static !important;\n  }\n  .lg\\:fixed {\n    position: fixed !important;\n  }\n  .lg\\:absolute {\n    position: absolute !important;\n  }\n  .lg\\:relative {\n    position: relative !important;\n  }\n  .lg\\:sticky {\n    position: sticky !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:static {\n    position: static !important;\n  }\n  .xl\\:fixed {\n    position: fixed !important;\n  }\n  .xl\\:absolute {\n    position: absolute !important;\n  }\n  .xl\\:relative {\n    position: relative !important;\n  }\n  .xl\\:sticky {\n    position: sticky !important;\n  }\n}\n.top-auto {\n  top: auto !important;\n}\n\n.top-0 {\n  top: 0px !important;\n}\n\n.top-50 {\n  top: 50% !important;\n}\n\n.top-100 {\n  top: 100% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:top-auto {\n    top: auto !important;\n  }\n  .sm\\:top-0 {\n    top: 0px !important;\n  }\n  .sm\\:top-50 {\n    top: 50% !important;\n  }\n  .sm\\:top-100 {\n    top: 100% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:top-auto {\n    top: auto !important;\n  }\n  .md\\:top-0 {\n    top: 0px !important;\n  }\n  .md\\:top-50 {\n    top: 50% !important;\n  }\n  .md\\:top-100 {\n    top: 100% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:top-auto {\n    top: auto !important;\n  }\n  .lg\\:top-0 {\n    top: 0px !important;\n  }\n  .lg\\:top-50 {\n    top: 50% !important;\n  }\n  .lg\\:top-100 {\n    top: 100% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:top-auto {\n    top: auto !important;\n  }\n  .xl\\:top-0 {\n    top: 0px !important;\n  }\n  .xl\\:top-50 {\n    top: 50% !important;\n  }\n  .xl\\:top-100 {\n    top: 100% !important;\n  }\n}\n.left-auto {\n  left: auto !important;\n}\n\n.left-0 {\n  left: 0px !important;\n}\n\n.left-50 {\n  left: 50% !important;\n}\n\n.left-100 {\n  left: 100% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:left-auto {\n    left: auto !important;\n  }\n  .sm\\:left-0 {\n    left: 0px !important;\n  }\n  .sm\\:left-50 {\n    left: 50% !important;\n  }\n  .sm\\:left-100 {\n    left: 100% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:left-auto {\n    left: auto !important;\n  }\n  .md\\:left-0 {\n    left: 0px !important;\n  }\n  .md\\:left-50 {\n    left: 50% !important;\n  }\n  .md\\:left-100 {\n    left: 100% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:left-auto {\n    left: auto !important;\n  }\n  .lg\\:left-0 {\n    left: 0px !important;\n  }\n  .lg\\:left-50 {\n    left: 50% !important;\n  }\n  .lg\\:left-100 {\n    left: 100% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:left-auto {\n    left: auto !important;\n  }\n  .xl\\:left-0 {\n    left: 0px !important;\n  }\n  .xl\\:left-50 {\n    left: 50% !important;\n  }\n  .xl\\:left-100 {\n    left: 100% !important;\n  }\n}\n.right-auto {\n  right: auto !important;\n}\n\n.right-0 {\n  right: 0px !important;\n}\n\n.right-50 {\n  right: 50% !important;\n}\n\n.right-100 {\n  right: 100% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:right-auto {\n    right: auto !important;\n  }\n  .sm\\:right-0 {\n    right: 0px !important;\n  }\n  .sm\\:right-50 {\n    right: 50% !important;\n  }\n  .sm\\:right-100 {\n    right: 100% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:right-auto {\n    right: auto !important;\n  }\n  .md\\:right-0 {\n    right: 0px !important;\n  }\n  .md\\:right-50 {\n    right: 50% !important;\n  }\n  .md\\:right-100 {\n    right: 100% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:right-auto {\n    right: auto !important;\n  }\n  .lg\\:right-0 {\n    right: 0px !important;\n  }\n  .lg\\:right-50 {\n    right: 50% !important;\n  }\n  .lg\\:right-100 {\n    right: 100% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:right-auto {\n    right: auto !important;\n  }\n  .xl\\:right-0 {\n    right: 0px !important;\n  }\n  .xl\\:right-50 {\n    right: 50% !important;\n  }\n  .xl\\:right-100 {\n    right: 100% !important;\n  }\n}\n.bottom-auto {\n  bottom: auto !important;\n}\n\n.bottom-0 {\n  bottom: 0px !important;\n}\n\n.bottom-50 {\n  bottom: 50% !important;\n}\n\n.bottom-100 {\n  bottom: 100% !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:bottom-auto {\n    bottom: auto !important;\n  }\n  .sm\\:bottom-0 {\n    bottom: 0px !important;\n  }\n  .sm\\:bottom-50 {\n    bottom: 50% !important;\n  }\n  .sm\\:bottom-100 {\n    bottom: 100% !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:bottom-auto {\n    bottom: auto !important;\n  }\n  .md\\:bottom-0 {\n    bottom: 0px !important;\n  }\n  .md\\:bottom-50 {\n    bottom: 50% !important;\n  }\n  .md\\:bottom-100 {\n    bottom: 100% !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:bottom-auto {\n    bottom: auto !important;\n  }\n  .lg\\:bottom-0 {\n    bottom: 0px !important;\n  }\n  .lg\\:bottom-50 {\n    bottom: 50% !important;\n  }\n  .lg\\:bottom-100 {\n    bottom: 100% !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:bottom-auto {\n    bottom: auto !important;\n  }\n  .xl\\:bottom-0 {\n    bottom: 0px !important;\n  }\n  .xl\\:bottom-50 {\n    bottom: 50% !important;\n  }\n  .xl\\:bottom-100 {\n    bottom: 100% !important;\n  }\n}\n.overflow-auto {\n  overflow: auto !important;\n}\n\n.overflow-hidden {\n  overflow: hidden !important;\n}\n\n.overflow-visible {\n  overflow: visible !important;\n}\n\n.overflow-scroll {\n  overflow: scroll !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:overflow-auto {\n    overflow: auto !important;\n  }\n  .sm\\:overflow-hidden {\n    overflow: hidden !important;\n  }\n  .sm\\:overflow-visible {\n    overflow: visible !important;\n  }\n  .sm\\:overflow-scroll {\n    overflow: scroll !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:overflow-auto {\n    overflow: auto !important;\n  }\n  .md\\:overflow-hidden {\n    overflow: hidden !important;\n  }\n  .md\\:overflow-visible {\n    overflow: visible !important;\n  }\n  .md\\:overflow-scroll {\n    overflow: scroll !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:overflow-auto {\n    overflow: auto !important;\n  }\n  .lg\\:overflow-hidden {\n    overflow: hidden !important;\n  }\n  .lg\\:overflow-visible {\n    overflow: visible !important;\n  }\n  .lg\\:overflow-scroll {\n    overflow: scroll !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:overflow-auto {\n    overflow: auto !important;\n  }\n  .xl\\:overflow-hidden {\n    overflow: hidden !important;\n  }\n  .xl\\:overflow-visible {\n    overflow: visible !important;\n  }\n  .xl\\:overflow-scroll {\n    overflow: scroll !important;\n  }\n}\n.overflow-x-auto {\n  overflow-x: auto !important;\n}\n\n.overflow-x-hidden {\n  overflow-x: hidden !important;\n}\n\n.overflow-x-visible {\n  overflow-x: visible !important;\n}\n\n.overflow-x-scroll {\n  overflow-x: scroll !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:overflow-x-auto {\n    overflow-x: auto !important;\n  }\n  .sm\\:overflow-x-hidden {\n    overflow-x: hidden !important;\n  }\n  .sm\\:overflow-x-visible {\n    overflow-x: visible !important;\n  }\n  .sm\\:overflow-x-scroll {\n    overflow-x: scroll !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:overflow-x-auto {\n    overflow-x: auto !important;\n  }\n  .md\\:overflow-x-hidden {\n    overflow-x: hidden !important;\n  }\n  .md\\:overflow-x-visible {\n    overflow-x: visible !important;\n  }\n  .md\\:overflow-x-scroll {\n    overflow-x: scroll !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:overflow-x-auto {\n    overflow-x: auto !important;\n  }\n  .lg\\:overflow-x-hidden {\n    overflow-x: hidden !important;\n  }\n  .lg\\:overflow-x-visible {\n    overflow-x: visible !important;\n  }\n  .lg\\:overflow-x-scroll {\n    overflow-x: scroll !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:overflow-x-auto {\n    overflow-x: auto !important;\n  }\n  .xl\\:overflow-x-hidden {\n    overflow-x: hidden !important;\n  }\n  .xl\\:overflow-x-visible {\n    overflow-x: visible !important;\n  }\n  .xl\\:overflow-x-scroll {\n    overflow-x: scroll !important;\n  }\n}\n.overflow-y-auto {\n  overflow-y: auto !important;\n}\n\n.overflow-y-hidden {\n  overflow-y: hidden !important;\n}\n\n.overflow-y-visible {\n  overflow-y: visible !important;\n}\n\n.overflow-y-scroll {\n  overflow-y: scroll !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .sm\\:overflow-y-hidden {\n    overflow-y: hidden !important;\n  }\n  .sm\\:overflow-y-visible {\n    overflow-y: visible !important;\n  }\n  .sm\\:overflow-y-scroll {\n    overflow-y: scroll !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .md\\:overflow-y-hidden {\n    overflow-y: hidden !important;\n  }\n  .md\\:overflow-y-visible {\n    overflow-y: visible !important;\n  }\n  .md\\:overflow-y-scroll {\n    overflow-y: scroll !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .lg\\:overflow-y-hidden {\n    overflow-y: hidden !important;\n  }\n  .lg\\:overflow-y-visible {\n    overflow-y: visible !important;\n  }\n  .lg\\:overflow-y-scroll {\n    overflow-y: scroll !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .xl\\:overflow-y-hidden {\n    overflow-y: hidden !important;\n  }\n  .xl\\:overflow-y-visible {\n    overflow-y: visible !important;\n  }\n  .xl\\:overflow-y-scroll {\n    overflow-y: scroll !important;\n  }\n}\n.z-auto {\n  z-index: auto !important;\n}\n\n.z-0 {\n  z-index: 0 !important;\n}\n\n.z-1 {\n  z-index: 1 !important;\n}\n\n.z-2 {\n  z-index: 2 !important;\n}\n\n.z-3 {\n  z-index: 3 !important;\n}\n\n.z-4 {\n  z-index: 4 !important;\n}\n\n.z-5 {\n  z-index: 5 !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:z-auto {\n    z-index: auto !important;\n  }\n  .sm\\:z-0 {\n    z-index: 0 !important;\n  }\n  .sm\\:z-1 {\n    z-index: 1 !important;\n  }\n  .sm\\:z-2 {\n    z-index: 2 !important;\n  }\n  .sm\\:z-3 {\n    z-index: 3 !important;\n  }\n  .sm\\:z-4 {\n    z-index: 4 !important;\n  }\n  .sm\\:z-5 {\n    z-index: 5 !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:z-auto {\n    z-index: auto !important;\n  }\n  .md\\:z-0 {\n    z-index: 0 !important;\n  }\n  .md\\:z-1 {\n    z-index: 1 !important;\n  }\n  .md\\:z-2 {\n    z-index: 2 !important;\n  }\n  .md\\:z-3 {\n    z-index: 3 !important;\n  }\n  .md\\:z-4 {\n    z-index: 4 !important;\n  }\n  .md\\:z-5 {\n    z-index: 5 !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:z-auto {\n    z-index: auto !important;\n  }\n  .lg\\:z-0 {\n    z-index: 0 !important;\n  }\n  .lg\\:z-1 {\n    z-index: 1 !important;\n  }\n  .lg\\:z-2 {\n    z-index: 2 !important;\n  }\n  .lg\\:z-3 {\n    z-index: 3 !important;\n  }\n  .lg\\:z-4 {\n    z-index: 4 !important;\n  }\n  .lg\\:z-5 {\n    z-index: 5 !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:z-auto {\n    z-index: auto !important;\n  }\n  .xl\\:z-0 {\n    z-index: 0 !important;\n  }\n  .xl\\:z-1 {\n    z-index: 1 !important;\n  }\n  .xl\\:z-2 {\n    z-index: 2 !important;\n  }\n  .xl\\:z-3 {\n    z-index: 3 !important;\n  }\n  .xl\\:z-4 {\n    z-index: 4 !important;\n  }\n  .xl\\:z-5 {\n    z-index: 5 !important;\n  }\n}\n.bg-repeat {\n  background-repeat: repeat !important;\n}\n\n.bg-no-repeat {\n  background-repeat: no-repeat !important;\n}\n\n.bg-repeat-x {\n  background-repeat: repeat-x !important;\n}\n\n.bg-repeat-y {\n  background-repeat: repeat-y !important;\n}\n\n.bg-repeat-round {\n  background-repeat: round !important;\n}\n\n.bg-repeat-space {\n  background-repeat: space !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:bg-repeat {\n    background-repeat: repeat !important;\n  }\n  .sm\\:bg-no-repeat {\n    background-repeat: no-repeat !important;\n  }\n  .sm\\:bg-repeat-x {\n    background-repeat: repeat-x !important;\n  }\n  .sm\\:bg-repeat-y {\n    background-repeat: repeat-y !important;\n  }\n  .sm\\:bg-repeat-round {\n    background-repeat: round !important;\n  }\n  .sm\\:bg-repeat-space {\n    background-repeat: space !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:bg-repeat {\n    background-repeat: repeat !important;\n  }\n  .md\\:bg-no-repeat {\n    background-repeat: no-repeat !important;\n  }\n  .md\\:bg-repeat-x {\n    background-repeat: repeat-x !important;\n  }\n  .md\\:bg-repeat-y {\n    background-repeat: repeat-y !important;\n  }\n  .md\\:bg-repeat-round {\n    background-repeat: round !important;\n  }\n  .md\\:bg-repeat-space {\n    background-repeat: space !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:bg-repeat {\n    background-repeat: repeat !important;\n  }\n  .lg\\:bg-no-repeat {\n    background-repeat: no-repeat !important;\n  }\n  .lg\\:bg-repeat-x {\n    background-repeat: repeat-x !important;\n  }\n  .lg\\:bg-repeat-y {\n    background-repeat: repeat-y !important;\n  }\n  .lg\\:bg-repeat-round {\n    background-repeat: round !important;\n  }\n  .lg\\:bg-repeat-space {\n    background-repeat: space !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:bg-repeat {\n    background-repeat: repeat !important;\n  }\n  .xl\\:bg-no-repeat {\n    background-repeat: no-repeat !important;\n  }\n  .xl\\:bg-repeat-x {\n    background-repeat: repeat-x !important;\n  }\n  .xl\\:bg-repeat-y {\n    background-repeat: repeat-y !important;\n  }\n  .xl\\:bg-repeat-round {\n    background-repeat: round !important;\n  }\n  .xl\\:bg-repeat-space {\n    background-repeat: space !important;\n  }\n}\n.bg-auto {\n  background-size: auto !important;\n}\n\n.bg-cover {\n  background-size: cover !important;\n}\n\n.bg-contain {\n  background-size: contain !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:bg-auto {\n    background-size: auto !important;\n  }\n  .sm\\:bg-cover {\n    background-size: cover !important;\n  }\n  .sm\\:bg-contain {\n    background-size: contain !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:bg-auto {\n    background-size: auto !important;\n  }\n  .md\\:bg-cover {\n    background-size: cover !important;\n  }\n  .md\\:bg-contain {\n    background-size: contain !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:bg-auto {\n    background-size: auto !important;\n  }\n  .lg\\:bg-cover {\n    background-size: cover !important;\n  }\n  .lg\\:bg-contain {\n    background-size: contain !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:bg-auto {\n    background-size: auto !important;\n  }\n  .xl\\:bg-cover {\n    background-size: cover !important;\n  }\n  .xl\\:bg-contain {\n    background-size: contain !important;\n  }\n}\n.bg-bottom {\n  background-position: bottom !important;\n}\n\n.bg-center {\n  background-position: center !important;\n}\n\n.bg-left {\n  background-position: left !important;\n}\n\n.bg-left-bottom {\n  background-position: left bottom !important;\n}\n\n.bg-left-top {\n  background-position: left top !important;\n}\n\n.bg-right {\n  background-position: right !important;\n}\n\n.bg-right-bottom {\n  background-position: right bottom !important;\n}\n\n.bg-right-top {\n  background-position: right top !important;\n}\n\n.bg-top {\n  background-position: top !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:bg-bottom {\n    background-position: bottom !important;\n  }\n  .sm\\:bg-center {\n    background-position: center !important;\n  }\n  .sm\\:bg-left {\n    background-position: left !important;\n  }\n  .sm\\:bg-left-bottom {\n    background-position: left bottom !important;\n  }\n  .sm\\:bg-left-top {\n    background-position: left top !important;\n  }\n  .sm\\:bg-right {\n    background-position: right !important;\n  }\n  .sm\\:bg-right-bottom {\n    background-position: right bottom !important;\n  }\n  .sm\\:bg-right-top {\n    background-position: right top !important;\n  }\n  .sm\\:bg-top {\n    background-position: top !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:bg-bottom {\n    background-position: bottom !important;\n  }\n  .md\\:bg-center {\n    background-position: center !important;\n  }\n  .md\\:bg-left {\n    background-position: left !important;\n  }\n  .md\\:bg-left-bottom {\n    background-position: left bottom !important;\n  }\n  .md\\:bg-left-top {\n    background-position: left top !important;\n  }\n  .md\\:bg-right {\n    background-position: right !important;\n  }\n  .md\\:bg-right-bottom {\n    background-position: right bottom !important;\n  }\n  .md\\:bg-right-top {\n    background-position: right top !important;\n  }\n  .md\\:bg-top {\n    background-position: top !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:bg-bottom {\n    background-position: bottom !important;\n  }\n  .lg\\:bg-center {\n    background-position: center !important;\n  }\n  .lg\\:bg-left {\n    background-position: left !important;\n  }\n  .lg\\:bg-left-bottom {\n    background-position: left bottom !important;\n  }\n  .lg\\:bg-left-top {\n    background-position: left top !important;\n  }\n  .lg\\:bg-right {\n    background-position: right !important;\n  }\n  .lg\\:bg-right-bottom {\n    background-position: right bottom !important;\n  }\n  .lg\\:bg-right-top {\n    background-position: right top !important;\n  }\n  .lg\\:bg-top {\n    background-position: top !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:bg-bottom {\n    background-position: bottom !important;\n  }\n  .xl\\:bg-center {\n    background-position: center !important;\n  }\n  .xl\\:bg-left {\n    background-position: left !important;\n  }\n  .xl\\:bg-left-bottom {\n    background-position: left bottom !important;\n  }\n  .xl\\:bg-left-top {\n    background-position: left top !important;\n  }\n  .xl\\:bg-right {\n    background-position: right !important;\n  }\n  .xl\\:bg-right-bottom {\n    background-position: right bottom !important;\n  }\n  .xl\\:bg-right-top {\n    background-position: right top !important;\n  }\n  .xl\\:bg-top {\n    background-position: top !important;\n  }\n}\n.select-none {\n  -webkit-user-select: none !important;\n     -moz-user-select: none !important;\n      -ms-user-select: none !important;\n          user-select: none !important;\n}\n\n.select-text {\n  -webkit-user-select: text !important;\n     -moz-user-select: text !important;\n      -ms-user-select: text !important;\n          user-select: text !important;\n}\n\n.select-all {\n  -webkit-user-select: all !important;\n     -moz-user-select: all !important;\n          user-select: all !important;\n}\n\n.select-auto {\n  -webkit-user-select: auto !important;\n     -moz-user-select: auto !important;\n      -ms-user-select: auto !important;\n          user-select: auto !important;\n}\n\n.list-none {\n  list-style: none !important;\n}\n\n.list-disc {\n  list-style: disc !important;\n}\n\n.list-decimal {\n  list-style: decimal !important;\n}\n\n.appearance-none {\n  -webkit-appearance: none !important;\n     -moz-appearance: none !important;\n          appearance: none !important;\n}\n\n.outline-none {\n  outline: none !important;\n}\n\n.pointer-events-none {\n  pointer-events: none !important;\n}\n\n.pointer-events-auto {\n  pointer-events: auto !important;\n}\n\n.cursor-auto {\n  cursor: auto !important;\n}\n\n.cursor-pointer {\n  cursor: pointer !important;\n}\n\n.cursor-wait {\n  cursor: wait !important;\n}\n\n.cursor-move {\n  cursor: move !important;\n}\n\n.select-none {\n  -webkit-user-select: none !important;\n     -moz-user-select: none !important;\n      -ms-user-select: none !important;\n          user-select: none !important;\n}\n\n.select-text {\n  -webkit-user-select: text !important;\n     -moz-user-select: text !important;\n      -ms-user-select: text !important;\n          user-select: text !important;\n}\n\n.select-all {\n  -webkit-user-select: all !important;\n     -moz-user-select: all !important;\n          user-select: all !important;\n}\n\n.select-auto {\n  -webkit-user-select: auto !important;\n     -moz-user-select: auto !important;\n      -ms-user-select: auto !important;\n          user-select: auto !important;\n}\n\n.opacity-0 {\n  opacity: 0 !important;\n}\n\n.opacity-10 {\n  opacity: .1 !important;\n}\n\n.opacity-20 {\n  opacity: .2 !important;\n}\n\n.opacity-30 {\n  opacity: .3 !important;\n}\n\n.opacity-40 {\n  opacity: .4 !important;\n}\n\n.opacity-50 {\n  opacity: .5 !important;\n}\n\n.opacity-60 {\n  opacity: .6 !important;\n}\n\n.opacity-70 {\n  opacity: .7 !important;\n}\n\n.opacity-80 {\n  opacity: .8 !important;\n}\n\n.opacity-90 {\n  opacity: .9 !important;\n}\n\n.opacity-100 {\n  opacity: 1 !important;\n}\n\n.transition-none {\n  transition-property: none !important;\n}\n\n.transition-all {\n  transition-property: all !important;\n}\n\n.transition-colors {\n  transition-property: background-color,border-color,color !important;\n}\n\n.transition-transform {\n  transition-property: transform !important;\n}\n\n.transition-duration-100 {\n  transition-duration: 100ms !important;\n}\n\n.transition-duration-150 {\n  transition-duration: 150ms !important;\n}\n\n.transition-duration-200 {\n  transition-duration: 200ms !important;\n}\n\n.transition-duration-300 {\n  transition-duration: 300ms !important;\n}\n\n.transition-duration-400 {\n  transition-duration: 400ms !important;\n}\n\n.transition-duration-500 {\n  transition-duration: 500ms !important;\n}\n\n.transition-duration-1000 {\n  transition-duration: 1000ms !important;\n}\n\n.transition-duration-2000 {\n  transition-duration: 2000ms !important;\n}\n\n.transition-duration-3000 {\n  transition-duration: 3000ms !important;\n}\n\n.transition-linear {\n  transition-timing-function: linear !important;\n}\n\n.transition-ease-in {\n  transition-timing-function: cubic-bezier(0.4, 0, 1, 1) !important;\n}\n\n.transition-ease-out {\n  transition-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;\n}\n\n.transition-ease-in-out {\n  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;\n}\n\n.transition-delay-100 {\n  transition-delay: 100ms !important;\n}\n\n.transition-delay-150 {\n  transition-delay: 150ms !important;\n}\n\n.transition-delay-200 {\n  transition-delay: 200ms !important;\n}\n\n.transition-delay-300 {\n  transition-delay: 300ms !important;\n}\n\n.transition-delay-400 {\n  transition-delay: 400ms !important;\n}\n\n.transition-delay-500 {\n  transition-delay: 500ms !important;\n}\n\n.transition-delay-1000 {\n  transition-delay: 1000ms !important;\n}\n\n.translate-x-0 {\n  transform: translateX(0%) !important;\n}\n\n.translate-x-100 {\n  transform: translateX(100%) !important;\n}\n\n.-translate-x-100 {\n  transform: translateX(-100%) !important;\n}\n\n.translate-y-0 {\n  transform: translateY(0%) !important;\n}\n\n.translate-y-100 {\n  transform: translateY(100%) !important;\n}\n\n.-translate-y-100 {\n  transform: translateY(-100%) !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:translate-x-0 {\n    transform: translateX(0%) !important;\n  }\n  .sm\\:translate-x-100 {\n    transform: translateX(100%) !important;\n  }\n  .sm\\:-translate-x-100 {\n    transform: translateX(-100%) !important;\n  }\n  .sm\\:translate-y-0 {\n    transform: translateY(0%) !important;\n  }\n  .sm\\:translate-y-100 {\n    transform: translateY(100%) !important;\n  }\n  .sm\\:-translate-y-100 {\n    transform: translateY(-100%) !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:translate-x-0 {\n    transform: translateX(0%) !important;\n  }\n  .md\\:translate-x-100 {\n    transform: translateX(100%) !important;\n  }\n  .md\\:-translate-x-100 {\n    transform: translateX(-100%) !important;\n  }\n  .md\\:translate-y-0 {\n    transform: translateY(0%) !important;\n  }\n  .md\\:translate-y-100 {\n    transform: translateY(100%) !important;\n  }\n  .md\\:-translate-y-100 {\n    transform: translateY(-100%) !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:translate-x-0 {\n    transform: translateX(0%) !important;\n  }\n  .lg\\:translate-x-100 {\n    transform: translateX(100%) !important;\n  }\n  .lg\\:-translate-x-100 {\n    transform: translateX(-100%) !important;\n  }\n  .lg\\:translate-y-0 {\n    transform: translateY(0%) !important;\n  }\n  .lg\\:translate-y-100 {\n    transform: translateY(100%) !important;\n  }\n  .lg\\:-translate-y-100 {\n    transform: translateY(-100%) !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:translate-x-0 {\n    transform: translateX(0%) !important;\n  }\n  .xl\\:translate-x-100 {\n    transform: translateX(100%) !important;\n  }\n  .xl\\:-translate-x-100 {\n    transform: translateX(-100%) !important;\n  }\n  .xl\\:translate-y-0 {\n    transform: translateY(0%) !important;\n  }\n  .xl\\:translate-y-100 {\n    transform: translateY(100%) !important;\n  }\n  .xl\\:-translate-y-100 {\n    transform: translateY(-100%) !important;\n  }\n}\n.rotate-45 {\n  transform: rotate(45deg) !important;\n}\n\n.-rotate-45 {\n  transform: rotate(-45deg) !important;\n}\n\n.rotate-90 {\n  transform: rotate(90deg) !important;\n}\n\n.-rotate-90 {\n  transform: rotate(-90deg) !important;\n}\n\n.rotate-180 {\n  transform: rotate(180deg) !important;\n}\n\n.-rotate-180 {\n  transform: rotate(-180deg) !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:rotate-45 {\n    transform: rotate(45deg) !important;\n  }\n  .sm\\:-rotate-45 {\n    transform: rotate(-45deg) !important;\n  }\n  .sm\\:rotate-90 {\n    transform: rotate(90deg) !important;\n  }\n  .sm\\:-rotate-90 {\n    transform: rotate(-90deg) !important;\n  }\n  .sm\\:rotate-180 {\n    transform: rotate(180deg) !important;\n  }\n  .sm\\:-rotate-180 {\n    transform: rotate(-180deg) !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:rotate-45 {\n    transform: rotate(45deg) !important;\n  }\n  .md\\:-rotate-45 {\n    transform: rotate(-45deg) !important;\n  }\n  .md\\:rotate-90 {\n    transform: rotate(90deg) !important;\n  }\n  .md\\:-rotate-90 {\n    transform: rotate(-90deg) !important;\n  }\n  .md\\:rotate-180 {\n    transform: rotate(180deg) !important;\n  }\n  .md\\:-rotate-180 {\n    transform: rotate(-180deg) !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:rotate-45 {\n    transform: rotate(45deg) !important;\n  }\n  .lg\\:-rotate-45 {\n    transform: rotate(-45deg) !important;\n  }\n  .lg\\:rotate-90 {\n    transform: rotate(90deg) !important;\n  }\n  .lg\\:-rotate-90 {\n    transform: rotate(-90deg) !important;\n  }\n  .lg\\:rotate-180 {\n    transform: rotate(180deg) !important;\n  }\n  .lg\\:-rotate-180 {\n    transform: rotate(-180deg) !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:rotate-45 {\n    transform: rotate(45deg) !important;\n  }\n  .xl\\:-rotate-45 {\n    transform: rotate(-45deg) !important;\n  }\n  .xl\\:rotate-90 {\n    transform: rotate(90deg) !important;\n  }\n  .xl\\:-rotate-90 {\n    transform: rotate(-90deg) !important;\n  }\n  .xl\\:rotate-180 {\n    transform: rotate(180deg) !important;\n  }\n  .xl\\:-rotate-180 {\n    transform: rotate(-180deg) !important;\n  }\n}\n.origin-center {\n  transform-origin: center !important;\n}\n\n.origin-top {\n  transform-origin: top !important;\n}\n\n.origin-top-right {\n  transform-origin: top right !important;\n}\n\n.origin-right {\n  transform-origin: right !important;\n}\n\n.origin-bottom-right {\n  transform-origin: bottom right !important;\n}\n\n.origin-bottom {\n  transform-origin: bottom !important;\n}\n\n.origin-bottom-left {\n  transform-origin: bottom left !important;\n}\n\n.origin-left {\n  transform-origin: left !important;\n}\n\n.origin-top-left {\n  transform-origin: top-left !important;\n}\n\n@media screen and (min-width: 576px) {\n  .sm\\:origin-center {\n    transform-origin: center !important;\n  }\n  .sm\\:origin-top {\n    transform-origin: top !important;\n  }\n  .sm\\:origin-top-right {\n    transform-origin: top right !important;\n  }\n  .sm\\:origin-right {\n    transform-origin: right !important;\n  }\n  .sm\\:origin-bottom-right {\n    transform-origin: bottom right !important;\n  }\n  .sm\\:origin-bottom {\n    transform-origin: bottom !important;\n  }\n  .sm\\:origin-bottom-left {\n    transform-origin: bottom left !important;\n  }\n  .sm\\:origin-left {\n    transform-origin: left !important;\n  }\n  .sm\\:origin-top-left {\n    transform-origin: top-left !important;\n  }\n}\n@media screen and (min-width: 768px) {\n  .md\\:origin-center {\n    transform-origin: center !important;\n  }\n  .md\\:origin-top {\n    transform-origin: top !important;\n  }\n  .md\\:origin-top-right {\n    transform-origin: top right !important;\n  }\n  .md\\:origin-right {\n    transform-origin: right !important;\n  }\n  .md\\:origin-bottom-right {\n    transform-origin: bottom right !important;\n  }\n  .md\\:origin-bottom {\n    transform-origin: bottom !important;\n  }\n  .md\\:origin-bottom-left {\n    transform-origin: bottom left !important;\n  }\n  .md\\:origin-left {\n    transform-origin: left !important;\n  }\n  .md\\:origin-top-left {\n    transform-origin: top-left !important;\n  }\n}\n@media screen and (min-width: 992px) {\n  .lg\\:origin-center {\n    transform-origin: center !important;\n  }\n  .lg\\:origin-top {\n    transform-origin: top !important;\n  }\n  .lg\\:origin-top-right {\n    transform-origin: top right !important;\n  }\n  .lg\\:origin-right {\n    transform-origin: right !important;\n  }\n  .lg\\:origin-bottom-right {\n    transform-origin: bottom right !important;\n  }\n  .lg\\:origin-bottom {\n    transform-origin: bottom !important;\n  }\n  .lg\\:origin-bottom-left {\n    transform-origin: bottom left !important;\n  }\n  .lg\\:origin-left {\n    transform-origin: left !important;\n  }\n  .lg\\:origin-top-left {\n    transform-origin: top-left !important;\n  }\n}\n@media screen and (min-width: 1200px) {\n  .xl\\:origin-center {\n    transform-origin: center !important;\n  }\n  .xl\\:origin-top {\n    transform-origin: top !important;\n  }\n  .xl\\:origin-top-right {\n    transform-origin: top right !important;\n  }\n  .xl\\:origin-right {\n    transform-origin: right !important;\n  }\n  .xl\\:origin-bottom-right {\n    transform-origin: bottom right !important;\n  }\n  .xl\\:origin-bottom {\n    transform-origin: bottom !important;\n  }\n  .xl\\:origin-bottom-left {\n    transform-origin: bottom left !important;\n  }\n  .xl\\:origin-left {\n    transform-origin: left !important;\n  }\n  .xl\\:origin-top-left {\n    transform-origin: top-left !important;\n  }\n}\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes fadein {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes fadeout {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n@keyframes fadeout {\n  0% {\n    opacity: 1;\n  }\n  100% {\n    opacity: 0;\n  }\n}\n@-webkit-keyframes scalein {\n  0% {\n    opacity: 0;\n    transform: scaleY(0.8);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1);\n  }\n}\n@keyframes scalein {\n  0% {\n    opacity: 0;\n    transform: scaleY(0.8);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1);\n  }\n}\n@-webkit-keyframes slidedown {\n  0% {\n    max-height: 0;\n  }\n  100% {\n    max-height: auto;\n  }\n}\n@keyframes slidedown {\n  0% {\n    max-height: 0;\n  }\n  100% {\n    max-height: auto;\n  }\n}\n@-webkit-keyframes slideup {\n  0% {\n    max-height: 1000px;\n  }\n  100% {\n    max-height: 0;\n  }\n}\n@keyframes slideup {\n  0% {\n    max-height: 1000px;\n  }\n  100% {\n    max-height: 0;\n  }\n}\n@-webkit-keyframes fadeinleft {\n  0% {\n    opacity: 0;\n    transform: translateX(-100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateX(0%);\n  }\n}\n@keyframes fadeinleft {\n  0% {\n    opacity: 0;\n    transform: translateX(-100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateX(0%);\n  }\n}\n@-webkit-keyframes fadeoutleft {\n  0% {\n    opacity: 1;\n    transform: translateX(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateX(-100%);\n  }\n}\n@keyframes fadeoutleft {\n  0% {\n    opacity: 1;\n    transform: translateX(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateX(-100%);\n  }\n}\n@-webkit-keyframes fadeinright {\n  0% {\n    opacity: 0;\n    transform: translateX(100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateX(0%);\n  }\n}\n@keyframes fadeinright {\n  0% {\n    opacity: 0;\n    transform: translateX(100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateX(0%);\n  }\n}\n@-webkit-keyframes fadeoutright {\n  0% {\n    opacity: 1;\n    transform: translateX(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateX(100%);\n  }\n}\n@keyframes fadeoutright {\n  0% {\n    opacity: 1;\n    transform: translateX(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateX(100%);\n  }\n}\n@-webkit-keyframes fadeinup {\n  0% {\n    opacity: 0;\n    transform: translateY(-100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0%);\n  }\n}\n@keyframes fadeinup {\n  0% {\n    opacity: 0;\n    transform: translateY(-100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0%);\n  }\n}\n@-webkit-keyframes fadeoutup {\n  0% {\n    opacity: 1;\n    transform: translateY(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(-100%);\n  }\n}\n@keyframes fadeoutup {\n  0% {\n    opacity: 1;\n    transform: translateY(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(-100%);\n  }\n}\n@-webkit-keyframes fadeindown {\n  0% {\n    opacity: 0;\n    transform: translateY(100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0%);\n  }\n}\n@keyframes fadeindown {\n  0% {\n    opacity: 0;\n    transform: translateY(100%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 1;\n    transform: translateY(0%);\n  }\n}\n@-webkit-keyframes fadeoutdown {\n  0% {\n    opacity: 1;\n    transform: translateY(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(100%);\n  }\n}\n@keyframes fadeoutdown {\n  0% {\n    opacity: 1;\n    transform: translateY(0%);\n    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);\n  }\n  100% {\n    opacity: 0;\n    transform: translateY(100%);\n  }\n}\n@-webkit-keyframes animate-width {\n  0% {\n    width: 0;\n  }\n  100% {\n    width: 100%;\n  }\n}\n@keyframes animate-width {\n  0% {\n    width: 0;\n  }\n  100% {\n    width: 100%;\n  }\n}\n.fadein {\n  -webkit-animation: fadein 0.15s linear;\n          animation: fadein 0.15s linear;\n}\n\n.fadeout {\n  -webkit-animation: fadeout 0.15s linear;\n          animation: fadeout 0.15s linear;\n}\n\n.slidedown {\n  -webkit-animation: slidedown 0.45s ease-in-out;\n          animation: slidedown 0.45s ease-in-out;\n}\n\n.slideup {\n  -webkit-animation: slideup 0.45s cubic-bezier(0, 1, 0, 1);\n          animation: slideup 0.45s cubic-bezier(0, 1, 0, 1);\n}\n\n.scalein {\n  -webkit-animation: scalein 0.15s linear;\n          animation: scalein 0.15s linear;\n}\n\n.fadeinleft {\n  -webkit-animation: fadeinleft 0.15s linear;\n          animation: fadeinleft 0.15s linear;\n}\n\n.fadeoutleft {\n  -webkit-animation: fadeoutleft 0.15s linear;\n          animation: fadeoutleft 0.15s linear;\n}\n\n.fadeinright {\n  -webkit-animation: fadeinright 0.15s linear;\n          animation: fadeinright 0.15s linear;\n}\n\n.fadeoutright {\n  -webkit-animation: fadeoutright 0.15s linear;\n          animation: fadeoutright 0.15s linear;\n}\n\n.fadeinup {\n  -webkit-animation: fadeinup 0.15s linear;\n          animation: fadeinup 0.15s linear;\n}\n\n.fadeoutup {\n  -webkit-animation: fadeoutup 0.15s linear;\n          animation: fadeoutup 0.15s linear;\n}\n\n.fadeindown {\n  -webkit-animation: fadeindown 0.15s linear;\n          animation: fadeindown 0.15s linear;\n}\n\n.fadeoutdown {\n  -webkit-animation: fadeoutdown 0.15s linear;\n          animation: fadeoutdown 0.15s linear;\n}\n\n.animate-width {\n  -webkit-animation: animate-width 1000ms linear;\n          animation: animate-width 1000ms linear;\n}\n\n.animation-duration-100 {\n  -webkit-animation-duration: 100ms !important;\n          animation-duration: 100ms !important;\n}\n\n.animation-duration-150 {\n  -webkit-animation-duration: 150ms !important;\n          animation-duration: 150ms !important;\n}\n\n.animation-duration-200 {\n  -webkit-animation-duration: 200ms !important;\n          animation-duration: 200ms !important;\n}\n\n.animation-duration-300 {\n  -webkit-animation-duration: 300ms !important;\n          animation-duration: 300ms !important;\n}\n\n.animation-duration-400 {\n  -webkit-animation-duration: 400ms !important;\n          animation-duration: 400ms !important;\n}\n\n.animation-duration-500 {\n  -webkit-animation-duration: 500ms !important;\n          animation-duration: 500ms !important;\n}\n\n.animation-duration-1000 {\n  -webkit-animation-duration: 1000ms !important;\n          animation-duration: 1000ms !important;\n}\n\n.animation-duration-2000 {\n  -webkit-animation-duration: 2000ms !important;\n          animation-duration: 2000ms !important;\n}\n\n.animation-duration-3000 {\n  -webkit-animation-duration: 3000ms !important;\n          animation-duration: 3000ms !important;\n}\n\n.animation-delay-100 {\n  -webkit-animation-delay: 100ms !important;\n          animation-delay: 100ms !important;\n}\n\n.animation-delay-150 {\n  -webkit-animation-delay: 150ms !important;\n          animation-delay: 150ms !important;\n}\n\n.animation-delay-200 {\n  -webkit-animation-delay: 200ms !important;\n          animation-delay: 200ms !important;\n}\n\n.animation-delay-300 {\n  -webkit-animation-delay: 300ms !important;\n          animation-delay: 300ms !important;\n}\n\n.animation-delay-400 {\n  -webkit-animation-delay: 400ms !important;\n          animation-delay: 400ms !important;\n}\n\n.animation-delay-500 {\n  -webkit-animation-delay: 500ms !important;\n          animation-delay: 500ms !important;\n}\n\n.animation-delay-1000 {\n  -webkit-animation-delay: 1000ms !important;\n          animation-delay: 1000ms !important;\n}\n\n.animation-iteration-1 {\n  -webkit-animation-iteration-count: 1 !important;\n          animation-iteration-count: 1 !important;\n}\n\n.animation-iteration-2 {\n  -webkit-animation-iteration-count: 2 !important;\n          animation-iteration-count: 2 !important;\n}\n\n.animation-iteration-infinite {\n  -webkit-animation-iteration-count: infinite !important;\n          animation-iteration-count: infinite !important;\n}\n\n.animation-linear {\n  -webkit-animation-timing-function: linear !important;\n          animation-timing-function: linear !important;\n}\n\n.animation-ease-in {\n  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 1, 1) !important;\n          animation-timing-function: cubic-bezier(0.4, 0, 1, 1) !important;\n}\n\n.animation-ease-out {\n  -webkit-animation-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;\n          animation-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;\n}\n\n.animation-ease-in-out {\n  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;\n          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;\n}\n\n.animation-fill-none {\n  -webkit-animation-fill-mode: none !important;\n          animation-fill-mode: none !important;\n}\n\n.animation-fill-forwards {\n  -webkit-animation-fill-mode: forwards !important;\n          animation-fill-mode: forwards !important;\n}\n\n.animation-fill-backwards {\n  -webkit-animation-fill-mode: backwards !important;\n          animation-fill-mode: backwards !important;\n}\n\n.animation-fill-both {\n  -webkit-animation-fill-mode: both !important;\n          animation-fill-mode: both !important;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
@@ -24053,7 +25820,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.del-btn[data-v-097ba13b]{\r\n    background-color: firebrick;\r\n    border-bottom-width: 0px;\n}\n.edit_btn[data-v-097ba13b]{\r\n    background-color: blue;\n}\n.add-btn[data-v-097ba13b]{\r\n    margin-bottom: 20px;\r\n    border-radius: 50%;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.del-btn[data-v-097ba13b]{\n    background-color: firebrick;\n    border-bottom-width: 0px;\n}\n.edit_btn[data-v-097ba13b]{\n    background-color: blue;\n}\n.add-btn[data-v-097ba13b]{\n    margin-bottom: 20px;\n    border-radius: 50%;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.p-inputtext[data-v-95e63b3a]{\n    width: 100%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24077,7 +25868,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.del-btn[data-v-f2ae53ca]{\r\n    background-color: firebrick;\r\n    border-bottom-width: 0px;\n}\n.btn_edit[data-v-f2ae53ca]{\r\n    background-color: green;\r\n    margin-left: 2px;\n}\n.btn_lms[data-v-f2ae53ca]{\r\n    background-color: blueviolet;\r\n    margin-left: 2px;\n}\n.add-btn[data-v-f2ae53ca]{\r\n    margin-bottom: 20px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.del-btn[data-v-f2ae53ca]{\n    background-color: firebrick;\n    border-bottom-width: 0px;\n}\n.btn_edit[data-v-f2ae53ca]{\n    background-color: green;\n    margin-left: 2px;\n}\n.btn_lms[data-v-f2ae53ca]{\n    background-color: blueviolet;\n    margin-left: 2px;\n}\n.add-button[data-v-f2ae53ca]{\n    background-color: blueviolet;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -57423,6 +59214,523 @@ script.render = render;
 
 /***/ }),
 
+/***/ "./node_modules/primevue/inputmask/inputmask.esm.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/primevue/inputmask/inputmask.esm.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var primevue_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! primevue/utils */ "./node_modules/primevue/utils/utils.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+
+var script = {
+    name: 'InputMask',
+    emits: ['update:modelValue', 'focus', 'blur', 'keydown', 'complete', 'keypress', 'paste'],
+    props: {
+        modelValue: null,
+        slotChar: {
+            type: String,
+            default: '_'
+        },
+        mask: {
+            type: String,
+            default: null
+        },
+        autoClear: {
+            type: Boolean,
+            default: true
+        },
+        unmask: {
+            type: Boolean,
+            default: false
+        }
+    },
+    methods: {
+        onInput(event) {
+            if (this.androidChrome)
+                this.handleAndroidInput(event);
+            else
+                this.handleInputChange(event);
+
+            this.$emit('update:modelValue', event.target.value);
+        },
+        onFocus(event) {
+            if (this.$attrs.readonly) {
+                return;
+            }
+
+            this.focus = true;
+
+            clearTimeout(this.caretTimeoutId);
+            let pos;
+
+            this.focusText = this.$el.value;
+
+            pos = this.checkVal();
+
+            this.caretTimeoutId = setTimeout(() => {
+                if (this.$el !== document.activeElement) {
+                    return;
+                }
+                this.writeBuffer();
+                if (pos === this.mask.replace("?", "").length) {
+                    this.caret(0, pos);
+                } else {
+                    this.caret(pos);
+                }
+            }, 10);
+
+            this.$emit('focus', event);
+        },
+        onBlur(event) {
+            this.focus = false;
+            this.checkVal();
+            this.updateModel(event);
+
+            if (this.$el.value !== this.focusText) {
+                let e = document.createEvent('HTMLEvents');
+                e.initEvent('change', true, false);
+                this.$el.dispatchEvent(e);
+            }
+
+            this.$emit('blur', event);
+        },
+        onKeyDown(event) {
+            if (this.$attrs.readonly) {
+                return;
+            }
+
+            let k = event.which || event.keyCode,
+                pos,
+                begin,
+                end;
+            let iPhone = /iphone/i.test(primevue_utils__WEBPACK_IMPORTED_MODULE_0__.DomHandler.getUserAgent());
+            this.oldVal = this.$el.value;
+
+            //backspace, delete, and escape get special treatment
+            if (k === 8 || k === 46 || (iPhone && k === 127)) {
+                pos = this.caret();
+                begin = pos.begin;
+                end = pos.end;
+
+
+                if (end - begin === 0) {
+                    begin = k !== 46 ? this.seekPrev(begin) : (end = this.seekNext(begin - 1));
+                    end = k === 46 ? this.seekNext(end) : end;
+                }
+
+                this.clearBuffer(begin, end);
+                this.shiftL(begin, end - 1);
+                this.updateModel(event);
+
+                event.preventDefault();
+            } else if (k === 13) { // enter
+                this.$el.blur();
+                this.updateModel(event);
+            } else if (k === 27) { // escape
+                this.$el.value = this.focusText;
+                this.caret(0, this.checkVal());
+                this.updateModel(event);
+                event.preventDefault();
+            }
+
+            this.$emit('keydown', event);
+        },
+        onKeyPress(event) {
+            if (this.$attrs.readonly) {
+                return;
+            }
+
+            var k = event.which || event.keyCode,
+                pos = this.caret(),
+                p,
+                c,
+                next,
+                completed;
+
+            if (event.ctrlKey || event.altKey || event.metaKey || k < 32) {//Ignore
+                return;
+            } else if (k && k !== 13) {
+                if (pos.end - pos.begin !== 0) {
+                    this.clearBuffer(pos.begin, pos.end);
+                    this.shiftL(pos.begin, pos.end - 1);
+                }
+
+                p = this.seekNext(pos.begin - 1);
+                if (p < this.len) {
+                    c = String.fromCharCode(k);
+                    if (this.tests[p].test(c)) {
+                        this.shiftR(p);
+
+                        this.buffer[p] = c;
+                        this.writeBuffer();
+                        next = this.seekNext(p);
+
+                        if (/android/i.test(primevue_utils__WEBPACK_IMPORTED_MODULE_0__.DomHandler.getUserAgent())) {
+                            //Path for CSP Violation on FireFox OS 1.1
+                            let proxy = () => {
+                                this.caret(next);
+                            };
+
+                            setTimeout(proxy, 0);
+                        } else {
+                            this.caret(next);
+                        }
+                        if (pos.begin <= this.lastRequiredNonMaskPos) {
+                            completed = this.isCompleted();
+                        }
+                    }
+                }
+                event.preventDefault();
+            }
+
+            this.updateModel(event);
+
+            if (completed) {
+                this.$emit('complete', event);
+            }
+
+            this.$emit('keypress', event);
+        },
+        onPaste(event)  {
+            this.handleInputChange(event);
+
+            this.$emit('paste', event);
+        },
+        caret(first, last) {
+            let range, begin, end;
+
+            if (!this.$el.offsetParent || this.$el !== document.activeElement) {
+                return;
+            }
+
+            if (typeof first === 'number') {
+                begin = first;
+                end = (typeof last === 'number') ? last : begin;
+                if (this.$el.setSelectionRange) {
+                    this.$el.setSelectionRange(begin, end);
+                }
+                else if (this.$el['createTextRange']) {
+                    range = this.$el['createTextRange']();
+                    range.collapse(true);
+                    range.moveEnd('character', end);
+                    range.moveStart('character', begin);
+                    range.select();
+                }
+            }
+            else {
+                if (this.$el.setSelectionRange) {
+                    begin = this.$el.selectionStart;
+                    end = this.$el.selectionEnd;
+                }
+                else if (document['selection'] && document['selection'].createRange) {
+                    range = document['selection'].createRange();
+                    begin = 0 - range.duplicate().moveStart('character', -100000);
+                    end = begin + range.text.length;
+                }
+
+                return { begin: begin, end: end };
+            }
+        },
+        isCompleted() {
+            for (let i = this.firstNonMaskPos; i <= this.lastRequiredNonMaskPos; i++) {
+                if (this.tests[i] && this.buffer[i] === this.getPlaceholder(i)) {
+                    return false;
+                }
+            }
+
+            return true;
+        },
+        getPlaceholder(i) {
+            if (i < this.slotChar.length) {
+                return this.slotChar.charAt(i);
+            }
+            return this.slotChar.charAt(0);
+        },
+        seekNext(pos) {
+            while (++pos < this.len && !this.tests[pos]);
+            return pos;
+        },
+        seekPrev(pos) {
+            while (--pos >= 0 && !this.tests[pos]);
+            return pos;
+        },
+        shiftL(begin, end) {
+            let i, j;
+
+            if (begin < 0) {
+                return;
+            }
+
+            for (i = begin, j = this.seekNext(end); i < this.len; i++) {
+                if (this.tests[i]) {
+                    if (j < this.len && this.tests[i].test(this.buffer[j])) {
+                        this.buffer[i] = this.buffer[j];
+                        this.buffer[j] = this.getPlaceholder(j);
+                    } else {
+                        break;
+                    }
+
+                    j = this.seekNext(j);
+                }
+            }
+            this.writeBuffer();
+            this.caret(Math.max(this.firstNonMaskPos, begin));
+        },
+        shiftR(pos) {
+            let i, c, j, t;
+
+            for (i = pos, c = this.getPlaceholder(pos); i < this.len; i++) {
+                if (this.tests[i]) {
+                    j = this.seekNext(i);
+                    t = this.buffer[i];
+                    this.buffer[i] = c;
+                    if (j < this.len && this.tests[j].test(t)) {
+                        c = t;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        },
+        handleAndroidInput(event) {
+            var curVal = this.$el.value;
+            var pos = this.caret();
+            if (this.oldVal && this.oldVal.length && this.oldVal.length > curVal.length) {
+                // a deletion or backspace happened
+                this.checkVal(true);
+                while (pos.begin > 0 && !this.tests[pos.begin - 1])
+                    pos.begin--;
+                if (pos.begin === 0) {
+                    while (pos.begin < this.firstNonMaskPos && !this.tests[pos.begin])
+                        pos.begin++;
+                }
+                this.caret(pos.begin, pos.begin);
+            } else {
+                this.checkVal(true);
+                while (pos.begin < this.len && !this.tests[pos.begin])
+                    pos.begin++;
+
+                this.caret(pos.begin, pos.begin);
+            }
+
+            if (this.isCompleted()) {
+                this.$emit('complete', event);
+            }
+        },
+        clearBuffer(start, end) {
+            let i;
+            for (i = start; i < end && i < this.len; i++) {
+                if (this.tests[i]) {
+                    this.buffer[i] = this.getPlaceholder(i);
+                }
+            }
+        },
+        writeBuffer() {
+            this.$el.value = this.buffer.join('');
+        },
+        checkVal(allow) {
+            this.isValueChecked = true;
+            //try to place characters where they belong
+            let test = this.$el.value,
+                lastMatch = -1,
+                i,
+                c,
+                pos;
+
+            for (i = 0, pos = 0; i < this.len; i++) {
+                if (this.tests[i]) {
+                    this.buffer[i] = this.getPlaceholder(i);
+                    while (pos++ < test.length) {
+                        c = test.charAt(pos - 1);
+                        if (this.tests[i].test(c)) {
+                            this.buffer[i] = c;
+                            lastMatch = i;
+                            break;
+                        }
+                    }
+                    if (pos > test.length) {
+                        this.clearBuffer(i + 1, this.len);
+                        break;
+                    }
+                } else {
+                    if (this.buffer[i] === test.charAt(pos)) {
+                        pos++;
+                    }
+                    if (i < this.partialPosition) {
+                        lastMatch = i;
+                    }
+                }
+            }
+            if (allow) {
+                this.writeBuffer();
+            } else if (lastMatch + 1 < this.partialPosition) {
+                if (this.autoClear || this.buffer.join('') === this.defaultBuffer) {
+                    // Invalid value. Remove it and replace it with the
+                    // mask, which is the default behavior.
+                    if (this.$el.value) this.$el.value = '';
+                    this.clearBuffer(0, this.len);
+                } else {
+                    // Invalid value, but we opt to show the value to the
+                    // user and allow them to correct their mistake.
+                    this.writeBuffer();
+                }
+            } else {
+                this.writeBuffer();
+                this.$el.value = this.$el.value.substring(0, lastMatch + 1);
+            }
+            return (this.partialPosition ? i : this.firstNonMaskPos);
+        },
+        handleInputChange(event) {
+            if (this.$attrs.readonly) {
+                return;
+            }
+
+            var pos = this.checkVal(true);
+            this.caret(pos);
+            this.updateModel(event);
+
+            if (this.isCompleted()) {
+                this.$emit('complete', event);
+            }
+        },
+        getUnmaskedValue() {
+            let unmaskedBuffer = [];
+            for (let i = 0; i < this.buffer.length; i++) {
+                let c = this.buffer[i];
+                if (this.tests[i] && c !== this.getPlaceholder(i)) {
+                    unmaskedBuffer.push(c);
+                }
+            }
+
+            return unmaskedBuffer.join('');
+        },
+        updateModel(e) {
+            let val = this.unmask ? this.getUnmaskedValue() : e.target.value;
+            this.$emit('update:modelValue', (this.defaultBuffer !== val) ? val : '');
+        },
+        updateValue(updateModel = true) {
+            if (this.$el) {
+                if (this.modelValue == null) {
+                    this.$el.value = '';
+                    updateModel && this.$emit('update:modelValue', '');
+                }
+                else {
+                    this.$el.value = this.modelValue;
+                    this.checkVal();
+
+                    setTimeout(() => {
+                        if (this.$el) {
+                            this.writeBuffer();
+                            this.checkVal();
+
+                            if (updateModel) {
+                                let val = this.unmask ? this.getUnmaskedValue() : this.$el.value;
+                                this.$emit('update:modelValue', (this.defaultBuffer !== val) ? val : '');
+                            }
+                        }
+                    }, 10);
+                }
+
+                this.focusText = this.$el.value;
+            }
+        },
+        isValueUpdated() {
+            return this.unmask ?
+                        (this.modelValue != this.getUnmaskedValue()) :
+                        (this.defaultBuffer !== this.$el.value && this.$el.value !== this.modelValue);
+        }
+    },
+    mounted() {
+        this.tests = [];
+        this.partialPosition = this.mask.length;
+        this.len = this.mask.length;
+        this.firstNonMaskPos = null;
+        this.defs = {
+            '9': '[0-9]',
+            'a': '[A-Za-z]',
+            '*': '[A-Za-z0-9]'
+        };
+
+        let ua = primevue_utils__WEBPACK_IMPORTED_MODULE_0__.DomHandler.getUserAgent();
+        this.androidChrome = /chrome/i.test(ua) && /android/i.test(ua);
+
+        let maskTokens = this.mask.split('');
+        for (let i = 0; i < maskTokens.length; i++) {
+            let c = maskTokens[i];
+            if (c === '?') {
+                this.len--;
+                this.partialPosition = i;
+            }
+            else if (this.defs[c]) {
+                this.tests.push(new RegExp(this.defs[c]));
+                if (this.firstNonMaskPos === null) {
+                    this.firstNonMaskPos = this.tests.length - 1;
+                }
+                if (i < this.partialPosition) {
+                    this.lastRequiredNonMaskPos = this.tests.length - 1;
+                }
+            }
+            else {
+                this.tests.push(null);
+            }
+        }
+
+        this.buffer = [];
+        for (let i = 0; i < maskTokens.length; i++) {
+            let c = maskTokens[i];
+            if (c !== '?') {
+                if (this.defs[c])
+                    this.buffer.push(this.getPlaceholder(i));
+                else
+                    this.buffer.push(c);
+            }
+        }
+        this.defaultBuffer = this.buffer.join('');
+        this.updateValue(false);
+    },
+    updated() {
+        if (this.isValueUpdated()) {
+            this.updateValue();
+        }
+    },
+    computed: {
+        filled() {
+            return (this.modelValue != null && this.modelValue.toString().length > 0)
+        },
+        inputClass() {
+            return ['p-inputmask p-inputtext p-component', {
+                'p-filled': this.filled
+            }];
+        },
+    }
+};
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return ((0,vue__WEBPACK_IMPORTED_MODULE_1__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_1__.createBlock)("input", (0,vue__WEBPACK_IMPORTED_MODULE_1__.mergeProps)({ class: $options.inputClass }, _ctx.$attrs, {
+    onInput: _cache[1] || (_cache[1] = (...args) => ($options.onInput && $options.onInput(...args))),
+    onFocus: _cache[2] || (_cache[2] = (...args) => ($options.onFocus && $options.onFocus(...args))),
+    onBlur: _cache[3] || (_cache[3] = (...args) => ($options.onBlur && $options.onBlur(...args))),
+    onKeydown: _cache[4] || (_cache[4] = (...args) => ($options.onKeyDown && $options.onKeyDown(...args))),
+    onKeypress: _cache[5] || (_cache[5] = (...args) => ($options.onKeyPress && $options.onKeyPress(...args))),
+    onPaste: _cache[6] || (_cache[6] = (...args) => ($options.onPaste && $options.onPaste(...args)))
+  }), null, 16))
+}
+
+script.render = render;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+
+/***/ }),
+
 /***/ "./node_modules/primevue/inputnumber/inputnumber.esm.js":
 /*!**************************************************************!*\
   !*** ./node_modules/primevue/inputnumber/inputnumber.esm.js ***!
@@ -59182,6 +61490,104 @@ function styleInject(css, ref) {
 
 var css_248z = "\n.p-paginator {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.p-paginator-left-content {\n\tmargin-right: auto;\n}\n.p-paginator-right-content {\n\tmargin-left: auto;\n}\n.p-paginator-page,\n.p-paginator-next,\n.p-paginator-last,\n.p-paginator-first,\n.p-paginator-prev,\n.p-paginator-current {\n    cursor: pointer;\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    line-height: 1;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    overflow: hidden;\n    position: relative;\n}\n.p-paginator-element:focus {\n    z-index: 1;\n    position: relative;\n}\n";
 styleInject(css_248z);
+
+script.render = render;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+
+/***/ }),
+
+/***/ "./node_modules/primevue/radiobutton/radiobutton.esm.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/primevue/radiobutton/radiobutton.esm.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var primevue_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! primevue/utils */ "./node_modules/primevue/utils/utils.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+
+var script = {
+    name: 'RadioButton',
+    inheritAttrs: false,
+    emits: ['click', 'update:modelValue', 'change'],
+    props: {
+		value: null,
+        modelValue: null,
+        class: null,
+        style: null
+    },
+    data() {
+        return {
+            focused: false
+        };
+    },
+    methods: {
+        onClick(event) {
+            if (!this.$attrs.disabled) {
+                this.$emit('click', event);
+                this.$emit('update:modelValue', this.value);
+                this.$refs.input.focus();
+
+                if (!this.checked) {
+                    this.$emit('change', event);
+                }
+            }
+        },
+        onFocus() {
+            this.focused = true;
+        },
+        onBlur() {
+            this.focused = false;
+        }
+    },
+    computed: {
+        checked() {
+            return this.modelValue != null && primevue_utils__WEBPACK_IMPORTED_MODULE_0__.ObjectUtils.equals(this.modelValue, this.value);
+        },
+        containerClass() {
+            return ['p-radiobutton p-component', this.class, {'p-radiobutton-checked': this.checked, 'p-radiobutton-disabled': this.$attrs.disabled, 'p-radiobutton-focused': this.focused}];
+        }
+    }
+};
+
+const _hoisted_1 = { class: "p-hidden-accessible" };
+const _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_1__.createVNode)("div", { class: "p-radiobutton-icon" }, null, -1);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return ((0,vue__WEBPACK_IMPORTED_MODULE_1__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_1__.createBlock)("div", {
+    class: $options.containerClass,
+    onClick: _cache[3] || (_cache[3] = $event => ($options.onClick($event))),
+    style: $props.style
+  }, [
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.createVNode)("div", _hoisted_1, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_1__.createVNode)("input", (0,vue__WEBPACK_IMPORTED_MODULE_1__.mergeProps)({
+        ref: "input",
+        type: "radio",
+        checked: $options.checked,
+        value: $props.value
+      }, _ctx.$attrs, {
+        onFocus: _cache[1] || (_cache[1] = (...args) => ($options.onFocus && $options.onFocus(...args))),
+        onBlur: _cache[2] || (_cache[2] = (...args) => ($options.onBlur && $options.onBlur(...args)))
+      }), null, 16, ["checked", "value"])
+    ]),
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.createVNode)("div", {
+      ref: "box",
+      class: ['p-radiobutton-box', {'p-highlight': $options.checked, 'p-disabled': _ctx.$attrs.disabled, 'p-focus': $data.focused}],
+      role: "radio",
+      "aria-checked": $options.checked
+    }, [
+      _hoisted_2
+    ], 10, ["aria-checked"])
+  ], 6))
+}
 
 script.render = render;
 
@@ -63232,6 +65638,36 @@ module.exports = function getSideChannel() {
 
 /***/ }),
 
+/***/ "./node_modules/primeflex/primeflex.css":
+/*!**********************************************!*\
+  !*** ./node_modules/primeflex/primeflex.css ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_primeflex_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./primeflex.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/primeflex/primeflex.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_primeflex_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_primeflex_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/primeicons/primeicons.css":
 /*!************************************************!*\
   !*** ./node_modules/primeicons/primeicons.css ***!
@@ -63379,6 +65815,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_style_index_0_id_097ba13b_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_style_index_0_id_95e63b3a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_style_index_0_id_95e63b3a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_style_index_0_id_95e63b3a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -67430,10 +69896,10 @@ _Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]._
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Lms/LmsCreatePages.vue":
-/*!***************************************************!*\
-  !*** ./resources/js/Pages/Lms/LmsCreatePages.vue ***!
-  \***************************************************/
+/***/ "./resources/js/Pages/Lms/OrderCreatePage.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/Pages/Lms/OrderCreatePage.vue ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -67441,18 +69907,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LmsCreatePages_vue_vue_type_template_id_57310b48__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LmsCreatePages.vue?vue&type=template&id=57310b48 */ "./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48");
-/* harmony import */ var _LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LmsCreatePages.vue?vue&type=script&lang=js */ "./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js");
+/* harmony import */ var _OrderCreatePage_vue_vue_type_template_id_95e63b3a_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true */ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true");
+/* harmony import */ var _OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrderCreatePage.vue?vue&type=script&lang=js */ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js");
+/* harmony import */ var _OrderCreatePage_vue_vue_type_style_index_0_id_95e63b3a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css */ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css");
 
 
 
-_LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _LmsCreatePages_vue_vue_type_template_id_57310b48__WEBPACK_IMPORTED_MODULE_0__.render
+
+;
+_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _OrderCreatePage_vue_vue_type_template_id_95e63b3a_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-95e63b3a"
 /* hot reload */
 if (false) {}
 
-_LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Lms/LmsCreatePages.vue"
+_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Lms/OrderCreatePage.vue"
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Medicines/MedicinesAdd.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/Pages/Medicines/MedicinesAdd.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _MedicinesAdd_vue_vue_type_template_id_ef8c3172__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MedicinesAdd.vue?vue&type=template&id=ef8c3172 */ "./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172");
+/* harmony import */ var _MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MedicinesAdd.vue?vue&type=script&lang=js */ "./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js");
+
+
+
+_MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _MedicinesAdd_vue_vue_type_template_id_ef8c3172__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Medicines/MedicinesAdd.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Orders/OrderPage.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/Pages/Orders/OrderPage.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _OrderPage_vue_vue_type_template_id_0a7cef48__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderPage.vue?vue&type=template&id=0a7cef48 */ "./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48");
+/* harmony import */ var _OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrderPage.vue?vue&type=script&lang=js */ "./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js");
+
+
+
+_OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _OrderPage_vue_vue_type_template_id_0a7cef48__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Orders/OrderPage.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -67486,6 +70008,84 @@ _PatientPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Patients/CreateAddress.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateAddress.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreateAddress_vue_vue_type_template_id_50543a60__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateAddress.vue?vue&type=template&id=50543a60 */ "./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60");
+/* harmony import */ var _CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateAddress.vue?vue&type=script&lang=js */ "./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js");
+
+
+
+_CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _CreateAddress_vue_vue_type_template_id_50543a60__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Patients/CreateAddress.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreateDiagnostic.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateDiagnostic.vue ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreateDiagnostic_vue_vue_type_template_id_70289c6b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateDiagnostic.vue?vue&type=template&id=70289c6b */ "./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b");
+/* harmony import */ var _CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateDiagnostic.vue?vue&type=script&lang=js */ "./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js");
+
+
+
+_CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _CreateDiagnostic_vue_vue_type_template_id_70289c6b__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Patients/CreateDiagnostic.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreatePhone.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreatePhone.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreatePhone_vue_vue_type_template_id_a2f4184c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreatePhone.vue?vue&type=template&id=a2f4184c */ "./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c");
+/* harmony import */ var _CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreatePhone.vue?vue&type=script&lang=js */ "./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js");
+
+
+
+_CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _CreatePhone_vue_vue_type_template_id_a2f4184c__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Patients/CreatePhone.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Patients/PatientForm.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/Pages/Patients/PatientForm.vue ***!
@@ -67509,6 +70109,32 @@ if (false) {}
 _PatientForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Patients/PatientForm.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PatientForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Reports/ReportPage.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/Pages/Reports/ReportPage.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ReportPage_vue_vue_type_template_id_177ad43c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportPage.vue?vue&type=template&id=177ad43c */ "./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c");
+/* harmony import */ var _ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportPage.vue?vue&type=script&lang=js */ "./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js");
+
+
+
+_ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _ReportPage_vue_vue_type_template_id_177ad43c__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/Pages/Reports/ReportPage.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -67878,18 +70504,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js ***!
-  \***************************************************************************/
+/***/ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LmsCreatePages_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LmsCreatePages.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderCreatePage.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MedicinesAdd_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MedicinesAdd.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderPage.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -67910,6 +70568,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateAddress_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateAddress.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDiagnostic_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateDiagnostic.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreatePhone_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreatePhone.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Patients/PatientForm.vue?vue&type=script&lang=js":
 /*!*****************************************************************************!*\
   !*** ./resources/js/Pages/Patients/PatientForm.vue?vue&type=script&lang=js ***!
@@ -67922,6 +70628,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PatientForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PatientForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PatientForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/PatientForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReportPage_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReportPage.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -68294,18 +71016,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48 ***!
-  \*********************************************************************************/
+/***/ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LmsCreatePages_vue_vue_type_template_id_57310b48__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_template_id_95e63b3a_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LmsCreatePages_vue_vue_type_template_id_57310b48__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LmsCreatePages.vue?vue&type=template&id=57310b48 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/LmsCreatePages.vue?vue&type=template&id=57310b48");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_template_id_95e63b3a_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=template&id=95e63b3a&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172 ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MedicinesAdd_vue_vue_type_template_id_ef8c3172__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_MedicinesAdd_vue_vue_type_template_id_ef8c3172__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./MedicinesAdd.vue?vue&type=template&id=ef8c3172 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Medicines/MedicinesAdd.vue?vue&type=template&id=ef8c3172");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48 ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderPage_vue_vue_type_template_id_0a7cef48__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderPage_vue_vue_type_template_id_0a7cef48__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderPage.vue?vue&type=template&id=0a7cef48 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Orders/OrderPage.vue?vue&type=template&id=0a7cef48");
 
 
 /***/ }),
@@ -68326,6 +71080,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60 ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateAddress_vue_vue_type_template_id_50543a60__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateAddress_vue_vue_type_template_id_50543a60__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateAddress.vue?vue&type=template&id=50543a60 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateAddress.vue?vue&type=template&id=50543a60");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDiagnostic_vue_vue_type_template_id_70289c6b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDiagnostic_vue_vue_type_template_id_70289c6b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateDiagnostic.vue?vue&type=template&id=70289c6b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreateDiagnostic.vue?vue&type=template&id=70289c6b");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreatePhone_vue_vue_type_template_id_a2f4184c__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreatePhone_vue_vue_type_template_id_a2f4184c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreatePhone.vue?vue&type=template&id=a2f4184c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/CreatePhone.vue?vue&type=template&id=a2f4184c");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Patients/PatientForm.vue?vue&type=template&id=6854c7f1":
 /*!***********************************************************************************!*\
   !*** ./resources/js/Pages/Patients/PatientForm.vue?vue&type=template&id=6854c7f1 ***!
@@ -68338,6 +71140,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PatientForm_vue_vue_type_template_id_6854c7f1__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PatientForm_vue_vue_type_template_id_6854c7f1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PatientForm.vue?vue&type=template&id=6854c7f1 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Patients/PatientForm.vue?vue&type=template&id=6854c7f1");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReportPage_vue_vue_type_template_id_177ad43c__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ReportPage_vue_vue_type_template_id_177ad43c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ReportPage.vue?vue&type=template&id=177ad43c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Reports/ReportPage.vue?vue&type=template&id=177ad43c");
 
 
 /***/ }),
@@ -68380,6 +71198,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_style_index_0_id_097ba13b_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=style&index=0&id=097ba13b&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Dashboard.vue?vue&type=style&index=0&id=097ba13b&scoped=true&lang=css");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_OrderCreatePage_vue_vue_type_style_index_0_id_95e63b3a_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Lms/OrderCreatePage.vue?vue&type=style&index=0&id=95e63b3a&scoped=true&lang=css");
 
 
 /***/ }),
@@ -68663,9 +71494,15 @@ var map = {
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./BrandPage.vue": "./resources/js/Pages/BrandPage.vue",
 	"./Dashboard.vue": "./resources/js/Pages/Dashboard.vue",
-	"./Lms/LmsCreatePages.vue": "./resources/js/Pages/Lms/LmsCreatePages.vue",
+	"./Lms/OrderCreatePage.vue": "./resources/js/Pages/Lms/OrderCreatePage.vue",
+	"./Medicines/MedicinesAdd.vue": "./resources/js/Pages/Medicines/MedicinesAdd.vue",
+	"./Orders/OrderPage.vue": "./resources/js/Pages/Orders/OrderPage.vue",
 	"./PatientPage.vue": "./resources/js/Pages/PatientPage.vue",
+	"./Patients/CreateAddress.vue": "./resources/js/Pages/Patients/CreateAddress.vue",
+	"./Patients/CreateDiagnostic.vue": "./resources/js/Pages/Patients/CreateDiagnostic.vue",
+	"./Patients/CreatePhone.vue": "./resources/js/Pages/Patients/CreatePhone.vue",
 	"./Patients/PatientForm.vue": "./resources/js/Pages/Patients/PatientForm.vue",
+	"./Reports/ReportPage.vue": "./resources/js/Pages/Reports/ReportPage.vue",
 	"./Welcome.vue": "./resources/js/Pages/Welcome.vue"
 };
 

@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Resources\PatientLm as PatientLmResource;
-use App\Http\Resources\PatientLmCollection;
 use App\Models\PatientLm;
 use Illuminate\Http\Response;
+use App\Http\Resources\PatientLm as PatientLmResource;
+use App\Http\Resources\PatientLmCollection;
 use App\Http\Requests\Patients\PatientLmRequest;
 use App\Http\Requests\Patients\PatientLmUpdate;
+use App\Http\Requests\Patients\PatientLmUpdateStatus;
 
 use App\Exports\OrderExport;
 use Carbon\Carbon;
@@ -60,9 +61,11 @@ class PatientLmController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(PatientLm $patient_lm)
     {
-        //
+        return response()->json(
+            new PatientLmResource($patient_lm)
+        );
     }
 
     /**
@@ -95,6 +98,12 @@ class PatientLmController extends Controller
         return response()->json("Se a guardado satisfactoriamente!");
     }
 
+    public function update_lmcode(PatientLmUpdateStatus $request, $id) {
+        $patient_lm = PatientLm::where('lm_code', $id)->update([
+            'status' => $request->status
+        ]);
+        return response()->json("Se a cambiando el status exitosamente");
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -114,12 +123,47 @@ class PatientLmController extends Controller
     public function findOrders($id) {
         $find_orders = DB::table('patient_lms')
                         ->join('patients', 'patient_lms.patient_id','=','patients.id')
-                        ->select('*')
+                        ->select('patients.personal_id', 'patients.first_name', 'patients.last_name', 'patient_lms.lm_code','patient_lms.id')
                         ->where('patient_lms.lm_code',$id)
                         ->orWhere('patients.personal_id',$id)
                         ->orWhere('patients.first_name','like',$id.'%')
                         ->orWhere('patients.last_name','like',$id.'%')
                         ->get();
         return response()->json($find_orders);
+    }
+
+    public function getOrdersLm($dateini, $dateend){
+/*         $getLms = PatientLm::where('status','pending')
+                            ->with(['patient'])
+                            ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
+                            ->get();
+ */
+        $getLm = DB::table('patient_lms')
+                          ->join('patient_lm_details', 'patient_lms.id','=','patient_lm_details.order_id')
+                          ->select('patient_lms.lm_code',DB::raw('count(*) as total_detail'))
+                          ->where('status','pending')
+                          ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
+                          ->groupBy('patient_lms.lm_code')
+                          ->get();
+
+        /*
+            To use the resource but dosent work with this type relationship
+            return response()->json(
+            new PatientLmCollection($getLms));
+        */
+
+        return response()->json($getLm);
+    }
+
+    public function getOrdersDetail($dateini, $dateend){
+        $getLms = DB::table('patient_lms')
+                            ->join('patient_lm_details', 'patient_lms.id','=','patient_lm_details.order_id')
+                            ->select('patient_lms.id', DB::raw('count(*) as total_detail, patient_lms.lm_code'))
+                            ->where('status','pending')
+                            ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
+                            ->groupBy('patient_lms.lm_code')
+                            ->get();
+        dd($getLms);
+        return response()->json($getLms);
     }
 }

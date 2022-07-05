@@ -4,7 +4,7 @@ namespace App\Http\Requests\Patients;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Patient extends FormRequest
+class PatientLmUpdateStatus extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class Patient extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required']
+            'status' => ['required']
         ];
     }
 }

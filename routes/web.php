@@ -41,6 +41,7 @@ Route::group(['auth', 'verified'], function () {
     Route::inertia('/brandpage', 'BrandPage')->name('brandpage');
     Route::inertia('/patientpage', 'PatientPage')->name('patientpage');
     Route::inertia('/orderpage', 'Orders/OrderPage')->name('orderpage');
+    Route::inertia('/reportspage', 'Reports/ReportPage')->name('reportspage');
 });
 
 //Api Rest Routes
@@ -64,12 +65,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::get('findOrders/{id}', [PatientLmController::class, 'findOrders']);
     Route::get('address_patient/{id}/{category}', [PatientAddressController::class, 'getAddress']);
     Route::get('diagnostic_patient/{id}', [PatientDiagnosticController::class, 'getDiagnostics']);
+    Route::get('getOrdersLm/{dateini}/{dateend}', [PatientLmController::class, 'getOrdersLm']);
+    Route::get('getOrdersDetail/{dateini}/{dateend}', [PatientLmController::class, 'getOrdersDetail']);
 
     //Only for method update&patch
     Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);
     Route::patch('update_diagnostic/{id}', [PatientDiagnosticController::class, 'update_diagnostic']);
     Route::patch('update_price/{id}', [ProductController::class, 'update_price']);
-
+    Route::patch('update_lmcode/{id}', [PatientLmController::class, 'update_lmcode']);
 });
 
 require __DIR__.'/auth.php';

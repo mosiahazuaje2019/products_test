@@ -8,12 +8,27 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
+use Maatwebsite\Excel\Concerns\ToModel;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
+use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use \Maatwebsite\Excel\Sheet;
 
 
-class OrderExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder implements  FromView, ShouldAutoSize, WithStyles, WithCustomValueBinder
+class OrderExport extends DefaultValueBinder implements  FromView, ShouldAutoSize, WithStyles, WithCustomValueBinder
 {
+    public function bindValue(Cell $cell, $value)
+    {
+        if (is_numeric($value)) {
+            $cell->setValueExplicit($value, DataType::TYPE_NUMERIC);
+
+            return true;
+        }
+
+        // else return default behavior
+        return parent::bindValue($cell, $value);
+    }
 
     public function styles(Worksheet $sheet)
     {
@@ -45,9 +60,9 @@ class OrderExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder imple
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
             ],
         ];
-        $sheet->getStyle('A2:G2')->applyFromArray($styleArray);
-        $sheet->getStyle('A3:G3')->applyFromArray($styleArray);
-        $sheet->getStyle('A4:G4')->applyFromArray($styleArray);
+        $sheet->getStyle('A2:H2')->applyFromArray($styleArray);
+        $sheet->getStyle('A3:H3')->applyFromArray($styleArray);
+        $sheet->getStyle('A4:H4')->applyFromArray($styleArray);
         $sheet->getStyle('C')->applyFromArray($styleAlign);
     }
 

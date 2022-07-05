@@ -22,7 +22,7 @@ class PatientLm extends Model
     ];
 
     public function patient(){
-        return $this->belongsTo(Patient::class,'patient_id','id');
+        return $this->belongsTo(Patient::class);
     }
 
     public function orders(){

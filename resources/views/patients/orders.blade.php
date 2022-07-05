@@ -9,13 +9,13 @@
     <table>
         <thead>
             <tr>
-                <th colspan="7">Relacion de pacientes Seguros Bolivar S.A</th>
+                <th colspan="8">Relacion de pacientes Seguros Bolivar S.A</th>
             </tr>
             <tr>
-                <th colspan="7">Asispharma SAS . NIT 900.644.246-3</th>
+                <th colspan="8">Asispharma SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
-                <th colspan="7">Factura #</th>
+                <th colspan="8">Factura #</th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +33,8 @@
                         <td>{{ $patient->product->name }}</td>
                         <td>{{ $patient->prescription }}</td>
                         <td>{{ $patient->product->presentation }}</td>
-                        <td>{{ $patient->product->price }}</td>
+                        <td data-format="#,##0_-">{{ $patient->product->price,0 }}</td>
+                        <td data-format="#,##0_-">{{ $patient->product->price*$patient->prescription,0 }}</td>
                     </tr>
                     {{ $patientPerOrder[] = $patient->patient->patient_id }}
                 @endforeach
@@ -44,10 +45,12 @@
                     <td></td>
                     <td></td>
                     <td><strong>Valor total formula:</strong></td>
-                    <td><strong> {{ array_reduce(
+                    <td></td>
+                    <td data-format="$#,##0_-">
+                    <strong> {{ array_reduce(
                         $order->toArray(),
                         function ($sum, $patient) {
-                            return (float) ($sum += (float) $patient['product']['price']);
+                            return (float) ($sum += (float) ($patient['product']['price']*$patient['prescription']));
                         },
                         0,
                     ) }}</strong>
@@ -62,13 +65,14 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td><strong>Valor total factura:</strong></td>
-            <td><strong>
+            <td data-format="$#,##0_-"><strong>
                 {{ $orders->map(function($order) {
                     return array_reduce(
                         $order->toArray(),
                         function ($sum, $patient) {
-                            return (float) ($sum += (float) $patient['product']['price']);
+                            return (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
                         },
                         0,
                     );
