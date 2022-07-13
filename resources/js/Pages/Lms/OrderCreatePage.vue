@@ -174,7 +174,7 @@ export default {
             this.form.patient_id = this.$props.createLm.id;
             if(!this.$props.editId) {
                 try {
-                    const res = await axios.post('api/patient_lm', this.form)
+                    const res = await axios.post('api/patient_lms', this.form)
                     this.saveLm = true
                     this.order_id = res.data.id;
                     this.display = true;

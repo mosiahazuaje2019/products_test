@@ -133,6 +133,7 @@ import ProductForm from "@/Components/Products/ProductForm";
             this.getMedicines();
             this.formprod.order_id = this.$props.order_id;
             this.formprod.patient_id = this.$props.patient_id;
+            this.getDetailLms(this.formprod.order_id);
 
             this.emitter.on('products_reload', () => {
                 this.getMedicines()

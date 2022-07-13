@@ -63,6 +63,9 @@ class PatientLmController extends Controller
      */
     public function show(PatientLm $patient_lm)
     {
+        $patient_lm = PatientLm::where('id',$patient_lm->id)
+                                ->with(['patient','orders'])
+                                ->first();
         return response()->json(
             new PatientLmResource($patient_lm)
         );
@@ -123,7 +126,7 @@ class PatientLmController extends Controller
     public function findOrders($id) {
         $find_orders = DB::table('patient_lms')
                         ->join('patients', 'patient_lms.patient_id','=','patients.id')
-                        ->select('patients.personal_id', 'patients.first_name', 'patients.last_name', 'patient_lms.lm_code','patient_lms.id')
+                        ->select('patients.id as patient_id','patients.personal_id', 'patients.first_name', 'patients.last_name', 'patient_lms.lm_code','patient_lms.id')
                         ->where('patient_lms.lm_code',$id)
                         ->orWhere('patients.personal_id',$id)
                         ->orWhere('patients.first_name','like',$id.'%')
@@ -133,11 +136,6 @@ class PatientLmController extends Controller
     }
 
     public function getOrdersLm($dateini, $dateend){
-/*         $getLms = PatientLm::where('status','pending')
-                            ->with(['patient'])
-                            ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
-                            ->get();
- */
         $getLm = DB::table('patient_lms')
                           ->join('patient_lm_details', 'patient_lms.id','=','patient_lm_details.order_id')
                           ->select('patient_lms.lm_code',DB::raw('count(*) as total_detail'))
@@ -155,15 +153,23 @@ class PatientLmController extends Controller
         return response()->json($getLm);
     }
 
-    public function getOrdersDetail($dateini, $dateend){
-        $getLms = DB::table('patient_lms')
-                            ->join('patient_lm_details', 'patient_lms.id','=','patient_lm_details.order_id')
-                            ->select('patient_lms.id', DB::raw('count(*) as total_detail, patient_lms.lm_code'))
-                            ->where('status','pending')
-                            ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
-                            ->groupBy('patient_lms.lm_code')
-                            ->get();
-        dd($getLms);
-        return response()->json($getLms);
+    public function getOrdersCheck() {
+        $getOrders = PatientLm::where('status', 'proccess')->get();
+
+        if(count($getOrders)>0) {
+            return response()->json(
+                new PatientLmCollection($getOrders)
+            );
+        }else{
+            return false;
+        }
+    }
+
+    public function patientByLm($id) {
+        $patient_lm = PatientLm::where('lm_code',$id)->get();
+
+        return response()->json(
+            new PatientLmCollection($patient_lm)
+        );
     }
 }

@@ -17,7 +17,7 @@ class Patient extends Model
         'city_id'
     ];
 
-    public function lms() {
+    public function patient_lms() {
        return $this->hasMany(PatientLm::class, 'patient_id', 'id');
     }
 }

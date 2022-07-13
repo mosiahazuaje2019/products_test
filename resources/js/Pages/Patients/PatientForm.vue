@@ -4,6 +4,7 @@
             <div class="field col">
                 <label>Ciudad</label>
                 <Dropdown class="w-full" v-model="form.city_id" :options="cities" optionLabel="city" optionValue="id" placeholder="Selecione ciudad" :filter="true" />
+                <small class="text-red-500">{{ error_city_id }}</small>
             </div>
             <div class="field col">
                 <label>Nombre</label>
@@ -25,6 +26,7 @@
             <div class="field col">
                 <label>Edad</label>
                 <InputNumber v-model="form.age" class="w-full" />
+                <small class="text-red-500">{{ error_age }}</small>
             </div>
             <div class="field col mt-4">
                 <PrimeButton icon="pi pi-save" label="Siguiente" class="sm:-bottom-1.5" @click="submit" />
@@ -100,12 +102,11 @@ export default {
                     switch (e.response.status) {
                         case 422:
                             let err = e.response.data.errors
-                            this.error_name = err.name ? err.name[0] : null
-                            this.error_size = err.size ? err.size[0] : null
-                            this.error_observation = err.observation ? err.observation[0] : null
-                            this.error_count_inventory = err.count_inventory ? err.count_inventory[0] : null
-                            this.error_date_boarding = err.date_boarding ? err.date_boarding[0] : null
-                            this.error_brand_id = err.brand_id ? err.brand_id[0] : null
+                            this.error_first_name = err.first_name ? err.first_name[0] : null
+                            this.error_last_name = err.last_name ? err.last_name[0] : null
+                            this.error_personal_id = err.personal_id ? err.personal_id[0] : null
+                            this.error_age = err.age ? err.age[0] : null
+                            this.error_city_id = err.city_id ? err.city_id[0] : null
                     }
                 }
                 return null
@@ -117,9 +118,6 @@ export default {
             this.form.last_name    = res.data.last_name
             this.form.personal_id  = res.data.personal_id
             this.form.age          = res.data.age
-            this.form.phone        = res.data.phone
-            this.form.address      = res.data.address
-            this.form.email        = res.data.email
             this.form.city_id      = res.data.city_id
         }
     },

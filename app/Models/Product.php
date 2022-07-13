@@ -12,10 +12,5 @@ class Product extends Model
         'name',
         'presentation',
         'price',
-        'brand_id'
     ];
-
-    public function brands() {
-        return $this->belongsTo(Brand::class, 'brand_id', 'id');
-    }
 }

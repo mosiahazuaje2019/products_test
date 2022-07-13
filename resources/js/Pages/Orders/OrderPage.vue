@@ -28,13 +28,19 @@
                                     headerStyle="width: 14rem; justify-center">
                                 <template #body="slotProps">
                                     <PrimeButton @click="newLm(slotProps.data)" icon="pi pi-tags" class="btn_lms" title="Cargar Lm" />
-                                    <PrimeButton @click="editOrder(slotProps.data.id)" icon="pi pi-pencil" class="btn_lms" title="Editar orden" />
+                                    <PrimeButton @click="editOrder(slotProps.data.id,slotProps.data.patient_id)" icon="pi pi-pencil" class="btn_edit" title="Editar orden" />
                                 </template>
                             </Column>
                         </DataTable>
                     </div>
                 </div>
             </div>
+            
+            <Dialog :header="'Editando orden'" :style="{width: '50vw'}"
+                    v-model:visible="displayOrderEdit" :maximizable="true" >
+                <OrderEdit :editId="editId" :patient_id="patientId" />
+            </Dialog>
+
         </div>
     </BreezeAuthenticatedLayout>
 </template>
@@ -43,13 +49,15 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
 import axios from 'axios';
+import OrderEdit from './OrderEdit.vue';
 
 export default {
     name: "OrderPage",
     components: {
-        BreezeAuthenticatedLayout,
-        Head,
-    },
+    BreezeAuthenticatedLayout,
+    Head,
+    OrderEdit
+},
     data () {
         return {
             form: {
@@ -58,13 +66,15 @@ export default {
             orders: [],
             createLm: null,
             displayLm: false,
-            filter: null
+            displayOrderEdit: false,
+            filter: null,
+            editId: null,
+            patientId: null
         }
     },
     methods:{
         async search(){
             const res = await axios.get(`/api/findOrders/${this.form.search}`).then((res) => {
-                console.log(res.data);
                 this.orders = res.data;
             })
         },
@@ -72,10 +82,18 @@ export default {
             this.createLm = data.lm_code,
             this.displayLm = true
         },
-        async editOrder(id){
-            console.log(id)
-            const res = await axios.get(`/api/`)
+        async editOrder(id, patientId){
+            this.editId = id
+            this.patientId = patientId
+            this.displayOrderEdit = true
         }
     }
 }
 </script>
+
+<style scoped>
+.btn_edit{
+    background-color: green;
+    margin-left: 2px;
+}
+</style>

@@ -17,9 +17,17 @@ class PatientLm extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'         => $this->id,
-            'patient_id' => $this->patient_id,
-            'lm_code'    => $this->lm_code,
+            'id'            => $this->id,
+            'patient_id'    => $this->patient_id,
+            'date_ini'      => $this->date_ini,
+            'authorized_by' => $this->authorized_by,
+            'observation'   => $this->observation,
+            'phone_id'      => $this->phone_id,
+            'address_id'    => $this->address_id,
+            'diagnostic_id' => $this->diagnostic_id,
+            'lm_code'       => $this->lm_code,
+            'orders'        => PatientLmDetail::collection($this->orders),
+            'status'        => $this->status
             //'patient'    => new Patient($this->patient)
         ];
     }

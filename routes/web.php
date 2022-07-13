@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\PatientAddressController;
 use App\Http\Controllers\Api\PatientLmDetailController;
 use App\Http\Controllers\Api\PatientDiagnosticController;
+use App\Http\Controllers\Api\PreInvoiceController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -51,12 +52,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('brands', BrandController::class);
     Route::apiResource('products', ProductController::class);
     Route::apiResource('patients', PatientController::class);
-    Route::apiResource('patient_lm', PatientLmController::class);
+    Route::apiResource('patient_lms', PatientLmController::class);
     Route::apiResource('cities', CityController::class);
     Route::apiResource('doctors', DoctorController::class);
     Route::apiResource('address', PatientAddressController::class);
     Route::apiResource('patient_lm_details', PatientLmDetailController::class);
     Route::apiResource('patient_diagnostics', PatientDiagnosticController::class);
+    Route::apiResource('pre_invoices', PreInvoiceController::class);
 
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
@@ -66,7 +68,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::get('address_patient/{id}/{category}', [PatientAddressController::class, 'getAddress']);
     Route::get('diagnostic_patient/{id}', [PatientDiagnosticController::class, 'getDiagnostics']);
     Route::get('getOrdersLm/{dateini}/{dateend}', [PatientLmController::class, 'getOrdersLm']);
-    Route::get('getOrdersDetail/{dateini}/{dateend}', [PatientLmController::class, 'getOrdersDetail']);
+    Route::get('getOrdersCheck', [PatientLmController::class, 'getOrdersCheck']);
+    Route::get('patientByLm/{id}', [PatientLmController::class, 'patientByLm']);
+    Route::get('getCountPreInvoices/{id}', [PreInvoiceController::class, 'getCountPreInvoices']);
+    Route::get('getInvoiceActive', [PreInvoiceController::class,  'getInvoiceActive']);
 
     //Only for method update&patch
     Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);
