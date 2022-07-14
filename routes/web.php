@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\PatientAddressController;
 use App\Http\Controllers\Api\PatientLmDetailController;
 use App\Http\Controllers\Api\PatientDiagnosticController;
 use App\Http\Controllers\Api\PreInvoiceController;
+use App\Http\Controllers\Api\PresentationController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('patient_lm_details', PatientLmDetailController::class);
     Route::apiResource('patient_diagnostics', PatientDiagnosticController::class);
     Route::apiResource('pre_invoices', PreInvoiceController::class);
+    Route::apiResource('presentations', PresentationController::class);
 
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
