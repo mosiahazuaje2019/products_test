@@ -15,7 +15,7 @@
                 <th colspan="8">Asispharma SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
-                <th colspan="8">Factura #</th>
+                <th colspan="8">Factura # {{ $patient->order->invoice_number }}</th>
             </tr>
         </thead>
         <tbody>
