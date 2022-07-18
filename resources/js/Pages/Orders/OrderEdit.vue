@@ -19,7 +19,7 @@
                     :filter="false"
                     filterPlaceholder="Seleccione telefono"
                     :showClear="true"
-                />                
+                />
             </div>
         </div>
         <div class="field col">
@@ -35,7 +35,7 @@
                 :editable="true"
                 @blur="editDiagnostic($event)"
                 @change="setDiagnostic"
-            />                
+            />
         </div>
         <div class="field col">
             <label class="font-bold text-teal-500">Seleccione una dirección <span class="pi pi-plus-circle justify-center cursor-pointer text-lime-600" label="Nuevo" @click="viewCreateAddress"  /></label>
@@ -59,12 +59,20 @@
             </div>
             <div class="field col">
                 <label>Autorizado por:</label>
-                <InputText v-model="form.authorized_by" class="inputfield w-full" />            
+                <InputText v-model="form.authorized_by" class="inputfield w-full" />
             </div>
         </div>
         <div class="field col">
             <label>Observaciones</label>
             <InputText v-model="form.observation" class="inputfield w-full" />
+        </div>
+        <div class="field-checkbox">
+            <Checkbox id="copago" name="copago" value="0" v-model="copago_check" :binary="true" />
+            <label>Indique si tiene copago</label>
+        </div>
+        <div class="field col" v-if="copago_check === true">
+            <h5>Seleccione el Copago  {{ form.copago }} %</h5>
+            <Slider v-model="form.copago" :min="0" :max="100" />
         </div>
         <div class="field">
             <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submitLm($props.editId)" />
@@ -83,7 +91,7 @@
         <Dialog :header="'Nuevo diagnóstico'" :style="{width: '25vw'}"
                 v-model:visible="displayCreateDiagnostic" :maximizable="false" >
             <CreateDiagnostic :patient_id="$props.patient_id" />
-        </Dialog>        
+        </Dialog>
 
     </div>
 </template>
@@ -117,7 +125,8 @@ export default {
                 address_id: null,
                 lm_code: null,
                 authorized_by: null,
-                observation: null
+                observation: null,
+                copago:   null
             },
             phones: [],
             diagnostics: [],
@@ -127,7 +136,8 @@ export default {
             displayCreateAddress: null,
             diagnostic_idold: null,
             addreses: null,
-            error_lm_id: null
+            error_lm_id: null,
+            copago_check: false
         }
     },
     props: {
@@ -173,7 +183,7 @@ export default {
             await axios.get(`api/address_patient/${id}/${category}`).then((res) =>{
                 this.addreses = res.data;
             })
-        },        
+        },
         viewCreateAddress(){
             this.displayCreateAddress = true;
         },
@@ -187,7 +197,7 @@ export default {
         },
         async submitLm(order) {
             console.log(order);
-        }                    
+        }
     },
     mounted () {
         this.edit_id = this.$props.editId

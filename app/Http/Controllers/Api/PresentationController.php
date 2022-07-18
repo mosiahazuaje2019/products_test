@@ -9,6 +9,7 @@ use App\Models\Presentation;
 use App\Http\Resources\Presentation as PresentationResource;
 use App\Http\Resources\PresentationCollection;
 use App\Http\Requests\Presentation\Presentation as PresentationRequest;
+use Illuminate\Http\JsonResponse;
 
 class PresentationController extends Controller
 {
@@ -21,13 +22,13 @@ class PresentationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return response()->json(
             new PresentationCollection(
-                $this->presentation->orderBy('id', 'desc')->get()
+                $this->presentation->orderBy('name', 'asc')->get()
             )
         );
     }
@@ -35,12 +36,13 @@ class PresentationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PresentationRequest $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(PresentationRequest $request): JsonResponse
     {
-        //
+        $presentation = $this->presentation->create($request->all());
+        return response()->json(new PresentationResource($presentation));
     }
 
     /**

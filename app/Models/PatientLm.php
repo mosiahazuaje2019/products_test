@@ -18,7 +18,8 @@ class PatientLm extends Model
         'authorized_by',
         'observation',
         'phone_id',
-        'address_id'
+        'address_id',
+        'discount_percent'
     ];
 
     public function patient(){

@@ -66,10 +66,18 @@ class OrderExport extends DefaultValueBinder implements  FromView, ShouldAutoSiz
         $sheet->getStyle('C')->applyFromArray($styleAlign);
     }
 
+    public function __construct(int $invoice){
+        $this->invoice = $invoice;
+    }
+
     public function view(): View
     {
+        $query = PatientLmDetail::with(['product', 'patient'])->whereHas('order', function($query){
+            return $query->where('invoice_number',$this->invoice);
+        })->get()->groupBy('order.id');
+
         return view('patients.orders', [
-            'orders' => PatientLmDetail::with(['product', 'order', 'patient'])->get()->groupBy('order.id')
+            'orders' => $query
         ]);
     }
 }

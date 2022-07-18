@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
     Route::get('export_patients', [PatientController::class, 'export']);
-    Route::get('export_orders', [PatientLmController::class, 'export']);
+    Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
     Route::get('findOrders/{id}', [PatientLmController::class, 'findOrders']);
     Route::get('address_patient/{id}/{category}', [PatientAddressController::class, 'getAddress']);
     Route::get('diagnostic_patient/{id}', [PatientDiagnosticController::class, 'getDiagnostics']);

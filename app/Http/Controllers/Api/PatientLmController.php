@@ -118,8 +118,8 @@ class PatientLmController extends Controller
         //
     }
 
-    public function export() {
-        return Excel::download(new OrderExport, 'orders.xlsx');
+    public function export($id) {
+        return Excel::download(new OrderExport($id), 'orders.xlsx');
     }
 
     //Metodo para encontrar ordenes de pacientes o pacientes

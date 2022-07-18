@@ -73,19 +73,20 @@ class PatientLmDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param PatientLmDetail $patient_lm_detail
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(PatientLmDetail $patient_lm_detail): JsonResponse
     {
-        //
+        $patient_lm_detail->delete();
+        return response()->json(null, 204);
     }
 
     public function showlmdetail($id) {
         $getDetail = PatientLmDetail::where([
             'order_id' => $id
         ])->get();
-        
+
         return response()->json(
             new PatientLmDetailCollection($getDetail)
         );

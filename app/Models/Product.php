@@ -12,9 +12,10 @@ class Product extends Model
         'name',
         'presentation',
         'price',
+        'presentation_id'
     ];
 
-    public function presentations() {
-        return $this->hasMany(Presentation::class);
+    public function presentation() {
+        return $this->belongsTo(Presentation::class);
     }
 }

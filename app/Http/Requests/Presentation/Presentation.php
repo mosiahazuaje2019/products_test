@@ -13,7 +13,7 @@ class Presentation extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class Presentation extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Debe ingresar nombre de la presentacion'
         ];
     }
 }

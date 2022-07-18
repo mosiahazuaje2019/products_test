@@ -86,7 +86,10 @@ class ProductController extends Controller
     }
 
     public function update_price(ProductUpdateRequest $request, $id){
-        Product::where('id', $id)->update(['price' => $request->price]);
+        Product::where('id', $id)->update([
+            'price' => $request->price,
+            'name'  => $request->name
+        ]);
         return response()->json("Se actualizo correctamente");
     }
 }

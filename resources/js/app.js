@@ -29,6 +29,7 @@ import Calendar from "primevue/calendar";
 import RadioButton from 'primevue/radiobutton';
 import InputMask from 'primevue/inputmask';
 import Checkbox from 'primevue/checkbox';
+import Slider from "primevue/slider";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Asispharma';
 const emitter = mitt();
@@ -54,6 +55,7 @@ createInertiaApp({
             .component('RadioButton', RadioButton)
             .component('InputMask', InputMask)
             .component('Checkbox', Checkbox)
+            .component('Slider', Slider)
             .use(plugin)
             .use(PrimeVue)
             .use(ToastService)

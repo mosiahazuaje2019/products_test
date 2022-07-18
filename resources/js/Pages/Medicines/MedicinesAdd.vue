@@ -1,8 +1,5 @@
 <template>
     <div class="card">
-        <div class="field">
-            <span class="pi pi-plus-circle float-right cursor-pointer text-lime-600" label="Continuar" @click="add" />
-        </div>
         <div class="formgrid grid">
             <div class="field col">
                 <label class="font-bold text-teal-500">Seleccione Medicamento<span class="pi pi-plus-circle justify-center cursor-pointer text-lime-600" @click="viewCreateProduct" label="Nuevo"  /></label>
@@ -20,6 +17,10 @@
                 <label class="font-bold text-teal-500">Cantidad</label>
                 <InputNumber v-model="formprod.prescription" class="w-full" placeholder="Ingrese una cantidad" :minFractionDigits="0" />
             </div>
+            <div class="field col">
+                <label class="font-bold text-teal-500">Acciones</label>
+                <PrimeButton icon="pi pi-plus" label="Guardar" class="w-full" @click="add" />
+            </div>
 
         </div>
 
@@ -27,8 +28,11 @@
         <div>
             <DataTable :filters="filter" :value="details" dataKey="id" responsiveLayout="scroll" editMode="row"
                 v-model:editingRows="editingRows" @row-edit-save="onRowEditSave" :paginate="true" :rows="20" class="editable-cells-table">
-
-                <Column field="products.full_name" header="Medicamento"></Column>
+                <Column field="products.name" header="Medicamento">
+                    <template #editor="{data}">
+                        <InputText v-model="data.products.name" autofocus />
+                    </template>
+                </Column>
                 <Column field="prescription" header="Cantidad"></Column>
                 <Column field="products.price" header="Precio" dataType="numeric">
                     <template #editor="{data}">
@@ -42,7 +46,12 @@
                     </template>
                 </Column>
                 <Column :rowEditor="true" style="width:10%; min-width:8rem" bodyStyle="text-align:center"></Column>
-
+                <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
+                        headerStyle="width: 14rem; text-align: center">>
+                    <template #body="slotProps">
+                        <PrimeButton class="-right-2.5 del-btn" @click="destroyItem(slotProps.data.id)" icon="pi pi-trash" title="borrar" />
+                    </template>
+                </Column>
             </DataTable>
         </div>
         <Dialog :header="'Nuevo medicamento'" :style="{width: '25vw'}"
@@ -55,6 +64,8 @@
 <script>
 
 import ProductForm from "@/Components/Products/ProductForm";
+import Swal from "sweetalert2";
+import axios from "axios";
 
     export default {
         name: "MedicineAdd",
@@ -83,10 +94,9 @@ import ProductForm from "@/Components/Products/ProductForm";
         },
         methods: {
             onRowEditSave(event) {
-                const price = event.data.products.price;
-
                 const res = axios.patch(`api/update_price/${event.data.products.id}`, {
-                    price: event.data.products.price
+                    price: event.data.products.price,
+                    name: event.data.products.name
                 }).then
                 return this.emitter.emit('price_update_reload')
             },
@@ -127,6 +137,11 @@ import ProductForm from "@/Components/Products/ProductForm";
             },
             viewCreateProduct() {
                 this.displayCreateProduct = true;
+            },
+            async destroyItem(id) {
+                axios.delete(`/api/patient_lm_details/${id}`).then(() => {
+                    return this.emitter.emit('patient_lm_destroy_reload')
+                })
             }
         },
         mounted(){
@@ -141,6 +156,20 @@ import ProductForm from "@/Components/Products/ProductForm";
                 this.$toast.add({
                     severity:'success', summary: 'SUCCESS!',
                     detail: `Medicamento creado con exito!`, life:3000,
+                })
+            })
+            this.emitter.on('patient_lm_detail_reload', () => {
+                this.getDetailLms(this.formprod.order_id);
+                this.$toast.add({
+                    severity:'success', summary: 'SUCCESS!',
+                    detail: `Item agregado exitosamente`, life:3000,
+                })
+            })
+            this.emitter.on('patient_lm_destroy_reload', () => {
+                this.getDetailLms(this.formprod.order_id);
+                this.$toast.add({
+                    severity:'success', summary: 'SUCCESS!',
+                    detail: `Item eliminado`, life:3000,
                 })
             })
         }

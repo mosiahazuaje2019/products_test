@@ -269,19 +269,19 @@ export default {
         this.getPhones(this.patient.id, 'phone');
         this.getDiagnostics(this.patient.id);
 
-        this.emitter.on('patient_lm_detail_reload', () => {
-            this.$toast.add({
-                severity:'success', summary: 'SUCCESS!',
-                detail: `Medicamento cargado a la orden`, life:3000,
-            })
-        });
-
         this.emitter.on('createphone_reload', () => {
             this.displayCreatePhone = false;
             this.getPhones(this.patient.id, 'phone');
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
                 detail: `Teléfono creado`, life: 3000,
+            })
+        });
+
+        this.emitter.on('patient_lm_detail_reload', () => {
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Medicamento cargado a la orden`, life:3000,
             })
         });
 
