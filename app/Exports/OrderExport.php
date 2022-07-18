@@ -75,7 +75,6 @@ class OrderExport extends DefaultValueBinder implements  FromView, ShouldAutoSiz
         $query = PatientLmDetail::with(['product', 'patient'])->whereHas('order', function($query){
             return $query->where('invoice_number',$this->invoice);
         })->get()->groupBy('order.id');
-
         return view('patients.orders', [
             'orders' => $query
         ]);

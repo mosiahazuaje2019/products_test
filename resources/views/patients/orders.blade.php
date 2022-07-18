@@ -15,7 +15,7 @@
                 <th colspan="8">Asispharma SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
-                <th colspan="8">Factura # {{ $orders->order->invoice_number }}</th>
+                <th colspan="8">Factura # </th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                     @endif
                         <td>{{ $patient->product->name }}</td>
                         <td>{{ $patient->prescription }}</td>
-                        <td>{{ $patient->product->presentation }}</td>
+                        <td>{{ $patient->product->presentation_id }}</td>
                         <td data-format="#,##0_-">{{ $patient->product->price,0 }}</td>
                         <td data-format="#,##0_-">{{ $patient->product->price*$patient->prescription,0 }}</td>
                     </tr>
