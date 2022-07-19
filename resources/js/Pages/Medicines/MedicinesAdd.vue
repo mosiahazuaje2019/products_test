@@ -118,6 +118,7 @@ import axios from "axios";
                     const res = await axios.post('api/patient_lm_details', this.formprod)
                     this.cleanFormMed();
                     this.getDetailLms(this.formprod.order_id);
+                    this.save_action = true
                     return this.emitter.emit('patient_lm_detail_reload')
                 }
                 catch (e) {
