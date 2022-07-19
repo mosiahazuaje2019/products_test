@@ -46,14 +46,15 @@
                 </Column>
                 <Column :rowEditor="true" style="width:10%; min-width:8rem" bodyStyle="text-align:center"></Column>
                 <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
-                        headerStyle="width: 14rem; text-align: center">>
+                        headerStyle="width: 14rem; text-align: center">
                     <template #body="slotProps">
+                        <PrimeButton class="del-btn" @click="editProduct(slotProps.data.products.id)" icon="pi pi-pencil" title="editar medicamento" />
                         <PrimeButton class="-right-2.5 del-btn" @click="destroyItem(slotProps.data.id)" icon="pi pi-trash" title="borrar" />
                     </template>
                 </Column>
             </DataTable>
         </div>
-        <Dialog :header="'Nuevo medicamento'" :style="{width: '25vw'}"
+        <Dialog :header="editId === null ? 'Crear Producto' : 'Editar Producto'" :style="{width: '25vw'}"
                 v-model:visible="displayCreateProduct" :maximizable="false" >
             <ProductForm :editId="editId" />
         </Dialog>
@@ -140,6 +141,10 @@ import axios from "axios";
                 return value.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:0});
             },
             viewCreateProduct() {
+                this.displayCreateProduct = true;
+            },
+            editProduct(id) {
+                this.editId = id
                 this.displayCreateProduct = true;
             },
             async destroyItem(id) {

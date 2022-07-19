@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <span v-if="animation_wait === true">Espere un momento por favor<ProgressSpinner  /></span>
+        <span v-if="animation_wait === true" class="justify-center">Espere un momento por favor<ProgressSpinner  /></span>
         <div class="formgrid grid">
             <div class="field col">
                 <label class="font-bold">Paciente - <span>{{patient.personal_id}} </span></label>
