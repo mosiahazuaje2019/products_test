@@ -1,5 +1,6 @@
 <template>
     <div class="card">
+        <span v-if="animation_wait === true">Espere un momento por favor<ProgressSpinner  /></span>
         <div class="formgrid grid">
             <div class="field col">
                 <label class="font-bold">Paciente - <span>{{patient.personal_id}} </span></label>
@@ -137,7 +138,8 @@ export default {
             diagnostic_idold: null,
             addreses: null,
             error_lm_id: null,
-            copago_check: false
+            copago_check: false,
+            animation_wait:false
         }
     },
     props: {
@@ -146,6 +148,7 @@ export default {
     },
     methods: {
         async getOrder() {
+            this.animation_wait = true
             await axios.get(`api/patient_lms/${this.edit_id}`).then((res) => {
                 this.order = res.data
                 this.orders = res.data.orders
@@ -161,6 +164,7 @@ export default {
         async getPatient(id) {
             await axios.get(`api/patients/${id}`).then((res) => {
                 this.patient = res.data
+                this.animation_wait = false
             })
         },
         async getPhones(id, category) {

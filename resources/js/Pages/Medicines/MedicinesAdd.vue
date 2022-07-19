@@ -24,7 +24,7 @@
         </div>
 
         <div>
-            <span class="justify-center">Espere un momento por favor <ProgressSpinner v-if="animation === true" /></span>
+            <span class="justify-center" v-if="animation_wait === true">Espere un momento por favor <ProgressSpinner /></span>
             <DataTable :filters="filter" :value="details" dataKey="id" responsiveLayout="scroll" editMode="row"
                 v-model:editingRows="editingRows" @row-edit-save="onRowEditSave" :paginate="true" :rows="20" class="editable-cells-table">
                 <Column field="products.name" header="Medicamento">
@@ -86,7 +86,7 @@ import axios from "axios";
                 displayCreateProduct: false,
                 editId: null,
                 save_action:true,
-                animation: false
+                animation_wait: false
             }
         },
         props: {
@@ -112,7 +112,7 @@ import axios from "axios";
             },
             async add () {
                 this.save_action = false
-                this.animation = true
+                this.animation_wait = true
                 try {
                     const res = await axios.post('api/patient_lm_details', this.formprod)
                     this.cleanFormMed();
@@ -133,7 +133,7 @@ import axios from "axios";
             async getDetailLms(id) {
                 await axios.get(`api/showlmdetail/${id}`).then((res) => {
                     this.details = res.data;
-                    this.animation = false
+                    this.animation_wait = false
                 })
             },
             formatCurrency(value) {
@@ -143,7 +143,9 @@ import axios from "axios";
                 this.displayCreateProduct = true;
             },
             async destroyItem(id) {
+                this.animation_wait = true;
                 axios.delete(`/api/patient_lm_details/${id}`).then(() => {
+                    this.animation_wait = false
                     return this.emitter.emit('patient_lm_destroy_reload')
                 })
             }
