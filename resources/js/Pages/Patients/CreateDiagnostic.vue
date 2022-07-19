@@ -6,7 +6,7 @@
                 <small class="text-red-500">{{ error_description }}</small>
             </div>
         </div>
-        <div class="formgrid grid">
+        <div class="formgrid grid" v-if="save_action === true">
             <div class="field col">
                 <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="add()" />
             </div>
@@ -27,6 +27,7 @@
                     patient_id: null,
                 },
                 error_description: null,
+                save_action:true
             }
         },
         props: {
@@ -35,6 +36,7 @@
         methods: {
 
             async add () {
+                this.save_action = true
                 try {
                     const res = await axios.post('/api/patient_diagnostics', this.form)
                     return this.emitter.emit('creatediagnostic_reload');

@@ -13,7 +13,20 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <PrimeButton @click="createProduct" class="add-btn" icon="pi pi-plus" title="nuevo" />
-                        <DataTable :filters="filter" :value="products" dataKey="id" responsiveLayaout="scroll" :paginator="true" :rows="20">
+                        <DataTable v-model:filters="filters1" :value="products" dataKey="id"
+                                   responsiveLayaout="scroll"
+                                   :paginator="true"
+                                   :rows="20"
+                                   :loading="loading1"
+                                   :globalFilterFields="['global','name']">
+                            <template #header>
+                                <div class="flex justify-content-center">
+                                <span class="p-input-icon-left w-full">
+                                    <i class="pi pi-search" />
+                                    <InputText v-model="filters1['global'].value" placeholder="Buscar" class="w-full" />
+                                </span>
+                                </div>
+                            </template>
                             <Column field="name" header="Nombre"></Column>
                             <Column bodyStyle="text-align: center; overflow: visible" header="Acción"
                                     headerStyle="width: 14rem; text-align: center">
@@ -40,14 +53,21 @@ import { Head } from '@inertiajs/inertia-vue3';
 import ProductForm from "@/Components/Products/ProductForm";
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import {FilterMatchMode, FilterOperator} from "primevue/api";
 
 export default {
     data () {
       return {
           products: null,
           filter: null,
+          filters1: null,
+          filters2: {
+              'global': {value:null, matchMode: FilterMatchMode.CONTAINS},
+              'name': {value:null, matchMode: FilterMatchMode.STARTS_WITH}
+          },
           editId: null,
-          display: false
+          display: false,
+          loading1: true
       }
     },
     components: {
@@ -59,6 +79,7 @@ export default {
         async getProducts() {
             await axios.get('api/products').then((res) => {
                 this.products = res.data
+                this.loading1 = false;
             })
         },
         async createProduct () {
@@ -86,7 +107,16 @@ export default {
                     Swal.fire('No se a borrado...', '', 'info')
                 }
             })
+        },
+        initFilters1() {
+            this.filters1 = {
+                'global': {value:null, matchMode:FilterMatchMode.CONTAINS},
+                'name':{operator: FilterOperator.AND, constraints: [{value:null, matchMode: FilterMatchMode.STARTS_WITH}]}
+            }
         }
+    },
+    created() {
+        this.initFilters1()
     },
     mounted() {
         this.getProducts()

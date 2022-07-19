@@ -6,7 +6,7 @@
                 <small class="text-red-500">{{ error_name }}</small>
             </div>
         </div>
-        <div class="formgrid grid">
+        <div class="formgrid grid" v-if="save_action === true">
             <div class="field col">
                 <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="add()" />
             </div>
@@ -28,6 +28,7 @@
                     patient_id: null,
                 },
                 error_name: null,
+                save_action: true
             }
         },
         props: {
@@ -36,6 +37,7 @@
         methods: {
 
             async add () {
+                this.save_action = false
                 try {
                     const res = await axios.post('/api/address', this.form)
                     return this.emitter.emit('createphone_reload');

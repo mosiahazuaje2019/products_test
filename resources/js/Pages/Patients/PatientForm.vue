@@ -28,7 +28,7 @@
                 <InputNumber v-model="form.age" class="w-full" />
                 <small class="text-red-500">{{ error_age }}</small>
             </div>
-            <div class="field col mt-4">
+            <div class="field col mt-4" v-if="next_view === true">
                 <PrimeButton icon="pi pi-save" label="Siguiente" class="sm:-bottom-1.5" @click="submit" />
             </div>
         </div>
@@ -55,6 +55,7 @@ export default {
             error_personal_id: null,
             error_age: null,
             error_city_id: null,
+            next_view: true
         }
     },
     props: {
@@ -71,6 +72,7 @@ export default {
             Object.keys(this.form).map((val, index) => this.form[index] = null)
         },
         async submit () {
+            this.next_view = false
             if (!this.$props.editId) {
                 try {
                     const res = await axios.post('/api/patients', this.form)

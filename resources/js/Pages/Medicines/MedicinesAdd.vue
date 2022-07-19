@@ -17,15 +17,14 @@
                 <label class="font-bold text-teal-500">Cantidad</label>
                 <InputNumber v-model="formprod.prescription" class="w-full" placeholder="Ingrese una cantidad" :minFractionDigits="0" />
             </div>
-            <div class="field col">
+            <div class="field col" v-if="save_action === true">
                 <label class="font-bold text-teal-500">Acciones</label>
                 <PrimeButton icon="pi pi-plus" label="Guardar" class="w-full" @click="add" />
             </div>
-
         </div>
 
-
         <div>
+            <span class="justify-center">Espere un momento por favor <ProgressSpinner v-if="animation === true" /></span>
             <DataTable :filters="filter" :value="details" dataKey="id" responsiveLayout="scroll" editMode="row"
                 v-model:editingRows="editingRows" @row-edit-save="onRowEditSave" :paginate="true" :rows="20" class="editable-cells-table">
                 <Column field="products.name" header="Medicamento">
@@ -85,7 +84,9 @@ import axios from "axios";
                     prescription: null,
                 },
                 displayCreateProduct: false,
-                editId: null
+                editId: null,
+                save_action:true,
+                animation: false
             }
         },
         props: {
@@ -110,6 +111,8 @@ import axios from "axios";
                 })
             },
             async add () {
+                this.save_action = false
+                this.animation = true
                 try {
                     const res = await axios.post('api/patient_lm_details', this.formprod)
                     this.cleanFormMed();
@@ -130,6 +133,7 @@ import axios from "axios";
             async getDetailLms(id) {
                 await axios.get(`api/showlmdetail/${id}`).then((res) => {
                     this.details = res.data;
+                    this.animation = false
                 })
             },
             formatCurrency(value) {

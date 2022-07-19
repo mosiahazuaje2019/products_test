@@ -171,6 +171,7 @@ export default {
             })
         },
         async submit () {
+            this.activeButton = false;
             this.form.patient_id = this.$props.createLm.id;
             if(!this.$props.editId) {
                 try {
@@ -178,7 +179,6 @@ export default {
                     this.saveLm = true
                     this.order_id = res.data.id;
                     this.display = true;
-                    this.activeButton = false;
                     this.displayLms = true;
 
                     return this.emitter.emit('patientLm_reload')
