@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\PatientLmDetailController;
 use App\Http\Controllers\Api\PatientDiagnosticController;
 use App\Http\Controllers\Api\PreInvoiceController;
 use App\Http\Controllers\Api\PresentationController;
+use App\Http\Controllers\Api\InvoiceController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Route::group(['auth', 'verified'], function () {
     Route::inertia('/patientpage', 'PatientPage')->name('patientpage');
     Route::inertia('/orderpage', 'Orders/OrderPage')->name('orderpage');
     Route::inertia('/reportspage', 'Reports/ReportPage')->name('reportspage');
+    Route::inertia('/invoices', 'Invoices/ListInvoice')->name('invoices');
 });
 
 //Api Rest Routes
@@ -61,6 +63,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('patient_diagnostics', PatientDiagnosticController::class);
     Route::apiResource('pre_invoices', PreInvoiceController::class);
     Route::apiResource('presentations', PresentationController::class);
+    Route::apiResource('invoices', InvoiceController::class);
 
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
@@ -80,6 +83,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::patch('update_diagnostic/{id}', [PatientDiagnosticController::class, 'update_diagnostic']);
     Route::patch('update_price/{id}', [ProductController::class, 'update_price']);
     Route::patch('update_lmcode/{id}', [PatientLmController::class, 'update_lmcode']);
+    Route::patch('update_preinvoice', [PreInvoiceController::class, 'update_preinvoice']);
 });
 
 require __DIR__.'/auth.php';

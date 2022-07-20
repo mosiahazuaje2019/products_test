@@ -136,6 +136,7 @@ export default {
                     axios.post('api/pre_invoices', formPre)
                     this.updateStatus(this.order[0].lm_code)
                     this.checkInvoice()
+                    this.searchOrders()
                     return this.emitter.emit('lms_reload')
                 }else {
                     Swal.fire({
@@ -148,12 +149,19 @@ export default {
     },
     mounted(){
         this.emitter.on('lms_reload', () => {
-            this.searchOrders();
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
                 detail: `Lm anexado a la factura`, life:3000,
             })
         });
+        this.emitter.on('pre_invoice_reload', () => {
+            this.$toast.add({
+                severity: 'success', summary: 'SUCCESS!',
+                detail: 'Se completo proceso de factura', life: 3000,
+            })
+            this.displayPreInvoice = false;
+            this.checkInvoice();
+        })
     }
 }
 </script>

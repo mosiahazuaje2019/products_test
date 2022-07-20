@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
+use App\Models\PatientLm;
 use App\Models\PreInvoice;
 
 use App\Http\Requests\PreInvoice\PreInvoice as PreInvoiceRequest;
 use App\Http\Resources\PreInvoice as PreInvoiceResource;
 use App\Http\Resources\PreInvoiceCollection;
+use http\Env\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class PreInvoiceController extends Controller
 {
@@ -55,5 +59,20 @@ class PreInvoiceController extends Controller
         return response()->json(
             new PreInvoiceCollection($pre_invoice)
         );
+    }
+
+    public function update_preinvoice(PreInvoiceRequest $request) {
+        $update = DB::table('pre_invoices')
+            ->join('patient_lms','patient_lms.id','=','pre_invoices.patient_lms_id')
+            ->where('pre_invoices.status','proccess')
+            ->update(['patient_lms.invoice_number' => $request->invoice_number,
+                'patient_lms.status' => 'completed',
+                'pre_invoices.status' => 'completed']);
+
+        $invoice = new Invoice();
+        $invoice->invoice_number = $request->invoice_number;
+        $invoice->save();
+
+        return response()->json($update);
     }
 }

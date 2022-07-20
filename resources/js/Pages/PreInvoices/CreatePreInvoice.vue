@@ -31,7 +31,8 @@ export default {
             })
         },
         async complete_invoice() {
-            await axios.patch()
+            await axios.patch(`api/update_preinvoice`, this.form);
+            return this.emitter.emit('pre_invoice_reload');
         }
     },
     mounted() {

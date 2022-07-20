@@ -27,7 +27,7 @@
                                 <BreezeNavLink :href="route('reportspage')" :active="route().current('reportspage')">
                                     Por facturar
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('reportspage')">
+                                <BreezeNavLink :href="route('invoices')" :active="route().current('invoices')">
                                     Facturados
                                 </BreezeNavLink>
                             </div>
