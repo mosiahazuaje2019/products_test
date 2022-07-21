@@ -19,7 +19,8 @@ class PatientLm extends Model
         'observation',
         'phone_id',
         'address_id',
-        'discount_percent'
+        'discount_percent',
+        'invoice_number'
     ];
 
     public function patient(){
