@@ -32,7 +32,13 @@
                     @endif
                         <td>{{ $patient->product->name }}</td>
                         <td>{{ $patient->prescription }}</td>
-                        <td>{{ $patient->product->presentation_id }}</td>
+                        <td>
+                            @if(empty($patient->product->presentation->name ))
+                                {{ $patient->product->presentation_id }}
+                            @else
+                                {{ $patient->product->presentation->name }}
+                            @endif
+                        </td>
                         <td data-format="#,##0_-">{{ $patient->product->price,0 }}</td>
                         <td data-format="#,##0_-">{{ $patient->product->price*$patient->prescription,0 }}</td>
                     </tr>
