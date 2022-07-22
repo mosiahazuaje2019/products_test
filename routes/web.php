@@ -67,8 +67,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
 
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);
-    Route::get('export_patients', [PatientController::class, 'export']);
-    Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
     Route::get('findOrders/{id}', [PatientLmController::class, 'findOrders']);
     Route::get('address_patient/{id}/{category}', [PatientAddressController::class, 'getAddress']);
     Route::get('diagnostic_patient/{id}', [PatientDiagnosticController::class, 'getDiagnostics']);
@@ -77,6 +75,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::get('patientByLm/{id}', [PatientLmController::class, 'patientByLm']);
     Route::get('getCountPreInvoices/{id}', [PreInvoiceController::class, 'getCountPreInvoices']);
     Route::get('getInvoiceActive', [PreInvoiceController::class,  'getInvoiceActive']);
+
+    //Exports Excel
+    Route::get('export_patients', [PatientController::class, 'export']);
+    Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
+    Route::get('export_values', [PatientLmDetailController::class, 'export']);
 
     //Only for method update&patch
     Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);

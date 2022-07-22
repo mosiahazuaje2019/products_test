@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\ValueExport;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PatientLmDetail as PatientLmDetailResource;
 use App\Http\Resources\PatientLmDetailCollection;
@@ -9,6 +10,7 @@ use App\Http\Requests\PatientLmDetails\PatientLmDetail as PatientLmDetailRequest
 use App\Models\PatientLmDetail;
 
 use Illuminate\Http\JsonResponse;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PatientLmDetailController extends Controller
 {
@@ -90,5 +92,9 @@ class PatientLmDetailController extends Controller
         return response()->json(
             new PatientLmDetailCollection($getDetail)
         );
+    }
+
+    public function export() {
+        return Excel::download(new ValueExport, 'chargue_values.xlsx');
     }
 }

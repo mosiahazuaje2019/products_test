@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Exports\ValueExport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PatientLmDetail extends Model
 {
