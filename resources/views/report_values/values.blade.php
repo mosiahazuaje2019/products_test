@@ -16,14 +16,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    @foreach($patients as $key=>$patient)
-                            <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
-                            <td>{{ $patient->personal_id }}</td>
-                            <td>{{ $patient->lm_code }}</td>
-                            <td data-format="#,##0_-">{{ $patient->total }}</td>
-                    @endforeach
-                </tr>
+                @foreach($patients as $key=>$patient)
+                    <tr>
+                        <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                        <td>{{ $patient->personal_id }}</td>
+                        <td>{{ $patient->lm_code }}</td>
+                        <td data-format="#,##0_-">{{ $patient->total }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </body>
