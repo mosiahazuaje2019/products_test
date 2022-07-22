@@ -159,6 +159,7 @@ export default {
 
         this.emitter.on('order_reload', () => {
             this.getPatients()
+            this.displayLm = false
             this.$toast.add({
                 severity:'success', summary: 'SUCCESS!',
                 detail: `Orden completada se a cargado LM exitosamente!`, life:3000,

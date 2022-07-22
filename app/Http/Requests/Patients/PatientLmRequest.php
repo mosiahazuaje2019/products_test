@@ -24,7 +24,18 @@ class PatientLmRequest extends FormRequest
     public function rules()
     {
         return [
-            'diagnostic_id' => ['required']
+            'phone_id'      => ['required'],
+            'address_id'    => ['required'],
+            'diagnostic_id' => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'phone_id.required'      => 'Número de teléfono es obligatorio',
+            'address_id.required'    => 'Debe ingresar una dirección',
+            'diagnostic_id.required' => 'Debe ingresar un diagnóstico'
         ];
     }
 }

@@ -21,6 +21,7 @@
                     filterPlaceholder="Seleccione telefono"
                     :showClear="true"
                 />
+                <small class="text-red-500">{{ error_phone_id }}</small>
             </div>
         </div>
         <div class="field col">
@@ -37,6 +38,7 @@
                 @blur="editDiagnostic($event)"
                 @change="setDiagnostic"
             />
+            <small class="text-red-500">{{ error_diagnostic_id }}</small>
         </div>
 
         <div class="field col">
@@ -50,6 +52,7 @@
                 filterPlaceholder="Seleccione una direccion"
                 :showClear="true"
             />
+            <small class="text-red-500">{{ error_address_id }}</small>
         </div>
 
         <div class="field" v-if="activeButton === true">
@@ -62,11 +65,12 @@
             <div class="field col">
                 <label>Código autorización - LM | EC</label>
                 <InputText v-model="form.lm_id" class="inputfield w-full" />
-                <small class="text-red-500">{{ error_lm_id }}</small>
+                <small class="text-red-500">{{ error_lm_code }}</small>
             </div>
             <div class="field col">
                 <label>Autorizado por:</label>
                 <InputText v-model="form.authorized_by" class="inputfield w-full" />
+                <small class="text-red-500">{{ error_authorized_by }}</small>
             </div>
         </div>
         <div class="field col" v-if="displayLms === true">
@@ -134,7 +138,11 @@ export default {
                 address_id: null,
                 phone_id: null
             },
-            error_lm_id: null,
+            error_lm_code: null,
+            error_authorized_by: null,
+            error_phone_id: null,
+            error_address_id: null,
+            error_diagnostic_id: null,
             saveLm: false,
             activeButton: true,
             displayLms: false,
@@ -185,10 +193,14 @@ export default {
                 }
                 catch (e) {
                     if (e.response) {
+                        this.activeButton = true;
                         switch (e.response.status) {
                             case 422:
                                 let err = e.response.data.errors
-                                this.error_lm_id = err.lm_id ? err.lm_id[0] : null
+                                this.error_lm_code       = err.lm_code ? err.lm_code[0] : null
+                                this.error_phone_id      = err.phone_id ? err.phone_id[0]: null
+                                this.error_address_id    = err.address_id ? err.address_id[0]: null
+                                this.error_diagnostic_id = err.diagnostic_id ? err.diagnostic_id[0]: null
                         }
                     }
                     return null
@@ -203,7 +215,7 @@ export default {
                     switch (e.response.status) {
                         case 422:
                             let err = e.response.data.errors
-                            this.error_lm_id = err.lm_id ? err.lm_id[0]: null
+                            this.error_lm_code = err.lm_code ? err.lm_code[0]: null
                     }
                 }
             }
@@ -222,7 +234,8 @@ export default {
                     switch (e.response.status) {
                         case 422:
                             let err = e.response.data.errors
-                            this.error_lm_id = err.lm_code ? err.lm_code[0]: null
+                            this.error_lm_code = err.lm_code ? err.lm_code[0]: null
+                            this.error_authorized_by = err.authorized_by ? err.authorized_by[0]: null
                     }
                 }
             }

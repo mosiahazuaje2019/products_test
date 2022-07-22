@@ -81,6 +81,7 @@ export default {
                 }
                 catch (e) {
                     if (e.response) {
+                        this.next_view = true
                         switch (e.response.status) {
                             case 422:
                                 let err = e.response.data.errors

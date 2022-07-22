@@ -24,14 +24,16 @@ class PatientLmUpdate extends FormRequest
     public function rules()
     {
         return [
-            'lm_code' => 'required|unique:patient_lms,lm_code'
+            'lm_code'       => 'required|unique:patient_lms,lm_code',
+            'authorized_by' => 'required'
         ];
     }
 
     public function messages(){
         return [
-            'lm_code.required' => 'Debe ingresar un codigo LM',
-            'lm_code.unique'   => 'Este codigo LM|EC ya se encuentra registrado'
+            'lm_code.required'       => 'Debe ingresar un codigo LM',
+            'lm_code.unique'         => 'Este codigo LM|EC ya se encuentra registrado',
+            'authorized_by.required' => 'Debe ingresar quien autoriza la orden'
         ];
     }
 }

@@ -43,7 +43,7 @@ class PatientLmController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(PatientLmRequest $request)
@@ -74,7 +74,7 @@ class PatientLmController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return Response
      */
@@ -87,18 +87,19 @@ class PatientLmController extends Controller
     /**
      * Update order the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param PatientLmUpdate $request
+     * @param int $id
+     * @return JsonResponse
      */
-    public function update_order(PatientLmUpdate $request, $id)
+    public function update_order(PatientLmUpdate $request, int $id): JsonResponse
     {
         $patient_lm = PatientLm::where('id', $id)->update([
             'lm_code' => $request->lm_code,
             'authorized_by' => $request->authorized_by,
             'observation'   => $request->observation
         ]);
-        return response()->json("Se a guardado satisfactoriamente!");
+
+        return response()->json($patient_lm);
     }
 
     public function update_lmcode(PatientLmUpdateStatus $request, $id) {
