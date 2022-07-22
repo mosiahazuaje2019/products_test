@@ -30,6 +30,9 @@
                                 <BreezeNavLink :href="route('invoices')" :active="route().current('invoices')">
                                     Facturados
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('values')" :active="route().current('values')">
+                                    Cargue
+                                </BreezeNavLink>
                             </div>
                         </div>
 
