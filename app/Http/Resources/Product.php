@@ -17,11 +17,9 @@ class Product extends JsonResource
         return [
             'id'              => $this->id,
             'name'            => $this->name,
-            'size'            => $this->size,
-            'observation'     => $this->observation,
-            'count_inventory' => $this->count_inventory,
-            'date_boarding'   => $this->date_boarding,
-            'brand_id'        => Brand::make($this->brands)
+            'price'           => $this->price,
+            'presentation_id' => $this->presentation_id,
+            'full_name'       => $this->name
         ];
     }
 }

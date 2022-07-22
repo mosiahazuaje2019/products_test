@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->integer('count_inventory');
             $table->date('date_boarding');
             $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
