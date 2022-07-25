@@ -173,4 +173,9 @@ class PatientLmController extends Controller
             new PatientLmCollection($patient_lm)
         );
     }
+
+    public function getLmInfo($id) {
+        $patientLm = PatientLm::where('lm_code',$id)->first();
+        return $patientLm->lm_code;
+    }
 }

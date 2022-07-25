@@ -56,7 +56,7 @@
             <div class="field col">
                 <label>Código autorización - LM | EC</label>
                 <InputText v-model="form.lm_code" class="inputfield w-full" />
-                <small class="text-red-500">{{ error_lm_id }}</small>
+                <small class="text-red-500">{{ error_lm_code }}</small>
             </div>
             <div class="field col">
                 <label>Autorizado por:</label>
@@ -137,9 +137,10 @@ export default {
             displayCreateAddress: null,
             diagnostic_idold: null,
             addreses: null,
-            error_lm_id: null,
+            error_lm_code: null,
             copago_check: false,
-            animation_wait:false
+            animation_wait:false,
+            lm_info: null
         }
     },
     props: {
@@ -199,8 +200,30 @@ export default {
         async setDiagnostic(){
             this.diagnostic_idold = this.form.diagnostic_id;
         },
+        async validateLm(id) {
+            await axios.get(`api/getLmInfo/${id}`).then((res) => {
+                this.lm_info = res.data
+                if(this.lm_info === this.form.lm_code) {
+                    let findCode = this.form.lm_code.findIndex(this.lm_info)
+                    console.log(findCode)
+                }
+            })
+        },
         async submitLm(order) {
-            console.log(order);
+            const validation = this.validateLm(this.form.lm_code)
+            try {
+                await axios.put(`/api/patient_lms/${order}`, this.form)
+                return this.emitter.emit('patientLm_reload')
+            }
+            catch (e) {
+                if(e.response) {
+                    switch (e.response.status) {
+                        case 422:
+                            let err = e.response.data.errors
+                            this.error_lm_code = err.lm_code ? err.lm_code[0]: null
+                    }
+                }
+            }
         }
     },
     mounted () {

@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <Dialog :header="'Editando orden'" :style="{width: '50vw'}"
                     v-model:visible="displayOrderEdit" :maximizable="true" >
                 <OrderEdit :editId="editId" :patient_id="patientId" />
@@ -87,6 +87,15 @@ export default {
             this.patientId = patientId
             this.displayOrderEdit = true
         }
+    },
+    mounted() {
+        this.emitter.on('patientLm_reload', ()=> {
+            this.search()
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS',
+                detail: 'Se a actualizado la información de la orden correctamente', life:3000
+            })
+        })
     }
 }
 </script>
