@@ -29,7 +29,7 @@
                 <small class="text-red-500">{{ error_age }}</small>
             </div>
             <div class="field col mt-4" v-if="next_view === true">
-                <PrimeButton icon="pi pi-save" label="Siguiente" class="sm:-bottom-1.5" @click="submit" />
+                <PrimeButton icon="pi pi-save" :label="editId === null ? 'Siguiente':'Guardar'" class="sm:-bottom-1.5" @click="submit" />
             </div>
         </div>
     </div>
@@ -96,9 +96,9 @@ export default {
                 }
             }
             try {
-                const res = await axios.put(`/api/patients${this.$props.editId}`, this.form)
-                this.cleanForm()
-                return this.emitter.emit('patients_reload')
+                this.next_view = true
+                const res = await axios.put(`/api/patients/${this.$props.editId}`, this.form)
+                return this.emitter.emit('patient_update_reload')
             }
             catch (e) {
                 if (e.response) {

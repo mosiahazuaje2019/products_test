@@ -157,6 +157,15 @@ export default {
             })
         })
 
+        this.emitter.on('patient_update_reload', () => {
+            this.getPatients()
+            this.display = false
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS!',
+                detail: `Paciente editado exitosamente`, life:3000,
+            })
+        })
+
         this.emitter.on('order_reload', () => {
             this.getPatients()
             this.displayLm = false

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Patients\PatientUpdate;
 use App\Http\Resources\Patient as PatientResource;
 use App\Http\Resources\PatientCollection;
 use App\Models\Patient;
@@ -68,16 +69,21 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ProductRequest $request
-     * @param Product $product
+     * @param PatientRequest $request
+     * @param Patient $patient
      * @return JsonResponse
      */
-    public function update(ProductRequest $request, Product $product): JsonResponse
-    {
-        $product->update($request->all());
-        return response()->json(new ProductResource($product));
-    }
+//    public function update(ProductRequest $request, Product $product): JsonResponse
+//    {
+//        $product->update($request->all());
+//        return response()->json(new ProductResource($product));
+//    }
 
+    public function update(PatientUpdate $request, Patient $patient): JsonResponse
+    {
+        $patient->update($request->all());
+        return response()->json(new PatientResource($patient));
+    }
     /**
      * Remove the specified resource from storage.
      *
