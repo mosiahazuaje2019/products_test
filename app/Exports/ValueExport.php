@@ -9,11 +9,16 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class ValueExport implements FromView
 {
+    public function __construct(int $dates) {
+        $this->dates = $dates;
+    }
+
     /**
      * @return View
      */
     public function view():View
     {
+        dd($this->dates);
         $query = DB::select('select p.first_name, p.last_name, p.personal_id,  pl.lm_code,  SUM(p2.price * pld.prescription) as total, pl.id
 from patient_lm_details pld
 INNER JOIN patients p on p.id = pld.patient_id

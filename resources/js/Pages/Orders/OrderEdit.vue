@@ -75,6 +75,10 @@
             <h5>Seleccione el Copago  {{ form.copago }} %</h5>
             <Slider v-model="form.copago" :min="0" :max="100" />
         </div>
+        <div class="field col">
+            <label>Seleccione una formula</label>
+            <input type="file" @change="selectFile" class="w-full" />
+        </div>
         <div class="field">
             <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submitLm($props.editId)" />
         </div>
@@ -140,7 +144,8 @@ export default {
             error_lm_code: null,
             copago_check: false,
             animation_wait:false,
-            lm_info: null
+            lm_info: null,
+            pdfFile: null
         }
     },
     props: {
@@ -200,17 +205,8 @@ export default {
         async setDiagnostic(){
             this.diagnostic_idold = this.form.diagnostic_id;
         },
-        async validateLm(id) {
-            await axios.get(`api/getLmInfo/${id}`).then((res) => {
-                this.lm_info = res.data
-                if(this.lm_info === this.form.lm_code) {
-                    let findCode = this.form.lm_code.findIndex(this.lm_info)
-                    console.log(findCode)
-                }
-            })
-        },
+
         async submitLm(order) {
-            const validation = this.validateLm(this.form.lm_code)
             try {
                 await axios.put(`/api/patient_lms/${order}`, this.form)
                 return this.emitter.emit('patientLm_reload')
@@ -224,6 +220,10 @@ export default {
                     }
                 }
             }
+        },
+        selectFile(event) {
+            this.pdfFile = event.target.files[0];
+            console.log(this.pdfFile);
         }
     },
     mounted () {

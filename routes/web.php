@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     //Exports Excel
     Route::get('export_patients', [PatientController::class, 'export']);
     Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
-    Route::get('export_values', [PatientLmDetailController::class, 'export']);
+    Route::get('export_values/{date}', [PatientLmDetailController::class, 'export']);
 
     //Only for method update&patch
     Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);

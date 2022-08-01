@@ -10,7 +10,8 @@ use Illuminate\Http\Response;
 use App\Http\Resources\PatientLm as PatientLmResource;
 use App\Http\Resources\PatientLmCollection;
 use App\Http\Requests\Patients\PatientLmRequest;
-use App\Http\Requests\Patients\PatientLmUpdate;
+use App\Http\Requests\PatientLm\PatientLmUpdate;
+use App\Http\Requests\PatientLm\PatientLmOrder;
 use App\Http\Requests\Patients\PatientLmUpdateStatus;
 
 use App\Exports\OrderExport;
@@ -91,7 +92,7 @@ class PatientLmController extends Controller
      * @param int $id
      * @return JsonResponse
      */
-    public function update_order(PatientLmUpdate $request, int $id): JsonResponse
+    public function update_order(PatientLmOrder $request, int $id): JsonResponse
     {
         $patient_lm = PatientLm::where('id', $id)->update([
             'lm_code' => $request->lm_code,

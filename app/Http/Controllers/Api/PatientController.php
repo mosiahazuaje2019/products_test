@@ -12,6 +12,7 @@ use App\Exports\PatientExport;
 
 /* Extern Libraries */
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\JsonResponse;
 
@@ -31,7 +32,7 @@ class PatientController extends Controller
      */
     public function index(): JsonResponse
     {
-        //return response()->json(Patient::orderBy('id','desc')->with('lms')->get());
+        
         return response()->json(
             new PatientCollection(
                 $this->patient->orderBy(

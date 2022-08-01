@@ -1,3 +1,3 @@
 <template>
-    <img :src="'../../storage/images/logo.png'">
+    <img :src="'https://storage.googleapis.com/inst-bucket-asispharma/img-asispharma/logo.png'">
 </template>
