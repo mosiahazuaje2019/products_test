@@ -75,14 +75,12 @@
             <h5>Seleccione el Copago  {{ form.copago }} %</h5>
             <Slider v-model="form.copago" :min="0" :max="100" />
         </div>
-        <div class="field col">
-            <label>Seleccione una formula</label>
-            <input type="file" @change="selectFile" class="w-full" />
-        </div>
+        
+        <FileUploadFile :patient_id="$props.patient_id" />
+
         <div class="field">
             <PrimeButton icon="pi pi-save" label="Guardar" class="sm:-bottom-1.5" @click="submitLm($props.editId)" />
         </div>
-
 
         <Dialog :header="'Nuevo número de teléfono'" :style="{width: '25vw'}"
                 v-model:visible="displayCreatePhone" :maximizable="false" >
@@ -107,6 +105,7 @@ import CreatePhone from '../Patients/CreatePhone.vue'
 import CreateAddress from '../Patients/CreateAddress.vue'
 import CreateDiagnostic from '../Patients/CreateDiagnostic.vue'
 import MedicinesAdd from '../Medicines/MedicinesAdd.vue'
+import FileUploadFile from '../Uploads/FileUploadFile.vue'
 
 export default {
     name: "OrderEdit",
@@ -114,7 +113,8 @@ export default {
         CreatePhone,
         CreateAddress,
         CreateDiagnostic,
-        MedicinesAdd
+        MedicinesAdd,
+        FileUploadFile
     },
     data () {
         return {
@@ -221,10 +221,6 @@ export default {
                 }
             }
         },
-        selectFile(event) {
-            this.pdfFile = event.target.files[0];
-            console.log(this.pdfFile);
-        }
     },
     mounted () {
         this.edit_id = this.$props.editId

@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\PatientDiagnosticController;
 use App\Http\Controllers\Api\PreInvoiceController;
 use App\Http\Controllers\Api\PresentationController;
 use App\Http\Controllers\Api\InvoiceController;
+use App\Http\Controllers\Api\FileUploadController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -81,7 +82,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     //Exports Excel
     Route::get('export_patients', [PatientController::class, 'export']);
     Route::get('export_orders/{id}', [PatientLmController::class, 'export']);
-    Route::get('export_values/{date}', [PatientLmDetailController::class, 'export']);
+    Route::get('export_values/{dateini}/{dateend}', [PatientLmDetailController::class, 'export']);
 
     //Only for method update&patch
     Route::patch('update_order/{id}', [PatientLmController::class, 'update_order']);
@@ -89,6 +90,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::patch('update_price/{id}', [ProductController::class, 'update_price']);
     Route::patch('update_lmcode/{id}', [PatientLmController::class, 'update_lmcode']);
     Route::patch('update_preinvoice', [PreInvoiceController::class, 'update_preinvoice']);
+
+    //Uploads Methods
+    Route::get('upload_file', function() { return view('upload'); });
+    Route::post('store_file', [FileUploadController::class, 'fileStore']);
 });
 
 require __DIR__.'/auth.php';

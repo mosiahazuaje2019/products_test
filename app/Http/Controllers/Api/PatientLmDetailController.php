@@ -94,7 +94,7 @@ class PatientLmDetailController extends Controller
         );
     }
 
-    public function export($date) {
-        return Excel::download(new ValueExport($date), 'chargue_values.xlsx');
+    public function export($dateini, $dateend) {
+        return Excel::download(new ValueExport($dateini, $dateend), 'chargue_values.xlsx');
     }
 }

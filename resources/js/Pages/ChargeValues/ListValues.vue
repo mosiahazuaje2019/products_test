@@ -22,7 +22,7 @@
                         </div>
                     </div>                    
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <a :href="`/api/export_values/`"
+                        <a :href="`/api/export_values/${iniDate}/${endDate}}`"
                            class="-right-2.5 del-btn"
                            title="Exportar cargue"
                            target="_blank">
@@ -38,6 +38,7 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
+import axios from 'axios';
 
 export default {
     name: "ListValues",
@@ -49,15 +50,21 @@ export default {
         return {
             form: {
                 dates: null,
-            },            
+                orders: null
+            },
+            iniDate: null,
+            endDate: null,           
         }
     },
     methods: {
-        searchOrders() {
+        async searchOrders() {
             let selectedDate = this.form.dates;
-            let iniDate = new Date(selectedDate[0]).toLocaleDateString('en-CA');
-            let endDate = new Date(selectedDate[1]).toLocaleDateString('en-CA');
-                        
+            this.iniDate = new Date(selectedDate[0]).toLocaleDateString('en-CA');
+            this.endDate = new Date(selectedDate[1]).toLocaleDateString('en-CA');
+            
+/*             const res = await axios.get(`/api/export_values/${iniDate}/${endDate}`).then((res) => {
+                this.orders = res.data;
+            }) */
         }
     }
 }
