@@ -21,13 +21,13 @@
                             <PrimeButton label="Revisar factura" icon="pi pi-check" iconPos="right" class="sm:-bottom-1.5" />
                         </div>
                     </div>                    
-                    <div class="p-6 bg-white border-b border-gray-200 justify-center" v-if="iniDate !== null">
+                    <div class="p-6 bg-white border-b border-gray-200 grid grid-cols-12 justify-center" v-if="iniDate !== null">
                         <a :href="`/api/export_values/${iniDate}/${endDate}}`"
-                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-6 rounded"
                            title="Exportar cargue"
                            target="_blank">
-                            <i class="pi pi-print"></i>
-                            Cargue de valores correspondiente a las fechas: ({{iniDate}} / {{endDate}})
+                            <i class="pi pi-print grid grid-cols-12 justify-center text-8xl mb-4"></i>
+                            <p>Cargue de valores correspondiente a las fechas: ({{iniDate}} / {{endDate}})</p>
                         </a>
                     </div>
                 </div>
