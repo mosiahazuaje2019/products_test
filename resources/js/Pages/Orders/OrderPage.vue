@@ -95,7 +95,7 @@ export default {
                 severity:'success', summary: 'SUCCESS',
                 detail: 'Se a actualizado la información de la orden correctamente', life:3000
             })
-        })
+        })        
     }
 }
 </script>

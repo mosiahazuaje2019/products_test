@@ -10,6 +10,8 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title',
+        'patient_id',
+        'uri'
     ];
 }

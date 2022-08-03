@@ -9,13 +9,13 @@
     <table>
         <thead>
             <tr>
-                <th colspan="8">Relacion de pacientes Seguros Bolivar S.A</th>
+                <th colspan="8">RELACIÓN DE PACIENTES SEGUROS BOLIVAR S.A</th>
             </tr>
             <tr>
-                <th colspan="8">Asispharma SAS . NIT 900.644.246-3</th>
+                <th colspan="8">ASISPHARMA SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
-                <th colspan="8">Factura # ASI - {{ $invoice_number }}</th>
+                <th colspan="8">FACTURA # ASI - {{ $invoice_number }}</th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><strong>Valor total formula:</strong></td>
+                    <td><strong>VALOR TOTAL FORMULA:</strong></td>
                     <td></td>
                     <td data-format="$#,##0_-">
                     <strong> {{ array_reduce(

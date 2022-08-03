@@ -226,6 +226,13 @@ export default {
         this.edit_id = this.$props.editId
         this.getOrder();
         this.getProducts();
+        
+        this.emitter.on('photo_reload', ()=> {
+            this.$toast.add({
+                severity:'success', summary: 'SUCCESS',
+                detail: 'Se a actualizado la información de la orden correctamente', life:3000
+            })
+        })
     }
 }
 </script>

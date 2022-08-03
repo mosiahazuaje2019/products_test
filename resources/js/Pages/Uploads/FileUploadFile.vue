@@ -9,7 +9,7 @@
 
 <script>
 import axios from 'axios';
-
+import Swal from "sweetalert2";
     export default{
         name: "FileUploadFile",
         data() {
@@ -36,11 +36,14 @@ import axios from 'axios';
                 }
                 let formData = new FormData();
                 formData.append('file', this.file);
+                formData.append('patient_id', this.$props.patient_id);
                 axios.post('/api/store_file', formData, config).then(function (response){
                     currentObj.success = response.data.success;
                     currentObj.filename = "";
+                    console.log("Se a guardado correctamente el archivo");
+                    return this.emitter.emit('photo_reload')               
                 })
-                .catch(function (errror){
+                .catch(function (error){
                     currentObj.output = error;
                 })
             },
