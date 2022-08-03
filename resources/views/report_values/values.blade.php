@@ -5,14 +5,15 @@
     <body>
         <table>
             <thead>
+
                 <tr>
                     <th colspan="4">Cargue de valores</th>
                 </tr>
                 <tr>
-                    <th>Paciente</th>
-                    <th>Cédula</th>
-                    <th>Código Autorización</th>
-                    <th>Total</th>
+                    <th><strong>NOMBRE</strong></th>
+                    <th><strong>CEDULA</strong></th>
+                    <th><strong>AUTORIZACION</strong></th>
+                    <th><strong>VALOR TOTAL</strong></th>
                 </tr>
             </thead>
             <tbody>

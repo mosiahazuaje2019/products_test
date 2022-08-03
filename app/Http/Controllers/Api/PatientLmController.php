@@ -140,10 +140,10 @@ class PatientLmController extends Controller
     public function getOrdersLm($dateini, $dateend){
         $getLm = DB::table('patient_lms')
                           ->join('patient_lm_details', 'patient_lms.id','=','patient_lm_details.order_id')
-                          ->select('patient_lms.lm_code',DB::raw('count(*) as total_detail'))
+                          ->select('patient_lms.lm_code','patient_lms.date_ini',DB::raw('count(*) as total_detail'))
                           ->where('status','pending')
                           ->whereBetween('patient_lms.date_ini', [$dateini,$dateend])
-                          ->groupBy('patient_lms.lm_code')
+                          ->groupBy('patient_lms.lm_code','patient_lms.date_ini')
                           ->get();
 
         /*

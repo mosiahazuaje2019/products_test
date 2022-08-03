@@ -72,8 +72,8 @@
             <label>Indique si tiene copago</label>
         </div>
         <div class="field col" v-if="copago_check === true">
-            <h5>Seleccione el Copago  {{ form.copago }} %</h5>
-            <Slider v-model="form.copago" :min="0" :max="100" />
+            <h5>Seleccione el Copago  {{ form.discount_percent }} %</h5>
+            <Slider v-model="form.discount_percent" :min="0" :max="100" />
         </div>
         
         <FileUploadFile :patient_id="$props.patient_id" />
@@ -131,7 +131,7 @@ export default {
                 lm_code: null,
                 authorized_by: null,
                 observation: null,
-                copago:   null
+                discount_percent: null
             },
             phones: [],
             diagnostics: [],
