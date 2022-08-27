@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\PatientLm;
 use App\Models\PreInvoice;
 
+use App\Http\Requests\Invoice\Invoice as InvoiceRequest;
 use App\Http\Requests\PreInvoice\PreInvoice as PreInvoiceRequest;
 use App\Http\Resources\PreInvoice as PreInvoiceResource;
 use App\Http\Resources\PreInvoiceCollection;
@@ -61,18 +62,24 @@ class PreInvoiceController extends Controller
         );
     }
 
-    public function update_preinvoice(PreInvoiceRequest $request) {
-        $update = DB::table('pre_invoices')
-            ->join('patient_lms','patient_lms.id','=','pre_invoices.patient_lms_id')
-            ->where('pre_invoices.status','proccess')
-            ->update(['patient_lms.invoice_number' => $request->invoice_number,
-                'patient_lms.status' => 'completed',
-                'pre_invoices.status' => 'completed']);
-
+    public function update_preinvoice(InvoiceRequest $request) {
+        
         $invoice = new Invoice();
         $invoice->invoice_number = $request->invoice_number;
         $invoice->save();
 
-        return response()->json($update);
+        return $this->update_invoice($request->invoice_number);
+    }
+
+    public function update_invoice($id){
+
+        $update = DB::table('pre_invoices')
+            ->join('patient_lms','patient_lms.id','=','pre_invoices.patient_lms_id')
+            ->where('pre_invoices.status','proccess')
+            ->update(['patient_lms.invoice_number' => $id,
+                'patient_lms.status' => 'completed',
+                'pre_invoices.status' => 'completed']);
+
+        return response()->json("Actualizado");
     }
 }

@@ -15,9 +15,11 @@ class PatientAddress extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'       => $this->id,
-            'address'  => $this->name,
-            'category' => $this->category
+            'id'         => $this->id,
+            'address'    => $this->name,
+            'category'   => $this->category,
+            'patient_id' => $this->patient_id,
+            'patient'    => Patient::make($this->patient)
         ];
     }
 }

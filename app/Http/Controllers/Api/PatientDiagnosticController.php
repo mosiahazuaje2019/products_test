@@ -12,22 +12,22 @@ use Illuminate\Http\JsonResponse;
 
 class PatientDiagnosticController extends Controller
 {
-    protected $patient_diagnostics;
+    protected $patient_diagnostic;
 
-    public function __construct(PatientDiagnostic $patient_diagnostics) {
-        $this->patient_diagnostics = $patient_diagnostics;
+    public function __construct(PatientDiagnostic $patient_diagnostic) {
+        $this->patient_diagnostic = $patient_diagnostic;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return response()->json(
             new PatientDiagnosticCollection(
-                $this->patient_diagnostics->orderBy('id', 'desc')->get()
+                $this->patient_diagnostic->orderBy('patient_id', 'desc')->get()
             )
         );
     }
@@ -40,7 +40,7 @@ class PatientDiagnosticController extends Controller
      */
     public function store(PatientDiagnosticRequest $request)
     {
-        $diagnostics = $this->patient_diagnostics->create($request->all());
+        $diagnostics = $this->patient_diagnostic->create($request->all());
         return response()->json(new PatientDiagnosticResource($diagnostics), 200);
     }
 
@@ -48,13 +48,13 @@ class PatientDiagnosticController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param PatientDiagnostic $patient_diagnostics
+     * @param PatientDiagnostic $patient_diagnostic
      * @return JsonResponse
      */
-    public function show(PatientDiagnostic $patient_diagnostics): JsonResponse
+    public function show(PatientDiagnostic $patient_diagnostic): JsonResponse
     {
         return response()->json(
-            new PatientDiagnosticResource($patient_diagnostics)
+            new PatientDiagnosticResource($patient_diagnostic)
         );
     }
 
@@ -62,31 +62,20 @@ class PatientDiagnosticController extends Controller
         $patient = PatientDiagnostic::where('patient_id', $id)->get();
 
         return response()->json(
-            new PatientDiagnosticResource($patient)
+            $patient
         );
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  PatientDiagnostic $patient_diagnostic
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(PatientDiagnostic $patient_diagnostic): JsonResponse
     {
-        //
+        $patient_diagnostic->delete();
+        return response()->json(null, 204);
     }
 
     public function update_diagnostic(PatientDiagnosticUpdateRequest $request, $id){

@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'api'], function () {
     Route::apiResource('pre_invoices', PreInvoiceController::class);
     Route::apiResource('presentations', PresentationController::class);
     Route::apiResource('invoices', InvoiceController::class);
+    Route::apiResource('patient_addresses', PatientAddressController::class);
 
     //Only for method get
     Route::get('showlmdetail/{id}', [PatientLmDetailController::class, 'showlmdetail']);

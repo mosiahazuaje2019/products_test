@@ -48,34 +48,25 @@ class PresentationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Presentation $presentation
+     * @return JsonResponse
      */
-    public function show($id)
+    public function show(Presentation $presentation): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return response()->json(
+            new PresentationResource($presentation)
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Presentation $presentation
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Presentation $presentation): JsonResponse
     {
-        //
+        $presentation->delete();
+        return response()->json(null, 204);
     }
 }

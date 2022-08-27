@@ -24,6 +24,7 @@ class PreInvoice extends FormRequest
     public function rules()
     {
         return [
+            '',
         ];
     }
 

@@ -7,6 +7,7 @@
         </DataTable>
         <label>Ingrese  un número de factura</label>
         <InputText v-model="form.invoice_number" class="inputfield w-full" />
+        <span class="text-red-500">{{ error_invoice }}</span>
         <PrimeButton icon="pi pi-save" class="p-button-rounded p-button-success mt-5 float-right" label="Guardar" @click="complete_invoice()" />
     </div>
 </template>
@@ -21,7 +22,8 @@ export default {
             orders: [],
             form: {
                 invoice_number: null
-            }
+            },
+            error_invoice:null
         }
     },
     methods: {
@@ -31,8 +33,20 @@ export default {
             })
         },
         async complete_invoice() {
-            await axios.patch(`api/update_preinvoice`, this.form);
-            return this.emitter.emit('pre_invoice_reload');
+            try {
+                await axios.patch(`api/update_preinvoice`, this.form);
+                return this.emitter.emit('pre_invoice_reload');
+            }
+            catch (e) {
+                if(e.response) {
+                    switch (e.response.status) {
+                        case 422:
+                            let err = e.response.data.errors
+                            this.error_invoice = err.invoice_number ? err.invoice_number[0] : null
+                    }
+                }
+            }
+
         }
     },
     mounted() {

@@ -14,6 +14,11 @@ class PatientDiagnostic extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'          => $this->id,
+            'description' => $this->description,
+            'patient_id'  => $this->patient_id,
+            'patient'     => Patient::make($this->patient)
+        ];
     }
 }

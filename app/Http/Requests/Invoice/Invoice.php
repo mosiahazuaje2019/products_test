@@ -13,7 +13,7 @@ class Invoice extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class Invoice extends FormRequest
     public function rules()
     {
         return [
-            //
+            'invoice_number' => 'required|unique:invoices,invoice_number'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'invoice_number.required' => 'Debe ingresar un número de factura',
+            'invoice_number.unique'   => 'Factura ya existe'
         ];
     }
 }
