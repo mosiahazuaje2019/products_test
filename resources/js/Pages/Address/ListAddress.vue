@@ -10,7 +10,7 @@
                        :paginator="true"
                        :rows="10"
                        :loading="loading1"
-                       :globalFilterFields="['global','address']">
+                       :globalFilterFields="['global','address','patient.personal_id','patient.full_name']">
                 <template #header>
                     <div class="flex justify-content-center">
                         <span class="p-input-icon-left w-full">
@@ -56,7 +56,9 @@ export default {
             filters1: null,
             filters2: {
                 'global': {value:null, matchMode: FilterMatchMode.CONTAINS},
-                'address': {value:null, matchMode: FilterMatchMode.STARTS_WITH}
+                'address': {value:null, matchMode: FilterMatchMode.STARTS_WITH},
+                'patient.personal_id': {value:null, matchMode: FilterMatchMode.STARTS_WITH},
+                'patient.full_name': {value:null, matchMode: FilterMatchMode.STARTS_WITH},
             },
         }
     },
@@ -87,7 +89,9 @@ export default {
         initFilters1() {
             this.filters1 = {
                 'global': {value:null, matchMode:FilterMatchMode.CONTAINS},
-                'address':{operator: FilterOperator.AND, constraints: [{value:null, matchMode: FilterMatchMode.STARTS_WITH}]}
+                'address':{operator: FilterOperator.AND, constraints: [{value:null, matchMode: FilterMatchMode.STARTS_WITH}]},
+                'patient.personal_id':{operator: FilterOperator.AND, constraints: [{value:null, matchMode: FilterMatchMode.STARTS_WITH}]},
+                'patient.full_name':{operator: FilterOperator.AND, constraints: [{value:null, matchMode: FilterMatchMode.STARTS_WITH}]}
             }
         }
     },
