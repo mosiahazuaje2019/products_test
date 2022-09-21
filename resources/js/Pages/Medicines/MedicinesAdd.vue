@@ -142,6 +142,7 @@ import axios from "axios";
                 return value.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:0});
             },
             viewCreateProduct() {
+                this.editId = "";
                 this.displayCreateProduct = true;
             },
             editProduct(id) {
