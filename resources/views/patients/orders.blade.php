@@ -45,14 +45,14 @@
                     {{ $patientPerOrder[] = $patient->patient->patient_id }}
                 @endforeach
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><strong>VALOR TOTAL FORMULA:</strong></td>
-                    <td></td>
-                    <td data-format="$#,##0_-">
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;"><strong>VALOR TOTAL FORMULA:</strong></td>
+                    <td style="background-color:#F0F0F0;"></td>
+                    <td style="background-color:#F0F0F0;" data-format="$#,##0_-">
                     <strong> {{ array_reduce(
                         $order->toArray(),
                         function ($sum, $patient) {
@@ -63,6 +63,52 @@
                     </td>
                     <td></td>
                 </tr>
+
+                @if ($patient->order->discount_percent > 0)
+                    <tr>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"><strong>COPAGO {{$patient->order->discount_percent}} % POR PARTE DEL USUARIO:</strong></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td data-format="$#,##0_-" style="background-color:#F0F0F0; color:#FF0000;">
+                        <strong>{{ array_reduce(
+                            $order->toArray(),
+                            function ($sum, $patient) {
+                                $x = (float) ($sum += (float) ($patient['product']['price']*$patient['prescription']));
+                                $x = $patient['order']['discount_percent'] > 0 ? round($x*($patient['order']['discount_percent']/100),2) : $x;
+                                return $x;
+                            },
+                            0,
+                        ) }}</strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"><strong>VALOR TOTAL FORMULA:</strong></td>
+                        <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;" data-format="$#,##0_-">
+                        <strong> {{ array_reduce(
+                            $order->toArray(),
+                            function ($sum, $patient) {
+                                $x = (float) ($sum += (float) ($patient['product']['price']*$patient['prescription']));
+                                $x = $patient['order']['discount_percent'] > 0 ? round($x-($x*($patient['order']['discount_percent']/100)),2) : $x;
+                                return $x;
+                            },
+                            0,
+                        ) }}</strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                @endif
+                
                 <tr><td></td></tr>
             @endforeach
         </tbody>
@@ -78,7 +124,9 @@
                     return array_reduce(
                         $order->toArray(),
                         function ($sum, $patient) {
-                            return (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
+                            $x = (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
+                            $x = $patient['order']['discount_percent'] > 0 ? round($x-($x*($patient['order']['discount_percent']/100)),2) : $x;
+                            return $x;
                         },
                         0,
                     );
