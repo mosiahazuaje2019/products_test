@@ -78,7 +78,7 @@
                             $order->toArray(),
                             function ($sum, $patient) {
                                 $x = (float) ($sum += (float) ($patient['product']['price']*$patient['prescription']));
-                                $x = $patient['order']['discount_percent'] > 0 ? round($x*($patient['order']['discount_percent']/100),2) : $x;
+                                $x = $patient['order']['discount_percent'] > 0 ? round($x*($patient['order']['discount_percent']/100)) : $x;
                                 return $x;
                             },
                             0,
@@ -108,7 +108,7 @@
                         <td></td>
                     </tr>
                 @endif
-                
+
                 <tr><td></td></tr>
             @endforeach
         </tbody>
