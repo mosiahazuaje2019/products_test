@@ -119,7 +119,7 @@
             <td></td>
             <td><strong>VALOR TOTAL FACTURA:</strong></td>
             <td data-format="$#,##0_-"><strong>
-            {{ 
+                {{ 
                     $orders->map(function($order) {
                         return array_reduce(
                             $order->toArray(),
@@ -133,7 +133,7 @@
                     })->reduce(function($a, $b){
                             return $a+$b;
                         })
-                }}
+                }}
                 </strong>
             </td>
 
