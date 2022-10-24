@@ -126,7 +126,7 @@
                             function ($sum, $patient) {
                                 $total_invoice = (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
                                 //$general_invoice = $patient['order']['discount_percent'] > 0 ? round($total_invoice-($total_invoice*($patient['order']['discount_percent']/100)),2) : $total_invoice;
-                                return $general_invoice;
+                                return $total_invoice;
                             },
                             0,
                         );
