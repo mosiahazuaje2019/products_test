@@ -125,9 +125,9 @@
                         return array_reduce(
                             $order->toArray(),
                             function ($sum, $patient) {
-                                $total_invoice = (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
-                                dd($GLOBALS['total_formula2']);
-                                $general_invoice = $patient['order']['discount_percent'] > 0 ? round($total_invoice-($total_invoice*($patient['order']['discount_percent']/100)),2) : $total_invoice;
+                                //$total_invoice = (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
+                                //dd($GLOBALS['total_formula2']);
+                                $general_invoice = $patient['order']['discount_percent'] > 0 ? round($GLOBALS['total_formula2']-($GLOBALS['total_formula2']*($patient['order']['discount_percent']/100)),2) : $GLOBALS['total_formula2'];
                                 return $general_invoice;
                             },
                             0,
