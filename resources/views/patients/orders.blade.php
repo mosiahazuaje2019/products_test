@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ $total_formula2 = 0; }}
+            {{ $GLOBALS['total_formula2'] = 0; }}
             @foreach ($orders as $key => $order)
                 @php($patientPerOrder = [])
                 @foreach ($order as $patient)
