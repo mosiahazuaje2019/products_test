@@ -29,6 +29,7 @@
                                 <template #body="slotProps">
                                     <PrimeButton @click="newLm(slotProps.data)" icon="pi pi-tags" class="btn_lms" title="Cargar Lm" />
                                     <PrimeButton @click="editOrder(slotProps.data.id,slotProps.data.patient_id)" icon="pi pi-pencil" class="btn_edit" title="Editar orden" />
+                                    <PrimeButton @click="deleteOrder(slotProps.data.id,slotProps.data.patient_id)" icon="pi pi-trash" class="btn_delete" title="Eliminar orden" />
                                 </template>
                             </Column>
                         </DataTable>
@@ -86,6 +87,9 @@ export default {
             this.editId = id
             this.patientId = patientId
             this.displayOrderEdit = true
+        },
+        async deleteOrder(id, patientId) {
+            alert(`Esta por eliminar la orden # ${id}`)
         }
     },
     mounted() {
@@ -103,6 +107,10 @@ export default {
 <style scoped>
 .btn_edit{
     background-color: green;
+    margin-left: 2px;
+}
+.btn_delete{
+    background-color: red;
     margin-left: 2px;
 }
 </style>
