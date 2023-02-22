@@ -60,8 +60,8 @@ export default {
     methods: {
         async searchOrders() {
             let selectedDate = this.form.dates;
-            this.iniDate = new Date(selectedDate[0]).toLocaleDateString('en-CA');
-            this.endDate = new Date(selectedDate[1]).toLocaleDateString('en-CA');
+            this.iniDate = new Date(selectedDate[0]).toLocaleDateString('fr-CA');
+            this.endDate = new Date(selectedDate[1]).toLocaleDateString('fr-CA');
             
 /*             const res = await axios.get(`/api/export_values/${iniDate}/${endDate}`).then((res) => {
                 this.orders = res.data;
