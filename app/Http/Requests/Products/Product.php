@@ -25,11 +25,8 @@ class Product extends FormRequest
     {
         return [
             'name'            => ['required'],
-            'size'            => ['required'],
-            'observation'     => ['required'],
-            'count_inventory' => ['required|count_inventory|numeric'],
-            'date_boarding'   => ['required'],
-            'brand_id'        => ['required']
+            'price'           => ['required'],
+            'presentation_id' => ['required']
         ];
     }
 
@@ -37,12 +34,8 @@ class Product extends FormRequest
     {
         return [
             'name.required'            => 'Debe ingresar un nombre al producto',
-            'size.required'            => 'Seleccione una talla',
-            'observation.required'     => 'Escriba una observación',
-            'count_inventory.required' => 'Indique cantidad en inventario',
-            'count_inventory.numeric'  => 'La cantidad debe ser un valor númerico entero',
-            'date_boarding.required'   => 'Seleccione fecha de embarque',
-            'brand_id.required'        => 'Debe asociar a una marca'
+            'price.required'           => 'Ingrese precio del producto',
+            'presentation_id.required' => 'Debe seleccionar una presentacion del producto'
         ] ;
     }
 }

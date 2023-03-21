@@ -12,4 +12,5 @@ class Brand extends Model
         'name',
         'reference'
     ];
+
 }

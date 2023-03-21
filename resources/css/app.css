@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+    background-image: url("https://storage.googleapis.com/inst-bucket-asispharma/img-asispharma/background_asispharma.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
