@@ -26,6 +26,7 @@ class PatientLm extends JsonResource
             'address_id'       => $this->address_id,
             'diagnostic_id'    => $this->diagnostic_id,
             'lm_code'          => $this->lm_code,
+            'doctor_name'      => $this->doctor_name,
             'orders'           => PatientLmDetail::collection($this->orders),
             'status'           => $this->status,
             'discount_percent' => $this->discount_percent

@@ -15,6 +15,7 @@ class PatientLm extends Model
         'date_end',
         'diagnostic_id',
         'lm_code',
+        'doctor_name',
         'authorized_by',
         'observation',
         'phone_id',

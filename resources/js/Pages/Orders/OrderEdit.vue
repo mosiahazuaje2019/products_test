@@ -50,6 +50,10 @@
                 :showClear="true"
             />
         </div>
+        <div class="field col">
+            <label>Coloque nombre y apellido del Doctor</label>
+            <InputText v-model="form.doctor_name" class="inputfield w-full"  />
+        </div>        
         <MedicinesAdd :order_id="$props.editId" :patient_id="$props.patient_id" />
 
         <div class="formgrid grid">

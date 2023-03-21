@@ -81,6 +81,9 @@ class PatientLmController extends Controller
      */
     public function update(PatientLmUpdate $request, PatientLm $patient_lm)
     {
+        $request->merge(['date_ini' => Carbon::parse($request->date_ini)->toDateString()]);
+        $request->merge(['date_end' => Carbon::parse($request->date_end)->toDateString()]);
+
         $patient_lm->update($request->all());
         return response()->json(new PatientLmResource($patient_lm));
     }

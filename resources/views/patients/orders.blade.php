@@ -25,7 +25,7 @@
                     @if (!in_array($patient->patient->patient_id, $patientPerOrder))
                         <tr>
                             <td rowspan="{{ count($order) }}">{{ $patient->patient->first_name }} {{ $patient->patient->last_name }}</td>
-                            <td rowspan="{{ count($order) }}">{{ $patient->patient->personal_id }} </td>
+                            <td rowspan="{{ count($order) }}">{{ $patient->patient->personal_id }} - DR: {{ $patient->order->doctor_name }}</td>
                             <td rowspan="{{ count($order) }}">{{ $patient->order->lm_code }} <br>{{ $patient->order->authorized_by }}</td>
                     @else
                         <tr>
@@ -123,7 +123,7 @@
                         return array_reduce(
                             $order->toArray(),
                             function ($sum, $patient) {
-                                $total_invoice = (float) ($sum += (float) $patient['product']['price']*$patient['prescription']);
+                                $total_invoice = ($sum += $patient['product']['price']*$patient['prescription']);
                                 $general_invoice = $patient['order']['discount_percent'] > 0 ? round($total_invoice-($total_invoice*($patient['order']['discount_percent']/100)),2) : $total_invoice;
                                 return $general_invoice;
                             },

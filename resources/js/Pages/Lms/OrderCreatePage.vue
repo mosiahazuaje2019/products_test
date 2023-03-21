@@ -54,6 +54,10 @@
             />
             <small class="text-red-500">{{ error_address_id }}</small>
         </div>
+        <div class="field col">
+            <label>Coloque nombre y apellido del Doctor</label>
+            <InputText v-model="form.doctor_name" class="inputfield w-full"  />
+        </div>
 
         <div class="field" v-if="activeButton === true">
             <PrimeButton icon="pi pi-save" label="Siguiente" class="sm:-bottom-1.5" @click="submit" />
@@ -131,7 +135,7 @@ export default {
                 date_ini: null,
                 date_end: null,
                 diagnostic_id: null,
-                doctor_id: null,
+                doctor_name: null,
                 patient_id: null,
                 authorized_by: null,
                 observartion: null,
