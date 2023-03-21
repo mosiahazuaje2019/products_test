@@ -9,13 +9,13 @@
     <table>
         <thead>
             <tr>
-                <th colspan="8">RELACIÓN DE PACIENTES SEGUROS BOLIVAR S.A</th>
+                <th colspan="9">RELACIÓN DE PACIENTES SEGUROS BOLIVAR S.A</th>
             </tr>
             <tr>
-                <th colspan="8">ASISPHARMA SAS . NIT 900.644.246-3</th>
+                <th colspan="9">ASISPHARMA SAS . NIT 900.644.246-3</th>
             </tr>
             <tr>
-                <th colspan="8">FACTURA # ASI - {{ $invoice_number }}</th>
+                <th colspan="9">FACTURA # ASI - {{ $invoice_number }}</th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,9 @@
                     @if (!in_array($patient->patient->patient_id, $patientPerOrder))
                         <tr>
                             <td rowspan="{{ count($order) }}">{{ $patient->patient->first_name }} {{ $patient->patient->last_name }}</td>
-                            <td rowspan="{{ count($order) }}">{{ $patient->patient->personal_id }} - DR: {{ $patient->order->doctor_name }}</td>
+                            <td rowspan="{{ count($order) }}">{{ $patient->patient->personal_id }} </td>
                             <td rowspan="{{ count($order) }}">{{ $patient->order->lm_code }} <br>{{ $patient->order->authorized_by }}</td>
+                            <td rowspan="{{ count($order) }}">{{ $patient->order->doctor_name }}</td>
                     @else
                         <tr>
                     @endif
@@ -45,6 +46,7 @@
                     {{ $patientPerOrder[] = $patient->patient->patient_id }}
                 @endforeach
                 <tr>
+                    <td style="background-color:#F0F0F0;"></td>
                     <td style="background-color:#F0F0F0;"></td>
                     <td style="background-color:#F0F0F0;"></td>
                     <td style="background-color:#F0F0F0;"></td>
@@ -73,6 +75,7 @@
                         <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"></td>
+                        <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"><strong>COPAGO {{$patient->order->discount_percent}} % POR PARTE DEL USUARIO:</strong></td>
                         <td data-format="$#,##0_-" style="background-color:#F0F0F0; color:#FF0000;">
                         <strong>{{ array_reduce(
@@ -87,6 +90,7 @@
                         <td></td>
                     </tr>
                     <tr>
+                        <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"></td>
                         <td style="background-color:#F0F0F0;"></td>
@@ -112,6 +116,7 @@
         </tbody>
         <tfoot>
             <th></th>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
