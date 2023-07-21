@@ -51,6 +51,7 @@ import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
 import axios from 'axios';
 import OrderEdit from './OrderEdit.vue';
+import Swal from 'sweetalert2'
 
 export default {
     name: "OrderPage",
@@ -88,8 +89,23 @@ export default {
             this.patientId = patientId
             this.displayOrderEdit = true
         },
-        async deleteOrder(id, patientId) {
-            alert(`Esta por eliminar la orden # ${id}`)
+        async deleteOrder(id) {
+            Swal.fire({
+                title: 'Seguro de eliminar esta orden?',
+                showDenyButton: true,
+                confirmButtonText: `Borrar`,
+                denyButtonText: `No borrar`,
+            }). then((result) => {
+                if(result.isConfirmed) {
+                    axios.delete(`/api/patient_lms/${id}`).then(() => {
+                        return this.emitter.emit('patientLm_reload');
+                    }).catch(() => {
+                        Swal.fire('No se logro elminar la orden', '','error')
+                    })
+                }else if(result.isDenied) {
+                    Swal.fire('No se a borrado','','info')
+                }
+            })
         }
     },
     mounted() {
@@ -99,7 +115,7 @@ export default {
                 severity:'success', summary: 'SUCCESS',
                 detail: 'Se a actualizado la información de la orden correctamente', life:3000
             })
-        })        
+        })
     }
 }
 </script>
