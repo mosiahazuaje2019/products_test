@@ -89,7 +89,7 @@ export default {
             this.patientId = patientId
             this.displayOrderEdit = true
         },
-        deleteOrder(id) {
+        async deleteOrder(id) {
             Swal.fire({
                 title: 'Seguro de eliminar esta orden?',
                 showDenyButton: true,

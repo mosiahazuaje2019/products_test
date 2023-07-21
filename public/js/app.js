@@ -22361,22 +22361,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     deleteOrder: function deleteOrder(id) {
       var _this4 = this;
 
-      sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
-        title: 'Seguro de eliminar esta orden?',
-        showDenyButton: true,
-        confirmButtonText: "Borrar",
-        denyButtonText: "No borrar"
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("/api/patient_lms/".concat(id)).then(function () {
-            return _this4.emitter.emit('patientLm_reload');
-          })["catch"](function () {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire('No se logro elminar la orden', '', 'error');
-          });
-        } else if (result.isDenied) {
-          sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire('No se a borrado', '', 'info');
-        }
-      });
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
+                  title: 'Seguro de eliminar esta orden?',
+                  showDenyButton: true,
+                  confirmButtonText: "Borrar",
+                  denyButtonText: "No borrar"
+                }).then(function (result) {
+                  if (result.isConfirmed) {
+                    axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"]("/api/patient_lms/".concat(id)).then(function () {
+                      return _this4.emitter.emit('patientLm_reload');
+                    })["catch"](function () {
+                      sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire('No se logro elminar la orden', '', 'error');
+                    });
+                  } else if (result.isDenied) {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire('No se a borrado', '', 'info');
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
     }
   },
   mounted: function mounted() {
