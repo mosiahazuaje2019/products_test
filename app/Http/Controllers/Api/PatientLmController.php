@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\PatientLm;
+use App\Models\PatientLmDetail;
+use App\Models\PreInvoice;
 use Illuminate\Http\Response;
 use App\Http\Resources\PatientLm as PatientLmResource;
 use App\Http\Resources\PatientLmCollection;
@@ -118,9 +120,29 @@ class PatientLmController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(PatientLm $patient_lm)
     {
-        //
+        $patientDetails  = PatientLmDetail::where('order_id',$patient_lm->id)->count();
+        $lmcode = PatientLm::select('lm_code')->where('id',$patient_lm->id)->first();
+        $preinvoice = PreInvoice::where('lm_code',$lmcode['lm_code'])->count();
+
+        if($preinvoice > 0 && $patientDetails > 0) {
+            PreInvoice::where('lm_code',$lmcode['lm_code'])->delete();
+            PatientLmDetail::where('order_id',$patient_lm->id)->delete();
+            $patient_lm->delete();
+            return response()->json(null, 204);
+        }elseif($preinvoice > 0){
+            PreInvoice::where('lm_code',$lmcode['lm_code'])->delete();
+            $patient_lm->delete();
+            return response()->json(null, 204);
+        }elseif($patientDetails > 0){
+            PatientLmDetail::where('order_id',$patient_lm->id)->delete();
+            $patient_lm->delete();
+            return response()->json(null, 204);
+        }else{
+            $patient_lm->delete();
+            return response()->json(null, 204);
+        }
     }
 
     public function export($id) {
@@ -182,4 +204,5 @@ class PatientLmController extends Controller
         $patientLm = PatientLm::where('lm_code',$id)->first();
         return $patientLm->lm_code;
     }
+
 }
